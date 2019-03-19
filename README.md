@@ -6,7 +6,7 @@ Goal is to extract a list of Van Gogh paintings from the attached Google search 
 
 ## Instructions
 
-This is already fully supported on SerpApi ([relevant test]).
+This is already fully supported on SerpApi ([relevant test] and [sample json]).
 Try to come up with your own solution and your own test.
 Extract the painting `name`, date (`extensions` array), and Google `link` in an array.
 
@@ -17,6 +17,7 @@ Programming language wise, Ruby is suggested but feel free to use whatever you f
 Use directly the result page ([file attached]) in this repository.
 
 [relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
+[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
 [file attached]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 
 ## Expected Array
