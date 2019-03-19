@@ -13,8 +13,8 @@ Extract the painting `name`, date (`extensions` array), and Google `link` in an 
 Fork this repository and make a PR when ready. 
 Do not use more than 4 hours of your time. 
 
-Programming language wise, Ruby is suggested but feel free to use whatever you feel.
-Use the Google result page [file attached].
+Programming language wise, Ruby is suggested but feel free to use whatever you feel like.
+Use directly the result page ([file attached]) in this repository.
 
 [relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
 [file attached]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
