@@ -1,8 +1,7 @@
 require 'oga'
 
 class ParseArtworks
-  attr_reader :document
-  attr_reader :response
+  attr_reader :document,:response
 
   def initialize document, response
     @document = document
