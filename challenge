@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative './parser'
+
+puts Parser.new.result
