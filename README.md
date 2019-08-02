@@ -22,7 +22,6 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
 
-## Bonus Points
+Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
-- Add to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed)
-- Test against another similar result page
+Test against 2 other similar result pages. Pages contains same kind of carrousel. 
