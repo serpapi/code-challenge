@@ -5,9 +5,8 @@ require 'nokogiri'
 Artwork = Struct.new(:name, :link, :image, :extensions, keyword_init: true)
 
 class ArtworksParser
-  def parse
-    url = './files/van-gogh-paintings.html'
-    html = File.open(url).read
+  def parse(path = './files/van-gogh-paintings.html')
+    html = File.open(path).read
 
     doc = Nokogiri::HTML(html)
 
@@ -19,7 +18,7 @@ class ArtworksParser
       extensions = painting.at_css('.klmeta') ? [ painting.at_css('.klmeta').text ] : nil
       
       image = images[index] || nil
-      
+
       Artwork.new(
         name: painting.at_css('.kltat').content,
         link: link,
