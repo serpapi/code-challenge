@@ -4,6 +4,20 @@ Goal is to extract a list of Van Gogh paintings from the attached Google search 
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
 
+## Dependencies
+
+It requires the nokogiri and rspec gems
+
+## How to run
+
+To run the spec, run `rspec paintings_spec.rb`. It will run tests for 3 painters (Van Gogh, Monet and Michelangelo)
+
+You can also parse a sample html file and see the full JSON in standard output. For instance `ruby challenge.rb files/monet-paintings.html` will show Monet's JSON. By default it parses the serpapi provided van-gogh-paintings.html.
+
+To parse and arbitrary html file, use the `Paintings::paintings` method defined in the `paintings.rb` file.
+
+Here under, I leave the original challenge instructions.
+
 ## Instructions
 
 This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
