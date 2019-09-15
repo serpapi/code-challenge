@@ -1,3 +1,21 @@
+# ImageResults
+
+Usage:
+
+```bash
+# Install dependencies
+$ bundle
+
+# The original case.  Uses the `webdrivers` gem to interface with Chrome, so first launch may be
+# slow if the chromedriver isn't installed locally.
+
+$ ./main.rb
+
+# Run test suite over "van-gogh", "jackson-pollack" and "andy-warhol"
+$ rspec
+```
+---
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
