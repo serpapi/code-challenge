@@ -1,21 +1,11 @@
 # frozen_string_literal: true
 require 'nokogiri'
-require 'byebug'
+require_relative './artwork_parser.rb'
 
 class ArtworksParser
-  def extract_paitings(page)
+  def call(page)
     page.css('.klitem').map do |element|
-      extract_paiting(element)
+      ArtworkParser.new(element).call
     end
-  end
-
-  def extract_paiting(element)
-    {
-      'name' => element.css('.kltat').text.strip,
-      'extensions' => [
-        element.css('.klmeta').text.to_i
-      ],
-      'link' => 'https://www.google.com' + element.attribute('href').text
-    }
   end
 end
