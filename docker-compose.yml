@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  webapp:
+    build: .
+    tty: true
+    volumes:
+      - .:/app
+    command: /bin/bash
