@@ -6,7 +6,7 @@ describe 'scraper' do
   after(:all) { clear_test_output }
 
   it 'should write the extracted data to file correctly' do
-    write_output(@output_path, extract_items())
+    write_output(@output_path, extract_items)
 
     output = JSON.parse(File.read(@output_path))
     

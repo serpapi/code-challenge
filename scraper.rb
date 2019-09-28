@@ -3,7 +3,7 @@ require 'watir'
 
 def extract_items
   browser = Watir::Browser.new
-  browser.goto(get_url())
+  browser.goto(get_url)
   browser.div(class: 'klcc').wait_until(&:present?)
 
   extracted_items = browser.as(class: 'klitem').map {|item| extract_item(item) }
