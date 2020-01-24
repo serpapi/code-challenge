@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require_relative 'application_helper'
+
+class InvalidUrl < StandardError; end
+
+module ExtractCarouselFromUrl
+  module_function
+
+  def run(url)
+    browser = Watir::Browser.new(
+      :chrome,
+      switches: %w[
+        --ignore-certificate-errors
+        --disable-popup-blocking
+        --disable-translate
+        --disable-notifications
+        --start-maximized
+        --disable-gpu
+        --headless
+      ]
+    )
+
+    browser.goto(url)
+
+    raise InvalidUrl.new('The URL did not contain parsable HTML') if browser.text.empty?
+
+    pc = ParseCarousel.new
+
+    pc.extract_carosel_items!(browser.html)
+
+    puts pc.to_json
+  end
+end
+
+ExtractCarouselFromUrl.run(ARGV.first)
