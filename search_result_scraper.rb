@@ -10,7 +10,7 @@ class SearchResultScraper
     @doc = Nokogiri::HTML file
   end
 
-  def get_results
+  def fetch_results
     result = []
 
     items.each_with_index do |item, index|

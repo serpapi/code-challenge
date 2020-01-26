@@ -23,7 +23,7 @@ RSpec.describe SearchResultScraper do
       context "when #{example[:name]} paintings" do
         subject(:scraper) { described_class.new(example[:path]) }
 
-        let(:artworks) { scraper.get_results[:artworks] }
+        let(:artworks) { scraper.fetch_results[:artworks] }
 
         it 'parse results into correct data type' do
           expect(artworks).to be_a Array
