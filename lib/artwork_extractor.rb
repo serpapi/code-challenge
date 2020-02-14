@@ -31,16 +31,25 @@ class ArtworkExtractor
     end
   end
 
+  def extract_references
+    cards.map do |item|
+      binding.pry
+    end
+  end
+
   private
 
   def cards
     @document.css(CARDS_CSS_SELECTOR)
   end
 
+  # TO DO: improve regexp or parse javascript
   def extract_image_data(image_id)
-    base64_regexp = /(data:image\/jpeg;base64,(?:[A-Za-z0-9+\/]{4}\n?)*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?)2Q\\x3d\\x3d';var ii=\[/
+    base64_regexp = /(data:image\/jpeg;base64,(?:[A-Za-z0-9+\/]{4}\n?)*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}x\/9k\\x3d|2Q\\x3d\\x3d))';var ii=\['#{image_id}/
+    match_data = base64_regexp.match(html)
+
     # return first match group
-    base64_regexp.match(html)[1]
+    match_data&.captures&.first
   end
 
 end
