@@ -15,8 +15,8 @@ class ArtworkExtractor
   end
 
   def extract_names
-    name_atrribute = 'aria-label'
-    @document.css(CARDS_CSS_SELECTOR).map {|item| item[name_atrribute]}
+    name_attribute = 'aria-label'
+    @document.css(CARDS_CSS_SELECTOR).map {|item| item[name_attribute] }
   end
 
 end
