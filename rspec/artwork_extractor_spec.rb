@@ -48,8 +48,8 @@ describe ArtworkExtractor do
 
   end
 
-  xit 'extract the extensions from each card' do
-    pending
+  it 'extract the extensions from each card' do
+    subject.extract_extensions
   end
 
 end
