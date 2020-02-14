@@ -12,10 +12,14 @@ describe ArtworkExtractor do
     expect(subject.html[0...5]).to eq('<html')
   end
 
-  it 'extract the artwork names from the html' do
+  it 'extracts the artwork names from each card' do
     expect(subject.extract_names.size).to eq(51)
     expect(subject.extract_names.first).to eq('The Starry Night')
     expect(subject.extract_names.last).to eq('Portrait of Adeline Ravoux')
+  end
+
+  it 'extract the extensions from each card' do
+    binding.pry
   end
 
 end
