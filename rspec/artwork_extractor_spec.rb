@@ -40,8 +40,7 @@ describe ArtworkExtractor do
 
     describe 'image extraction' do
 
-      # FIXME: this should return 8 but is returning 5
-      xit 'extracts 8 images' do
+      it 'extracts 8 images' do
         expect(@data.map { |item| item[:image] }.compact.size).to eq(8)
       end
 

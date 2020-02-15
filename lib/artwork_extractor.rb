@@ -10,10 +10,6 @@ class ArtworkExtractor
     @document = Nokogiri::HTML.parse(file)
   end
 
-  def html
-    @document.inner_html
-  end
-
   def extract_data
     cards.map do |item|
       {
@@ -26,6 +22,10 @@ class ArtworkExtractor
   end
 
   private
+
+  def html
+    @document.inner_html
+  end
 
   def cards
     css_selector = 'a.klitem'
@@ -52,7 +52,7 @@ class ArtworkExtractor
 
   # TO DO: improve regexp or parse Javascript
   def extract_image_data(image_id)
-    base64_regexp = /(data:image\/jpeg;base64,(?:[A-Za-z0-9+\/]{4}\n?)*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}x\/9k\\x3d|2Q\\x3d\\x3d))';var ii=\['#{image_id}/
+    base64_regexp = /var s='(data:image\/jpeg;base64,([a-zA-Z0-9+\/\\]+)?)';var ii=\['#{image_id}/
     match_data = base64_regexp.match(html)
 
     # return first match group if there is one
