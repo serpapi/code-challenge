@@ -4,7 +4,6 @@ class ArtworkExtractor
 
   attr_reader :document
 
-  CARDS_CSS_SELECTOR = 'a.klitem'
   BASE_URL = 'https://www.google.com'
 
   def initialize(file)
@@ -15,40 +14,48 @@ class ArtworkExtractor
     @document.inner_html
   end
 
-  def extract_names
-    name_attribute = 'aria-label'
-    cards.map {|item| item[name_attribute] }
-  end
-
-  def extract_links
-    link_attribute = 'href'
-    cards.map {|item| "#{BASE_URL}#{item[link_attribute]}" }
-  end
-
-  def extract_images
+  def extract_data
     cards.map do |item|
-      extract_image_data(item.at_css('g-img img')['id'])
-    end
-  end
-
-  def extract_references
-    cards.map do |item|
-      binding.pry
+      {
+        name: extract_name(item),
+        extensions: extract_extensions(item),
+        link: extract_link(item),
+        image: extract_image(item),
+      }
     end
   end
 
   private
 
   def cards
-    @document.css(CARDS_CSS_SELECTOR)
+    css_selector = 'a.klitem'
+    @document.css(css_selector)
   end
 
-  # TO DO: improve regexp or parse javascript
+  def extract_name(item)
+    name_attribute = 'aria-label'
+    item[name_attribute]
+  end
+
+  def extract_link(item)
+    link_attribute = 'href'
+    "#{BASE_URL}#{item[link_attribute]}"
+  end
+
+  def extract_image(item)
+    extract_image_data(item.at_css('g-img img')['id'])
+  end
+
+  def extract_extensions(item)
+    item.search('div').last.children.map(&:text)
+  end
+
+  # TO DO: improve regexp or parse Javascript
   def extract_image_data(image_id)
     base64_regexp = /(data:image\/jpeg;base64,(?:[A-Za-z0-9+\/]{4}\n?)*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}x\/9k\\x3d|2Q\\x3d\\x3d))';var ii=\['#{image_id}/
     match_data = base64_regexp.match(html)
 
-    # return first match group
+    # return first match group if there is one
     match_data&.captures&.first
   end
 
