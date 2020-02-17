@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/paintings_parser.rb'
+
+def main
+  if ARGV.length == 0
+    help
+    exit(1)
+  end
+
+  path   = ARGV[0]
+  parser = PaintingsParser.create_parser_for(path)
+  json   = parser.parse
+  puts json
+  exit(0)
+end
+
+def help
+  puts "Paintings Parser - Help"
+  puts "Usage:"
+  puts "$ ./paintings_parser results_page.html"
+end
+
+main

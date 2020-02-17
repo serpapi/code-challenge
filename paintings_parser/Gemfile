@@ -1,0 +1,6 @@
+source 'https://rubygems.org' do
+  gem 'capybara'
+  gem 'nokogiri'
+  gem 'poltergeist'
+  gem 'rspec'
+end
