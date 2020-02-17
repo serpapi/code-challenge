@@ -58,7 +58,7 @@ class PaintingsParser
 
   def results_nodes
     doc = Nokogiri::HTML(page.html)
-    doc.css('a.klitem')
+    doc.css('.MiPcId')
   end
 
   def parse_painting node
