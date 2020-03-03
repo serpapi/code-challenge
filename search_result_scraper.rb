@@ -14,7 +14,7 @@ class SearchResultScraper
     result = []
 
     items.each_with_index do |item, index|
-      image = images[index] ? images[index][0] : nil
+      image = images[index] ? images[index][0]&.gsub('\\x3d', '=') : nil
 
       result << Image.new(item, image).fetch_details
     end
@@ -29,6 +29,6 @@ class SearchResultScraper
   end
 
   def images
-    file.scan(%r{var s='(data:image\/[^;]+;base64,\S+);})
+    file.scan(%r{var s='(data:image\/[^;]+;base64,\S+)';})
   end
 end
