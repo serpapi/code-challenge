@@ -1,27 +1,35 @@
-# Extract Van Gogh Paintings Code Challenge
+# Code Challenge
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+The objective is to extract name, link, extensions and image from 3 carousels. Instead of picking two very similar to "van gogh paintings" ("woody allen movies" and "michelangelo sculptures"), I've picked very different carousels.
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+As far as I've found, Google has 3 types of top carousels:
 
-## Instructions
+1. Horizontal list without sorting or filtering ("famous chefs", "US Presidents")
+   1.1. First n names, links and extensions are part of the HTML.
+   1.2. Names, links and extensions from the next page of the carousel are embedded in JS as hex-encoded HTML.
+   1.3. First n images are embedded in JS as Base64.
+   1.4. Images from the next page of the carousel are loaded via making requests.
+2. Horizontal list with sorting or filtering ("van gogh paintings", "woody allen movies", "michelangelo sculptures")
+   2.1. Name, link and extensions are part of the HTML.
+   2.2. All images are embedded in JS as Base64.
+3. 2D grid ("nobel prize winners", "katy perry songs")
+   3.1. Name, link and extensions are part of the HTML.
+   3.2. First n images are embedded in JS as Base64.
+   3.3. Images from the next page of the carousel are loaded via making requests.
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+In this coding assignment, I'm extracting everything that doesn't involve making requests.
 
-Fork this repository and make a PR when ready. 
-Do not use more than 4 hours of your time. 
+## What's included
 
-Programming language wise, Ruby is suggested but feel free to use whatever you feel like.
+1. Ruby code
+2. RSpec tests
+3. 100% test coverage, measured with SimpleCov
+4. Strictly typed using Sorbet
+   4.1. RSpec tests aren't typed yet, because of the amount of magic involved in the DSL.
+   4.2. If run with MRI 2.7+, there are plenty of ruby warnings in the Sorbet codebase, as it isn't compatible yet with the latest Ruby.
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
+## Notes
 
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
+1. The sample HTML provided with the challenge, van-gogh-paintings.html, could not be used because Google's markup has diverged from that. If I were to use it, I'd need to handle both old and new markups for the same search page.
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+2. The structure of the expected JSON has been modified slightly to make sure the shape remains the same, even if certain keys (like extensions) have null values. I prefer to have the shape of the data consistent.
