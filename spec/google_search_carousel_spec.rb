@@ -41,6 +41,34 @@ RSpec.describe "GoogleSearchCarousel" do
       end
     end
 
+    context "when given a page with a grid carousel" do
+      let(:items) { GoogleSearchCarousel.new(IO.read("spec/files/nobel-prize-winners.html")).extract }
+
+      it "should have multiple items" do
+        expect(items.size).to eq(14)
+      end
+
+      it "should extract names" do
+        expect(items.first.name).to eq("Peter Handke")
+        expect(items.last.name).to eq("Esther Duflo")
+      end
+
+      it "should extract links" do
+        expect(items.first.link).to eq("https://www.google.com/search?q=peter+handke&stick=H4sIAAAAAAAAAONgFuLQz9U3MLWsMFSCsOIrDLSUs5Ot9BPLE4tSIKRVbn5xiUJRanJqXolCeWZeXmpR8SPGHYzcAi9_3BOWWsc4ac3Ja4zLGbmI0SikwsXmmleSWVIpJMXFIwW3X4NBiosL4ZowI69dl6adY3MRLOhkYPjAFeogJaIkxMXuWeyTn5yYI8gABh_slRQ59autFmR1vrcX_Kryv146ytVBgkWBQYPBsKeJkeF6somDFkPTvhWH2Fg4GAUYrJg0mHgWsfIUpJakFilkJOalZKcCAAeO7CUGAQAA&sa=X&ved=2ahUKEwigpNzh0NDoAhUJ6XMBHbCICCsQri4wInoECBUQJw")
+        expect(items.last.link).to eq("https://www.google.com/search?q=esther+duflo&stick=H4sIAAAAAAAAAONgFuLQz9U3MLWsMFTiArFMDEyyi3K0lLOTrfQTyxOLUiCkVW5-cYlCUWpyal6JQnlmXl5qUfEjxh2M3AIvf9wTllrHOGnNyWuMyxm5iNEopMLF5ppXkllSKSTFxSMFd4EGgxQXF8I9YUZeuy5NO8fmIljQycDwgSvUQUpESYiL3bPYJz85MUeQAQw-2CspcupXWy3I6nxvL_hV5X-9dJSrgwSLAoMGg2FPEyPD9WQTBy2Gpn0rDrGxcDAKMFgxaTDxLGLlSS0uyUgtUkgpTcvJBwDNMnyKCAEAAA&sa=X&ved=2ahUKEwigpNzh0NDoAhUJ6XMBHbCICCsQri4wL3oECBUQTg")
+      end
+
+      it "should extract optional extensions" do
+        expect(items.first.extensions).to eq(["Literature"])
+        expect(items.last.extensions).to eq(["Economic Sciences"])
+      end
+
+      it "should extract optional images" do
+        expect(items.first.image).to eq("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIADgAOAMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAABQQGAgMHAf/EADEQAAIBAwMCBAQFBQEAAAAAAAECAwAEEQUSITFBBhMicRRRYYEjMjORoVKCorHRFf/EABgBAAMBAQAAAAAAAAAAAAAAAAIDBAAB/8QAHREAAgICAwEAAAAAAAAAAAAAAAECEQMhEiIxQf/aAAwDAQACEQMRAD8AqlpOshWONdxY4AHc11HwdpaWluhwNzcs4HJPvXOvBWjXN9erKkcnkR/mcDj2966xprJAjAk+gdCeB9BQY47sXBfRpKEjGN+76MagXdtJdqUJwnb51ENz58rYbPOetMRcEAHaelMTspUaFLabe2p89ZNykjr24rZFNLcxSQyRllOQSV9OPrUm+v8AEBVmIGevypXZasPWpIYLnHz4oeW6ZpQ1aKj4gtDpzn4eMqGJwvYUVYdcezntxJgBgcqMYooWiaWmY+H4kh01Yv0t/O0HGRR/6GJ5IEDBFPqc8DJ7ZpLZ3Ed3o0KHJYZ3Ef1Z60xsmc2pEsTcyEKW5JVT1/cGiUuo/HBONjS3mht/VcHn3rcdetpHWJcbicBeDnmlUthDJAVk+ICMOFtvTtP9vOK02Ojy2t3A8COWZ8Bbk5KLjqR1+2e9ZJpD2tjye/tpozHtXPKnnoareoH4OXahGCMrjpS66s70apdMlyltMJiFABAYD5HNeypdTLGkjL5m/HH5T7GuVbTOSbSaGhvQ0It8gsy87h0FFVbXb5bTU1WB2LYAdO6kcUUD9In6SvDoK2EiRlpZXUEBsBV+lWiHU7K9nMVvKvmIuXhxgpk9fuRVbh16ztNNhtkQm52YBPQfbt71lpWmzWeqzXMv6vw6kjPZmPH+NHVRH4taLTNcm0Q+RgyNwoz3NRJ9RvdLZZXjWeM5Mk+47w3y246UTp8V5SwyNGzdGXrjvx+wqFeJBDi1aa4aUd3RXX9sVkyhs1pqZvHd57b8OYkYkUckdDis7OI3M4EjeiPJAxgClwN2JlV3RoCNwYrtIIP3+dTbTULeCK4kdS5B2qB3NcYM5dKPL/RYS7zEBmPVic0UvvtYPlkHKg9ADRQURUUeW8IBfHGMknk4ruXimyNvei6jX8GSJY+BwCCzfyH/AINFFWSVwYeN1NFcjlNtKZV6c8ZrGbVJZiWIXaB1x3ooqdFbQp8S3VxDoU97aFd0LhGcD8u4j/W4VUrLxBeQW+z0PtOQCOD8wRXlFN4rRLJtslz6lbaiEPl/CnHLIS4z7H/te0UVuEQT/9k\\x3d")
+        expect(items.last.image).to eq("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIADgAOAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAABgQFBwMBAv/EADUQAAIBAwIDBgMGBwEAAAAAAAECAwAEEQUhBhIxEyJBUWFxMoGRB1KhscHRFTNCYnLh8BT/xAAaAQACAwEBAAAAAAAAAAAAAAAEBQEDBgAC/8QAJBEAAgIBBAEEAwAAAAAAAAAAAQIAAxEEEjFBIQUTIjIUI1H/2gAMAwEAAhEDEQA/AO1tH2akHp4mlDifiKS5ley06XlhXZ5R/V5/L86uuM782Gi8iHlkuG7MEdQuMsfpt86zyLBWJW2EmXb/AB8BROsvbOwGV6apfsZ9CB5SRACI+nMTu/qTXOHSZLqQw2kclxOOqxDYU08LaQNcv2RywsrfHMFOOdvAfStP07SbOwjxaW8cWRuQNz86U2ajZ47javS+4Nx4mIz6RqmhMt3JaTpAMHmI+A+tNWjalFqNvkgdoPixWk3VrG8LK4DKRgqdwayHXbNeFuJY/wDz5W0n76r90Z7y+3Q1WtvvfE8zr9Malyh8RujfsYhnJIbZfMUV5a83Zhn+FvhzRT6gMaweIksOWOYsfaJPz6jbWqk4jiGfd2/ZRSjczBTGo8IlH4Uw/aA5XiR/MRxkfL/dLEcRvb8RLsGP0GaDtP7CTC6/oAJrX2c2zW+iwOR35iZWPv0/DFOyOAeVmGay2DUNSjtks7NLhpFGAsLBOVRtuT41cKuq6bGty9y8q5XmSR+YnPUe4pPYmSWzzH1TYAUDiOmoahaWMZe6kCL6Ak/ICs2+0ySDVtMhvbKOTlt5O87rynlO3Q+uKcdc0uHWUhLOyo6A4VsZ96iS8K2iabeRRxKpmtzF3fHA7ufbauqZUYN3Ivrd1K9YlHw/dLPoNozsWdxj2IyP0oqLwNEf4V2ZZSY2JwRnAbcfrRWhqLsoI4masChiDKTj2KSTWIbhx/NgjGfmw/b61T6dE1hqSNJurrlT/wB60+8aaekvDrzbCS1XIJ8VPUfkfcVmkl27AZfocj0NDX1sDg9wil1wD/JtHDt5BdxrzKhYjqw3qVxU0UOkBvFnABCk49dqSeEb3tY1lU7Ad4eVOesm7FnE9tClwjAEqXwcfSkrrtbE0VT70zDh29tb3SYxFODPHtygHI+VW0c8jxPHKBzr4r0YedVOnyak9r2dta21rzDqQWP6CpVxKuladLNcStIUQs7H0G/SoPhhiWNkL8pl3Ct08Vxf2yMxaTlC4/tJ2996K78GXNtC6qFlluJ5eaReyOEO+CD5b/jRT+vTixc7sTN/k+3kbQZJ47vZp7IRSJNb2zN3Q+AZSPTrgfSkU2bNGpQhifDxFe0VGpyHJnioAjEudAF9pz8yoxBwcehpy0/iuNWSOcEKo2z1X0oopWwFhOY2QmlRtjZp2qWDo0klynIR94VW8QwQa1bGCS6nghDAr2ZAL433yOlFFG+maSuxyW6lPqOqcIFXxmV0tzpmiWDm3Eacg88sx8yfGiiijb7zW5VR4itKwRkz/9k\\x3d")
+      end
+    end
+
     context "when given a different google host" do
       it "should extract links with the given host" do
         items = GoogleSearchCarousel.new(IO.read("spec/files/van-gogh-paintings.html")).extract("https://www.google.ca")
