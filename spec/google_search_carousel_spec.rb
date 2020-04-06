@@ -40,5 +40,14 @@ RSpec.describe "GoogleSearchCarousel" do
         expect(items.last.image).to eq(nil)
       end
     end
+
+    context "when given a different google host" do
+      it "should extract links with the given host" do
+        items = GoogleSearchCarousel.new(IO.read("spec/files/van-gogh-paintings.html")).extract("https://www.google.ca")
+
+        expect(items.first.link).to eq("https://www.google.ca/search?q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxY8YY7kFXv64JywVMmnNyWuMflxEaBJS4WJzzSvJLKkUkuLikYLbrcEgxcUF51kxaTDxLGIVCMlIVQguSSwqqlTwy0zPKAEANpnPwK4AAAA&npsic=0&sa=X&ved=2ahUKEwj4uYjEgM_oAhUZ4zgGHZEcCUcQ-BYwKnoECCIQLA")
+        expect(items.last.link).to eq("https://www.google.ca/search?q=Self-Portrait+with+Grey+Felt+Hat&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMiw1MTdO1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWPGGO5BV7-uCcsFTJpzclrjH5cRGgSUuFic80rySypFJLi4pGCW67BIMXFBedZMWkw8SxiVQhOzUnTDcgvKilKzCxRKM8syVBwL0qtVHBLzSlR8EgsAQDCsHEmvwAAAA&npsic=0&sa=X&ved=2ahUKEwj4uYjEgM_oAhUZ4zgGHZEcCUcQ-BYwWnoFCCIQvAE")
+      end
+    end
   end
 end
