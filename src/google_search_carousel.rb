@@ -37,7 +37,7 @@ class GoogleSearchCarousel
       name = item_node.css(@config.name_selector).text
       link = google_host + item_node["href"]
       image = images[index]
-      extensions = item_node.css(@config.extension_selector).text.not_empty
+      extensions = item_node.css(@config.extension_selector).map { |node| node.text.not_empty }.compact
 
       ExtractedItem.new(name: name, link: link, image: image, extensions: Array(extensions))
     end
