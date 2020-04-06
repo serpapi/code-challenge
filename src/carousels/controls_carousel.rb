@@ -4,12 +4,14 @@
 require "./src/carousels/base_carousel"
 require "./src/carousels/carousel_config"
 
-class GridCarousel < BaseCarousel
+class ControlsCarousel < BaseCarousel
+  extend T::Sig
+
   CONFIG = T.let(CarouselConfig.new(
-    detect_selector: "g-scrolling-carousel.rlc__slider",
-    item_selector: "a.rl_item",
-    name_selector: ".title",
-    extension_selector: ".uDMnUc span"
+    detect_selector: ".klcc > g-scrolling-carousel",
+    item_selector: "a[jscontroller]",
+    name_selector: ".kltat",
+    extension_selector: ".klmeta"
   ), CarouselConfig)
 
   sig { override.returns(CarouselConfig) }
