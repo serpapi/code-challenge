@@ -10,9 +10,9 @@ gem "sorbet-runtime"
 group :development do
   gem "sorbet"
   # Uncomment below before running bundle exec srb init/update
-  gem "webrobots"
-  gem "rake"
-  gem "html_truncator"
+  # gem "webrobots"
+  # gem "rake"
+  # gem "html_truncator"
 end
 
 group :test do
