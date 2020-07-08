@@ -16,6 +16,6 @@ class ImageExtractorTestCase(unittest.TestCase):
         expected_array_filename = os.path.join(self.data_dir, 'expected-array.json')
         with open(expected_array_filename, 'r') as f:
             expected_array = json.loads(f.read())
-        #self.assertEqual(result, expected_array)
-        self.assertTrue(True)
+        self.assertEqual(result, expected_array)
+            
 
