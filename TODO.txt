@@ -1,3 +1,4 @@
-1. Fix tests
+1. Fix tests ???
 2. Create Dockerfile
 3. Find additional images on page
+4. With statement for webdriver+
