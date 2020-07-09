@@ -1,6 +1,8 @@
 FROM joyzoursky/python-chromedriver:3.6-selenium
 RUN pip install --upgrade pip
 RUN pip install nose
+RUN mkdir /files
+VOLUME /files
 RUN mkdir /app
 COPY ./image_extractor /app/image_extractor
 COPY ./test /app/test
