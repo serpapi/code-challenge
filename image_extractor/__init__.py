@@ -18,7 +18,6 @@ class Driver():
         return self.driver
 
     def __exit__(self, *args, **kwargs):
-        self.driver.close()
         self.driver.quit()
 
 
@@ -31,6 +30,7 @@ def extract_images(filelame):
         carousel = [] 
         top_stories = []
         search_suggestions = []
+        sidebar_images = []
         for d in divs:
             src = d.find_element_by_tag_name('img').get_attribute('src')
             name = d.find_element_by_class_name('kltat').text
@@ -75,11 +75,19 @@ def extract_images(filelame):
                 "image": src,
                 "name": title,
                 "link": link
-            })          
+            })   
+        sidebar_img_containers = driver.find_elements_by_xpath('//div[contains(@class, "eA0Zlc ivg-i PtaMgb")]')
+        for c in sidebar_img_containers:
+            img = c.find_element_by_tag_name('img')
+            sidebar_images.append({
+                "image": img.get_attribute('src'),
+                'link': img.get_attribute('title')
+            })
         return {
             "carousel": carousel,
             "top_stories": top_stories,
-            "search_suggestions": search_suggestions
+            "search_suggestions": search_suggestions,
+            "sidebar_images": sidebar_images
         }
 
     
