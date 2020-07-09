@@ -5,10 +5,20 @@ from selenium.common.exceptions import NoSuchElementException
 class Driver():
 
     def __enter__(self):
-        self.driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--headless')
+        options.add_argument("--start-maximized") 
+        options.add_argument("--disable-infobars")
+        options.add_argument("--disable-extensions")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--no-sandbox")
+        self.driver = webdriver.Chrome(options=options)
         return self.driver
 
     def __exit__(self, *args, **kwargs):
+        self.driver.close()
         self.driver.quit()
 
 
@@ -24,7 +34,10 @@ def extract_images(filelame):
         for d in divs:
             src = d.find_element_by_tag_name('img').get_attribute('src')
             name = d.find_element_by_class_name('kltat').text
-            link = d.find_element_by_tag_name('a').get_attribute('href').replace('file://', 'https://www.google.com')
+            try:
+                link = d.find_element_by_tag_name('a').get_attribute('href').replace('file://', 'https://www.google.com')
+            except NoSuchElementException:
+                link = d.find_element_by_xpath('../a').get_attribute('href').replace('file://', 'https://www.google.com')
             try:
                 extensions = d.find_element_by_class_name('klmeta').text
             except NoSuchElementException:
@@ -51,10 +64,11 @@ def extract_images(filelame):
                 "name": title,
                 "link": link
             })
-        suggestion_link = driver.find_element_by_link_text('People also search for')
-        suggestion_containers = suggestion_link.find_elements_by_xpath('../../div[@class="AAXrR lfNb6b"]//div[@data-reltype="sideways"]')
+        suggestion_containers = driver.find_elements_by_xpath('//div[@data-reltype="sideways"]')
         for c in suggestion_containers:
             src = c.find_element_by_tag_name('img').get_attribute('src')
+            if src == 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==':
+                continue
             title = c.find_element_by_class_name('ellip').get_attribute('innerText')
             link = c.find_element_by_tag_name('a').get_attribute('href').replace('file://', 'https://www.google.com')  
             search_suggestions.append({
