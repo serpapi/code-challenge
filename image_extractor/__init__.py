@@ -1,14 +1,20 @@
+"""extracting images from Google results page"""
+
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 
 
 class Driver():
+    """Class for initializing webdriver in with statement"""
+
+    def __init__(self):
+        self.driver = None
 
     def __enter__(self):
         options = webdriver.ChromeOptions()
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--headless')
-        options.add_argument("--start-maximized") 
+        options.add_argument("--start-maximized")
         options.add_argument("--disable-infobars")
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-gpu")
@@ -24,20 +30,28 @@ class Driver():
 
 
 def extract_images(filelame):
+    """extracts images from Google results page saved in `filename`"""
     with Driver() as driver:
         driver.get("file://%s" % filelame)
-        divs = driver.find_elements_by_class_name('klitem-tr')
-        carousel = [] 
+        carousel = []
         top_stories = []
         search_suggestions = []
         sidebar_images = []
+        #carousel images
+        divs = driver.find_elements_by_class_name('klitem-tr')
         for d in divs:
             src = d.find_element_by_tag_name('img').get_attribute('src')
             name = d.find_element_by_class_name('kltat').text
             try:
-                link = d.find_element_by_tag_name('a').get_attribute('href').replace('file://', 'https://www.google.com')
+                link = d.find_element_by_tag_name('a').get_attribute('href').replace(
+                    'file://',
+                    'https://www.google.com'
+                )
             except NoSuchElementException:
-                link = d.find_element_by_xpath('../a').get_attribute('href').replace('file://', 'https://www.google.com')
+                link = d.find_element_by_xpath('../a').get_attribute('href').replace(
+                    'file://',
+                    'https://www.google.com'
+                )
             try:
                 extensions = d.find_element_by_class_name('klmeta').text
             except NoSuchElementException:
@@ -50,6 +64,7 @@ def extract_images(filelame):
             if extensions:
                 item['extensions'] = [extensions]
             carousel.append(item)
+        #Top Stories section
         top_stories_containers = driver.find_elements_by_class_name('So9e7d')
         for c in top_stories_containers:
             try:
@@ -64,19 +79,26 @@ def extract_images(filelame):
                 "name": title,
                 "link": link
             })
+        #images from search suggestions
         suggestion_containers = driver.find_elements_by_xpath('//div[@data-reltype="sideways"]')
         for c in suggestion_containers:
             src = c.find_element_by_tag_name('img').get_attribute('src')
             if src == 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==':
                 continue
             title = c.find_element_by_class_name('ellip').get_attribute('innerText')
-            link = c.find_element_by_tag_name('a').get_attribute('href').replace('file://', 'https://www.google.com')  
+            link = c.find_element_by_tag_name('a').get_attribute('href').replace(
+                'file://',
+                'https://www.google.com'
+            )
             search_suggestions.append({
                 "image": src,
                 "name": title,
                 "link": link
-            })   
-        sidebar_img_containers = driver.find_elements_by_xpath('//div[contains(@class, "eA0Zlc ivg-i PtaMgb")]')
+            })
+        #sidebar images
+        sidebar_img_containers = driver.find_elements_by_xpath(
+            '//div[contains(@class, "eA0Zlc ivg-i PtaMgb")]'
+        )
         for c in sidebar_img_containers:
             img = c.find_element_by_tag_name('img')
             sidebar_images.append({
@@ -89,5 +111,3 @@ def extract_images(filelame):
             "search_suggestions": search_suggestions,
             "sidebar_images": sidebar_images
         }
-
-    
