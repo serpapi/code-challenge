@@ -28,9 +28,11 @@ Test against 2 other similar result pages. (Pages that contain the same kind of 
 
 ***
 
-## CHALLENGE MET
+# CHALLENGE MET
 
-Fast and lightweight implementation:
+## Implementation
+
+Fast and lightweight implementation; with Nokogiri, Thor and ActiveSupport as dependencies; that 3rd is only used for message formatting. 
 
 + No HTTP calls -> the documents to parse are already provided in `files/`
 + No JS execution required: thumbnails image source extraction is done by a REGEX, otherwise would have required something like selenium, capybara-webkit...
@@ -51,15 +53,16 @@ OR
 
 **Notes**
 
-+ I matched the search keyword with the filenames, so anything different will not hit the right page and will return an empty result
++ I matched the search keyword with the names of the files used for the data extraction (see within `files/`), so anything different will not hit the right page and will return an empty result
 + As of now July 2020, Google updated the structure of the result page, so I had to adapt the code with some switches with that fact for the 2 painters I choose.
 
 ## TESTING
 
-I use Rake + Minitest to unit test the `GoogleImageSearch` class. 
+Rake + Minitest are used for the unit test of `GoogleImageSearch` class. 
 
 I covered the case of Van Gogh only using the provided `files/expected-array.json`
 
 To run the tests do `rake test` or just `rake`
 
-As I remarked and wrote as a comment in the test scenario, the provided `files/expected-array.json` is wrong beginning at the 9th image: you expect the image to be NIL while the provided document shows an image for "The Yellow House (1888)"
+**THE TEST COVERAGE FAILS!!**
+*As I remarked and wrote as a comment in the test scenario, the provided `files/expected-array.json` is wrong beginning at the 9th image: you expect the image to be NIL while the provided document shows an image for "The Yellow House (1888)"*

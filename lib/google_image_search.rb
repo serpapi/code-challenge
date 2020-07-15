@@ -1,7 +1,6 @@
-require 'nokogiri'
-require 'byebug'
-
 # encoding: UTF-8
+
+require 'nokogiri'
 
 class GoogleImageSearch
   class << self
