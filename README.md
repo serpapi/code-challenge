@@ -25,3 +25,35 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
 Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+
+***
+
+## CHALLENGE MET
+
+Fast and lightweight implementation:
+
++ No HTTP calls -> the documents to parse are already provided in `files/`
++ No JS execution required: thumbnails image source extraction is done by a REGEX, otherwise would have required something like selenium, capybara-webkit...
+
+## RUNNING
+
+I use (Thor)[https://rubygems.org/gems/thor] gem to provide the command line interface
+
+`cd` into the directory and run `thor serpapi:search_google_image "Van Gogh paintings"`
+
+As instructed I added pages for Pablo Picasso and Claude Monet so you can run them the same way too:
+
+`thor serpapi:search_google_image "Pablo Picasso paintings"`
+`thor serpapi:search_google_image "Claude Monet paintings"`
+
+**Note: I matched the search keyword with the filenames, so anything different will not hit the right page and will return an empty result**
+
+## TESTING
+
+I use Rake + Minitest to unit test the `GoogleImageSearch` class. 
+
+I covered the case of Van Gogh only using the provided `files/expected-array.json`
+
+To run the tests do `rake test` or just `rake`
+
+As I remarked and wrote as a comment in the test scenario, the provided `files/expected-array.json` is wrong beginning at the 9th image: you expect the image to be NIL while the provided document shows an image for "The Yellow House (1888)"
