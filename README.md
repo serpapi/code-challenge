@@ -39,7 +39,7 @@ Fast and lightweight implementation; with Nokogiri, Thor and ActiveSupport as de
 
 ## RUNNING
 
-I use (Thor)[https://rubygems.org/gems/thor] gem to provide the command line interface
+I use [Thor](https://rubygems.org/gems/thor) gem to provide the command line interface
 
 `cd` into the directory and run `thor serpapi:search_google_image "Van Gogh paintings"`
 
