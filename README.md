@@ -54,7 +54,7 @@ OR
 **Notes**
 
 + I matched the search keyword with the names of the files used for the data extraction (see within `files/`), so anything different will not hit the right page and will return an empty result
-+ As of now July 2020, Google updated the structure of the result page, so I had to adapt the code with some switches with that fact for the 2 painters I choose.
++ As of now July 2020, Google slightly updated the HTML structure of the artworks carousel. With that fact in mind, I had to adapt the code with some switches to support Van Gogh, which I guess was captured in 2019, and Picasso/Monet that I captured today 15th July 2020.
 
 ## TESTING
 
