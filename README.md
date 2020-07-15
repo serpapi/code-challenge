@@ -34,8 +34,8 @@ Test against 2 other similar result pages. (Pages that contain the same kind of 
 
 Fast and lightweight implementation; with Nokogiri, Thor and ActiveSupport as dependencies; that 3rd is only used for message formatting. 
 
-+ No HTTP calls -> the documents to parse are already provided in `files/`
-+ No JS execution required: thumbnails image source extraction is done by a REGEX, otherwise would have required something like selenium, capybara-webkit...
++ No HTTP calls -> the documents to parse are already captured in `files/`
++ No JS execution required: thumbnails image source extraction is done by a REGEX. Otherwise we would have required something like selenium, capybara-webkit...which is heavy and cumbersome (thinking of requiring you to install xvfb, qt, PhantomJS)
 
 ## RUNNING
 
@@ -43,7 +43,7 @@ I use [Thor](https://rubygems.org/gems/thor) gem to provide the command line int
 
 `cd` into the directory and run `thor serpapi:search_google_image "Van Gogh paintings"`
 
-As instructed I added pages for Pablo Picasso and Claude Monet so you can run them the same way too:
+As instructed I added 2 other artwork pages for Pablo Picasso and Claude Monet. You can run them the same way too:
 
 `thor serpapi:search_google_image "Pablo Picasso paintings"`
 
