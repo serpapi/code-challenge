@@ -44,9 +44,15 @@ I use (Thor)[https://rubygems.org/gems/thor] gem to provide the command line int
 As instructed I added pages for Pablo Picasso and Claude Monet so you can run them the same way too:
 
 `thor serpapi:search_google_image "Pablo Picasso paintings"`
+
+OR
+
 `thor serpapi:search_google_image "Claude Monet paintings"`
 
-**Note: I matched the search keyword with the filenames, so anything different will not hit the right page and will return an empty result**
+**Notes**
+
++ I matched the search keyword with the filenames, so anything different will not hit the right page and will return an empty result
++ As of now July 2020, Google updated the structure of the result page, so I had to adapt the code with some switches with that fact for the 2 painters I choose.
 
 ## TESTING
 
