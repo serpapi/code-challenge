@@ -15,7 +15,7 @@ class GoogleImageSearch
 
       # Here's the trick: we ain't need selenium or any other headless web driver to execute the JS that fills the thumbails
       # These data can be extracted by regex in the JS code - Thank you @google for keeping the order coherent
-      raw_html_text = File.open(File.join(__dir__, '../files/van-gogh-paintings.html'), "r:UTF-8", &:read)
+      raw_html_text = File.open(File.join(__dir__, "../files/#{filename}.html"), "r:UTF-8", &:read)
       thumbnail_srcs = raw_html_text.scan /var\s+s\='([^']+)';/
 
       # Google changed the page structure now in 2020
