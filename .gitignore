@@ -1,3 +1,16 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# Tests
+
+/.jest-cache
+
+# Editors
+.vscode
+.idea
+
+
 *.gem
 *.rbc
 /.config
