@@ -14,7 +14,6 @@ const parseLink = (element) => {
 
 const parseImage = (element) => {
   return element.find('g-img img').attr('src');
-  // return element.find('.klic g-img img').attr('src');
 };
 
 const parseExtensions = (element) => {
