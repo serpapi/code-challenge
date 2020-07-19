@@ -10,8 +10,8 @@ This is already fully supported on SerpApi. ([relevant test], [html file], [samp
 Try to come up with your own solution and your own test.
 Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
 
-Fork this repository and make a PR when ready. 
-Do not use more than 4 hours of your time. 
+Fork this repository and make a PR when ready.
+Do not use more than 4 hours of your time.
 
 Programming language wise, Ruby is suggested but feel free to use whatever you feel like.
 
@@ -22,6 +22,6 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed).
 
 Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
