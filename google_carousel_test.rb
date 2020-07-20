@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require './google_carousel.rb'
 require 'json'
 
-class TestMeme < Minitest::Test
+class GoogleCarouselTest < Minitest::Test
   def test_van_goph_paintings_with_expected_array
     expected_array = GoogleCarousel.parse_html(File.read('files/van-gogh-paintings.html'))
     given_array = JSON.parse(File.read('files/expected-array.json'))
