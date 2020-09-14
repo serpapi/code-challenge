@@ -4,8 +4,8 @@ import pprint
 from concurrent import futures as future
 
 from selenium import webdriver
-import selenium.common.exceptions as exceptions
 from selenium.webdriver.common.by import By
+import selenium.common.exceptions as exceptions
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
@@ -15,8 +15,12 @@ from selenium.webdriver.support import expected_conditions as EC
 MAX_THREADS = 16
 MAX_WAIT_TIME = 10
 
+DRIVER_PATH = "./chromedriver"
+
 # Maybe make safe mode toggleable
 TARGET_URL = "https://www.google.com/search?safe=off&q={query}"
+
+ROOT_TARGET_ELEMENT = "g-scrolling-carousel"
 
 # Just change the targets if needed
 NAME_TARGET_CLASS = 'kltat'
@@ -61,7 +65,7 @@ def extract_name_from_image(el):
 def extract_image_data(image_element):
 	"""
 	Ambiguous function name solely dedicated to the
-	card/image carousel.
+	card/image carousel elements.
 
 	Tried to make it straightforward as possible.
 	"""
@@ -87,13 +91,13 @@ def scrape_google_image_carousel(query):
 	images_data = []
 	full_url = TARGET_URL.format(query=query)
 
-	driver = webdriver.Chrome("./chromedriver", options=chrome_options)
+	driver = webdriver.Chrome(DRIVER_PATH, options=chrome_options)
 	wait = WebDriverWait(driver, MAX_WAIT_TIME)
 
 	try:
 		driver.get(full_url)
 
-		carousel = wait.until(EC.presence_of_element_located((By.TAG_NAME, "g-scrolling-carousel")))
+		carousel = wait.until(EC.presence_of_element_located((By.TAG_NAME, ROOT_TARGET_ELEMENT)))
 		image_list = carousel.find_elements_by_tag_name("a")
 
 		# Need to scroll to the last element because the image data likely won't load
@@ -109,7 +113,7 @@ def scrape_google_image_carousel(query):
 		print("Serverside error:", e)
 	
 	except exceptions.TimeoutException as e:
-		print('Loading image carousel timed out:', e)
+		print("Loading image carousel timed out:", e)
 	
 	finally:
 		"""
@@ -134,7 +138,7 @@ if __name__ == "__main__":
 		query = format_query(arg)
 
 		data = {}
-		data["artworks"] = scrape_google_image_carousel(query)
+		data['artworks'] = scrape_google_image_carousel(query)
 
 		pp = pprint.PrettyPrinter()
 		pp.pprint(data)
