@@ -15,14 +15,18 @@ from selenium.webdriver.support import expected_conditions as EC
 MAX_THREADS = 16
 MAX_WAIT_TIME = 10
 
+# Maybe make safe mode toggleable
 TARGET_URL = "https://www.google.com/search?safe=off&q={query}"
 
+# Just change the targets if needed
 NAME_TARGET_CLASS = 'kltat'
 NAME_TARGET_XPATH = ".//div[@class={name}]"
 
 EXTS_TARGET_CLASS = 'ellip klmeta'
 EXTS_TARGET_XPATH = ".//div[@class={exts}]"
 
+# Comment out headless mode to see what
+# is actually happening
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 
@@ -55,6 +59,12 @@ def extract_name_from_image(el):
 
 
 def extract_image_data(image_element):
+	"""
+	Ambiguous function name solely dedicated to the
+	card/image carousel.
+
+	Tried to make it straightforward as possible.
+	"""
 	image_link = image_element.get_attribute("href")
 	image_name = extract_name_from_image(image_element)
 	image_exts = extract_exts_from_image(image_element)
@@ -85,8 +95,11 @@ def scrape_google_image_carousel(query):
 
 		carousel = wait.until(EC.presence_of_element_located((By.TAG_NAME, "g-scrolling-carousel")))
 		image_list = carousel.find_elements_by_tag_name("a")
+
+		# Need to scroll to the last element because the image data likely won't load
 		driver.execute_script("arguments[0].scrollIntoView();", image_list[-1])
 
+		# Helps to an extent, but could use some better future management
 		with future.ThreadPoolExecutor(MAX_THREADS) as executor:
 			futures = [executor.submit(extract_image_data, i) for i in image_list]
 
@@ -99,6 +112,12 @@ def scrape_google_image_carousel(query):
 		print('Loading image carousel timed out:', e)
 	
 	finally:
+		"""
+		make sure we don't
+		keep spawning zombies
+		like I was doing
+		for half an hour
+		"""
 		driver.close()
 		driver.quit()
 
@@ -119,8 +138,6 @@ if __name__ == "__main__":
 
 		pp = pprint.PrettyPrinter()
 		pp.pprint(data)
-
-		print(len(data))
 
 	else:
 		print("usage: `python3 scraper.py <search expression>`")
