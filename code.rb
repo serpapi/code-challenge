@@ -17,6 +17,7 @@ class ArtParser
       # moved 'images' out of .each as they can be processed at once and be referred by
       # image_id (obtained data is already indexed by image_id and image_ids are 0...n )
       images = file_content.scan(/var s='(data:image\/jpeg;base64,\S+)';/)
+      # puts(images.length)
 
       doc.css(".klitem").each do |painting|
 
@@ -50,7 +51,7 @@ class ArtParser
       end # doc each
 
       result = {"artworks" => result}
-      #result = JSON[{"artworks" => result}]
+      # result = JSON[{"artworks" => result}]
       # puts(result)
       return result
 
@@ -61,5 +62,7 @@ class ArtParser
 end # class
 
 # ArtParser.new.parse(path="./files/van-gogh-paintings.html")
+# ArtParser.new.parse(path="./files/pablo-picasso-paintings.html")
+# ArtParser.new.parse(path="./files/leonardo-da-vinci-paintings.html")
 
 
