@@ -65,4 +65,3 @@ end # class
 # ArtParser.new.parse(path="./files/pablo-picasso-paintings.html")
 # ArtParser.new.parse(path="./files/leonardo-da-vinci-paintings.html")
 
-

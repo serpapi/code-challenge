@@ -1,12 +1,13 @@
 require "rspec"
 require_relative "code.rb"
 
-
-  Files = { "van-gogh-paintings.html"          => ["The Starry Night", "1889"],
-            "pablo-picasso-paintings.html"     => ["Guernica",         "1937"],
-            "leonardo-da-vinci-paintings.html" => ["Mona Lisa",        "1503"],
-          }
+# Files: a hash where key is filename, value: Array (first art's name, first art's year)
+Files = { "van-gogh-paintings.html"          => ["The Starry Night", "1889"],
+          "pablo-picasso-paintings.html"     => ["Guernica",         "1937"],
+          "leonardo-da-vinci-paintings.html" => ["Mona Lisa",        "1503"],
+        }
 Files.each do |file, first_art|
+
   RSpec.describe ArtParser do
 
     let(:parser) { ArtParser.new }
@@ -67,6 +68,7 @@ Files.each do |file, first_art|
       image = result["artworks"][0]["image"]
       expect(image.class).to eq String
     end
+
   end
 
 end
