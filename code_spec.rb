@@ -1,14 +1,15 @@
 require "rspec"
 require_relative "code.rb"
 
-Files = [ "van-gogh-paintings.html", "leonardo-da-vinci-paintings.html", "pablo-picasso-paintings.html"]
 
-RSpec.describe ArtParser do
+  Files = { "van-gogh-paintings.html"          => ["The Starry Night", "1889"],
+            "pablo-picasso-paintings.html"     => ["Guernica",         "1937"],
+            "leonardo-da-vinci-paintings.html" => ["Mona Lisa",        "1503"],
+          }
+Files.each do |file, first_art|
+  RSpec.describe ArtParser do
 
-  let(:parser) { ArtParser.new }
-
-  Files.each do |file|
-
+    let(:parser) { ArtParser.new }
     let(:result) { parser.parse(path="./files/#{file}") }
 
     it "returns non null result" do
@@ -39,6 +40,13 @@ RSpec.describe ArtParser do
 
     it "has 4 keys for each artwork" do
       expect(result["artworks"][0].size).to eq 4
+    end
+
+    it "parses result correctly" do
+      artwork = result["artworks"][0]
+      # puts(artwork)
+      expect(artwork["name"]).to eq first_art[0]
+      expect(artwork["extensions"][0]).to eq first_art[1]
     end
 
     it "has correct classtype for: name" do
