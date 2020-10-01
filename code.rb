@@ -33,6 +33,9 @@ class ArtParser
 
         # Google link
         href = painting.attr("href") or nil
+        if not href
+          href = painting.ancestors("a").attr("href")
+        end
         link = "www.google.com#{href}"
 
         # image (indexed by image_id)
