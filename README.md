@@ -25,3 +25,32 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
 Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+
+
+### Require softwaire
+ - ruby >= 2.3.0 [Suggested Ruby download link](/https://www.ruby-lang.org/en/documentation/installation/#ruby-install)
+
+Go to ruby shell:
+```sh
+$ irb
+```
+Run script
+```sh
+>  require_relative 'runner'
+>  Runner.run(path)
+```
+>
+if path is not given default is `van-gogh-paintings.html`
+
+```sh
+$ irb
+> require_relative 'runner'
+> Runner.run
+```
+Run spec:
+```sh
+$ rspec spec/art_works_parser_spec.rb
+```
+
+
+
