@@ -3,7 +3,7 @@ RSpec.describe Parsers::Artwork do
 
   let(:file) { File.read('files/van-gogh-paintings.html') }
   let(:instance) { described_class.new(file: file) }
-  
+
   it { is_expected.to be_a(Array) }
   its(:size) { is_expected.to eq(51) }
 
@@ -19,7 +19,7 @@ RSpec.describe Parsers::Artwork do
 
     describe ':extensions' do
       subject(:extensions) { artwork[:extensions].first }
-      
+
       it { is_expected.to be_a(String) }
       its(:size) { is_expected.to eq(4) }
     end
