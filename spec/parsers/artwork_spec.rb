@@ -17,6 +17,12 @@ RSpec.describe Parsers::Artwork do
     its([:link]) { is_expected.to start_with('https://google.com/search') }
     its([:image]) { is_expected.to start_with('data:image/gif;base64') }
 
+    context 'when image data is absent' do
+      subject(:artwork) { artworks[10] }
+
+      it { is_expected.not_to include(:image) }
+    end
+
     describe ':extensions' do
       subject(:extensions) { artwork[:extensions].first }
 

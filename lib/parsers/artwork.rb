@@ -10,9 +10,8 @@ module Parsers
         {
           name: node['aria-label'],
           extensions: [year_created(node)],
-          link: painting_link(node),
-          image: image_data(node)
-        }
+          link: painting_link(node)
+        }.merge(image_attribute(node))
       end
     end
 
@@ -28,8 +27,9 @@ module Parsers
       "https://google.com#{node['href']}"
     end
 
-    def image_data(node)
-      node.xpath('.//img[starts-with(@id, "kximg")]').first['src']
+    def image_attribute(node)
+      image_data = node.xpath('.//img[starts-with(@id, "kximg")]').first['src']
+      image_data ? { image: image_data } : {}
     end
   end
 end
