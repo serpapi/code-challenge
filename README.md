@@ -24,4 +24,4 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
-Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+Test against 2 other similar result pages. (Pages that contain the same kind of carousel. Don't necessarily have to be paintings.)
