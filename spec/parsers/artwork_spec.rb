@@ -1,7 +1,8 @@
 RSpec.describe Parsers::Artwork do
   subject(:artworks) { instance.parse }
 
-  let(:file) { File.read('files/van-gogh-paintings.html') }
+  let(:filename) { 'files/van-gogh-paintings.html' }
+  let(:file) { File.read(filename) }
   let(:instance) { described_class.new(file: file) }
 
   it { is_expected.to be_a(Array) }
@@ -20,7 +21,23 @@ RSpec.describe Parsers::Artwork do
     context 'when image data is absent' do
       subject(:artwork) { artworks[10] }
 
-      it { is_expected.not_to include(:image) }
+      it { is_expected.to include(image: nil) }
+    end
+
+    context 'when searching for Banksy artworks' do
+      let(:filename) { 'files/banksy-artworks.html' }
+
+      its([:name]) { is_expected.to be_a(String) }
+      its([:link]) { is_expected.to start_with('https://google.com/search') }
+      its([:image]) { is_expected.to start_with('data:image/gif;base64') }
+    end
+
+    context 'when searching for Linkin Park albums' do
+      let(:filename) { 'files/linkin-park-albums.html' }
+
+      its([:name]) { is_expected.to be_a(String) }
+      its([:link]) { is_expected.to start_with('https://google.com/search') }
+      its([:image]) { is_expected.to start_with('data:image/gif;base64') }
     end
 
     describe ':extensions' do
