@@ -7,7 +7,6 @@ require "json"
 class ArtParser
 
   def parse(path)
-
     result = []
     File.open(path, "r") do |file|
       file_content   = file.read()
@@ -57,12 +56,11 @@ class ArtParser
       # result = JSON[{"artworks" => result}]
       # puts(result)
       return result
+    end
 
-    end #File
+  end
 
-  end # method
-
-end # class
+end
 
 # ArtParser.new.parse(path="./files/van-gogh-paintings.html")
 # ArtParser.new.parse(path="./files/pablo-picasso-paintings.html")

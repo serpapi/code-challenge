@@ -1,5 +1,5 @@
 require "rspec"
-require_relative "code.rb"
+require_relative "artparser.rb"
 
 # Files: a hash where key is filename, value: Array (first art's name, first art's year)
 Files = { "van-gogh-paintings.html"          => ["The Starry Night", "1889"],
