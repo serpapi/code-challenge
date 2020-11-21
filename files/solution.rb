@@ -12,28 +12,28 @@ def parse_carousel(filename)
     extension = item.at_xpath('div/div[contains(@class, "klmeta")]')&.text
 
     link = HOSTNAME + item.xpath('@href').text
-    image_id = item.at_xpath('//g-img/img/@id').text
+    image_id = item.at_xpath('div/div/g-img/img/@id').text
 
     base64 = get_full_base64(doc, image_id)
 
-    {
-      name: name,
-      extension: [extension],
-      link: link,
-      image: base64
-    }
+    result = { name: name }
+    result.merge!( extension: [extension] ) if extension
+    result.merge!( link: link, image: base64 )
   end
 
   File.write('output.json', JSON.pretty_generate({ artworks: output }))
 end
 
 def get_full_base64(doc, selector)
-  regex = /var s\=\'([\s\S]*)\';var ii\=\[\'#{Regexp.quote(selector)}\'\]/
+  regex = /var s\=\'(((?!var s\=)[\s\S])+?)\';var ii\=\[\'#{Regexp.quote(selector)}\'\]/
 
   @script ||= doc.at_xpath(
     '/html/body/div[@id="main"]/div[@id="cnt"]'\
     '/script[starts-with(text(), "function _setImagesSrc")]'
-  ).text
+  ).
+  text.
+  # Convert padding to =
+  gsub('\\x3d', '=')
 
   @script[regex, 1]
 end
