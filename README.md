@@ -25,3 +25,8 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
 Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+
+Running Instructions -->
+
+1. Create virtual env and run pip install -r requirement.txt and then run python scraper.py
+2. Just do docker-compose up in main dir and it will automatically run and save output in files/ folder with ".json" extension

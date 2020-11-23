@@ -1,0 +1,10 @@
+# docker-compose.yml
+version: "3.7"
+services:
+  python:
+    build: .
+    ports:
+      - 1111:1111
+    volumes:
+      - .:/src
+    tty: true
