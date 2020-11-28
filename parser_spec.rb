@@ -27,5 +27,12 @@ describe Parser do
       _(w['name']).must_equal "Sunflowers"
       _(w).wont_include('extensions')
     end
+
+    it "should create a file called output.json" do
+      @parser.create
+      file = File.open('./output.json')
+      json = JSON.parse(file.read)
+      _(json['artworks'].size).must_equal 51
+    end
   end
 end
