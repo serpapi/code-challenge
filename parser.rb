@@ -9,7 +9,8 @@ class Parser
     doc = Nokogiri::HTML(File.open('./files/van-gogh-paintings.html').read)
     node = doc.css('.MiPcId')
     h[:artworks] = ParserWorker.new.process(node)
-    JSON.pretty_generate(h)
+    File.write("./output.json", JSON.pretty_generate(h))
+    JSON.generate(h)
   end
 end
 
