@@ -17,7 +17,7 @@ Programming language wise, Ruby is suggested but feel free to use whatever you f
 
 Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
 
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
+[relevant test]: https://serpapi.com/knowledge-graph/tests/knowledge-graph/knowledge-graph-claude-monet-paintings-spec.rb
 [sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
