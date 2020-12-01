@@ -53,7 +53,8 @@ module Parser
     end
 
     def link(item)
-      DOMAIN + item.xpath('@href').text
+      href = item.attr(:href) || item.parent.attr(:href)
+      DOMAIN + href
     end
 
     def image_id(item)
