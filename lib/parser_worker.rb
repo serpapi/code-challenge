@@ -10,11 +10,7 @@ class ParserWorker
 
     # name
     k = n.css('.klitem').first
-    unless k['aria-label'].nil?
-      result[:name] = k['aria-label']
-    else
-      result[:name] = n.css('.kltat').children.text
-    end
+    result[:name] = n.css('.kltat').children.text
 
     # extensions
     year = n.css('.klmeta').text
