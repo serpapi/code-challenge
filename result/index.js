@@ -1,41 +1,79 @@
-let finishJson = {};
+async function request(url) {
+    return fetch(url)
+        .then((res) => {
+            return res.text();
+        })
+        .catch((e) => console.log(e));
+}
 
-function request(url) {
-    return new Promise(() => {
-        const request = new XMLHttpRequest();
-        request.open('GET', url);
-        request.send();
-        request.onload = function () {
-            const result = request.response;
-            const container = document.getElementsByTagName('body');
-            const answer = document.createElement('div');
-            answer.innerHTML = result;
-            container[0].append(answer);
-            const helpArray = document.querySelectorAll('.kxbc');
-            let arrName = '';
-            helpArray.forEach((el) => {
-                let jsaction = el.getAttribute('jsaction');
-                if (jsaction === 'llc.sbc') {
-                    arrName = el.textContent;
-                }
-            });
-            parseResults(arrName);
-            saveJSON(finishJson);
-        };
+function createDom(page) {
+    const container = document.querySelector('body');
+    const answer = document.createElement('div');
+    answer.innerHTML = page;
+    container.append(answer);
+}
+
+function getArrayName() {
+    const helpArray = document.querySelectorAll('.kxbc');
+    let arrName = '';
+    helpArray.forEach((el) => {
+        let jsaction = el.getAttribute('jsaction');
+        if (jsaction === 'llc.sbc') {
+            arrName = el.textContent.replace(/\s /gi, '');
+        }
     });
+    return arrName;
+}
+
+function imgLinkExtract() {
+    const scripts = document.getElementsByTagName('script');
+    const imgScriptsArr = [];
+    const imgLinks = [];
+    for (let i = 0; i < scripts.length; i++) {
+        if (scripts[i].outerHTML.indexOf('kximg') + 1) {
+            imgScriptsArr.push(scripts[i].outerHTML.replace(/\s/gi, ''));
+        }
+    }
+
+    if (imgScriptsArr.length > 1) {
+        imgScriptsArr.forEach((el, i) => {
+            const linkStart = el.indexOf("vars='") + 6;
+            const linkEnd = el.indexOf("';varii");
+            const link = el.slice(linkStart, linkEnd).replace(/\\x3d/gi, '');
+            imgLinks[i] = link;
+        });
+    } else {
+        let generalLink = imgScriptsArr[0];
+        while (generalLink.includes("';varii=['kximg")) {
+            const linkStart = generalLink.indexOf("vars='") + 6;
+            const linkEnd = generalLink.indexOf("';varii=['kximg");
+            const link = generalLink
+                .slice(linkStart, linkEnd)
+                .replace(/\\x3d/gi, '');
+            imgLinks.push(link);
+            generalLink = generalLink.slice(linkEnd + 15);
+        }
+        console.log(imgLinks);
+    }
+
+    return imgLinks;
 }
 
 function parseResults(arrKey) {
-    finishJson = { [arrKey]: [] };
-    const links = document.querySelectorAll('.klitem');
+    let finishJson = { [arrKey]: [] };
+    let links = document.querySelectorAll('.klitem');
+    if (links[0].getAttribute('aria-label') === null) {
+        links = document.querySelectorAll('.klitem-tr');
+    }
+    const imgLinks = imgLinkExtract();
     links.forEach((el, i) => {
         const name = el.getAttribute('aria-label');
         const link = `https://www.google.com${el.getAttribute('href')}`;
-        const image = el.querySelector('img').getAttribute('src');
+        const image = imgLinks[i] || null;
         const extensions = el.querySelector('.klmeta');
         if (extensions) {
             let extValue = extensions.textContent;
-            extValue = extValue.replace(/\s/gi, '');
+            extValue = extValue.trim();
             finishJson[arrKey][i] = {
                 name: name,
                 link: link,
@@ -43,11 +81,15 @@ function parseResults(arrKey) {
                 extensions: extValue,
             };
         } else {
-            finishJson[arrKey][i] = { name: name, link: link, image: image };
+            finishJson[arrKey][i] = {
+                name: name,
+                link: link,
+                image: image,
+            };
         }
     });
-    console.log(finishJson);
-    finishJson = JSON.stringify(finishJson[arrKey], null, '\t');
+    finishJson = JSON.stringify(finishJson, null, '\t');
+    return finishJson;
 }
 
 function saveJSON(data) {
@@ -71,7 +113,11 @@ function saveJSON(data) {
         line-height: 100px`;
 }
 
-// request('../files/van-gogh-paintings.html');
-request(
-    'https://www.google.com/search?sxsrf=ALeKk01RlX8FDelSD7-ejmdkG98FgWO9UQ%3A1607599444000&ei=UwXSX9bHPMSMrwTDt7yADg&q=michelangelo+paintings&oq=mi+paintings&gs_lcp=CgZwc3ktYWIQARgAMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB5QwGZYxWhgwHloAHAAeACAAY0BiAGMApIBAzAuMpgBAKABAaoBB2d3cy13aXrAAQE&sclient=psy-ab'
-);
+// request('./files/van-gogh-paintings.html');
+// request('./files/van-gogh-paintings-new.html');
+// request('./files/michelangelo-paintings.html');
+// request('./files/aivazovsky-paintings.html');
+request('./files/jason-statham-movies.html')
+    .then((data) => createDom(data))
+    .then(() => parseResults(getArrayName()))
+    .then((data) => saveJSON(data));

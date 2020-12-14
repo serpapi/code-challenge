@@ -1,0 +1,30 @@
+{
+  "name": "code-challenge",
+  "version": "1.0.0",
+  "description": "Goal is to extract a list of Van Gogh paintings from the attached Google search results page.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --unhandled-rejections=strict"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mykhailo-Zub/code-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mykhailo-Zub/code-challenge/issues"
+  },
+  "homepage": "https://github.com/Mykhailo-Zub/code-challenge#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "node-fetch": "^2.6.1"
+  }
+}
