@@ -35,3 +35,7 @@ To run search_parser run above command to root of application and provide path o
 If path is nt provided, it will take deafult path of file (i.e. [files/van-gogh-paintings.html])
 
 `bin/search_parser` It will parse deafault html page.
+
+#Test
+
+To check test with rspec RUN `rspec spec/search_parser_spec.rb` to root of application
