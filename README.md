@@ -25,3 +25,13 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
 Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+
+=================================================
+
+#RUN `bin/search_parser files/van-gogh-paintings.html`
+
+To run search_parser run above command to root of application and provide path of html page.
+
+If path is nt provided, it will take deafult path of file (i.e. [files/van-gogh-paintings.html])
+
+`bin/search_parser` It will parse deafault html page.
