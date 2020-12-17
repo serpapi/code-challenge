@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require_relative '../lib/search_parser'
+
+def main
+  if ARGV.length == 0 then
+    puts 'path is not provided, use deafult path'
+    ARGV[0] = 'files/van-gogh-paintings.html'
+  end
+
+  parse ARGV[0].to_str
+  return
+end
+
+def parse path
+  parser = SearchParser.new File.read(path)
+  result = parser.parse
+
+  puts JSON.pretty_generate(result)
+  return
+end
+
+main()
