@@ -3,10 +3,12 @@
 require 'json'
 require_relative '../lib/search_parser'
 
+DEAFAULT_PATH = 'files/van-gogh-paintings.html'
+
 def main
   if ARGV.length == 0 then
     puts 'path is not provided, use deafult path'
-    ARGV[0] = 'files/van-gogh-paintings.html'
+    ARGV[0] = DEAFAULT_PATH
   end
 
   parse ARGV[0].to_str
