@@ -41,8 +41,8 @@ foreach($arrData as $val) {
 	foreach($dom2->getElementsByTagName('a') as $li) {
 		$title = $li->getAttribute('title');
 		$href = $li->getAttribute('href');
-		preg_match('/[^(\)]+(?=[)])/', $title, $extension);
-		$title = iconv("UTF-8","ISO-8859-1//IGNORE", trim(preg_replace('/[(](.*?)[)]/', '', $title)));
+		preg_match('/[^(](\d+)+(?=[)])/', $title, $extension);
+		$title = iconv("UTF-8","ISO-8859-1//IGNORE", trim(preg_replace('/[(](\d+)[)]/', '', $title)));
 		$extension = (count($extension) > 0 ? $extension[0] : '');
 		// echo $title.' -> '.array_search($title, array_column($j->knowledge_graph->artworks, "name"))."\n";
 		// echo preg_replace($regex, '$1', $title)."\n";
