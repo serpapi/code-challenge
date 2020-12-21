@@ -1,5 +1,5 @@
 <?php
-$html = file_get_contents('van-gogh-paintings.html');
+$html = file_get_contents('chessplayers.html');
 // $j = json_decode(file_get_contents('van-gogh-paintings.json'));
 
 function getElementByClass(&$parentNode, $tagName, $className, $offset = 0) {
@@ -33,28 +33,38 @@ do { $arrData[] = $dom->saveHTML($data);} while ($data = @$data->nextSibling);
 
 
 $out = [];
-
+$arrIMG = [];
 foreach($dom->getElementsByTagName('script') as $sc) {
-	$data = $dom->saveHTML($sc);
-	if(strpos($data, "function _setImagesSrc")){
-		
-		preg_match_all('/var s=\'(.*?)\';var ii=[[]\'(.*?)\'[]];/', $data, $arrIMG);
+	$data2 = $dom->saveHTML($sc);
+	preg_match_all('/var s=\'(.*?)\';var ii=[[]\'(.*?)\'[]];/', $data2, $arrIMG2);	
+	if(count($arrIMG2[0]) > 0){
+		foreach($arrIMG2 as $key => $val){
+			foreach($val as $ke => $val2){
+				$arrIMG[$key][] = $arrIMG2[$key][$ke];
+				$arrIMG[$key][] = $arrIMG2[$key][$ke];
+				$arrIMG[$key][] = $arrIMG2[$key][$ke];
+			}
+		}
 	}
 }
+
 
 foreach($arrData as $val) {
 	$dom2 = new DomDocument();
 	$dom2->loadHTML(mb_convert_encoding($val, 'HTML-ENTITIES', 'UTF-8'));
 	
 	foreach($dom2->getElementsByTagName('a') as $li) {
-		$title = iconv("UTF-8","ISO-8859-1//IGNORE", $li->getAttribute('title'));
+		$title =iconv("UTF-8","ISO-8859-1//IGNORE", $li->getAttribute('title'));
 		$href = $li->getAttribute('href');
-		preg_match('/[^(](\d+)+(?=[)])/', $title, $extension);
-		$title = trim(preg_replace('/[(](\d+)[)]/', '', $title));
+		preg_match('/(?<=\().+?(?=\))/', $title, $extension);
+		$title = trim(preg_replace('/[(](.*?)[)]/', '', $title));
 		$extension = (count($extension) > 0 ? $extension[0] : '');
-
+			
+		// var_dump($li->getElementsByTagName('img')->item(0)->getAttribute('id'));
 		// $img = $j->knowledge_graph->artworks[array_search('https://www.google.com'.$href, array_column($j->knowledge_graph->artworks, "link"))]->image;
-		$id = $li->getElementsByTagName('img')->item(0)->getAttribute('id');
+		$id = null;
+		if($li->getElementsByTagName('img')->length > 0)
+			$id = $li->getElementsByTagName('img')->item(0)->getAttribute('id');
 		$out[] = [
 			'name'			=> $title,
 			'extensions'	=> [$extension],
@@ -65,6 +75,17 @@ foreach($arrData as $val) {
 	}
 }
 
+echo '<div style=""><table border=1>';
+foreach($out as $val) {
+	echo '<tr>';
+	// echo '<td>'.$val['name'].'</td>';
+	echo '<td><a href="'.$val['link'].'">'.$val['name'].'</a></td>';
+	echo '<td>'.$val['extensions'][0].'</td>';
+	echo '<td><img src='.$val['image'].'></td>';
+	echo '</tr>';
+}
 
-echo json_encode($out);
+echo '</table></div>';
+
+
 
