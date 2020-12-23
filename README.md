@@ -25,3 +25,19 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
 Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+
+## Running the program
+
+I have added multiple test html files like cars carousel, movie cast carousel for testing and can be tested with individual command line argument. Some of the example commands are added below.
+```
+ruby scrapper.rb van_gogh_paintings
+```
+```
+ruby scrapper.rb avengers_endgame_cast
+```
+```
+ruby scrapper.rb bmw_cars
+```
+```
+ruby scrapper.rb harry_potter_cast
+```
