@@ -72,16 +72,15 @@ class SearchParser
     result = img.attr('data-key')
 
     result = img.attr("src") if result == nil
-    
-    result = result.to_str unless result == nil
-    
-    get_base_64 result
+        
+    get_base_64 result.value if result != nil
   end
 
   def get_base_64(result)
     return result if result.nil?
 
     image = open(result)
-    Base64.encode64(image.read)
+
+    Base64.strict_encode64(image.read)
   end
 end
