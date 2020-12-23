@@ -2,7 +2,7 @@
 
 $htmlFilesPath = __DIR__."/files/";
 $saveOutPut = __DIR__."/OutPut/";
-$outPutType = 'json'; // html - json
+$outPutType = 'html'; // html - json
 
 // create files path if not exists
 if (!file_exists($htmlFilesPath)) {
@@ -69,12 +69,12 @@ function getDataFromHTML($htmlPath, $returnType = 'html') {
 			foreach($arrIMG2 as $key => $val){
 				foreach($val as $ke => $val2){
 					$allIMGfromJSToArray[$key][] = $arrIMG2[$key][$ke];
-					$allIMGfromJSToArray[$key][] = $arrIMG2[$key][$ke];
-					$allIMGfromJSToArray[$key][] = $arrIMG2[$key][$ke];
 				}
 			}
 		}
 	}
+	
+	
 
 	// Get all div that has (EDblX DAVP1) css class .
 	$getAllDivsData = getElementByClass($dom, 'div', 'EDblX DAVP1')->firstChild;
@@ -108,12 +108,11 @@ function getDataFromHTML($htmlPath, $returnType = 'html') {
 			if($attribute->getElementsByTagName('img')->length > 0)
 				$id = $attribute->getElementsByTagName('img')->item(0)->getAttribute('id');
 			
-			
 			$outputData['artworks'][] = [
 				'name'			=> $title,
 				'extensions'	=> [$insideBraces],
 				'link'			=> 'https://www.google.com'.$href,
-				'image'			=> (array_search($id, $allIMGfromJSToArray[2])? rtrim($allIMGfromJSToArray[1][array_search($id, $allIMGfromJSToArray[2])], '\x3d') : '') // search for image from $allIMGfromJSToArray by id 
+				'image'			=> (array_search($id, $allIMGfromJSToArray[2]) !== false ? str_replace('\x3d', "", $allIMGfromJSToArray[1][array_search($id, $allIMGfromJSToArray[2])]) : '') // search for image from $allIMGfromJSToArray by id 
 			];
 		}
 	}
