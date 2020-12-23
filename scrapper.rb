@@ -27,7 +27,7 @@ def parse_carousel(file)
         artworks: list
     })
 
-    File.open(ARGV[0] + "_output.json", "w") {|file| file.write(json)}
+    File.open("./output/" + ARGV[0] + "_output.json", "w") {|file| file.write(json)}
 end
 
 if ARGV[0] == "van_gogh_paintings"
