@@ -8,16 +8,12 @@ class SearchParser
   end
 
   def parse
-    elements = @page.css('g-scrolling-carousel div > div')
+    elements ||= @page.xpath('//*[@class="klitem"]')
 
     artworks = []
-
-    div_element_length = elements.xpath('./div').length - 1
     
-    for i in 0..div_element_length do
-      element = elements.xpath('./div')[i]
-      parsed  = self.parse_element element
-
+    elements.map do |section|
+      parsed  = self.parse_element section
       artworks.push(parsed) if parsed != nil
     end
 
@@ -27,12 +23,10 @@ class SearchParser
   end
 
   def parse_element element
-    return nil unless self.is_valid element
-    
-    name    = self.get_name element
+    name      = self.get_name element
     extension = self.get_ext element
-    link    = self.get_link element
-    img     = self.get_img element
+    link      = self.get_link element
+    img       = self.get_img element
 
     parsed = {
       'name' => name,
@@ -52,35 +46,45 @@ class SearchParser
   end
 
   def get_name element
-    element.xpath('./a').attr('aria-label').to_str
+    element.at_xpath('div/div[contains(@class, "kltat")]').text
   end
 
   def get_ext element
-    element.css('.ellip.klmeta').text.to_s
+    element.at_xpath('div/div[contains(@class, "klmeta")]')&.text
   end
 
   def get_link element
-    link   = element.xpath('./a').attr('href').to_str
+    link = element.attr(:href) || element.parent.attr(:href)
     prefix = 'https://www.google.com'
-    link   = prefix + link unless link.start_with? prefix
-    
+    link = prefix + link unless link.start_with? prefix
     link
   end  
 
   def get_img element
-    img    = element.css('g-img > img')
-    result = img.attr('data-key')
+    item = element.at_xpath('div/div/g-img/img/@id').text 
+    regex = %r{
+      var\ss\=\'
+      (((?!var\ss\=)[\s\S])+?)\';
+      var\sii\=\[\'#{Regexp.quote(item)}\'\]
+    }x
 
-    result = img.attr("src") if result == nil
-        
-    get_base_64 result.value if result != nil
+    source ||= get_image_src
+    source[regex, 1]
   end
 
-  def get_base_64(result)
-    return result if result.nil?
+  def get_image_src
+    combined_scripts = ''
 
-    image = open(result)
+    @page.xpath(
+      '/html/body/div[@id="main"]/div[@id="cnt"]' \
+      '/script[starts-with(text(), "function _setImagesSrc")]' \
+      ' | ' \
+      '//div[@id="search"]/div/div[@id="rso"]' \
+      '/script[contains(text(), "setImagesSrc")]'
+    ).each do |script|
+      combined_scripts << script.text.gsub('\\x3d', '=')
+    end
 
-    Base64.strict_encode64(image.read)
+    combined_scripts
   end
 end
