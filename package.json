@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node ./resultNodeJS/index.js run"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "make-runnable": "^1.3.8",
     "node-fetch": "^2.6.1"
   }
 }

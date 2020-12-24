@@ -2,12 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 
-const PARSE_URL1 = './files/van-gogh-paintings.html';
-const PARSE_URL2 = './files/van-gogh-paintings-new.html';
-const PARSE_URL3 = './files/michelangelo-paintings.html';
-const PARSE_URL4 = './files/aivazovsky-paintings.html';
-const PARSE_URL5 = './files/jason-statham-movies.html';
-
 let $;
 
 function parseHtml(url) {
@@ -23,27 +17,7 @@ function parseHtml(url) {
                 .text()
                 .replace(/\s /gi, '');
 
-            const fileName = $('.kxbc[jsaction="llc.pbc"]')
-                .text()
-                .replace(/\s/gi, ' ')
-                .replace(/  /gi, '')
-                .replace(/ /gi, '-');
-
-            const newFilePath = path.join(
-                __dirname,
-                'results',
-                `${fileName}.json`
-            );
-
             const finishJson = parseResults(arrayName);
-
-            try {
-                result = JSON.stringify(finishJson, null, '\t');
-                const newJson = fs.writeFileSync(newFilePath, result);
-                console.log(`File ${fileName}.json created successful!`);
-            } catch (err) {
-                console.error(err);
-            }
 
             resolve(finishJson);
         });
@@ -55,84 +29,67 @@ function imgLinkExtract() {
     $('script').each((i, el) => {
         scripts[i] = $(el).html();
     });
-    const imgScriptsArr = [];
-    const imgLinks = [];
-    for (let i = 0; i < scripts.length; i++) {
-        if (scripts[i].indexOf('kximg') + 1) {
-            imgScriptsArr.push(scripts[i].replace(/\s/gi, ''));
-        }
+    const imgLinksArr = [];
+    const linkExpression = /vars='(.*?)';varii=\['kximg/g;
+    const imgLinksString = scripts
+        .reduce((acc, el) => {
+            return acc + el;
+        }, '')
+        .replace(/\s/gi, '');
+    const links = imgLinksString.matchAll(linkExpression);
+    for (link of links) {
+        imgLinksArr.push(link[1].replace(/\\x3d/gi, ''));
     }
-    if (imgScriptsArr.length > 1) {
-        imgScriptsArr.forEach((el, i) => {
-            const linkStart = el.indexOf("vars='") + 6;
-            const linkEnd = el.indexOf("';varii");
-            const link = el.slice(linkStart, linkEnd).replace(/\\x3d/gi, '');
-            imgLinks[i] = link;
-        });
-    } else {
-        let generalLink = imgScriptsArr[0];
-        while (generalLink.includes("';varii=['kximg")) {
-            const linkStart = generalLink.indexOf("vars='") + 6;
-            const linkEnd = generalLink.indexOf("';varii=['kximg");
-            const link = generalLink
-                .slice(linkStart, linkEnd)
-                .replace(/\\x3d/gi, '');
-            imgLinks.push(link);
-            generalLink = generalLink.slice(linkEnd + 15);
-        }
-    }
-    return imgLinks;
+    return imgLinksArr;
 }
 
 function parseResults(arrKey) {
     let finishJson = { [arrKey]: [] };
     const imgLinks = imgLinkExtract();
+    let carousel;
     if ($('.klitem-tr[aria-label]').length) {
-        $('.klitem-tr').each((i, el) => {
-            const name = $(el).prop('aria-label');
-            const link = `https://www.google.com${$(el).prop('href')}`;
-            const image = imgLinks[i] || null;
-            const extensions = $(el).find('.klmeta').text();
-            if (extensions) {
-                extValue = extensions.replace(/\s/gi, '');
-                finishJson[arrKey][i] = {
-                    name: name,
-                    link: link,
-                    image: image,
-                    extensions: [extValue],
-                };
-            } else {
-                finishJson[arrKey][i] = {
-                    name: name,
-                    link: link,
-                    image: image,
-                };
-            }
-        });
+        carousel = $('.klitem-tr[aria-label]');
     } else if ($('.klitem[aria-label]').length) {
-        $('.klitem').each((i, el) => {
-            const name = $(el).prop('aria-label');
-            const link = `https://www.google.com${$(el).prop('href')}`;
-            const image = imgLinks[i] || null;
-            const extensions = $(el).find('.klmeta').text();
-            if (extensions) {
-                extValue = extensions.replace(/\s/gi, '');
-                finishJson[arrKey][i] = {
-                    name: name,
-                    link: link,
-                    image: image,
-                    extensions: [extValue],
-                };
-            } else {
-                finishJson[arrKey][i] = {
-                    name: name,
-                    link: link,
-                    image: image,
-                };
-            }
-        });
+        carousel = $('.klitem[aria-label]');
     } else console.error("Can't find Google Carousel!");
+    carousel.each((i, el) => {
+        const name = $(el).prop('aria-label');
+        const link = `https://www.google.com${$(el).prop('href')}`;
+        const image = imgLinks[i] || null;
+        const extensions = $(el).find('.klmeta').text().replace(/\s/gi, '');
+        finishJson[arrKey][i] = {
+            name: name,
+            link: link,
+            image: image,
+        };
+        if (extensions) {
+            finishJson[arrKey][i].extensions = [extensions];
+        }
+    });
     return finishJson;
 }
 
-module.exports = { parseHtml };
+function saveFile(obj) {
+    const fileName = $('.kxbc[jsaction="llc.pbc"]')
+        .text()
+        .replace(/\s/gi, ' ')
+        .replace(/  /gi, '')
+        .replace(/ /gi, '-');
+
+    const newFilePath = path.join(__dirname, 'results', `${fileName}.json`);
+
+    try {
+        result = JSON.stringify(obj, null, '\t');
+        const newJson = fs.writeFileSync(newFilePath, result);
+        console.log(`File ${fileName}.json created successful!`);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+function run(PARSE_URL) {
+    parseHtml(PARSE_URL).then((res) => saveFile(res));
+}
+
+module.exports = { parseHtml, run };
+require('make-runnable');

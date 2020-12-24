@@ -1,142 +1,52 @@
 const fs = require('fs');
 const { parseHtml } = require('./index');
 
-describe('Parse Van Gogh result:', () => {
-    let data;
+jest.setTimeout(30000);
+
+describe('Carousel parse result:', () => {
+    let data = [];
+    let keys = [];
     beforeAll(async () => {
-        const PARSE_URL = './files/van-gogh-paintings.html';
-        data = await parseHtml(PARSE_URL);
+        const PARSE_URL = [
+            './files/van-gogh-paintings.html',
+            './files/van-gogh-paintings-new.html',
+            './files/michelangelo-paintings.html',
+            './files/aivazovsky-paintings.html',
+            './files/jason-statham-movies.html',
+        ];
+        await Promise.all(
+            PARSE_URL.map(async (el) => {
+                data.push(await parseHtml(el));
+            })
+        );
+        data.map((el) => {
+            keys.push(...Object.keys(el));
+        });
     });
 
     test('is not undefined', () => {
-        expect(data).toBeDefined();
+        keys.map((el, i) => {
+            expect(data[i][el]).toBeDefined();
+        });
     });
 
     test('has a neccesary keys', () => {
-        data.Artworks.forEach((el) => {
-            expect(el.name).toBeDefined();
-            expect(el.image).toBeDefined();
-            expect(el.link).toBeDefined();
+        keys.map((el, i) => {
+            data[i][el].forEach((el) => {
+                expect(el.name).toBeDefined();
+                expect(el.image).toBeDefined();
+                expect(el.link).toBeDefined();
+            });
         });
     });
 
     test('has a correct extensions value types', () => {
-        data.Artworks.forEach((el) => {
-            if (el.extensions) {
-                expect(el.extensions).toBeInstanceOf(Array);
-            }
-        });
-    });
-});
-
-describe('Parse Van Gogh new result:', () => {
-    let data;
-    beforeAll(async () => {
-        const PARSE_URL = './files/van-gogh-paintings-new.html';
-        data = await parseHtml(PARSE_URL);
-    });
-
-    test('is not undefined', () => {
-        expect(data).toBeDefined();
-    });
-
-    test('has a neccesary keys', () => {
-        data['Произведения искусства'].forEach((el) => {
-            expect(el.name).toBeDefined();
-            expect(el.image).toBeDefined();
-            expect(el.link).toBeDefined();
-        });
-    });
-
-    test('has a correct extensions value types', () => {
-        data['Произведения искусства'].forEach((el) => {
-            if (el.extensions) {
-                expect(el.extensions).toBeInstanceOf(Array);
-            }
-        });
-    });
-});
-
-describe('Parse Michelangelo result:', () => {
-    let data;
-    beforeAll(async () => {
-        const PARSE_URL = './files/michelangelo-paintings.html';
-        data = await parseHtml(PARSE_URL);
-    });
-
-    test('is not undefined', () => {
-        expect(data).toBeDefined();
-    });
-
-    test('has a neccesary keys', () => {
-        data['Произведения искусства'].forEach((el) => {
-            expect(el.name).toBeDefined();
-            expect(el.image).toBeDefined();
-            expect(el.link).toBeDefined();
-        });
-    });
-
-    test('has a correct extensions value types', () => {
-        data['Произведения искусства'].forEach((el) => {
-            if (el.extensions) {
-                expect(el.extensions).toBeInstanceOf(Array);
-            }
-        });
-    });
-});
-
-describe('Parse Ivan Aivazovsky result:', () => {
-    let data;
-    beforeAll(async () => {
-        const PARSE_URL = './files/aivazovsky-paintings.html';
-        data = await parseHtml(PARSE_URL);
-    });
-
-    test('is not undefined', () => {
-        expect(data).toBeDefined();
-    });
-
-    test('has a neccesary keys', () => {
-        data['Произведения искусства'].forEach((el) => {
-            expect(el.name).toBeDefined();
-            expect(el.image).toBeDefined();
-            expect(el.link).toBeDefined();
-        });
-    });
-
-    test('has a correct extensions value types', () => {
-        data['Произведения искусства'].forEach((el) => {
-            if (el.extensions) {
-                expect(el.extensions).toBeInstanceOf(Array);
-            }
-        });
-    });
-});
-
-describe('Parse Jason Statham result:', () => {
-    let data;
-    beforeAll(async () => {
-        const PARSE_URL = './files/jason-statham-movies.html';
-        data = await parseHtml(PARSE_URL);
-    });
-
-    test('is not undefined', () => {
-        expect(data).toBeDefined();
-    });
-
-    test('has a neccesary keys', () => {
-        data['Фильмы'].forEach((el) => {
-            expect(el.name).toBeDefined();
-            expect(el.image).toBeDefined();
-            expect(el.link).toBeDefined();
-        });
-    });
-
-    test('has a correct extensions value types', () => {
-        data['Фильмы'].forEach((el) => {
-            if (el.extensions) {
-                expect(el.extensions).toBeInstanceOf(Array);
-            }
+        keys.map((el, i) => {
+            data[i][el].forEach((el) => {
+                if (el.extensions) {
+                    expect(el.extensions).toBeInstanceOf(Array);
+                }
+            });
         });
     });
 });
