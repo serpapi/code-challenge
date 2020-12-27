@@ -46,13 +46,7 @@ function imgLinkExtract() {
 function parseResults(arrKey) {
     let finishJson = { [arrKey]: [] };
     const imgLinks = imgLinkExtract();
-    let carousel;
-    if ($('.klitem-tr[aria-label]').length) {
-        carousel = $('.klitem-tr[aria-label]');
-    } else if ($('.klitem[aria-label]').length) {
-        carousel = $('.klitem[aria-label]');
-    } else console.error("Can't find Google Carousel!");
-    carousel.each((i, el) => {
+    $('.klitem-tr[aria-label], .klitem[aria-label]').each((i, el) => {
         const name = $(el).prop('aria-label');
         const link = `https://www.google.com${$(el).prop('href')}`;
         const image = imgLinks[i] || null;
