@@ -31,11 +31,7 @@ function imgLinkExtract() {
     });
     const imgLinksArr = [];
     const linkExpression = /vars='(.*?)';varii=\['kximg/g;
-    const imgLinksString = scripts
-        .reduce((acc, el) => {
-            return acc + el;
-        }, '')
-        .replace(/\s/gi, '');
+    const imgLinksString = scripts.join('').replace(/\s/gi, '');
     const links = imgLinksString.matchAll(linkExpression);
     for (link of links) {
         imgLinksArr.push(link[1].replace(/\\x3d/gi, ''));

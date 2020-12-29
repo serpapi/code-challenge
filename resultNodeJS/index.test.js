@@ -24,10 +24,9 @@ describe('Carousel parse result:', () => {
         });
     });
 
-    test('is not undefined', () => {
-        keys.map((el, i) => {
-            expect(data[i][el]).toBeDefined();
-        });
+    test('data and keys are not empty arrays', () => {
+        expect(keys.length).toBeGreaterThanOrEqual(1);
+        expect(data.length).toBeGreaterThanOrEqual(1);
     });
 
     test('has a neccesary keys', () => {
