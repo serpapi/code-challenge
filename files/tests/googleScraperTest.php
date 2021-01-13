@@ -35,7 +35,7 @@ final class googleScraperTest extends TestCase {
 		
 		$google->_outPutType = "html";
 		foreach($google->_filesInPath as $file) {
-			echo "Knowledge Graph for Claude Monet Paintings, filepath: ".$file."\n";
+			echo "HTML Output Tests for Vangogh Paintings, filepath: ".$file."\n";
 			$returnData = $google->runCode($file);
 			if($returnData['status']) {
 				if(array_key_exists('artworks', $returnData['outputData'])){
@@ -74,7 +74,7 @@ final class googleScraperTest extends TestCase {
 		
 		$google->_outPutType = "json";
 		foreach($google->_filesInPath as $file) {
-			echo "Knowledge Graph for Claude Monet Paintings, filepath: ".$file."\n";
+			echo "JSON Output Tests for Vangogh Paintings, filepath: ".$file."\n";
 			$returnData = $google->runCode($file);
 			if($returnData['status']) {
 				if(array_key_exists('artworks', $returnData['outputData'])){
