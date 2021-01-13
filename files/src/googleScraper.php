@@ -143,8 +143,8 @@ final class googleScraper {
 			return ["status" => false, "msg" => "[Error] output type not exist"];
 		}
 		
-		return ["status" => true, "msg" => "[Done] The extracted data saved into : ".$outPutFileSaved];
-	}
+        return ["status" => true, "msg" => "[Done] The extracted data saved into : ".$outPutFileSaved, "outputData" => $outputData];
+    }
 	
 	// extracting data from the css classes
 	private function getElementByClass(&$parentNode, $tagName, $className, $offset = 0) {
