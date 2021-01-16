@@ -1,4 +1,5 @@
 require "nokogiri"
+require 'fileutils'
 require "json"
 
 def get_full_image(html, image_id)
@@ -26,6 +27,10 @@ def parse_carousel(file)
     json = JSON.pretty_generate({
         artworks: list
     })
+
+    unless File.directory?("output")
+        FileUtils.mkdir_p("output")
+    end
 
     File.open("./output/" + ARGV[0] + "_output.json", "w") {|file| file.write(json)}
 end
