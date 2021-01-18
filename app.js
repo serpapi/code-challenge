@@ -139,22 +139,6 @@ function storeJson(artworks, filename) {
     }
 }
 
-// Save Json data to file
-function storeJson(artworks, filename) {
-    let resultObj = {
-        artworks
-    }
-
-    let data = JSON.stringify(resultObj, null, 2);
-
-    try {
-        fs.writeFileSync(`./final-results/${filename}.json`, data);
-        console.log('Json file saved!');
-    } catch (error) {
-        console.log('Could not write file');
-    }
-}
-
 let pietMondrian = 'https://www.google.com/search?biw=588&bih=789&ei=o5gEYLyyItLIsAXQqo-YCw&q=piet+mondrian+artworks&oq=piet+mondrian+artworks&gs_lcp=CgZwc3ktYWIQAzIFCAAQyQMyBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeOgcIABDJAxBDOgIIADoICAAQ6gIQjwE6BAgAEEM6BAguEEM6BQgAEJECOgYIABAKEEM6CwguELEDEMcBEKMCOgUIABCxAzoICC4QsQMQgwE6CAgAEMkDEJECOgkIABDJAxAKEEM6BQguELEDOgcILhCxAxBDOgIILjoHCC4QsQMQCjoECC4QCjoECAAQCjoICC4QxwEQrwE6CgguEMcBEK8BEAo6CgguELEDEIMBEAo6CAgAELEDEMkDULGPmQ1Yu7uZDWD2vJkNaAFwAHgBgAH2AogB0BKSAQgxMi4xLjIuMpgBAKABAaoBB2d3cy13aXqwAQrAAQE&sclient=psy-ab&ved=0ahUKEwj8j9eQ4qPuAhVSJKwKHVDVA7MQ4dUDCA0&uact=5';
 
 let rubyOnRails = 'https://www.google.com/search?q=ruby+on+rails+books&oq=ruby+on+rails+books&aqs=chrome..69i57j69i60.4412j0j1&sourceid=chrome&ie=UTF-8';
