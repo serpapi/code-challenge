@@ -1,0 +1,142 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'docopt'
+require 'logger'
+require 'pastel'
+
+require_relative '../lib/serp'
+require_relative '../lib/serp_crawler'
+require_relative '../lib/json_generator'
+
+LOGGER_LEVEL = SERP::DEBUG || Logger::ERROR
+
+##
+# SerpCrawler CLI Interface Class
+# Creates and injects dependencies, handles flags, logging, etc.
+class SerpCrawlerCLI
+  attr_reader :pastel, :logger
+
+  # \x0 hack fixes Docopt first line indentation issue
+  DOCOPT = <<-"DOC"
+    \x0
+    ======================================================
+              Goole SERP Crawler CLI Interface
+                 (SERPAPI code-challenge)
+    ======================================================
+
+    Usage:
+      #{SERP::NAME} crawl <path_to_file>
+      #{SERP::NAME} crawl --stencil=<stencil> <path_to_file>
+      #{SERP::NAME} crawl [--porcelain] --stencil=<stencil> <path_to_file>
+      #{SERP::NAME} crawl --help
+      #{SERP::NAME} stencils
+      #{SERP::NAME} --version
+
+    Options:
+      --porcelain          Human friendly JSON output
+      --stencil=<stencil>  Stencil to use (see `stencils` command)
+      --version, -v        Show the current app version
+      --help, -h           Show this message
+  DOC
+
+  ERROR_MESSAGES = {
+    unknown_error: 'Unknown error!',
+    images_not_found_error: 'No images where found in SERP HTML provided!',
+    stencil_not_found_error: "The stencil provided was not found, use `#{SERP::NAME} stencils` command to see the list"
+  }.freeze
+
+  def initialize(logger_class, logger_device, logger_level)
+    @pastel = Pastel.new
+    @logger = logger_class.new(logger_device)
+    @logger.level = logger_level
+  end
+
+  def run
+    @docopt = Docopt.docopt(DOCOPT)
+
+    return version if @docopt['--version']
+    return stencils if @docopt['stencils']
+    return crawl if @docopt['crawl'] && @docopt['<path_to_file>']
+  end
+
+  def error(message)
+    puts "ERROR: #{message}".red
+  end
+
+  private
+
+  def version
+    puts "#{SERP::NAME} v.#{SERP::VERSION}"
+  end
+
+  def stencils
+    script_relative_path = File.expand_path('../stencils/*', File.dirname(__FILE__))
+
+    puts "Here's a list of available stencils:"
+
+    Dir[script_relative_path].map do |f|
+      puts "   ❯ #{File.basename(f, '.rb')}"
+    end
+
+    puts
+  end
+
+  def crawl
+    html_path = @docopt['<path_to_file>']
+
+    html_filepath = File.expand_path(html_path, Dir.pwd)
+    html_text = File.read(html_filepath)
+
+    # Notice Nokogiri intanciated here, outside the actual crawler class
+    # With such s primitive dependency injection we could replace Nokogiri
+    # with anything supporting the same interface (e.g. css, xpath, etc. methods)
+    html_doc = Nokogiri::HTML(html_text)
+    stencil, data_builder = load_stencil(@docopt['--stencil'])
+
+    raise UnknownStencilError, ERROR_MESSAGES[:stencil_not_found_error] unless stencil
+
+    data = SERP::Crawler.new(html_doc: html_doc, stencil: stencil).crawl(&data_builder)
+    puts SERP::JSONGenerator.generate(data: data, pretty: @docopt['--porcelain'])
+  end
+
+  # Separate stencils with semi-declarative syntax allow us to control the data shape
+  # and crawling selectors + some celanup logic in one place, while dynamic loading
+  # allows CLI user to choose stencils for every particular app execution
+  # NOTE: the concept comes from https://youtu.be/rbW2SJ0Kf8I?t=4153
+  def load_stencil(stencil_name)
+    stencil = nil
+    stencil_path = File.expand_path("../stencils/#{stencil_name}.rb", File.dirname(__FILE__))
+
+    if File.exist?(stencil_path)
+      load(stencil_path)
+      stencil = SERP.const_get("SERP::#{stencil_name.upcase}_STENCIL")
+      data_builder = SERP.const_get("SERP::#{stencil_name.upcase}_DATA_BUILDER")
+    end
+
+    [stencil, data_builder]
+  end
+end
+
+# User-level errors
+# Allows us distinguish and handle errors concerning users (wrong path, etc.)
+# While stack-tracing developer-level errors as usual
+class NoImagesError < StandardError; end
+class UnknownStencilError < StandardError; end
+
+trap(:INT) do
+  exit
+end
+
+begin
+  app = SerpCrawlerCLI.new(Logger, STDOUT, LOGGER_LEVEL)
+  app.run
+rescue Docopt::Exit => e
+  # NOTE: this one handled separately cause it shows usage
+  puts e.message
+rescue NoImagesError, UnknownStencilError => e
+  app.logger.error app.pastel.red(e.message)
+  puts
+
+  # some finalisation
+end
