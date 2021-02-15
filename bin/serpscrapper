@@ -1,0 +1,127 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'docopt'
+require 'logger'
+require 'pastel'
+
+require_relative '../lib/serp'
+require_relative '../lib/serp_scrapper'
+require_relative '../lib/json_generator'
+
+LOGGER_LEVEL = SERP::DEBUG || Logger::ERROR
+
+##
+# SerpScrapper CLI Interface Class
+# Creates and injects dependencies, handles flags, logging, etc.
+class SerpScrapperCLI
+  attr_reader :pastel, :logger
+
+  # \x0 hack fixes Docopt first line indentation issue
+  DOCOPT = <<-"DOC"
+    \x0
+    ======================================================
+              Goole SERP Scrapper CLI Interface
+                 (SERPAPI code-challenge)
+    ======================================================
+
+    Usage:
+      #{SERP::NAME} scrap <path_to_file>
+      #{SERP::NAME} scrap --scrapper=<scrapper> <path_to_file>
+      #{SERP::NAME} scrap [--porcelain] --key=<key> --scrapper=<scrapper> <path_to_file>
+      #{SERP::NAME} scrap --help
+      #{SERP::NAME} scrappers
+      #{SERP::NAME} --version
+
+    Options:
+      --porcelain            Human friendly JSON output
+      --scrapper=<scrapper>  Scrapper to use (see `scrappers` command)
+      --key=<key>            The top JSON key for the result [default: items]
+      --version, -v          Show the current app version
+      --help, -h             Show this message
+  DOC
+
+  ERROR_MESSAGES = {
+    unknown_error: 'Unknown error!',
+    images_not_found_error: 'No images where found in SERP HTML provided!',
+    scrapper_not_found_error: "The scrapper provided was not found, use `#{SERP::NAME} scrappers` command to see the list"
+  }.freeze
+
+  def initialize(logger_class, logger_device, logger_level)
+    @pastel = Pastel.new
+    @logger = logger_class.new(logger_device)
+    @logger.level = logger_level
+  end
+
+  def run
+    @docopt = Docopt.docopt(DOCOPT)
+
+    return version if @docopt['--version']
+    return scrappers if @docopt['scrappers']
+    return scrap if @docopt['scrap'] && @docopt['<path_to_file>']
+  end
+
+  def error(message)
+    puts "ERROR: #{message}".red
+  end
+
+  private
+
+  def version
+    puts "#{SERP::NAME} v.#{SERP::VERSION}"
+  end
+
+  def scrappers
+    puts "Here's a list of available scrappers:"
+
+    SERP::Scrapper::SCRAPPER_TYPES.map do |s|
+      puts "  ❯ #{s}"
+    end
+
+    puts
+  end
+
+  def scrap
+    html_path = @docopt['<path_to_file>']
+
+    html_filepath = File.expand_path(html_path, Dir.pwd)
+    html_text = File.read(html_filepath)
+
+    # Notice Nokogiri intanciated here, outside the actual scrapper class
+    # With such s primitive dependency injection we could replace Nokogiri
+    # with anything supporting the same interface (e.g. css, xpath, etc. methods)
+    html_doc = Nokogiri::HTML(html_text)
+    scrapper_type = @docopt['--scrapper']
+
+    data = SERP::Scrapper.new(
+      html_doc: html_doc,
+      result_key: @docopt['--key'],
+      scrapper: scrapper_type.to_sym
+    ).scrap
+
+    puts SERP::JSONGenerator.generate(data: data, pretty: @docopt['--porcelain'])
+  rescue ArgumentError => e
+    raise UnknownScrapperError, ERROR_MESSAGES[:scrapper_not_found_error] if e.message.include?('#{}')
+  end
+end
+
+# User-level errors
+# Allows us distinguish and handle errors concerning users (wrong path, etc.)
+# While stack-tracing developer-level errors as usual
+class NoImagesError < StandardError; end
+class UnknownScrapperError < StandardError; end
+
+trap(:INT) do
+  exit
+end
+
+begin
+  app = SerpScrapperCLI.new(Logger, STDOUT, LOGGER_LEVEL)
+  app.run
+rescue Docopt::Exit => e
+  # NOTE: this one handled separately cause it shows usage
+  puts e.message
+rescue NoImagesError, UnknownScrapperError => e
+  app.logger.error app.pastel.red(e.message)
+  puts
+end

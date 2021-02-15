@@ -5,12 +5,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'activesupport'
-gem 'hash_remapper'
 gem 'neatjson'
 gem 'nokogiri'
 gem 'oj'
 gem 'pastel'
-gem 'sanitize'
+gem 'docopt'
 
 group :development do
   gem 'amazing_print'

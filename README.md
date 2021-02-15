@@ -28,32 +28,36 @@ Test against 2 other similar result pages. (Pages that contain the same kind of 
 
 ## Usage
 
-![SERP Crawler CLI Demo](./files/serpcrawler_demo.gif)
+![SERP Scrapper CLI Demo](./files/serpcrawler_demo.gif)
 
-This solution offers a CLI interface to call the crawling functionality. Here are some command examples:
+This solution offers a CLI interface to call the scrapping functionality. Here are some command examples:
 
 ````shell
   # the main executable, gonna output usage
-  ./bin/serpcrawler
+  ./bin/serpscrapper
 
   # more help information
-  ./bin/serpcrawler --help
+  ./bin/serpscrapper --help
 
-  # the list of stencils (see Design for more details)
-  ./bin/serpcrawler stencils
+  # the list of scrappers (currently available: old/new)
+  ./bin/serpscrapper scrappers
 
   # the main task (old file scraping with images extraction)
-  ./bin/serpcrawler crawl --stencil=google_art_carousel ./files/van-gogh-paintings.html
+  ./bin/serpscrapper scrap --scrapper=old ./files/van-gogh-paintings.html
 
-  # the additional tests (new files scraping with book/film characters, see Caveats for some downsides)
-  ./bin/serpcrawler crawl --stencil=google_characters_carousel ./files/the-big-lebowski-characters.html
-  ./bin/serpcrawler crawl --stencil=google_characters_carousel ./files/harry-potter-characters.html
+  # the additional tests (new files scraping with series/film characters)
+  ./bin/serpscrapper scrap --scrapper=new ./files/the-big-lebowski-characters.html
+  ./bin/serpscrapper scrap --scrapper=new ./files/x-files-characters.html
 
-  # also the 'crawl' command allows to see human-friendly
+  # also the 'scrap' command allows to see human-friendly
   # JSON output with --porcelain flag provided
-  ./bin/serpcrawler crawl --porcelain --stencil=google_characters_carousel ./files/harry-potter-characters.html
+  ./bin/serpscrapper scrap --porcelain --scrapper=new ./files/x-files-characters.html
 
-  # Run the tests 
+  # also the 'scrap' command allows to set the top-level JSON key
+  # with --key option set
+  ./bin/serpscrapper scrap --key=characters --scrapper=new ./files/x-files-characters.html
+
+  # Run the tests
   rspec ./specs
 ````
 
@@ -61,26 +65,13 @@ This solution offers a CLI interface to call the crawling functionality. Here ar
 
 Due to time restrictions there some unfinished/untested ideas, potential bugs, etc.
 
-* With the **modern Google SERP HTML** some images are contained within "src" in base64 without JS, although farther
-  carousel items require deeper examination cause they reference files folder (for locally saved page) and some
-  contain 1x1 gif pixel images, which I didn't attempt to resolve through ID
 * Using Regexp on huge chunks of text perhaps is not the most effective way of extracting images data, but as a quick
   solution I did exactly that. As a potential solution I thought about using rubyracer/v8 to execute script with a
   replacement of `_setImagesSrc` function to collect its `e, c` arguments containing `img_id => base64` pairs
-* My HTML scrapper is a pretty old piece of code I reused time and again in some of my projects, so the current version
-  is not and should not be considered as something I'm proud of, but I decided to use it here cause it suits the task at
-  hand and helped me save time. Some features were retrofitted to the old code as a seat-of-the-pants solution without any tests.
-* Convention over configuration and that sort of "magic" certainly is not my cup of tea, but for the purposes of this task I went with
-  that in naming stencils and constants inside
 
 ## Design
 
-* CLI App based on https://devdocs.io allows quickly interact with the crawler/scrapper to demo the functionality
-* The concept of Stencils allows us to have pluggable/replaceable "cassettes" to swap the shape/cleanup of the
-  scraped data in one place, the idea actually worked for me really well in the past (fun fact: it comes from
-  this old Soviet series titles https://youtu.be/rbW2SJ0Kf8I?t=4153)
-* Using of my own Ruby gem (https://github.com/smileart/hash_remapper) to handle the final data building step might be
-  an overkill in this particular case, but I find it convenient to have it installed and ready in my toolbox, JIC
+* CLI App based on https://devdocs.io allows quickly interact with the scrapper to demo the functionality
 
 ## Useful links
 

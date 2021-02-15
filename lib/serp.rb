@@ -7,11 +7,11 @@ require 'pathname'
 module SERP
   PROJECT_ROOT = File.expand_path(Pathname.new(__FILE__).join('../..'))
   DEBUG = ENV['SERP_DEBUG'] && !ENV['SERP_DEBUG'].empty? ? ENV['SERP_DEBUG'].to_i : false
-  VERSION = '0.0.1'
-  NAME = 'serpcrawler'
+  VERSION = '0.0.2'
+  NAME = 'serpscrapper'
 end
 
-if SERP::DEBUG&.zero?
+if SERP::DEBUG && SERP::DEBUG.zero?
   require_relative './utils/tapp_amazing_print'
   require 'byebug'
 end
