@@ -2,10 +2,8 @@
 
 require 'active_support/core_ext/array/wrap'
 require 'active_support/core_ext/object/deep_dup'
-require 'hash_remapper'
 require 'nokogiri'
 require 'oj'
-require 'sanitize'
 require 'English'
 
 module SERP
