@@ -9,7 +9,7 @@
     "test:cov": "npm run test -- --coverage --runInBand",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
+  "author": "Aditya Pandey",
   "license": "ISC",
   "dependencies": {
     "jsdom": "^16.5.3"
