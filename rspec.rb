@@ -1,10 +1,10 @@
 load "van-gogh-class.rb"
 require 'rspec/autorun'
 
-testing_batch={"batch"=>[{"query"=>"Van Gogh paintings","path"=>'code-challenge/files/van-gogh-paintings.html'},
-{"query"=>"Da Vinci Paintings","path"=>'code-challenge/files/da-vinci-paintings.html'},
-{"query"=>"Books of 2021","path"=>'code-challenge/files/books-of-2021.html'},
-{"query"=>"Sinatra albums","path"=>'code-challenge/files/sinatra-albums.html'}]}
+testing_batch={"batch"=>[{"query"=>"Van Gogh paintings","path"=>'files/van-gogh-paintings.html'},
+{"query"=>"Da Vinci Paintings","path"=>'files/da-vinci-paintings.html'},
+{"query"=>"Books of 2021","path"=>'files/books-of-2021.html'},
+{"query"=>"Sinatra albums","path"=>'files/sinatra-albums.html'}]}
 testing_batch['batch'].each do |result|
     link=result['path']
     query=result['query']
