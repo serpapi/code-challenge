@@ -12,7 +12,7 @@ testing_batch['batch'].each do |result|
   query=result['query']
   describe "Checking query \'#{query}\' with filepath \'#{link}'\ ..." do
     artworks=Scrape.execute(link)
-    if link == "code-challenge/files/van-gogh-paintings.html"
+    if link == "files/van-gogh-paintings.html"
       it "checks if the solution files are same" do
         expect(File.read("solution.json")).to eq(File.read("files/expected-array.json"))
       end
