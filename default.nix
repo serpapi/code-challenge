@@ -14,12 +14,8 @@ let
       };
     };
 
-  tools = with ghc; [ cabal-install ];
+  tools = with ghc; [ cabal-install pkgs.ruby pkgs.bundler ];
 
-  overrideCabal = pkg: pkgs.haskell.lib.overrideCabal pkg
-    ({buildDepends ? [], ...}: {
-      buildDepends = buildDepends ++ tools;
-    });
   cabal2nixResult = url: pkgs.runCommand "cabal2nixResult" {
     buildCommand = ''
       cabal2nix --no-check --jailbreak --no-haddock ${url} > $out
@@ -28,6 +24,6 @@ let
   } "";
   cabal2nixResultLocal = path: cabal2nixResult "file://${path}";
   package = ghc.callPackage (cabal2nixResultLocal ./.) {};
-  drv = overrideCabal package;
+  drv = pkgs.haskell.lib.addBuildTools package tools;
 
 in if pkgs.lib.inNixShell then drv.env else drv
