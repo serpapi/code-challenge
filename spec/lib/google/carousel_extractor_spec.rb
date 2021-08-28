@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
-require_relative "../../../lib/page_search"
-require_relative "../../../lib/google/carousel_extractor"
+require_relative '../../../lib/page_search'
+require_relative '../../../lib/google/carousel_extractor'
 
 describe Google::CarouselExtractor do
   file = File.open('./files/van-gogh-paintings.html')
@@ -13,7 +15,7 @@ describe Google::CarouselExtractor do
   end
 
   it 'should have correct keys' do
-    hash_keys = [:name, :extensions, :link, :image]
+    hash_keys = %i[name extensions link image]
     expect(subject[0].keys).to contain_exactly(*hash_keys)
   end
 end

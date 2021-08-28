@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 
+# Returns all nodes in a Nokogiri::XML::NodeSet format from a specific search.
 class PageSearch
   def initialize(page, nodes)
     @page = page

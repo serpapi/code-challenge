@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
-require_relative "../../lib/page_search"
+require_relative '../../lib/page_search'
 
 describe PageSearch do
   it 'should return searched page nodes' do
