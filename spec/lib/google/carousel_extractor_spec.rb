@@ -10,8 +10,8 @@ describe Google::CarouselExtractor do
 
   subject { described_class.new(search).extract }
 
-  it 'should return an array' do
-    expect(subject).to be_an(Hash)
+  it 'should return a Array' do
+    expect(subject[:artworks]).to be_an(Array)
   end
 
   it 'should have correct keys' do
