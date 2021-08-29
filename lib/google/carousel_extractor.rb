@@ -8,40 +8,18 @@ module Google
     end
 
     def extract
-      @search.map do |node|
-        data(node)
-      end
+      { artworks: @search.map { |node| data(node) } }
     end
 
     private
 
     def data(data)
       {
-        name: name(data),
-        extensions: [date(data)],
-        link: link(data),
-        image: image(data)
+        name: data.css('.kltat span').map(&:text).join(''),
+        extensions: data.css('.ellip.klmeta').map(&:text),
+        link: "https://www.google.com#{data.attributes['href']&.value}",
+        image: data.at_css('g-img img').attributes['data-key']&.value
       }
-    end
-
-    def link(data)
-      "https://www.google.com#{data.attributes['href']&.value}"
-    end
-
-    def image(data)
-      data.at_css('g-img img').attributes['data-key']&.value
-    end
-
-    def name(data)
-      name_node = data.css('.kltat span')
-
-      return name_node.first.text + name_node.last.text if name_node.count > 1
-
-      name_node.first.text
-    end
-
-    def date(data)
-      data.at_css('.ellip.klmeta')&.text
     end
   end
 end
