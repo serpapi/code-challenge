@@ -2,10 +2,11 @@ require_relative '../../parsers/carousel_item'
 require 'json'
 
 describe Parsers::CarouselItem do
-  subject { described_class.new(carousel_item_html) }
+  subject { described_class.new(carousel_item_html, version) }
 
-  let(:carousel_item_html) { carousel_html.css(*Parsers::Carousel::CAROUSEL_ITEM_SELECTOR).first }
-  let(:carousel_html) { parsed_html.css(Parsers::KnowledgeGraph::CAROUSEL_SELECTOR).first }
+  let(:version) { :old }
+  let(:carousel_item_html) { Parsers::Carousel.new(carousel_html, version).items.first }
+  let(:carousel_html) { Parsers::KnowledgeGraph.new(parsed_html, version).carousel_html }
   let(:parsed_html) { Nokogiri::HTML(File.open(file_path)) }
   let(:file_path) { 'files/van-gogh-paintings.html' }
 

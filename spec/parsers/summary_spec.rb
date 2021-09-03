@@ -2,8 +2,9 @@ require_relative '../../parsers/summary'
 require 'json'
 
 describe Parsers::Summary do
-  subject { described_class.new(parsed_html) }
+  subject { described_class.new(parsed_html, version) }
 
+  let(:version) { :old }
   let(:parsed_html) { Nokogiri::HTML(File.open(file_path)) }
   let(:file_path) { 'files/van-gogh-paintings.html' }
 

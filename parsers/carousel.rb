@@ -1,21 +1,13 @@
+require_relative './base.rb'
+
 module Parsers
-  class Carousel
-    CAROUSEL_ITEM_SELECTOR = ["a[role='button']", "a[role='listitem']"].freeze
-
-    def initialize(carousel_html)
-      @carousel_html = carousel_html
-    end
-
+  class Carousel < Parsers::Base
     def data
-      items.map(&:data)
+      items.map { |item| Parsers::CarouselItem.new(item, version).data }
     end
-
-    private
-
-    attr_reader :carousel_html
 
     def items
-      carousel_html.css(*CAROUSEL_ITEM_SELECTOR).map(&Parsers::CarouselItem.method(:new))
+      extract_value(:items)
     end
   end
 end

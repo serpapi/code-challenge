@@ -1,0 +1,59 @@
+:versions:
+  :old:
+    Parsers::KnowledgeGraph:
+      :carousel_items_key:
+        :type: 'xpath'
+        :value: "//*[@id='kxbccs']"
+      :carousel_html:
+        :type: 'css'
+        :value: 'g-scrolling-carousel'
+    Parsers::Summary:
+      :title:
+        :type: 'xpath'
+        :value: "//*[@class='kno-ecr-pt kno-fb-ctx gsmt sKbx2c']//span"
+    Parsers::Carousel:
+      :items:
+        :type: 'css'
+        :value: ["a[role='button']", "a[role='listitem']"]
+    Parsers::CarouselItem:
+      :name:
+        :type: 'css'
+        :value: '@aria-label'
+      :extensions:
+        :type: 'css'
+        :value: '.klmeta'
+      :link:
+        :type: 'css'
+        :value: '@href'
+      :image:
+        :type: 'css'
+        :value: 'g-img > img'
+  :new:
+    Parsers::KnowledgeGraph:
+      :carousel_items_key:
+        :type: 'xpath'
+        :value: "//*[@class='Wkr6U z4P7Tc']"
+      :carousel_html:
+        :type: 'css'
+        :value: 'g-scrolling-carousel'
+    Parsers::Summary:
+      :title:
+        :type: 'xpath'
+        :value: "//h2[@data-attrid='title']"
+    Parsers::Carousel:
+      :items:
+        :type: 'css'
+        :value: ["a[role='button']", "a[role='tab']"]
+    Parsers::CarouselItem:
+      :name:
+        :type: 'css'
+        :value: '@aria-label'
+      :extensions:
+        :type: 'css'
+        :value: '.cp7THd'
+      :link:
+        :type: 'css'
+        :value: '@href'
+      :image:
+        :type: 'css'
+        :value: 'g-img > img'
