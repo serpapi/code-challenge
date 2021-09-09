@@ -1,4 +1,5 @@
-require "nokogiri"
+require 'watir'
+require 'nokogiri'
 require 'uri'
 require 'open-uri'
 
@@ -6,8 +7,9 @@ class GoogleCarouselExtractor
   DOMAIN_NAME = "www.google.com"
 
   def extract_from_file(file_path)
-    file = File.read(file_path)
-    extract(Nokogiri::HTML.parse(file))
+    browser = Watir::Browser.new
+    browser.goto "file://" + file_path
+    extract(Nokogiri::HTML(browser.html))
   end
   
   def extract_from_url(url)
@@ -29,7 +31,7 @@ class GoogleCarouselExtractor
     result = {}
 
     # Name
-    result['name'] = node.attribute('aria-label').to_s
+    result[:name] = node.attribute('aria-label').to_s
 
     # Extensions
     # title attribute always contains "name (extension)", so use aria-label (which only contains name) to replace
@@ -37,17 +39,17 @@ class GoogleCarouselExtractor
     titleWithOnlyPotentialExtension = node.attribute("title").to_s.gsub! node.attribute("aria-label").to_s, ""
     potentialExtension = titleWithOnlyPotentialExtension.to_s.scan(/\s\((.*)\)/)
     extension = potentialExtension.last ? node.attribute("title").to_s.scan(/\s\((.*)\)/).last.first : ""
-    result['extensions'] = [extension] unless extension.empty?
+    result[:extensions] = [extension] unless extension.empty?
 
     # Image
-    result['image'] = nil
+    result[:image] = nil
     image = node.css('g-img img').attribute('src').to_s
-    result['image'] = image unless image.empty?
+    result[:image] = image unless image.empty?
 
     # Link
-    result['link'] = node.attribute('href').to_s
-    unless result['link'].include?(DOMAIN_NAME)
-      result['link'] = "https://" + DOMAIN_NAME + result['link']
+    result[:link] = node.attribute('href').to_s
+    unless result[:link].include?(DOMAIN_NAME)
+      result[:link] = "https://" + DOMAIN_NAME + result[:link]
     end
 
     result
