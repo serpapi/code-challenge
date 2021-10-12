@@ -1,4 +1,4 @@
-require_relative '../van_gogh_carousel'
+require_relative '../carousel_parser'
 require 'rspec'
 
 HTMLS = {
