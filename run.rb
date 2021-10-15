@@ -41,10 +41,10 @@ def save_image(payload)
 end
 
 def verify_vangogh
-  truth = JSON.parse(open('files/van-gogh-paintings.json').read)
+  truth = JSON.parse("{" + open('files/expected-array.json').read + "}")
   payload = JSON.parse(open('output/van-gogh-paintings.json').read)
   
-  truth['knowledge_graph']['artworks'] == payload
+  truth["artworks"] == payload
 end
 
 # test all files
