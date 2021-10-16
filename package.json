@@ -4,7 +4,8 @@
   "description": "serpapi challenge to scrape google carousel",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node main.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/richhaar/code-challenge/issues"
   },
-  "homepage": "https://github.com/richhaar/code-challenge#readme"
+  "homepage": "https://github.com/richhaar/code-challenge#readme",
+  "dependencies": {
+    "puppeteer": "^10.4.0"
+  },
+  "devDependencies": {
+    "jest": "^27.2.5"
+  }
 }
