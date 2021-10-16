@@ -1,0 +1,19 @@
+{
+  "name": "code-challenge",
+  "version": "1.0.0",
+  "description": "serpapi challenge to scrape google carousel",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richhaar/code-challenge.git"
+  },
+  "author": "Richard Haar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richhaar/code-challenge/issues"
+  },
+  "homepage": "https://github.com/richhaar/code-challenge#readme"
+}
