@@ -27,7 +27,7 @@ async function run(url, uniqueId = 0) {
     }
 
     // Click the right button along the carousel to ensure pictures load (slow)
-    for(let i=0; i<3; ++i) {
+    for(let i=0; i<5; ++i) {
         [button] = await page.$x("(//g-scrolling-carousel//g-right-button)[1]");
 
         if (button) {
