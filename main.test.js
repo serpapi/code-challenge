@@ -48,6 +48,21 @@ test('findTrumpsArtOfTheDeal', async () => {
             )]));
 });
 
+test('findJamesBondFilm', async () => {
+    const json = await run('https://www.google.com/search?q=james+bond+movies', 'Bond');
+
+    expect(JSON.parse(json)["Movies"]).toEqual(
+        expect.arrayContaining([
+            expect.objectContaining(
+                {
+                  "name": "No Time To Die",
+                  "extensions": [
+                    "2021"
+                  ],
+                }
+            )]));
+});
+
 test('AllCarouselItemsHaveLinksAndImages', async () => {
     const json = await run('https://www.google.com/search?q=lil+peep+albums&oq=lil+peep', 'Peep');
 
