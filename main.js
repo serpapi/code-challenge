@@ -1,13 +1,9 @@
+/** Richard Haar 17th October 2021
+ *  Node Puppeteer script to scrape Google Carousel items
+ */
 const puppeteer = require('puppeteer');
 const path = require('path');
-const url = require('url');
 const fs = require('fs');
-
-const myurl = url.format({
-    protocol: 'file',
-    slashes: true,
-    pathname: path.join(__dirname, 'files/van-gogh-paintings.html')
-})
 
 async function run(url, uniqueId = 0) {
     const browser = await puppeteer.launch({
@@ -30,10 +26,10 @@ async function run(url, uniqueId = 0) {
         await button.click();
     }
 
-    // Click the right button along the carousel to ensure pictures load
-    for(let i=0; i<0; ++i) {
+    // Click the right button along the carousel to ensure pictures load (slow)
+    for(let i=0; i<3; ++i) {
         [button] = await page.$x("(//g-scrolling-carousel//g-right-button)[1]");
-        console.log(button);
+
         if (button) {
             await button.click();
         }
@@ -153,10 +149,10 @@ async function run(url, uniqueId = 0) {
 
     await page.screenshot({path: 'out/screenshot' + uniqueId + '.png'});
     browser.close();
+
     fs.writeFileSync('out/data' + uniqueId + '.json', json);
+
+    return json;
 }
 
-run(myurl);
-run('https://www.google.com/search?q=lil+peep+albums&oq=lil+peep&aqs=chrome.0.69i59j46i433i512j0i433i512l3j0i512l4.           1009j0j7&sourceid=chrome&ie=UTF-8', 1);
-run('https://www.google.com/search?q=trump+books', 2);
-run('https://www.google.com/search?q=van+gogh+paintings', 3);
+module.exports = run;
