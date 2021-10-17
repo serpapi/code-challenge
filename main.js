@@ -44,8 +44,11 @@ async function run(url, uniqueId = 0) {
 
         // Found through Selector Gadget, could also query for g-scrolling-carousel and work from there
         const extabar = document.querySelector('#extabar');
+        const carousel = extabar?.querySelector('.DAVP1');
+        if(!extabar || !carousel) {
+            return "";
+        }
         const extabarInnerText = extabar.innerText;
-        const carousel = extabar.querySelector('.DAVP1');
         const carouselInnerText = carousel.innerText;
 
         const extabarSplit = extabarInnerText.split('\n');
@@ -102,10 +105,6 @@ async function run(url, uniqueId = 0) {
             return getItemProperty('title')(item);
         }
 
-        function getSrc(item) {
-            return getItemProperty('src')(item);
-        }
-
         /** Now for each item generate the obj to store in JSON format
          *
          */
@@ -138,7 +137,6 @@ async function run(url, uniqueId = 0) {
             }
 
             obj["image"] = item.querySelector('img')?.src || 'null';
-            //obj["image"] = getSrc(item) || 'null';
 
             scrapedData[title].push(obj);
         }
@@ -151,7 +149,6 @@ async function run(url, uniqueId = 0) {
     browser.close();
 
     fs.writeFileSync('out/data' + uniqueId + '.json', json);
-
     return json;
 }
 
