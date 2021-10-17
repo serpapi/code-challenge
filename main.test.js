@@ -63,6 +63,21 @@ test('findJamesBondFilm', async () => {
             )]));
 });
 
+test('findDogesPalace', async () => {
+    const json = await run('https://www.google.com/search?q=italy+famous+buildings', 'ItalyBuildings');
+
+    expect(JSON.parse(json)["Italy"]).toEqual(
+        expect.arrayContaining([
+            expect.objectContaining(
+                {
+                  "name": "Doge's Palace",
+                  "extensions": [
+                    "Venice"
+                  ],
+                }
+            )]));
+});
+
 test('AllCarouselItemsHaveLinksAndImages', async () => {
     const json = await run('https://www.google.com/search?q=lil+peep+albums&oq=lil+peep', 'Peep');
 
@@ -73,4 +88,10 @@ test('AllCarouselItemsHaveLinksAndImages', async () => {
             return album.image && album.link &&
                 album.image !== "null" && album.link.includes('www.google');
         }).length);
+});
+
+test('NonGoogleLinkDoesntCrash', async () => {
+    const json = await run('https://news.ycombinator.com/', 'HackerNews');
+
+    expect(true).toEqual(true);
 });
