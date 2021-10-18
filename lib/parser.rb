@@ -1,10 +1,7 @@
 require 'nokogiri'
 require 'json'
 
-
 class Parser
-  FILES = ['files/van-gogh-paintings.html', 'files/picasso-paintings.html', 'files/claude-paintings.html'].freeze
-
   def self.parse_from_file(filename)
     doc = Nokogiri::HTML(open(filename).read)
 
@@ -39,13 +36,6 @@ class Parser
   def self.save_image(payload)
     decoded = Base64.decode64(payload.delete_prefix('data:image/jpeg;base64,'))
     File.open('test.jpeg', 'wb') { |f| f.write(decoded) }
-  end
-
-  def self.verify_vangogh
-    truth = JSON.parse("{" + open('files/expected-array.json').read + "}")
-    payload = JSON.parse(open('output/van-gogh-paintings.json').read)
-    
-    truth["artworks"] == payload
   end
 end
 
