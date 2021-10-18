@@ -3,9 +3,9 @@ require "parser"
 describe Parser do
   it 'works for van gogh' do
     filename = 'files/van-gogh-paintings.html'
-    truth_filename = 'output/van-gogh-paintings.json'
+    truth_filename = 'files/expected-array.json'
 
-    truth = JSON.parse("{" + open('files/expected-array.json').read + "}")
+    truth = JSON.parse("{" + open(truth_filename).read + "}")
     payload = Parser.parse_from_file(filename)
     
     expect(truth["artworks"]).to eq(payload)
