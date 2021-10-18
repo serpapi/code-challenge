@@ -38,5 +38,3 @@ class Parser
     File.open('test.jpeg', 'wb') { |f| f.write(decoded) }
   end
 end
-
-
