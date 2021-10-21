@@ -1,0 +1,13 @@
+{
+  "scripts": {
+      "test": "./node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "puppeteer": "^10.4.0",
+    "utf-8": "^2.0.0",
+    "utf8": "^3.0.0"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
