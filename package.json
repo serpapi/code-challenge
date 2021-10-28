@@ -1,0 +1,30 @@
+{
+  "name": "serp_code_challenge",
+  "version": "1.0.0",
+  "description": "Code challenge before join serpapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xinhua-huang/code-challenge.git"
+  },
+  "keywords": [
+    "serpapi",
+    "code",
+    "challenge"
+  ],
+  "author": "huangxinhua@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xinhua-huang/code-challenge/issues"
+  },
+  "homepage": "https://github.com/xinhua-huang/code-challenge#readme",
+  "dependencies": {
+    "puppeteer": "10.4.0"
+  },
+  "devDependencies": {
+    "jest": "27.3.1"
+  }
+}
