@@ -14,6 +14,7 @@ class Parser
   def results
     @results
   end
+
   def find_css_and_map_to_objects(css_pattern)
     @doc.css(css_pattern).to_a.map do |element|
       map_to_object(element)
@@ -31,7 +32,7 @@ class Parser
       "name" => name&.encode("iso-8859-1").force_encoding("utf-8").chomp,
       "extensions" => extensions.to_a.map { |extension| extension.text&.chomp&.strip},
       "link" => "https://www.google.com#{element.xpath('@href').first&.value&.chomp}",
-      "image" => find_image_data(element.at_css('img')&.xpath('@id').first.value)
+      "image" => find_image_data(element.at_css('img')&.xpath('@id').first&.value)
     }.reject{|key, value| value&.empty?}
   end
 
