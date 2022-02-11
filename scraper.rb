@@ -4,6 +4,17 @@ require 'json'
 
 class Scraper
 
+  def get_base64_image(doc, id)
+    doc.css('script').each do |script|
+      image_regex = /\'(?<src>[^']*)\';var ii=\[\'#{id}\'/
+      matched_script = image_regex.match(script)
+      if matched_script
+        return matched_script[:src].gsub(/\\/, '')
+      end
+    end
+    return nil
+  end
+
   def parse_HTML(filepath)
 
     html = File.read(filepath)
@@ -17,7 +28,8 @@ class Scraper
         name = result.at_css(".klitem").attr("aria-label")
         link = "https://www.google.com#{result.at_css(".klitem").attr("href")}"
         extentions = result.at_css(".ellip.klmeta")&.text
-        image = result.at_css("img.rISBZc").attr("src")
+        image_id = result.at_css("img.rISBZc").attr("id")
+        image = get_base64_image(doc, image_id)
 
         data << {
           name: name,
@@ -37,7 +49,8 @@ class Scraper
         extentions = result.at_css(".cp7THd .FozYP")&.text
         
         if(result.at_css("img.rISBZc"))
-          image = result.at_css("img.rISBZc").attr("src")
+          image_id = result.at_css("img.rISBZc").attr("id")
+          image = get_base64_image(doc, image_id)
         end
 
         data << {
