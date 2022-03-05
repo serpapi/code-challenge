@@ -28,10 +28,11 @@ class GoogleParser
   end
 
   def parse
-    document.css('.klitem').each.with_index do |painting, idx|
+    #first = klitems.first
+    klitems.each.with_index do |painting, idx|
       @paintings << Painting.new(
-        name: painting.at_css('.kltat').content,
-        extensions: painting.css('.klmeta').map(&:text),
+        name: painting.attr('aria-label'),
+        extensions: select_extensions(painting),
         link: link(painting.attr('href')),
         image: painting.at_css('g-img img').attr(:src) ? images[idx] : nil
       )
@@ -41,6 +42,20 @@ class GoogleParser
   end
 
   private
+
+  def klitems
+    document.css('a.klitem') + document.css('a.klitem-tr')
+  end
+
+  def select_extensions(node)
+    legacy_select = node.css('.klmeta')
+    return legacy_select.map(&:text) unless legacy_select.empty?
+
+    node = node.children.last until node.nil? || node.text?
+    return [] if node.nil?
+
+    node.parent.children.map(&:text)
+  end
 
   def link(href)
     "https://www.google.com#{href}"
