@@ -73,7 +73,7 @@ RSpec.describe GoogleParser do
           .to be_start_with 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Oj'
       end
 
-      it 'parses albums with the right data types' do
+      it 'parses books with the right data types' do
         expect(parser.paintings.size).to eq 34
         expect(parser.paintings)
           .to all(have_attributes(
