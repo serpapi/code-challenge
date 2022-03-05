@@ -16,11 +16,16 @@ class GoogleParser
     painting = document.css('.klitem').first
     @paintings << Painting.new(
       name: painting.at_css('.kltat').content,
-      extensions: painting.css('.klmeta').map(&:text)
+      extensions: painting.css('.klmeta').map(&:text),
+      link: link(painting.attr('href'))
     )
   end
 
   private
+
+  def link(href)
+    "https://www.google.com#{href}"
+  end
 
   def document
     @document ||= File.open(@path) { Nokogiri::HTML(_1) }
