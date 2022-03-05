@@ -23,8 +23,7 @@ class GoogleParser
   attr_reader :paintings
 
   def initialize(path = DEFAULT_FILE_PATH)
-    @path = path
-    @file = File.open(@path)
+    @file = File.open(path)
     @paintings = []
   end
 
