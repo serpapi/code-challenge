@@ -9,6 +9,7 @@ class GoogleParser
 
   def initialize(path = DEFAULT_FILE_PATH)
     @path = path
+    @file = File.open(@path)
     @paintings = []
   end
 
@@ -17,8 +18,11 @@ class GoogleParser
     @paintings << Painting.new(
       name: painting.at_css('.kltat').content,
       extensions: painting.css('.klmeta').map(&:text),
-      link: link(painting.attr('href'))
+      link: link(painting.attr('href')),
+      image: images.first
     )
+  ensure
+    @file.close
   end
 
   private
@@ -28,6 +32,14 @@ class GoogleParser
   end
 
   def document
-    @document ||= File.open(@path) { Nokogiri::HTML(_1) }
+    @document ||= Nokogiri::HTML(file_content)
+  end
+
+  def file_content
+    @file_content ||= @file.read
+  end
+
+  def images
+    @images ||= file_content.scan(%r{var s='(data:image/jpeg;base64,\S+)';}).map { _1[0] }
   end
 end
