@@ -28,7 +28,6 @@ class GoogleParser
   end
 
   def parse
-    #first = klitems.first
     klitems.each.with_index do |painting, idx|
       @paintings << Painting.new(
         name: painting.attr('aria-label'),
