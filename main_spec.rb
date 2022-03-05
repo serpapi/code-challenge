@@ -48,6 +48,17 @@ RSpec.describe GoogleParser do
         expect(first_album.link).to eq 'https://www.google.com/search?q=John+Lennon+Imagine&stick=H4sIAAAAAAAAAONgFuLSz9U3MCwrzjGOV4KwM3Jz86q0xLOTrfRzS4szk_UTi0oyi0usEnOSSnOLHzH-YOQWePnjnrDUO8ZJa05eY3zOyIVLsZAeF5trXklmSaUQnxQPF5JdRiJcvPrp-oaG2WbZSeY5yYYCe39MZVSazGiUsevStHNsSYLPQhkY5IzDHKSMBFnX2Xtlv3pvryXExe5Z7JOfnJgjqMxj7bD7J1BMmIsjJLEiPy8_t1JwptbF_R6_39srKXLmPzZlMLrz3l5w0WOGhu-3HBwkWBQYNBgMH1myOqyfwnhAiyGIG-wcQ4siU6PKIE4QxyinwqjoACNT074Vh9g4OBgFGIyYOBismDSYqoA0zyJWYa_8jDwFn9S8vPw8Bc_cxPTMvNQJbIwA9ej8RUgBAAA&sa=X&ved=2ahUKEwjEncDMwq72AhU_QPUHHW5-CxYQ-BZ6BAgnEA4&tbs=kac:1,kac_so:0'
         expect(first_album.image).to be_start_with 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkI'
       end
+
+      it 'parses albums with the right data types' do
+        expect(parser.paintings.size).to eq 41
+        expect(parser.paintings)
+          .to all(have_attributes(
+                    name: be_a(String),
+                    extensions: be(nil).or(be_a(Array)),
+                    link: be_a(String).and(start_with('https://www.google.com')),
+                    image: be(nil).or(be_a(String).and(start_with('data:image/jpeg;base64,')))
+                  ))
+      end
     end
   end
 end
