@@ -1,3 +1,5 @@
+require 'json'
+
 require_relative './main'
 
 RSpec.describe GoogleParser do
@@ -26,6 +28,11 @@ RSpec.describe GoogleParser do
                   link: be_a(String).and(start_with('https://www.google.com')),
                   image: be(nil).or(be_a(String).and(start_with('data:image/jpeg;base64,')))
                 ))
+    end
+
+    it 'matches with result' do
+      result = parser.paintings.map(&:to_h)
+      expect(result).to eq JSON.parse(File.read('./files/expected-array.json'), symbolize_names: true)[:artworks]
     end
   end
 end

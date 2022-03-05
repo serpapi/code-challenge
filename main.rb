@@ -1,6 +1,21 @@
 require 'nokogiri'
 
-Painting = Struct.new(:name, :link, :image, :extensions, keyword_init: true)
+class Painting
+  attr_reader :name, :link, :image, :extensions
+
+  def initialize(params)
+    @name = params[:name]
+    @link = params[:link]
+    @image = params[:image]
+    @extensions = params[:extensions]
+  end
+
+  def to_h
+    info = { name: name, link: link, image: image }
+    info[:extensions] = extensions unless extensions.empty?
+    info
+  end
+end
 
 class GoogleParser
   DEFAULT_FILE_PATH = './files/van-gogh-paintings.html'.freeze
@@ -19,7 +34,7 @@ class GoogleParser
         name: painting.at_css('.kltat').content,
         extensions: painting.css('.klmeta').map(&:text),
         link: link(painting.attr('href')),
-        image: images[idx]
+        image: painting.at_css('g-img img').attr(:src) ? images[idx] : nil
       )
     end
   ensure
