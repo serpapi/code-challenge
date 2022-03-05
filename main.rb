@@ -23,7 +23,7 @@ class GoogleParser
   attr_reader :paintings
 
   def initialize(path = DEFAULT_FILE_PATH)
-    @file = File.open(path)
+    @path = path
     @paintings = []
   end
 
@@ -37,8 +37,6 @@ class GoogleParser
         image: painting.at_css('g-img img').attr(:src) ? images[idx] : nil
       )
     end
-  ensure
-    @file.close
   end
 
   private
@@ -62,14 +60,13 @@ class GoogleParser
   end
 
   def document
-    @document ||= Nokogiri::HTML(file_content)
-  end
-
-  def file_content
-    @file_content ||= @file.read
+    file = File.open(@path)
+    @document ||= Nokogiri::HTML(file.read)
+  ensure
+    file.close
   end
 
   def images
-    @images ||= file_content.scan(%r{var s='(data:image/jpeg;base64,\S+)';}).map { _1[0] }
+    @images ||= document.content.scan(%r{var s='(data:image/jpeg;base64,\S+)';}).map { _1[0] }
   end
 end
