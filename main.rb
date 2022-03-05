@@ -14,13 +14,14 @@ class GoogleParser
   end
 
   def parse
-    painting = document.css('.klitem').first
-    @paintings << Painting.new(
-      name: painting.at_css('.kltat').content,
-      extensions: painting.css('.klmeta').map(&:text),
-      link: link(painting.attr('href')),
-      image: images.first
-    )
+    document.css('.klitem').each.with_index do |painting, idx|
+      @paintings << Painting.new(
+        name: painting.at_css('.kltat').content,
+        extensions: painting.css('.klmeta').map(&:text),
+        link: link(painting.attr('href')),
+        image: images[idx]
+      )
+    end
   ensure
     @file.close
   end
