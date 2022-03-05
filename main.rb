@@ -6,7 +6,7 @@ class Painting
   def initialize(params)
     @name = params[:name]
     @link = params[:link]
-    @image = params[:image]
+    @image = params[:image]&.gsub('\\x3d', 'x3d')
     @extensions = params[:extensions]
   end
 
