@@ -14,7 +14,10 @@ class GoogleParser
 
   def parse
     painting = document.css('.klitem').first
-    @paintings << Painting.new(name: painting.at_css('.kltat').content)
+    @paintings << Painting.new(
+      name: painting.at_css('.kltat').content,
+      extensions: painting.css('.klmeta').map(&:text)
+    )
   end
 
   private

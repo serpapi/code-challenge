@@ -12,6 +12,7 @@ RSpec.describe GoogleParser do
     it 'parses first painting info successfully' do
       first_painting = parser.paintings.first
       expect(first_painting.name).to eq 'The Starry Night'
+      expect(first_painting.extensions).to eq ['1889']
     end
   end
 end
