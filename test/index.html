@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Test: Google Scrolling Carousel</title>
+    <style>
+        #resultElement {
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            border: dotted 1px;
+            padding: 4px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <select id="sourceElement">
+            <option>descartes-books</option>
+            <option>dog-breeds</option>
+            <option>public-enemy-albums</option>
+            <option>steven-seagal-films</option>
+            <option>switch-games</option>
+            <option>van-gogh-paintings</option>
+        </select>
+        <div id="resultElement"></div>
+    </form>
+
+    <script type="module">
+        import { getCarouselData } from "/lib/g-scrolling-carousel.js";
+
+        const JSON_INDENTING_SPACES = 2;
+
+        sourceElement.onchange = () => {
+            displayResult();
+            return false;
+        };
+        displayResult();
+
+        async function displayResult() {
+            resultElement.textContent = "...";
+            const result = await getResult(sourceElement.value);
+            resultElement.textContent = JSON.stringify(result, null, JSON_INDENTING_SPACES);
+            return false;
+        }
+
+        async function getResult(sampleName) {
+            const samplePath = `/samples/${sampleName}.html`;
+            const document = await parseDocument(samplePath);
+            const carouselData = await getCarouselData(document);
+            return carouselData;
+        }
+
+        async function parseDocument(samplePath) {
+            const response = await fetch(samplePath);
+            const html = await response.text();
+            const document = new DOMParser().parseFromString(html, "text/html");
+            return document;
+        }
+    </script>
+</body>
+
+</html>
