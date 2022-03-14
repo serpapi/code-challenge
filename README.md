@@ -28,7 +28,7 @@ the JSON below in the standard output.
       "1637"
     ],
     "link": "https://www.google.com/search?sxsrf=APq-WBvjrICe1xYeCaShRsQcYNudWzQcMg:1647145208200&q=Discourse+on+Method&stick=H4sIAAAAAAAAAONgFuLQz9U3MEsuzlbiBLEMLQzM07SkspOt9JPy87P1E0tLMvKLrEDsYoX8vJzKR4wPGLkFXv64Jyx1jXHSmpPXGM8zcuFRL6TDxeaaV5JZUinEI8XFBbfOSISLVz9d39Awq6AwvszIJFlg8a9pjErVRhm7Lk07x5YkqCfIwOAmE-ogZST4JWij4frF7-y1hLjYPYt98pMTcwQ7Gvi2Nb1da68lzMURkliRn5efWynotFrTv-R1lb2SIufTSP4GE-U39oJf9v27__KKmYMEiwKDBoPhI0tWh_VTGA9oMRxgZGrat-IQGwcHowCDERMHgxWTBlMVEwcTzyJWYZfM4uT80qLiVKAnFHxTgZ5KmcDGCAA_NHBPMAEAAA&sa=X&ved=2ahUKEwiawpyInsL2AhVLyYUKHUZKAWIQ-BZ6BAgTEA4",
-    "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys..."
   },
   {
     "name": "Meditations on First Philosophy",
@@ -36,7 +36,7 @@ the JSON below in the standard output.
       "1641"
     ],
     "link": "https://www.google.com/search?sxsrf=APq-WBvjrICe1xYeCaShRsQcYNudWzQcMg:1647145208200&q=Meditations+on+First+Philosophy&stick=H4sIAAAAAAAAAONgFuLQz9U3MEsuzlbiBLEMK5PSi7SkspOt9JPy87P1E0tLMvKLrEDsYoX8vJzKR4wPGLkFXv64Jyx1jXHSmpPXGM8zcuFRL6TDxeaaV5JZUinEI8XFBbfOSISLVz9d39Awq6AwvszIJFlg8a9pjErVRhm7Lk07x5YkqCfIwOAmE-ogZST4JWij4frF7-y1hLjYPYt98pMTcwQ7Gvi2Nb1da68lzMURkliRn5efWynotFrTv-R1lb2SIufTSP4GE-U39oJf9v27__KKmYMEiwKDBoPhI0tWh_VTGA9oMRxgZGrat-IQGwcHowCDERMHgxWTBlMVEwcTzyJWed_UlMySxJLM_DyQNxTcMouKSxQCMjJz8ovzCzIqJ7AxAgDI6o3sPAEAAA&sa=X&ved=2ahUKEwiawpyInsL2AhVLyYUKHUZKAWIQ-BZ6BAgTEBE",
-    "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys..."
   },
   {
     "name": "Principles of Philosophy",
@@ -44,7 +44,7 @@ the JSON below in the standard output.
       "1644"
     ],
     "link": "https://www.google.com/search?sxsrf=APq-WBvjrICe1xYeCaShRsQcYNudWzQcMg:1647145208200&q=Principles+of+Philosophy&stick=H4sIAAAAAAAAAONgFuLQz9U3MEsuzlbiBLGSzSrzkrSkspOt9JPy87P1E0tLMvKLrEDsYoX8vJzKR4wPGLkFXv64Jyx1jXHSmpPXGM8zcuFRL6TDxeaaV5JZUinEI8XFBbfOSISLVz9d39Awq6AwvszIJFlg8a9pjErVRhm7Lk07x5YkqCfIwOAmE-ogZST4JWij4frF7-y1hLjYPYt98pMTcwQ7Gvi2Nb1da68lzMURkliRn5efWynotFrTv-R1lb2SIufTSP4GE-U39oJf9v27__KKmYMEiwKDBoPhI0tWh_VTGA9oMRxgZGrat-IQGwcHowCDERMHgxWTBlMVEwcTzyJWiYCizLzkzIKcVKAv0hQCMjJz8ovzCzIqJ7AxAgAl6hq5NQEAAA&sa=X&ved=2ahUKEwiawpyInsL2AhVLyYUKHUZKAWIQ-BZ6BAgTEBQ",
-    "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys..."
   },
   ...
 ]
