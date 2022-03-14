@@ -4,9 +4,9 @@ import { patchHTML } from "./lib/page-util.js";
 
 const JSON_INDENTING_SPACES = 2;
 
-let html = await getTextFromReader(Deno.stdin);
-html = patchHTML(html);
-const document = await parseDocument(html);
+const html = await getTextFromReader(Deno.stdin);
+const patchedHtml = patchHTML(html);
+const document = await parseDocument(patchedHtml);
 const carouselData = getCarouselData(document);
 const json = JSON.stringify(carouselData, null, JSON_INDENTING_SPACES);
 console.log(json);
