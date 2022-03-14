@@ -1,6 +1,6 @@
 import { getTextFromReader, parseDocument } from "./lib/deno-util.js";
-import { getCarouselData } from "./lib/g-scrolling-carousel.js";
 import { patchHTML } from "./lib/page-util.js";
+import { getCarouselData } from "./lib/g-scrolling-carousel.js";
 
 const JSON_INDENTING_SPACES = 2;
 
