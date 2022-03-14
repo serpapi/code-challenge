@@ -15,5 +15,6 @@ if [ $# -eq 0 ]; then
     echo
     echo
     exit 1
+else
+    deno run ./index.js < $1
 fi
-cat $1 | deno run ./index.js
