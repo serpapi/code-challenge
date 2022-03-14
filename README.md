@@ -14,12 +14,6 @@ the standard output. Note that the dependencies (e.g.
 [jsdom](https://github.com/jsdom/jsdom)) are automatically downloaded by Deno
 the first time you run the program.
 
-# Implementation notes
-
-The JavaScript code of the HTML page is not executed when extracting data. Thus,
-only the placeholders are provided as thumbnails when available (i.e.
-`data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==`).
-
 # Example
 
 Some sample HTML files are provided in the `/samples` folder. Running
