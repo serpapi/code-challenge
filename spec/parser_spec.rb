@@ -1,38 +1,41 @@
-require 'nokogiri'
-require 'json'
+require "parser"
 
-class Parser
-  def self.parse_from_file(filename)
-    doc = Nokogiri::HTML(open(filename).read)
+describe Parser do
+  it 'works for van gogh' do
+    filename = 'files/van-gogh-paintings.html'
+    truth_filename = 'files/expected-array.json'
 
-    script = doc.search('script').select { |s| s.to_s.index('setImagesSrc') }
-    matches = script.to_s.scan(/var s='([^']+)';var ii=\['([^']+)'\];_setImagesSrc\(ii,s\);/)
+    truth = JSON.parse("{" + open(truth_filename).read + "}")
+    payload = Parser.parse_from_file(filename)
 
-    payload_h = {}
-    matches.each do |payload, klass|
-      payload_h[klass] = payload.gsub('\\\\', '') 
-    end
-
-    results = []
-    (doc.search('a.klitem').to_a + doc.search('a.klitem-tr').to_a).each do |a|
-      id = a.at('img')&.[]('id')
-      extensions = [a.at('.klmeta')&.text].compact
-      result = {
-        'name' => a['aria-label'],
-        'image' => payload_h[id],
-        'link' => 'https://www.google.com' + a['href'],
-      }
-      unless extensions.empty?
-        result['extensions'] = extensions
-      end
-      results << result
-    end
-
-    results
+    expect(truth["artworks"]).to eq(payload)
   end
 
-  def self.save_image(payload)
-    decoded = Base64.decode64(payload.delete_prefix('data:image/jpeg;base64,'))
-    File.open('test.jpeg', 'wb') { |f| f.write(decoded) }
+  it 'works for Louis Vuitton Bags' do
+    filename = 'files/louis-vuitton-bags.html'
+
+    payload = Parser.parse_from_file(filename)
+
+    expect(payload.length).to eq(47)
+    payload.each do |item|
+      expect(item['name'].class).to eq(String)
+      expect(item['link'].class).to eq(String)
+      expect(item).to have_key('image')
+      expect(item).to have_key('link')
+    end
+  end
+
+  it 'works for Sarkodie Albums' do
+    filename = 'files/sark-albums.html'
+    payload = Parser.parse_from_file(filename)
+
+    expect(payload.length).to eq(50)
+
+    payload.each do |item|
+      expect(item['name'].class).to eq(String)
+      expect(item['link'].class).to eq(String)
+      expect(item).to have_key('image')
+      expect(item).to have_key('link')
+    end
   end
 end
