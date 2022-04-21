@@ -1,0 +1,15 @@
+{
+  "name": "serp-api-code-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "program.js",
+  "scripts": {
+    "start": "node solution/program.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bhr",
+  "license": "ISC",
+  "dependencies": {
+    "node-html-parser": "^5.3.3"
+  }
+}
