@@ -29,23 +29,22 @@ class Artwork
     @name = name.split(' ').join(' ')
     @link = link
     @extensions = extensions
-    @image = image
+    @image = if !image.nil? then "\"#{image}\"" else "null" end
   end
 
   def to_json()
-    img= if !@image.nil? then "\"#{@image}\"" else "null" end
     if !@extensions.empty?
       """{
         \"name\": \"#{@name}\",
         \"extensions\": #{@extensions},
         \"link\": \"#{@link}\",
-        \"image\": #{img}
+        \"image\": #{@image}
       }"""
     else
       """{
         \"name\": \"#{@name}\",
         \"link\": \"#{@link}\", 
-        \"image\": #{img}
+        \"image\": #{@image}
       }"""
     end
   end
@@ -58,21 +57,31 @@ doc = Nokogiri::HTML(URI.open('./files/van-gogh-paintings.html'))
 
 elements = doc.xpath('/html/body/div[6]/div[3]/div[7]/div[1]/div/div/div[2]/div[2]/div/div/g-scrolling-carousel/div/div/div')
 
+images = doc.xpath("/html/body/div[6]/div[3]/script[4]").text.split("function()")
+
+imgDict = {}
+images.each do |i|
+  vals = i.split("\'")
+  if(!vals[1].nil?)
+    imgDict[vals[3]] = vals[1].gsub "\\", ""
+  end
+end
+
+
 artworks = Artworks.new
 elements.each do |l|
-  title= l.children[1].children[2].children[1].text.strip
-  imgTag= l.children[1].children.children.children.children[0].attributes["src"]
+  title= l.children[0].attributes['aria-label'].value
+  imgTag= l.children.children.children.children.children[0].attributes["id"]
   image = nil
-  image = l.children[1].children.children.children.children[0].attributes["src"].value if !imgTag.nil?
-  # extensions = link.children[1].children[2].children[3].text
+  image = imgDict[imgTag.value] if !imgTag.nil?
+
   extensions = []
-  l.children[1].children[2].children.each do |child|
-    txt = child.text.strip
-    if(!txt.empty? && txt != title)
-      extensions.push(child.text.strip)
-    end
+  ext =l.children.children.children.children.last.text
+  if(!ext.empty?)
+    extensions.push(ext)
   end
-  link = "https://www.google.com#{l.children[1].attributes["href"].value}"
+  href= l.children[0].attributes['href'].value
+  link = "https://www.google.com#{href}"
 
   artwork = Artwork.new(title,link,image,extensions)
   artworks.add(artwork)
