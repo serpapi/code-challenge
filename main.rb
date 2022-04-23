@@ -13,12 +13,15 @@ class Artworks
     @artworks.push(artwork)
   end
 
-  def to_json()
-    """ \"artworks\": [
-      #{@artworks.map{|x| x.to_json}.join(",")}
-    ]"""
+  def as_json(options={})
+    """\"artworks\": [
+        #{@artworks.map{|x| JSON.pretty_generate(x)}.join(",\n")}
+      ]"""
   end
 
+  def to_json(*options)
+    as_json(*options).to_json(*options)
+  end
   
 end
 
@@ -29,24 +32,35 @@ class Artwork
     @name = name.split(' ').join(' ')
     @link = link
     @extensions = extensions
-    @image = if !image.nil? then "\"#{image}\"" else "null" end
+    @image = image
   end
 
-  def to_json()
+  def as_json(options={})
     if !@extensions.empty?
-      """{
-        \"name\": \"#{@name}\",
-        \"extensions\": #{@extensions},
-        \"link\": \"#{@link}\",
-        \"image\": #{@image}
-      }"""
+      {
+        :name=> @name,
+        :extensions => @extensions,
+        :link => @link,
+        :image => @image
+      }
     else
-      """{
-        \"name\": \"#{@name}\",
-        \"link\": \"#{@link}\", 
-        \"image\": #{@image}
-      }"""
+      {
+        :name => @name,
+        :link => @link,
+        :image => @image
+      }
     end
+  end
+
+  # def as_json(options={})
+  #   {
+  #     name: @name,
+  #     age: @age
+  #   }
+  # end
+
+  def to_json(*options)
+    as_json(*options).to_json(*options)
   end
 
   
@@ -70,16 +84,13 @@ end
 
 artworks = Artworks.new
 elements.each do |l|
-  title= l.children[0].attributes['aria-label'].value
+  title= l.children[0].attributes['aria-label'].value.encode("iso-8859-1").force_encoding("utf-8")
   imgTag= l.children.children.children.children.children[0].attributes["id"]
   image = nil
   image = imgDict[imgTag.value] if !imgTag.nil?
 
   extensions = []
-  ext =l.children.children.children.children.last.text
-  if(!ext.empty?)
-    extensions.push(ext)
-  end
+  l.children.children.children.children.map{|x| extensions.push(x.text) if(!x.text.empty? && !title.include?(x.text.encode("iso-8859-1").force_encoding("utf-8")))}
   href= l.children[0].attributes['href'].value
   link = "https://www.google.com#{href}"
 
@@ -88,4 +99,4 @@ elements.each do |l|
 end
 
 path = './files/actual.json'
-File.write(path,artworks.to_json)
+File.write(path,artworks.as_json)
