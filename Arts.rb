@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 require 'Utils'
+require 'Constants'
 
 module Arts
   class Artworks
@@ -23,19 +24,13 @@ private
       artworks=[]
       imageDictionary = get_image_dictionary(doc)
 
-      elements = doc.css('g-scrolling-carousel > div > div > div > a')
-      elements.each do |l|
+      elements = doc.css(Constants::Selectors::CAROUSEL_LINKS)
+      elements.each do |element|
 
-        imgTag= l.css('g-img img').first
-
-        image = imageDictionary[imgTag.attributes["id"].value] if !imgTag.nil?
-        name = Utils.get_encoded_value(l.css("div div span").text)
-        extension = Utils.get_encoded_value(l.css("div div").text).sub(name,'')
-
-        extensions = if extension.nil? || extension.empty? then [] else [extension] end
-        
-        href= l.attributes['href'].value
-        link = if href.start_with? then href else "https://www.google.com#{href}" end
+        name = get_name(element)
+        link= get_link(element)
+        image = get_image(element, imageDictionary)
+        extensions = get_extensions(element)
 
         artwork = Arts::Artwork.new(name,link,image,extensions)
         artworks.push(artwork)
@@ -48,12 +43,32 @@ private
       imgs= images.map{|x| x.text}.flat_map{|x| x.scan(/\'\S+\'/)}
 
       imgDict = {}
-      t =0
-      while (t+1)<imgs.count
-        imgDict[imgs[t+1].tr("'","")] = imgs[t].tr("'","").tr("\\","")
-        t=t+2
+      index =0
+      while (index+1)<imgs.count
+        imgDict[imgs[index+1].tr("'","")] = imgs[index].tr("'","").tr("\\","")
+        index=index+2
       end
       return imgDict
+    end
+
+    def get_link(element)
+      href = element.attributes['href'].value
+      return "https://www.google.com#{href}"
+    end
+
+    def get_image(element, imageDictionary)
+        imgTag= element.css(Constants::Selectors::IMAGE).first
+        return imageDictionary[imgTag.attributes["id"].value] if !imgTag.nil?
+    end
+
+    def get_name(element)
+      return Utils.get_encoded_value(element.attributes["aria-label"].text)
+    end
+
+    def get_extensions(element)
+      extension = Utils.get_encoded_value(element.css(Constants::Selectors::EXTENSION).text)
+      extensions = if extension.nil? || extension.empty? then [] else [extension] end
+      return extensions
     end
   end
 
