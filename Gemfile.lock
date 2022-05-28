@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    nokogiri (1.13.6-x64-mingw-ucrt)
+      racc (~> 1.4)
+    racc (1.6.0)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  nokogiri
+
+BUNDLED WITH
+   2.3.7
