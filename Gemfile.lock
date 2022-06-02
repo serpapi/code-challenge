@@ -3,13 +3,17 @@ GEM
   specs:
     nokogiri (1.13.6-x64-mingw-ucrt)
       racc (~> 1.4)
+    power_assert (2.0.1)
     racc (1.6.0)
+    test-unit (3.5.3)
+      power_assert
 
 PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
   nokogiri
+  test-unit (~> 3.5)
 
 BUNDLED WITH
    2.3.7

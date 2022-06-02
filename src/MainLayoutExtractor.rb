@@ -1,7 +1,7 @@
 class MainLayoutExtractor
 
   # Example structure:
-  # <div class="MiPcId klitem-tr mlo-c r-ixoX45d0SyNs">
+  # <div class="klitem-tr ">
   #    <a class="klitem" aria-label="The Starry Night" href="{link}" title="{title}" >
   #       <div class="klzc">
   #          <div
