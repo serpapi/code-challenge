@@ -37,7 +37,7 @@ class TestGoogleAppBarExtractor < Test::Unit::TestCase
     }
   end
 
-  def test_best_action_mu_fc_players
+  def test_mu_fc_players
     results = @extractor.extract_cards(File.read(__dir__ + "/mu-fc-players.html"))
     expected_results = File.read(__dir__ + "/mu-fc-players-results.json")
     expected_results = JSON.parse(expected_results)
