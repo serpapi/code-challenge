@@ -1,6 +1,6 @@
 require_relative "GoogleAppBarExtractor"
 
-html = File.read(__dir__ + "/tests/mu-fc-players.html")
+html = File.read(__dir__ + "/tests/best-action-movies.html")
 
 extractor = GoogleAppBarExtractor.new
 

@@ -1,5 +1,28 @@
 class MainLayoutExtractor
 
+  # Example structure:
+  # <div class="MiPcId klitem-tr mlo-c r-ixoX45d0SyNs">
+  #    <a class="klitem" aria-label="The Starry Night" href="{link}" title="{title}" >
+  #       <div class="klzc">
+  #          <div
+  #             class="klic">
+  #             <g-img class="BA0A6c">
+  #             	<img data-key="" id="{image_id}" src="data:image/..">
+  #            </g-img>
+  #          </div>
+  #       </div>
+  #       <div>
+  #          <div class="kltat">
+  #             <span>{name}</span>
+  #          </div>
+  #          <div class="ellip klmeta">{extintion}</div>
+  #          <div class="ellip klmeta">{extintion}</div>
+  #          ....
+  #       </div>
+  #    </a>
+  # </div>
+
+
   def initialize(parser)
     @html_parser = parser
   end

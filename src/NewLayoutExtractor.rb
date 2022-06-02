@@ -1,7 +1,26 @@
 require_relative 'MainLayoutExtractor'
 
 class NewLayoutExtractor < MainLayoutExtractor
-
+  # Example structure:
+  # <a class="ct5Ked klitem-tr PZPZlf" aria-label="{name}" href="{link}" title="{title}">
+  #    <div class="EsIlz klitem" tabindex="-1">
+  #       <div >
+  #          <div class="keP9hb"></div>
+  #          <div class="XAOBve ZvGeOb">
+  #             <g-img class="ZGomKf">
+  #             	<img id="{image_id}" src="data:image/gif">
+  #             </g-img>
+  #          </div>
+  #          <div class="WGwSK cyKJce">
+  #             <div class="dAassd">
+  #                <div jsname="T3JDGc" class="FozYP">{name}</div>
+  #                <div class="cp7THd"><div class="FozYP">{extintion}</div></div>
+  #                <div class="cp7THd FozYP">{extintion}</div>
+  #             </div>
+  #          </div>
+  #       </div>
+  #    </div>
+  # </a>
   def extract_item_link(item)
     "https://www.google.com" + item['href']
   end
