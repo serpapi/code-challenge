@@ -1,7 +1,7 @@
 require_relative "GoogleAppBarExtractor"
 
-html = File.read(__dir__ + "/files/van-gogh-paintings.html")
+html = File.read(__dir__ + "/../files/mu-fc-players.html")
 
 extractor = GoogleAppBarExtractor.new
 
-puts extractor.extractCards(html)
+File.write(__dir__ + '/res.json' , extractor.extract_cards(html).to_json)
