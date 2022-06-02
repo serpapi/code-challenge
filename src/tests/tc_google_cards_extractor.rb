@@ -10,7 +10,7 @@ class TestGoogleAppBarExtractor < Test::Unit::TestCase
   end
 
 
-  def test_van_gogh_paintings
+  def test_old_html_structure_van_gogh_paintings
 
     results = @extractor.extract_cards(File.read(__dir__ + "/van-gogh-paintings.html"))
     expected_results = File.read(__dir__ + "/van-gogh-paintings-results.json")
@@ -24,7 +24,7 @@ class TestGoogleAppBarExtractor < Test::Unit::TestCase
     }
   end
 
-  def test_best_action_movies
+  def test_new_html_structure__best_action_movies
     results = @extractor.extract_cards(File.read(__dir__ + "/best-action-movies.html"))
     expected_results = File.read(__dir__ + "/best-action-movies-results.json")
     expected_results = JSON.parse(expected_results)
@@ -37,7 +37,7 @@ class TestGoogleAppBarExtractor < Test::Unit::TestCase
     }
   end
 
-  def test_mu_fc_players
+  def test_new_html_structure_mu_fc_players
     results = @extractor.extract_cards(File.read(__dir__ + "/mu-fc-players.html"))
     expected_results = File.read(__dir__ + "/mu-fc-players-results.json")
     expected_results = JSON.parse(expected_results)
