@@ -22,7 +22,7 @@ for match in matches:
         # remove unwanted leading and trailing characters
         title = re.sub(r'title="', '', title[0])
         title = re.sub(r' \(.*?"', '', title)
-        match_dict['name'] = title
+        match_dict['name'] = title.strip()
     except:
         continue
 
@@ -58,12 +58,12 @@ for match in matches:
         image = re.sub(r"';var ", '', image)
         match_dict['image'] = image
     except:
-        continue
+        match_dict['image'] = None
 
     # append match_dict to art_dict
     art_dict['artworks'].append(match_dict)
 
-output = json.dumps(art_dict, indent=2)
+output = json.dumps(art_dict, indent=2, ensure_ascii=False)
 output = re.sub(r'^{\n(\s+)', '', output)
 output = re.sub(r'}$', '', output)
 print(output)
