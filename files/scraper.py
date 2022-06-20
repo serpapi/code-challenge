@@ -27,7 +27,7 @@ for match in matches:
         print(year.group())
     except:
         continue
-    
+
     # get raw link data
     try:
         link = re.findall(r'href="/search.*?" style=', match)
@@ -39,5 +39,20 @@ for match in matches:
         print('\n')
     except:
         continue
+
+    # get raw image data
+    try:
+        image = re.search(r'<img data-key=.*?id=".*?" src=', match)
+        image = image.group().split(' ')[2]
+        imgtag = image.split('"')[1]
+        # locate second occurrence of imgtag where image loaded using JS
+        image = re.search(r"'" + imgtag + r"'.*?;var ", data)
+        # remove unwanted leading and trailing characters
+        image = image[0].split("var s='")[1]
+        image = re.sub(r"';var ", '', image)
+        print(image)
+    except:
+        continue
+
 # make sure to close the file!
 html_file.close()
