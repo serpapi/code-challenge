@@ -19,6 +19,25 @@ for match in matches:
     except:
         continue
 
-
+    # get raw extensions data
+    try:
+        extensions = re.findall(r'<div class="ellip klmeta">.*?</div>', match)
+        # get just the four digit year value
+        year = re.search(r'[0-9]{4}', extensions[0])
+        print(year.group())
+    except:
+        continue
+    
+    # get raw link data
+    try:
+        link = re.findall(r'href="/search.*?" style=', match)
+        # remove unwanted trailing characters
+        link = re.sub(r'" style=', '', link[0])
+        # replace href with google to complete url
+        link = re.sub(r'href="', 'https://www.google.com', link)
+        print(link)
+        print('\n')
+    except:
+        continue
 # make sure to close the file!
 html_file.close()
