@@ -1,4 +1,5 @@
 import re
+import json
 
 # open and read the html file
 fname = r"van-gogh-paintings.html"
@@ -8,14 +9,20 @@ data = html_file.read()
 # get each div with class 'klitem'
 matches = re.findall(r'<a class="klitem".*?</div></div></a></div>', data)
 
+# initiate output dict
+art_dict = {"artworks": []}
+
 for match in matches:
+    # initate match dict
+    match_dict = {}
+
     # get raw title data
     try:
         title = re.findall(r'title=".*?" ', match)
         # remove unwanted leading and trailing characters
         title = re.sub(r'title="', '', title[0])
         title = re.sub(r' \(.*?"', '', title)
-        print(title)
+        match_dict['name'] = title
     except:
         continue
 
@@ -24,7 +31,7 @@ for match in matches:
         extensions = re.findall(r'<div class="ellip klmeta">.*?</div>', match)
         # get just the four digit year value
         year = re.search(r'[0-9]{4}', extensions[0])
-        print(year.group())
+        match_dict['extensions'] = [year.group()]
     except:
         continue
 
@@ -35,8 +42,7 @@ for match in matches:
         link = re.sub(r'" style=', '', link[0])
         # replace href with google to complete url
         link = re.sub(r'href="', 'https://www.google.com', link)
-        print(link)
-        print('\n')
+        match_dict['link'] = link
     except:
         continue
 
@@ -50,9 +56,15 @@ for match in matches:
         # remove unwanted leading and trailing characters
         image = image[0].split("var s='")[1]
         image = re.sub(r"';var ", '', image)
-        print(image)
+        match_dict['image'] = image
     except:
         continue
+
+    # append match_dict to art_dict
+    art_dict['artworks'].append(match_dict)
+
+output = json.dumps(art_dict, indent=2)
+print(output)
 
 # make sure to close the file!
 html_file.close()
