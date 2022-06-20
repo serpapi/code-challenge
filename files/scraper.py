@@ -64,7 +64,14 @@ for match in matches:
     art_dict['artworks'].append(match_dict)
 
 output = json.dumps(art_dict, indent=2)
+output = re.sub(r'^{\n(\s+)', '', output)
+output = re.sub(r'}$', '', output)
 print(output)
+
+# write json to file
+jsonFile = open("output.json", "w")
+jsonFile.write(output)
+jsonFile.close()
 
 # make sure to close the file!
 html_file.close()
