@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'json'
 require 'watir'
+require 'uri'
 
 class Parser
     def parse_old(file_path, extension_class)
@@ -64,35 +65,43 @@ class Parser
         results
     end
     
-    def get_parsed_html(file_path)
-        full_file_path = File.expand_path(file_path)
+    def get_parsed_html(url)
     
         b = Watir::Browser.new :chrome, headless: true
-        b.goto "file://#{full_file_path}"
+
+        b.goto url
+
+        if URI.parse(url).kind_of?(URI::HTTP)
+            right_button = b.elements(tag_name: "g-right-button").first
+
+            for value in 1..5 do
+                right_button.click
+            end
+        end
     
         Nokogiri::HTML(b.html)
     end
     
-    def write_json_file(file_path, data, extension)
-        File.write("files/#{File.basename(file_path, "#{extension}")}.json", JSON.pretty_generate(data))
+    def write_json_file(name, data)
+        File.write("files/#{name}.json", JSON.pretty_generate(data))
     end
 end
 
 
 parser = Parser.new
 
-van_gogh_file = 'files/van-gogh-paintings.html'
-van_gogh_paintings = parser.parse_old(van_gogh_file, '.ellip.klmeta')
-parser.write_json_file(van_gogh_file, van_gogh_paintings, '.html')
+van_gogh_file = "file://#{File.expand_path('files/van-gogh-paintings.html')}"
+van_gogh_paintings = parser.parse_old(van_gogh_file, 'FozYP')
+parser.write_json_file('van-gogh-paintings', van_gogh_paintings)
 
-matthew_file = 'files/matthew-mcconaughey-movies.html'
-matthew_movies = parser.parse_old(matthew_file, 'FozYP')
-parser.write_json_file(matthew_file, matthew_movies, '.html')
+matthew_url = "https://www.google.com/search?q=matthew+mcconaughey+movies"
+matthew_movies = parser.parse_old(matthew_url, 'FozYP')
+parser.write_json_file('matthew-mcconaughey-movies', matthew_movies)
 
-premier_file = 'files/premier-league-teams.html'
+premier_file = "file://#{File.expand_path('files/premier-league-teams.html')}"
 premier_teams = parser.parse_old(premier_file, 'FozYP')
-parser.write_json_file(premier_file, premier_teams, '.html')
+parser.write_json_file('premier-league-teams', premier_teams)
 
-matt_damon_file = 'files/matt-damon-movies.mht'
-matt_movies = parser.parse_new(matt_damon_file)
-parser.write_json_file(matt_damon_file, matt_movies, '.mht')
+# matt_damon_file = "file://#{File.expand_path('files/matt-damon-movies.mht')}"
+# # matt_movies = parser.parse_new(matt_damon_file)
+# # parser.write_json_file(matt_damon_file, matt_movies, '.mht')

@@ -27,7 +27,7 @@ describe "Parser" do
         end
 
         it 'last element image' do
-            expect(@data.last["image"]).to eq("null")
+            expect(@data.last["image"]).not_to eq("null")
         end
         
     end
