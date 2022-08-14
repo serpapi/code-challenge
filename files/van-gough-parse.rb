@@ -31,3 +31,7 @@ class GoogleCarouselParser
   end
  
  end
+
+ gcp = GoogleCarouselParser.new
+ parser = gcp.parse
+ puts parser
