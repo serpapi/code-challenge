@@ -1,21 +1,21 @@
 require 'nokogiri'
 
-output_hash = Hash.new
+art_works = Hash.new
 
-output_hash["artworks"] = []
+art_works["artworks"] = []
 
 parsed_data = File.open("van-gogh-paintings.html") { |f| Nokogiri::HTML5(f) }
 
-parsed_data.css('.klitem').each do |link|
+parsed_data.css('.klitem').each do |art_work|
   item_hash = Hash.new
 
-  item_hash["name"] = link.at_css('.kltat').content ? link.at_css('.kltat').content : "" 
+  item_hash["name"] = art_work.at_css('.kltat').content ? art_work.at_css('.kltat').content : "" 
 
-  item_hash["extensions"] = link.at_css('.klmeta') ? [link.at_css('.klmeta').text] : nil
+  item_hash["extensions"] = art_work.at_css('.klmeta') ? [art_work.at_css('.klmeta').text] : nil
 
   item_hash["link"] = "https://www.google.com#{link.attr('href')}"
 
-  output_hash["artworks"].push(item_hash)
+  art_works["artworks"].push(item_hash)
 end
 
-puts output_hash
+puts art_works
