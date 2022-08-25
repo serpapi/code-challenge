@@ -130,7 +130,7 @@ export class GoogleCarouselScraper {
       .match(/(data:image.*?)'/)?.[1]; // Get the first capturing group
 
     // TODO: figure out a better way to decode the URIs, i.e. `\x3d` -> `=`
-    return imageUri ? imageUri.replaceAll("\\", "") : null;
+    return imageUri ? imageUri.replace(/\\/g, "") : null;
   }
 
   /**
