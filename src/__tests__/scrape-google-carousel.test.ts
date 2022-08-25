@@ -26,7 +26,10 @@ describe("scrape van gogh paintings", () => {
       expect(name).not.toBeEmpty();
       expect(extensions).toBeArray();
       expect(link).toMatch(/^https:\/\/www.google.com\/search?.+/);
-      expect(image).toBeOneOf([null, expect.stringMatching(/^data:image\/.+/)]);
+      expect(image).toBeOneOf([
+        null,
+        expect.stringMatching(String.raw`^data:image.+`),
+      ]);
     }
   });
 
@@ -92,11 +95,17 @@ describe("scrape leonardo da vinci art", () => {
       expect(name).not.toBeEmpty();
       expect(extensions).toBeArray();
       expect(link).toMatch(/^https:\/\/www.google.com\/search?.+/);
-      expect(image).toBeOneOf([null, expect.stringMatching(/^data:image\/.+/)]);
+      expect(image).toBeOneOf([
+        null,
+        expect.stringMatching(String.raw`^data:image.+`),
+        expect.stringMatching(
+          String.raw`^https://encrypted-tbn0.gstatic.com/.+`
+        ),
+      ]);
     }
   });
 
-  it("should extract paintings with an image correctly", () => {
+  it("should extract paintings that are not hidden off-screen correctly", () => {
     const paintingA = leonardoDaVinciArtwork[0];
     expect(paintingA.name).toStrictEqual("Mona Lisa");
     expect(paintingA.extensions).toStrictEqual(["1503"]);
@@ -118,24 +127,26 @@ describe("scrape leonardo da vinci art", () => {
     );
   });
 
-  it("should extract paintings without an image correctly", () => {
-    const paintingA = leonardoDaVinciArtwork[leonardoDaVinciArtwork.length - 1];
-    expect(paintingA.name).toStrictEqual("The Holy Infants Embracing");
-    expect(paintingA.extensions).toStrictEqual(["1490"]);
+  it("should extract paintings that are hidden off-screen correctly", () => {
+    const paintingA = leonardoDaVinciArtwork["13"];
+    expect(paintingA.name).toStrictEqual("Saint Jerome in the Wilderness");
+    expect(paintingA.extensions).toStrictEqual(["1480"]);
     expect(paintingA.link).toStrictEqual(
-      "https://www.google.com/search?sxsrf=ALiCzsZsbXGm7RIxXXh5T3Q4HhxZ6-ARRw:1660268305198&q=The+Holy+Infants+Embracing&stick=H4sIAAAAAAAAAONgFuLQz9U3MMlJN1PiArGMLAxNy1O0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWPGLuZuAVe_rgnLNXINGnNyWuMvxi5iNAnpMPF5ppXkllSKcQjxcUFt99IhItXP13f0DCroDC-qMQkV-DCkumMSnMZjeJ2XZp2ji1C0KmCgaHrRoiDlIaWIBebS35uYmae4KNk-YZ1_9_bawlzcYQkVuTn5edWCppofN7_HSiopMjpZXxmv8-r9_aC_Y8YFFxFrRwkWBQYNBgMH1myOqyfwnhAi-EAI9MjRk1inC7K7vLYvWnfikNsHByMAgxGTBwMVkwajFVMHMw8i1ilQjJSFTzycyoVPPPSEvNKihVcc5OKEpMz89InsDECAKRNkO5rAQAA&sa=X&ved=2ahUKEwilncC0lcD5AhWexXMBHQFJABUQ-BZ6BQgrEKEB"
+      "https://www.google.com/search?sxsrf=ALiCzsZsbXGm7RIxXXh5T3Q4HhxZ6-ARRw:1660268305198&q=Saint+Jerome+in+the+Wilderness&stick=H4sIAAAAAAAAAONgFuLQz9U3MMlJN1PiArGMU4xN4g20lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWPGLuZuAVe_rgnLNXINGnNyWuMvxi5iNAnpMPF5ppXkllSKcQjxcUFt99IhItXP13f0DCroDC-qMQkV-DCkumMSnMZjeJ2XZp2ji1C0KmCgaHrRoiDlIaWIBebS35uYmae4KNk-YZ1_9_bawlzcYQkVuTn5edWCppofN7_HSiopMjpZXxmv8-r9_aC_Y8YFFxFrRwkWBQYNBgMH1myOqyfwnhAi-EAI9MjRk1inC7K7vLYvWnfikNsHByMAgxGTBwMVkwajFVMHMw8i1jlgoHuKVHwSi3Kz01VyMxTKMlIVQjPzElJLcpLLS6ewMYIACHZQoVvAQAA&sa=X&ved=2ahUKEwilncC0lcD5AhWexXMBHQFJABUQ-BZ6BAgrEDU"
     );
-    expect(paintingA.image).toBeNull();
+    expect(paintingA.image).toStrictEqual(
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSViu6Ce8LQ4BHszqZgbe-4p0pMq1h3BUC98bIsexl_yCtXc_RDj42&s=0"
+    );
 
-    const paintingB = leonardoDaVinciArtwork[47];
-    expect(paintingB.name).toStrictEqual(
-      "Study sheet with cats, dragon and other animals"
-    );
-    expect(paintingB.extensions).toStrictEqual(["1513"]);
+    const paintingB = leonardoDaVinciArtwork["26"];
+    expect(paintingB.name).toStrictEqual("Profile of an ancient captain");
+    expect(paintingB.extensions).toStrictEqual(["1472"]);
     expect(paintingB.link).toStrictEqual(
-      "https://www.google.com/search?sxsrf=ALiCzsZsbXGm7RIxXXh5T3Q4HhxZ6-ARRw:1660268305198&q=Study+sheet+with+cats,+dragon+and+other+animals&stick=H4sIAAAAAAAAAONgFuLQz9U3MMlJN1Pi1U_XNzRMNiqMr8irMNRSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFz9i7GbiFnj5456wVCPTpDUnrzH-YuQiQp-QDheba15JZkmlEI8UFxfcCUYiXBBHZBUUxheVmOQKXFgynVFpLqNR3K5L086xRQg6VTAwdN0IcZDS0BLkYnPJz03MzBN8lCzfsO7_e3stYS6OkMSK_Lz83EpBE43P-78DBZUUOb2Mz-z3efXeXrD_EYOCq6iVgwSLAoMGg-EjS1aH9VMYD2gxHGBkesSoSYzTRdldHrs37VtxiI2Dg1GAwYiJg8GKSYOxiomDmWcRq35wSWlKpUJxRmpqiUJ5ZkmGQnJiSbGOQkpRYnp-nkJiXopCfklGahGQlZmbmFM8gY0RAFnHP36DAQAA&sa=X&ved=2ahUKEwilncC0lcD5AhWexXMBHQFJABUQ-BZ6BQgrEJsB"
+      "https://www.google.com/search?sxsrf=ALiCzsZsbXGm7RIxXXh5T3Q4HhxZ6-ARRw:1660268305198&q=Profile+of+an+ancient+captain&stick=H4sIAAAAAAAAAONgFuLQz9U3MMlJN1Pi1k_XNzQyNM5Kik_SUspOttIvyywuTcyJTywqQWJmFpdYlecXZRc_Yuxm4hZ4-eOesFQj06Q1J68x_mLkIkKfkA4Xm2teSWZJpRCPFBcX3AFGIly8ICcYZhUUxheVmOQKXFgynVFpLqNR3K5L086xRQg6VTAwdN0IcZDS0BLkYnPJz03MzBN8lCzfsO7_e3stYS6OkMSK_Lz83EpBE43P-78DBZUUOb2Mz-z3efXeXrD_EYOCq6iVgwSLAoMGg-EjS1aH9VMYD2gxHGBkesSoSYzTRdldHrs37VtxiI2Dg1GAwYiJg8GKSYOxiomDmWcRq2xAUX5aZk6qQn6aQmIeECVnpuaVKCQnFpQAHTqBjREAW1Ba1G8BAAA&sa=X&ved=2ahUKEwilncC0lcD5AhWexXMBHQFJABUQ-BZ6BAgrEFw"
     );
-    expect(paintingB.image).toBeNull();
+    expect(paintingB.image).toStrictEqual(
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgSDdxgte17H-iodMN-limDmy5aPXwk_2nA2gCEvpyO3XrwDbsNgZ2&s=0"
+    );
   });
 });
 
@@ -160,11 +171,17 @@ describe("scrape top cyclists", () => {
       expect(name).not.toBeEmpty();
       expect(extensions).toBeArray();
       expect(link).toMatch(/^https:\/\/www.google.com\/search?.+/);
-      expect(image).toBeOneOf([null, expect.stringMatching(/^data:image\/.+/)]);
+      expect(image).toBeOneOf([
+        null,
+        expect.stringMatching(String.raw`^data:image.+`),
+        expect.stringMatching(
+          String.raw`^https://encrypted-tbn0.gstatic.com/.+`
+        ),
+      ]);
     }
   });
 
-  it("should extract cyclists with an image correctly", () => {
+  it("should extract cyclists that are not hidden off-screen correctly", () => {
     const cyclistA = topCyclists[0];
     expect(cyclistA.name).toStrictEqual("Chris Froome");
     expect(cyclistA.extensions).toStrictEqual(["Israel–Premier Tech"]);
@@ -186,14 +203,16 @@ describe("scrape top cyclists", () => {
     );
   });
 
-  it("should extract cyclists without an image correctly", () => {
+  it("should extract cyclists that are hidden off-screen correctly", () => {
     const cyclistA = topCyclists[topCyclists.length - 1];
     expect(cyclistA.name).toStrictEqual("Amanda Spratt");
     expect(cyclistA.extensions).toStrictEqual([""]);
     expect(cyclistA.link).toStrictEqual(
       "https://www.google.com/search?sxsrf=ALiCzsZSsy7fNRFa4Cb6KLFoVEIFt4Ozxw:1660269329548&q=Amanda+Spratt&stick=H4sIAAAAAAAAAD2RvU7DMBSFFURRmxaEwtapgJjz4yZpt1LmCqGyoiqxEyeNkziJlcR5CsQjMPMi9AEYGdh4A0Yo2Gzn-Pje-12737tQ9VQ3EkBQYlgjltMJ5JDEFat2ym80dUtzngrjR9DC9U4Z7I3TNB0WGidpYgoNrazYigKL1pBMRRDZNTBEgEPcIDkDbxHoWmGibEaLRJTMYNZAEbgJ2jiNvOXMDKcWBmCOW0ei8LkteW3qkjkXAUoLKtnt0mCyr19yP8QS2LUy7krTtCySKKDogC-xqBkVQpswc35a9feaNm0pd7ILSuS2f-_7oZDh6efX-9kYPr28vikP6uEyqJh2pw7XAbvPVzmKQ64ttYU6WAWpH5TVbagBVb3JCQkgi_NMuxpfquc6_D_Qc8JTGsNNmXtoI_-uO-ifjJ57x9eplyFvsqalx9jjkfINrdi54fABAAA&sa=X&ved=2ahUKEwi51vmcmcD5AhXk_XMBHWICCpEQ-BZ6BAgcEFM"
     );
-    expect(cyclistA.image).toBeNull();
+    expect(cyclistA.image).toStrictEqual(
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjjYJOEYW77O6FImc0y_SOIyVGnDlLHfzqXUmIPICErtTgP0SLAC8C&s=0"
+    );
 
     const cyclistB = topCyclists[22];
     expect(cyclistB.name).toStrictEqual("Fabian Cancellara");
@@ -201,6 +220,8 @@ describe("scrape top cyclists", () => {
     expect(cyclistB.link).toStrictEqual(
       "https://www.google.com/search?sxsrf=ALiCzsZSsy7fNRFa4Cb6KLFoVEIFt4Ozxw:1660269329548&q=Fabian+Cancellara&stick=H4sIAAAAAAAAAD2RvU7DMBSFFURR61YIwtapgJjz1_x0Q63EViEEK6oSJ3HSOI6TWEmcp0A8AjMvQh-AkYGNN2CEIpvtHB_fe79rDwcXIy3XdI8aSWlOWEFnkEOc1qzeKWCfzN3KWOTCBAk0UbNT_mqctu2R0CjLM0NoaJJyKwpM2kA8F0FiN5YuAhSjNpQz0Da0-k6YhHi0zESJB0kLReBm4cZp5S3H051GGAtx1DkShS9syWtTFy-4CMK8pJLdrnQm-wYVD2IkgV2TcFeatmOJRLHK3gok1v65hDYgcX5bDfeatl0ld7JLiuW2mYXDTP9U8Pjk6_vjbAqfX9_elUdwuIxqpt6B8X3EHop1EaYxV5fqNRitozyIqvo2Vi0AVgXGEWRpQdSr6SU41-D_gVZgntMUbqrCDzfy7_qD4fHkZXB64wepT2Yrn8AIY7_yn46UH3s6_-zzAQAA&sa=X&ved=2ahUKEwi51vmcmcD5AhXk_XMBHWICCpEQ-BZ6BAgcEEc"
     );
-    expect(cyclistB.image).toBeNull();
+    expect(cyclistB.image).toStrictEqual(
+      "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRRfZU5umaT-GzlzRDYoaip3EkQglcl3KSJoheyVWlGsPQbROziWLICu2vsrEST_E_rBCkCl7o&s=19"
+    );
   });
 });
