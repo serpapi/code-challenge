@@ -5,7 +5,7 @@ require_relative 'app/extract_items'
 html_file = File.open(ARGV[0], 'r')
 
 pp "Building HTML document"
-service = ExtractItems.new(html_file)
+service = ExtractItems.new(html_file: html_file, root_node_name: ARGV[1])
 pp "Building HTML document: Finished"
 
 pp "Extracting Knowledge Items data"

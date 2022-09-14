@@ -6,8 +6,9 @@ require_relative 'knowledge_item'
 class ExtractItems
   attr_reader :document, :output_file_path
 
-  def initialize(html_file)
+  def initialize(html_file:, root_node_name: 'items')
     @html_file = html_file
+    @root_node_name = root_node_name
     @document = build_html_document
     @output_file_path = @html_file.path.gsub!('.html', '.json')
     @output_data = []
@@ -39,7 +40,7 @@ class ExtractItems
 
   def output_results_in_json_file
     File.open(@output_file_path, 'w') do |f|
-      f.write(JSON.pretty_generate(artworks: @output_data))
+      f.write(JSON.pretty_generate("#{@root_node_name}": @output_data))
     end
   end
 end

@@ -5,7 +5,7 @@ require_relative '../app/extract_items'
 describe KnowledgeItem do
   describe '#to_h' do
     let(:html_document) do
-      ExtractItems.new(File.open('spec/fixtures/search_results.html')).document
+      ExtractItems.new(html_file: File.open('spec/fixtures/search_results.html')).document
     end
 
     let(:html_element) { html_document.css('.klitem').first }
@@ -23,7 +23,7 @@ describe KnowledgeItem do
     end
 
     it 'sets the link' do
-      expect(knowledge_item.to_h[:link]).to eq(CGI::unescapeHTML('/search?gl=us&amp;hl=en&amp;q=The+Starry+Night&amp;stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxY8YI7kFXv64JywVMGnNyWuMXlxEaBJS4WJzzSvJLKkUkuLikYLbrcEgxcUF5_EsYhUIyUhVCC5JLCqqVPDLTM8oAQDmNFnDqgAAAA&amp;npsic=0&amp;sa=X&amp;ved=0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYILw'))
+      expect(knowledge_item.to_h[:link]).to eq(CGI::unescapeHTML('https://www.google.com/search?gl=us&amp;hl=en&amp;q=The+Starry+Night&amp;stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxY8YI7kFXv64JywVMGnNyWuMXlxEaBJS4WJzzSvJLKkUkuLikYLbrcEgxcUF5_EsYhUIyUhVCC5JLCqqVPDLTM8oAQDmNFnDqgAAAA&amp;npsic=0&amp;sa=X&amp;ved=0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYILw'))
     end
 
     it 'sets the image' do
