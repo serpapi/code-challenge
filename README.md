@@ -1,27 +1,40 @@
 # Extract Van Gogh Paintings Code Challenge
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+This repository contains a script for extracting van gogh paintings from a search results html page.
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+The same script works more generally for google search results page containing a **knowledge graph carrousel** of items.
+## Running Instructions
 
-## Instructions
+### 1. Install the gems
+```shell
+bundle install
+```
+### 2. Run the script
+Run the extract_items script with the following 2 arguments:
+- path_to_html_file: The path to the HTML file from which data will get extracted
+- root_node_name: The node name in the result JSON file. Eg: 'artworks'
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+```shell
+extract_items path_to_html_file.html root_node_name
+```
 
-Fork this repository and make a PR when ready. 
-Do not use more than 4 hours of your time. 
+PS: You might need to give execution right to the script file, before being able to run it:
+```shell
+chmod +x extract_items.sh
+```
+### 3. Check the output json file
 
-Programming language wise, Ruby is suggested but feel free to use whatever you feel like.
+Running `extract_items file.html artworks` will produce a JSON file with the same name _file.json_
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
+## Testing
+### Automated tests
+Tests are under the tests folder.
+You can run the whole test suite with:
+```
+  rspec spec
+```
 
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
+PS:
+- We use the watir gem, to render the HTML file, in order to let javascript dom changes to be processed. This is not an additional request, but a rendering of a local saved html file: `file:///`
+- For [watir](https://github.com/watir/watir) to run, you need to install the chromedriver from Selenium. See [here](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver).
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
