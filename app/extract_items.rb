@@ -4,11 +4,12 @@ require 'watir'
 require_relative 'knowledge_item'
 
 class ExtractItems
-  attr_reader :document
+  attr_reader :document, :output_file_path
 
   def initialize(html_file)
     @html_file = html_file
     @document = build_html_document
+    @output_file_path = @html_file.path.gsub!('.html', '.json')
     @output_data = []
   end
 
@@ -37,10 +38,7 @@ class ExtractItems
   end
 
   def output_results_in_json_file
-    file_path = @html_file.path
-    file_path.gsub!('.html', '.json')
-
-    File.open(file_path, 'w') do |f|
+    File.open(@output_file_path, 'w') do |f|
       f.write(JSON.pretty_generate(artworks: @output_data))
     end
   end
