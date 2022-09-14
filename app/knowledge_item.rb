@@ -25,7 +25,7 @@ class KnowledgeItem
   end
 
   def link
-    @html_element.attributes['href'].value
+    "https://www.google.com#{@html_element.attributes['href'].value}"
   end
 
   def image
