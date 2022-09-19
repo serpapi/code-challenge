@@ -1,4 +1,4 @@
-"artworks": [
+{ "artworks": [
   {
     "name": "The Starry Night",
     "extensions": [
@@ -387,3 +387,4 @@
     "image": null
   }
 ]
+}
