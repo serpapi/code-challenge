@@ -1,5 +1,4 @@
 require 'nokogiri'
-require 'byebug'
 
 class Parser
   def initialize(filename)
