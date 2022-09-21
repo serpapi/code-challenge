@@ -7,18 +7,18 @@ class Parser
 
   def parse
     array = []
-    @doc.css('div#appbar g-scrolling-carousel div div').children.each do |item|
+    @doc.css('g-scrolling-carousel a').first.parent.parent.children.each_with_index do |item, i|
       hash = {}
-      hash['name'] = item.css('div div')[1].content if item.css('div div')[1]
-      hash['extensions'] = [item.css('div div')[2].content] if item.css('div div')[2]
-      item.css('a').each do |i|
-        hash['link'] = "https://www.google.com#{i['href']}"
+      year_selector = item.css('div.ellip.klmeta, div.MVXjze.ellip.buTsJf')
+      if year_selector.size > 0
+        hash['extensions'] = [year_selector[0].text.strip]
       end
-      next unless hash['link']
-      item.css('img').each do |i|
+      link = item.css('a').first
+      hash['name'] = link['aria-label'] || link['title']
+      hash['link'] = "https://www.google.com#{link['href']}"
+      item.css('img').each do |img|
         hash['image'] = nil
-        key = i.attr('id').tr('kximg', '').to_i
-        hash['image'] = image_array[key][0].gsub('\\', '') if image_array[key] and key < 8
+        hash['image'] = image_array[i][0].gsub('\\', '') if image_array[i] and i < 8 # expected results only have 8 thumbnail images
       end
       array << hash
     end
