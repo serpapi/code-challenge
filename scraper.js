@@ -11,9 +11,19 @@ const scraperObject = {
             console.log("loaded page");
             let text = await page.$$eval('.klitem', elements => {
                 return elements.map(e => {
-                    let title = e.getAttribute('aria-label');
-                    
-                    return title;
+                    let divs = e.querySelectorAll(':scope > div');
+                    let titleNode = divs[1].querySelector('.kltat');
+                    let titleText;
+                    if(titleNode != null){
+                        // let nodeClass = titleNode.getAttribute('class');
+                        // console.log(nodeClass);
+                        titleText = titleNode.textContent;
+                    }
+                    else{
+                        console.log("could not find element with class .kltat")
+                    }
+                    // let title = e.getAttribute('aria-label');
+                    return titleText;
                 })
                 
             });
