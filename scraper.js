@@ -13,17 +13,13 @@ const scraperObject = {
                 return elements.map(e => {
                     let divs = e.querySelectorAll(':scope > div');
                     let titleNode = divs[1].querySelector('.kltat');
-                    let titleText;
-                    if(titleNode != null){
-                        // let nodeClass = titleNode.getAttribute('class');
-                        // console.log(nodeClass);
-                        titleText = titleNode.textContent;
+                    let titleText = titleNode.textContent;
+                    let extentionNode = divs[1].querySelector('.klmeta');
+                    let extensionText = "";
+                    if(extentionNode != null){
+                        extensionText = extentionNode.textContent;
                     }
-                    else{
-                        console.log("could not find element with class .kltat")
-                    }
-                    // let title = e.getAttribute('aria-label');
-                    return titleText;
+                    return [titleText, extensionText];
                 })
                 
             });
