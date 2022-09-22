@@ -1,6 +1,4 @@
-
 const path = 'C:\\Users\\schaf\\git-repos\\serp-api-code-challenge\\files\\van-gogh-paintings.html';
-const items = [];
 const scraperObject = {
 	url: path,
 	async scrape(browser){
@@ -9,32 +7,33 @@ const scraperObject = {
 		await page.goto(this.url);
             
             console.log("loaded page");
-            let text = await page.$$eval('.klitem', elements => {
+            let data = await page.$$eval('.klitem', elements => {
                 return elements.map(e => {
+                    // extract google search link
                     let searchLink = e.getAttribute('href');
-                    
+                    //extract title
                     let divs = e.querySelectorAll(':scope > div');
                     let titleNode = divs[1].querySelector('.kltat');
-                    let titleText = titleNode.textContent;
-                    
+                    let title = titleNode.textContent;
+                    //extract extensions
                     let extentionNode = divs[1].querySelector('.klmeta');
-                    let extensionText;
+                    let extensions = [];
                     if(extentionNode != null){
-                        extensionText = extentionNode.textContent;
+                        extensions.push(extentionNode.textContent);
                     }
-                    
+                    //extract thumbnails
                     let img = e.querySelector('img');
                     let imgSrc;
                     if(img!=null){
                         imgSrc = img.getAttribute('src');
                     }
 
-                    return [titleText, extensionText, searchLink, imgSrc];
+                    return {title, extensions, searchLink, imgSrc};
                 })
                 
             });
-            let titles = await text;
-            console.log(titles);
+            console.log(data);
+            return data;
     }
         
 		
