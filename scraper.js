@@ -11,15 +11,18 @@ const scraperObject = {
             console.log("loaded page");
             let text = await page.$$eval('.klitem', elements => {
                 return elements.map(e => {
+                    let searchLink = e.getAttribute('href');
                     let divs = e.querySelectorAll(':scope > div');
                     let titleNode = divs[1].querySelector('.kltat');
                     let titleText = titleNode.textContent;
                     let extentionNode = divs[1].querySelector('.klmeta');
                     let extensionText = "";
+                    let img = e.querySelector('img');
+                    let imgSrc = img.getAttribute('src');
                     if(extentionNode != null){
                         extensionText = extentionNode.textContent;
                     }
-                    return [titleText, extensionText];
+                    return [titleText, extensionText, searchLink, imgSrc];
                 })
                 
             });
