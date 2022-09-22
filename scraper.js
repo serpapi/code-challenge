@@ -9,6 +9,16 @@ const scraperObject = {
 		await page.goto(this.url);
             
             console.log("loaded page");
+            let text = await page.$$eval('.klitem', elements => {
+                return elements.map(e => {
+                    let title = e.getAttribute('aria-label');
+                    
+                    return title;
+                })
+                
+            });
+            let titles = await text;
+            console.log(titles);
     }
         
 		
