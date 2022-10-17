@@ -1,27 +1,38 @@
-# Extract Van Gogh Paintings Code Challenge
+This repository contains a script for extracting van gogh paintings from a search results html page.
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+The script is written in ruby to scrap data from google search result page carousel of cards. 
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+## Setup Instructions
 
-## Instructions
+### 1. Install ruby
+```shell 
+rvm install ruby-2.6.5
+```
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+### 2. Install the gems
+Move to project directory and execute
+```shell
+bundle install
+```
+## Execution Instructions
+### 1. Change access permission of start.sh file to exectuable
+```shell
+chmod +x start.sh
+```
 
-Fork this repository and make a PR when ready. 
-Do not use more than 4 hours of your time. 
+### 2. Execute start script
+```shell
+./start html_file_path
+```
+* replace html_file_path with actual path 
 
-Programming language wise, Ruby is suggested but feel free to use whatever you feel like.
+### 3. You can view the output by navigating to the providied path.
+You will see the path of output file on console output. 
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
+## Testing
+### Execute the following command to execute Unit Test Cases
+```shell
+  rspec spec
+```
 
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
-
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+## Enjoy!
