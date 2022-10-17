@@ -22,7 +22,7 @@ class InformationCard
 	end
 
 	def link
-		# TODO: add xpath of link code
+		@html_element['href'].include?('www.google.com') ?  @html_element['href'] : "https://www.google.com" + @html_element['href']
 	end
 
 	def image
