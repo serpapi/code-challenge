@@ -22,11 +22,11 @@ class ArtworksParser
   private
 
   def paintings_nodes
-    carousel_area_node.css('a.klitem')
+    carousel_area_node.css('a.klitem, a:has(div.klitem)')
   end
 
   def carousel_area_node
-    doc.css('.klcc')
+    doc.css('.klcc, g-scrolling-carousel')
   end
 
   def name(target)
@@ -39,11 +39,20 @@ class ArtworksParser
   end
 
   def link(target)
-    "https://www.google.com#{target['href']}"
+    if target['href'] =~ /^https:/
+      target['href']
+    else
+      "https://www.google.com#{target['href']}"
+    end
   end
 
   def extensions(target)
-    Array(target.at_css('.klmeta')&.text)
+    meta_node = target.at_css('.klmeta')
+    if meta_node
+      Array(meta_node&.text)
+    else
+      Array(target.xpath('.//*').last&.text)
+    end
   end
 
   def images_srcs

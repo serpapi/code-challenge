@@ -5,7 +5,7 @@ class Artwork
 
   def initialize(name:, extensions:, link:, image:)
     @name = name
-    @extensions = extensions
+    @extensions = extensions.delete_if(&:empty?)
     @link = link
     @image = image
   end

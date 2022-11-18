@@ -15,5 +15,27 @@ RSpec.describe ArtworksParser do
         expect(result).to eq JSON.parse(File.read(expected_path), symbolize_names: true)[:artworks]
       end
     end
+
+    context 'when extracts HBO TV Shows' do
+      let(:path) { './files/hbo_tv_shows.html' }
+      let(:result) { parser.run }
+
+      it 'returns parsed tv shows' do
+        expect(result).to all(have_attributes(
+          name: be_a(String),
+          extensions: be(nil).or(be_a(Array)),
+          link: be_a(String).and(start_with('https://www.google.com')),
+          image: be(nil).or(be_a(String).and(start_with('data:image')))
+        ))
+      end
+
+      it 'returns correct data fields' do
+        show = result.first
+        expect(show.name).to eq 'House of the Dragon'
+        expect(show.link).to start_with 'https://www.google.com/search?q=House+of+the+Dragon'
+        expect(show.extensions).to match_array ["Since 2022"]
+        expect(show.image).to start_with 'data:image/jpeg;base64,/9j/4A'
+      end
+    end
   end
 end
