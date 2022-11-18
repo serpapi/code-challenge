@@ -37,5 +37,27 @@ RSpec.describe ArtworksParser do
         expect(show.image).to start_with 'data:image/jpeg;base64,/9j/4A'
       end
     end
+
+    context 'when extracts Programming Books' do
+      let(:path) { './files/programming-books.html' }
+      let(:result) { parser.run }
+
+      it 'returns parsed books' do
+        expect(result).to all(have_attributes(
+          name: be_a(String),
+          extensions: be(nil).or(be_a(Array)),
+          link: be_a(String).and(start_with('https://www.google.com')),
+          image: be(nil).or(be_a(String).and(start_with('data:image')))
+        ))
+      end
+
+      it 'returns correct data fields' do
+        show = result.first
+        expect(show.name).to eq 'Clean Code'
+        expect(show.link).to start_with 'https://www.google.com/search?biw=1503&bih=790&q=Clean+Code'
+        expect(show.extensions).to match_array ["Robert Cecil Martin, 2008"]
+        expect(show.image).to start_with 'data:image/jpeg;base64,/9j/4A'
+      end
+    end
   end
 end
