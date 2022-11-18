@@ -8,9 +8,10 @@ RSpec.describe ArtworksParser do
     context 'when extracts Van Gogh artworks' do
       let(:path) { './files/van-gogh-paintings.html' }
       let(:expected_path) { './files/expected-array.json' }
-      let(:result) { parser.run }
+      let(:data) { parser.run }
 
       it 'returns the expected json result' do
+        result = data.map(&:to_h)
         expect(result).to eq JSON.parse(File.read(expected_path), symbolize_names: true)[:artworks]
       end
     end
