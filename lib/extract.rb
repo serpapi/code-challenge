@@ -5,19 +5,17 @@ def extract(html_string)
 	parsed = Nokogiri::HTML.parse(html_string) 
 	# the preview image base64s are embedded in js, extract them!, key is id value is the image base64
 	image_base64s = {}
-	if true
-		image_base64s_js = nil
-		parsed.css("script").each do |possible_image_js|
-			script_text = possible_image_js.inner_html
-			if script_text.include? "_setImagesSrc"
-				image_base64s_js = script_text
-				scanned = image_base64s_js.scan(/'(data:image\/jpeg;base64,\S+)';\s*var ii\s*=\s*\['([a-z0-9_A-Z]*)'\]/)
+	image_base64s_js = nil
+	parsed.css("script").each do |possible_image_js|
+		script_text = possible_image_js.inner_html
+		if script_text.include? "_setImagesSrc"
+			image_base64s_js = script_text
+			scanned = image_base64s_js.scan(/'(data:image\/jpeg;base64,\S+)';\s*var ii\s*=\s*\['([a-z0-9_A-Z]*)'\]/)
 
-				scanned.each do |result|
-					subbed = result[0].gsub('\\','') # something funky
-					image_base64s[result[1]] = subbed
-				end			
-			end
+			scanned.each do |result|
+				subbed = result[0].gsub('\\','') # something funky
+				image_base64s[result[1]] = subbed
+			end			
 		end
 	end
 
@@ -45,11 +43,8 @@ def extract(html_string)
 				artworks.append(new_artwork)
 			end
 		end
-
-			else
+	else
 		items_iter.each do |painting|
-			#puts painting.search("//text()").map { |item| item.to_s.length > 50 ? nil : item.text }
-			#puts painting.inner_html
 			attributes = painting.attributes
 			if attributes.key?("title") and attributes.key?("href")
 				new_artwork = {}
@@ -73,5 +68,3 @@ def extract(html_string)
 	end
 	return artworks
 end
-
-
