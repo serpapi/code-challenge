@@ -54,3 +54,4 @@ build-iPhoneSimulator/
 *.pyc
 python_scraper/__pycache__/
 python_scraper/env/*
+python_scraper/geckodriver.log
