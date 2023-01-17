@@ -13,7 +13,8 @@ class TestGoogleCarouselScraper(unittest.TestCase):
     
     def test_extract(self):
         g = GoogleCarouselScraper()
-        g.extract("./../files/van-gogh-paintings.html", "./output/artworks_array.json")
+        # g.extract("./../files/van-gogh-paintings.html", "./output/artworks_array.json")
+        g.extract("van-gogh-paintings.html", "./output/artworks_array.json")
 
         self.assertIsNotNone(g.html_file)
         self.assertIsNotNone(g.json_file_name)

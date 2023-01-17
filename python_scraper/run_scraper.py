@@ -7,4 +7,5 @@ if __name__ == '__main__':
     g = GoogleCarouselScraper()
 
     # initialize scraping
-    g.extract("./../files/van-gogh-paintings.html", "./output/artworks_array.json")
+    # g.extract("./../files/van-gogh-paintings.html", "./output/artworks_array.json")
+    g.extract("van-gogh-paintings.html", "./output/artworks_array.json")

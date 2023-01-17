@@ -1,4 +1,5 @@
 import json
+from selenium import webdriver
 from bs4 import BeautifulSoup
 
 class GoogleCarouselScraper:
@@ -13,11 +14,16 @@ class GoogleCarouselScraper:
         self.html_file = html_file
         self.json_file_name = json_file_name
 
+        # # read file and parse HTML w/ BeautifulSoup
+        # with open(self.html_file, 'r') as f:
+        #     contents = f.read()
+        #     self.soup = BeautifulSoup(contents, 'html.parser')
 
-        # read file and parse HTML w/ BeautifulSoup
-        with open(self.html_file, 'r') as f:
-            contents = f.read()
-            self.soup = BeautifulSoup(contents, 'html.parser')
+        # Start server for HTML file, so that JS can run and update each item's href
+        browser = webdriver.Firefox()
+        browser.get("http://localhost:8000/" + self.html_file)
+        self.soup = BeautifulSoup(browser.page_source, "html.parser")
+        browser.close()
         
         # identify scrolling carousel and fetch all items
         carousel = self.soup.find('div', {'id': 'appbar'}).find('g-scrolling-carousel')
