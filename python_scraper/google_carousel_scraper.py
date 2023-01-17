@@ -29,4 +29,21 @@ class GoogleCarouselScraper:
         title = link_container.get('aria-label')
         obj["name"] = title.strip()
 
+        # parse year
+        year_div = link_container.find('div', {'class': 'ellip'})
+        if year_div != None:
+            year_produced = year_div.text.strip()
+            obj["extensions"] = [year_produced]
+
+        
+        href = link_container.get("href")
+        obj["link"] = href.strip()
+
+        image_container = link_container.find("img")
+        image_src = image_container.get("src")
+        if image_src != None:
+            obj["image"] = image_src.strip()
+        else:
+            obj["image"] = None
+
         self.results.append(obj)
