@@ -5,6 +5,7 @@ class GoogleCarouselScraper:
         self.results = []
         self.html_file = None
         self.soup = None
+        self.google_url_prepend = "https://www.google.com"
     
     def extract(self, html_file):
         self.html_file = html_file
@@ -37,7 +38,7 @@ class GoogleCarouselScraper:
 
         
         href = link_container.get("href")
-        obj["link"] = href.strip()
+        obj["link"] = self.google_url_prepend + href.strip()
 
         image_container = link_container.find("img")
         image_src = image_container.get("src")

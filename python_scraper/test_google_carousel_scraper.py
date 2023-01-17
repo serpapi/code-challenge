@@ -2,6 +2,9 @@ import unittest
 from bs4 import BeautifulSoup
 from google_carousel_scraper import GoogleCarouselScraper
 
+GOOGLE_URL_PREPEND = "https://www.google.com"
+
+
 class TestGoogleCarouselScraper(unittest.TestCase):
     def setUp(self):
         pass
@@ -33,7 +36,7 @@ class TestGoogleCarouselScraper(unittest.TestCase):
         new_result = g.results[-1]
         self.assertEqual(new_result["name"], "The Starry Night")
         self.assertEqual(new_result["extensions"], ["1889"])
-        self.assertEqual(new_result["link"], "/search?Msyi0sTc")
+        self.assertEqual(new_result["link"], GOOGLE_URL_PREPEND + "/search?Msyi0sTc")
         self.assertEqual(new_result["image"], "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
 
         # new carousel item (this one doesn't contain a year)
@@ -48,7 +51,7 @@ class TestGoogleCarouselScraper(unittest.TestCase):
         new_result = g.results[-1]
         self.assertEqual(new_result["name"], "Sunflowers")
         self.assertRaises(KeyError, lambda: new_result["extensions"])
-        self.assertEqual(new_result["link"], "/search?0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYINQ")
+        self.assertEqual(new_result["link"], GOOGLE_URL_PREPEND + "/search?0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYINQ")
         self.assertEqual(new_result["image"], "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
 
 
