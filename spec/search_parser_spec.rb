@@ -12,6 +12,14 @@ RSpec.describe SearchParser, 'search parser' do
 
     it 'parses the same number of artwork items from the carousel' do
       expect(@json_result["artworks"].length).to eq @expected["artworks"].length
+
+      expected = @expected["artworks"]
+      @json_result["artworks"].each_with_index do |result, i|
+        #expect image because image changed format since the static google file was produced
+        result.except('image').each do |key|
+          expect(result[key]).to eq expected[i][key]
+        end
+      end
     end
 
     it 'works with Christopher Nolan movies too' do
