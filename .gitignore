@@ -49,3 +49,8 @@ build-iPhoneSimulator/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 .DS_Store
+
+# python scraper
+*.pyc
+python_scraper/__pycache__/
+python_scraper/env/*
