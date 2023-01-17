@@ -14,4 +14,19 @@ class GoogleCarouselScraper:
             contents = f.read()
             self.soup = BeautifulSoup(contents, 'html.parser')
         
-        # print(self.soup)
+        # identify scrolling carousel and send each item to parse_carousel_item() method
+        carousel = self.soup.find('div', {'id': 'appbar'}).find('g-scrolling-carousel')
+        carousel_items = carousel.findAll('div', {'class': 'MiPcId'})
+
+        for carousel_item in carousel_items:
+            self.parse_carousel_item(carousel_item)
+    
+    def parse_carousel_item(self, carousel_item):
+        obj = {}
+    
+        link_container = carousel_item.find('a')
+
+        title = link_container.get('aria-label')
+        obj["name"] = title.strip()
+
+        self.results.append(obj)
