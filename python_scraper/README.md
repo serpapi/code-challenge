@@ -11,3 +11,6 @@
 
 #### Run Tests
 `$ python -m unittest test_google_carousel_scraper.py`
+
+#### Scrape HTML
+`$ python run_scraper.py`
