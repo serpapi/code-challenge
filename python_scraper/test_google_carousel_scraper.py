@@ -1,3 +1,5 @@
+import os
+import json
 import unittest
 from bs4 import BeautifulSoup
 from google_carousel_scraper import GoogleCarouselScraper
@@ -11,9 +13,10 @@ class TestGoogleCarouselScraper(unittest.TestCase):
     
     def test_extract(self):
         g = GoogleCarouselScraper()
-        g.extract("./../files/van-gogh-paintings.html")
+        g.extract("./../files/van-gogh-paintings.html", "./output/artworks_array.json")
 
         self.assertIsNotNone(g.html_file)
+        self.assertIsNotNone(g.json_file_name)
         self.assertIsNotNone(g.soup)
     
     def test_parse_carousel_item(self):
@@ -53,6 +56,29 @@ class TestGoogleCarouselScraper(unittest.TestCase):
         self.assertRaises(KeyError, lambda: new_result["extensions"])
         self.assertEqual(new_result["link"], GOOGLE_URL_PREPEND + "/search?0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYINQ")
         self.assertEqual(new_result["image"], "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+    
+    def test_write_to_json_file(self):
+        json_file_name = "./output/test_output.json"
+        g = GoogleCarouselScraper()
+        g.json_file_name = json_file_name
+
+        # if test file already exists, delete it so we can test writing file functionality
+        if os.path.isfile(json_file_name):
+            os.remove(json_file_name)
+
+        # dummy data for JSON file
+        json_items = [ 
+            { "name": "The Starry Night", "extensions": ["1889"] }, 
+            { "name": "Irises", "extensions": ["1889"] },
+            { "name": "Sunflowers" }
+        ]
+
+        # set results to dummy data and then tell class to write results to JSON file
+        g.results = json_items
+        g.write_to_json_file()
+        
+        # Assert that new file exists
+        self.assertEqual(True, os.path.isfile(json_file_name))
 
 
 if __name__ == '__main__':

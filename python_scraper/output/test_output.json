@@ -1,0 +1,19 @@
+{
+  "artworks": [
+    {
+      "name": "The Starry Night",
+      "extensions": [
+        "1889"
+      ]
+    },
+    {
+      "name": "Irises",
+      "extensions": [
+        "1889"
+      ]
+    },
+    {
+      "name": "Sunflowers"
+    }
+  ]
+}
