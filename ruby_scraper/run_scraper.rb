@@ -6,5 +6,5 @@ g = GoogleCarouselScraper.new("../files/van-gogh-paintings.html")
 results = g.extract()
 
 File.open("output/artworks_array.json", "w") do |f|
-  f.write(results.to_json)
+  f.write(JSON.pretty_generate(results))
 end
