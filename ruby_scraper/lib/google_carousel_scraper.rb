@@ -29,11 +29,19 @@ class GoogleCarouselScraper
   def parse_carousel_item(carousel_item)
     # parse data from carousel item
     title = carousel_item.css(".kltat").text
+    year = carousel_item.css(".ellip").text
+    href = carousel_item["href"]
+    image = carousel_item.xpath("//g-img/img")[0].attr("src")
 
     # create hash with data
     h = {
-      name: title
+      name: title,
+      link: href,
+      image: image
     }
+
+    # add year to extensions, only if value exists
+    h[:extensions] = [year] unless year.empty?
 
     # add hash to @results array
     @results.push(h)

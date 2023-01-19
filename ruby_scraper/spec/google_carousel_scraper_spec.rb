@@ -20,7 +20,18 @@ RSpec.describe GoogleCarouselScraper do
       it 'parses the title correctly' do
         expect(@parsed_item[:name]).to eq("The Starry Night")
       end
-      
+
+      it 'parses the href link correctly' do
+        expect(@parsed_item[:link]).to eq("/search?Msyi0sTc")
+      end
+
+      it 'parses the image correctly' do
+        expect(@parsed_item[:image]).to eq("data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+      end
+
+      it 'parses the year correctly, when it exists' do
+        expect(@parsed_item[:extensions]).to eq(["1889"])
+      end
     end
   end
 end
