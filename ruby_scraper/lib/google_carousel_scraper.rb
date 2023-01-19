@@ -24,6 +24,7 @@ class GoogleCarouselScraper
       self.parse_carousel_item(carousel_item)
     end
 
+    return { "artworks": @results }
   end
 
   def parse_carousel_item(carousel_item)
