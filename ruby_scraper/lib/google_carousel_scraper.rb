@@ -32,7 +32,7 @@ class GoogleCarouselScraper
     title = carousel_item.css(".kltat").text
     year = carousel_item.css(".ellip").text
     href = carousel_item["href"]
-    image = carousel_item.xpath("//g-img/img")[0].attr("src")
+    image = carousel_item.css("g-img img")[0].attr('src')
 
     # create hash with data
     h = {
