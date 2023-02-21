@@ -26,8 +26,7 @@ class ArtworkCreator
         name: name(element),
         extensions: extensions(element),
         link: link(element),
-        image: image(element),
-        thumbnail: thumbnail(element)
+        image: image(element)
       ).to_h
       arts << art
     end
@@ -50,10 +49,6 @@ class ArtworkCreator
   def image(element)
     id = element.css('img').attribute('id')&.value
     images[id]
-  end
-
-  def thumbnail(element)
-    element.css('img').attribute('src')&.value
   end
 
   def images
