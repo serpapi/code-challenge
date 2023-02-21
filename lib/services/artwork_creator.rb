@@ -21,7 +21,7 @@ class ArtworkCreator
 
   def artworks
     arts = []
-    file.css('.klitem').each do |element|
+    file.css('.klitem-tr').each do |element|
       art = Artwork.new(
         name: name(element),
         extensions: extensions(element),
