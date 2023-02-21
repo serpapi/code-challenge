@@ -38,8 +38,7 @@ class ArtworkCreator
   end
 
   def extensions(element)
-    es = element.css('.cp7THd').children.css('.FozYP') || element.css('.klmeta')
-    es.map { |e| e.text.strip }
+    element.css('.cp7THd').children.css('.FozYP').map { |e| e.text.strip }
   end
 
   def link(element)
