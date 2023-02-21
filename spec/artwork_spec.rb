@@ -18,6 +18,7 @@ describe 'Artworks JSON' do
         expect(art['extensions']).to be_an(Array).or be(nil)
         expect(art['link']).to be_a(String).and start_with('https://www.google.com')
         expect(art['image']).to be_a(String).or be(nil)
+        expect(art['thumbnail']).to be_a(String)
         expect(art['image']).to start_with('data:image/jpeg') unless art['image'].nil?
       end
     end
@@ -28,6 +29,7 @@ describe 'Artworks JSON' do
       expect(art['extensions']).to eq(['1888'])
       expect(art['link']).to start_with('https://www.google.com')
       expect(art['image']).to start_with('data:image/jpeg')
+      expect(art['thumbnail']).to start_with('data:image/jpeg')
     end
   end
 
@@ -41,6 +43,7 @@ describe 'Artworks JSON' do
       expect(art['extensions']).to eq(['1937'])
       expect(art['link']).to start_with('https://www.google.com')
       expect(art['image']).to start_with('data:image/jpeg')
+      expect(art['thumbnail']).to start_with('data:image/jpeg')
     end
   end
 
@@ -54,6 +57,7 @@ describe 'Artworks JSON' do
       expect(art['extensions']).to eq(['1876'])
       expect(art['link']).to start_with('https://www.google.com')
       expect(art['image']).to start_with('data:image/jpeg')
+      expect(art['thumbnail']).to start_with('data:image/jpeg')
     end
   end
 end
