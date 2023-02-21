@@ -3,15 +3,16 @@ require 'json'
 require './lib/models/artwork'
 
 class ArtworkCreator
-  attr_reader :file, :path
+  attr_reader :file, :from_path, :to_path
 
-  def initialize(path)
-    @path = path
-    @file = Nokogiri::HTML5(File.read(path))
+  def initialize(from_path, to_path)
+    @from_path = from_path
+    @to_path = to_path
+    @file = Nokogiri::HTML5(File.read(from_path))
   end
 
   def to_json_file
-    File.open('lib/files/artworks.json', 'w') do |file|
+    File.open(to_path, 'w') do |file|
       file.write(JSON.pretty_generate('artworks': artworks))
     end
   end
@@ -37,11 +38,13 @@ class ArtworkCreator
   end
 
   def extensions(element)
-    element.css('.klmeta').map { |e| e.text.strip }
+    es = element.css('.cp7THd').children.css('.FozYP') || element.css('.klmeta')
+    es.map { |e| e.text.strip }
   end
 
   def link(element)
-    "https://www.google.com#{element.attribute('href')&.value}"
+    link = element.attribute('href')&.value
+    link.start_with?('https') ? link : "https://www.google.com#{link}"
   end
 
   def image(element)
