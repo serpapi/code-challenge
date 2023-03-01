@@ -67,3 +67,42 @@ page = @agent.get(file_url)
 
 # The content we want to scrape is in the <div>
 binding.pry
+
+content = page.search('g-scrolling-carousel/div/div')
+# Scraper assumptions, that g-scrolling-carousel has a div that nests another div
+# This 2nd div has all of the items that we want
+
+def parse_content(div)
+  # Expects a div that's an carousel "element"
+
+  # Source: content.children[0].search('a').first <> div.search('a').first
+  #
+  # {"class"=>#(Attr:0xc8b4 { name = "class", value = "klitem" }),
+  #  "aria-label"=>#(Attr:0xc8c8 { name = "aria-label", value = "The Starry Night" }),
+  #  "aria-posinset"=>#(Attr:0xc8dc { name = "aria-posinset", value = "1" }),
+  #  "aria-setsize"=>#(Attr:0xc8f0 { name = "aria-setsize", value = "51" }),
+  #  "data-sp"=>#(Attr:0xc904 { name = "data-sp", value = "0,17,26" }),
+  #  "href"=>
+  #   #(Attr:0xc918 {
+  #     name = "href",
+  #     value = "/search?gl=us&hl=en&q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxY8YI7kFXv64JywVMGnNyWuMXlxEaBJS4WJzzSvJLKkUkuLikYLbrcEgxcUF5_EsYhUIyUhVCC5JLCqqVPDLTM8oAQDmNFnDqgAAAA&npsic=0&sa=X&ved=0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYILw"
+  #     }),
+  #  "style"=>#(Attr:0xc92c { name = "style", value = "height:193px;width:120px" }),
+  #  "title"=>#(Attr:0xc940 { name = "title", value = "The Starry Night (1889)" }),
+  #  "role"=>#(Attr:0xc954 { name = "role", value = "button" }),
+  #  "data-hveid"=>#(Attr:0xc968 { name = "data-hveid", value = "47" }),
+  #  "data-ved"=>#(Attr:0xc97c { name = "data-ved", value = "0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYILw" })}
+
+  # Looks like the actual hierarchy is:
+  # div/a has 2 divs
+  # div/a/div[0]:
+  # - has image information
+  #   - data-key: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq3gOqqnprlNb3SdEgrKAR_0sWrsu0kO0aNnwE3yRwmA_cf-PvBvdz4eInim3FDmRn7E0"
+  #   ^ looks like a google url
+  #   - src: base64 image data
+  #
+  # div/a/div[1]
+  # - has 2 divs
+  # - 1st div has the name of the art piece
+  # - 2nd div has text of the year (extension)
+end
