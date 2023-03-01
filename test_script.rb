@@ -22,6 +22,14 @@ pairs.each do |expected, generated|
   end
 end
 
+# Debug code
+expected, generated = pairs[0]
+expected == generated
+
+require 'pry-byebug'
+binding.pry
+
+
 puts "Results"
 puts "#{matches.count} matching:"
 puts matches.join(', ')

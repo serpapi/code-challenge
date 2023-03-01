@@ -4,6 +4,7 @@ require 'ferrum'
 require 'pry-byebug' # For now while doing doing dev
 require 'pry-rescue'
 require 'nokogiri'
+require 'json'
 
 # Make sure chrome is in browser path, or pass it as ENV like:
 # `BROWSER_PATH="/Applications/Google Chrome.app/Contents/MacOS" sudo pry`
@@ -129,7 +130,8 @@ end
 generated_result = { 'artworks' => collected_results }
 
 File.open('generated-result.json', 'wb') do |file|
-  file.puts generated_result.to_json
+
+  file.puts JSON.pretty_generate(generated_result)
 end
 
 browser.reset
