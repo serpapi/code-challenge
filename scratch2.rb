@@ -8,32 +8,6 @@ require 'nokogiri'
 # `BROWSER_PATH="/Applications/Google Chrome.app/Contents/MacOS" sudo pry`
 # ^ there's sudo pry here because of permissions stuff. I'd dig into this when there's more time to make it easier
 
-FILE_PATH = File.expand_path('files/van-gogh-paintings.html', File.dirname(__FILE__))
-FILE_URL = "file:///#{FILE_PATH}"
-
-NODES_XPATH = '//g-scrolling-carousel/div/div/div' # Gets the carousel items
-
-# Ferrum options
-options = {
-  headless: false
-}
-
-browser = Ferrum::Browser.new(options)
-browser.go_to(FILE_URL)
-
-collected_results = []
-
-carousel_items = browser.xpath(NODES_XPATH)
-
-carousel_items.each do |item|
-  raw_html = item.evaluate('this.outerHTML')
-  result = parse_raw_html(raw_html)
-  data = extract_result_data(result)
-
-  collected_results << data
-end
-
-pp collected_results
 
 def parse_raw_html(html)
   # Nokogiri::HTML adds extra tags (i.e. <body>)
@@ -100,3 +74,33 @@ def extract_result_data(result)
     "image" => image
   }
 end
+
+FILE_PATH = File.expand_path('files/van-gogh-paintings.html', File.dirname(__FILE__))
+FILE_URL = "file:///#{FILE_PATH}"
+
+NODES_XPATH = '//g-scrolling-carousel/div/div/div' # Gets the carousel items
+
+# Ferrum options
+options = {
+  headless: false
+}
+
+browser = Ferrum::Browser.new(options)
+browser.go_to(FILE_URL)
+
+collected_results = []
+
+carousel_items = browser.xpath(NODES_XPATH)
+
+carousel_items.each do |item|
+  raw_html = item.evaluate('this.outerHTML')
+  result = parse_raw_html(raw_html)
+  data = extract_result_data(result)
+
+  collected_results << data
+end
+
+pp collected_results
+
+browser.reset
+browser.quit
