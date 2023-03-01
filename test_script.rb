@@ -16,10 +16,10 @@ generated_file = File.expand_path('generated-result.json', File.dirname(__FILE__
 if File.exist?(generated_file)
   puts "Detected previous generated-result.json, deleting it and re-running the script"
   File.delete(generated_file)
-
-  # Generates new result file
-  Runner.new(FILE_URL, OUTPUT_FILE_PATH).run
 end
+
+# Generates new result file
+Runner.new(FILE_URL, OUTPUT_FILE_PATH).run
 
 generated_result_file = File.read(generated_file)
 generated_results = JSON.parse(generated_result_file)
