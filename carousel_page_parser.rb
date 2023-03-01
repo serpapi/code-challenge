@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CarouselPageParser
-  NODES_XPATH = '//g-scrolling-carousel/div/div/div' # Gets the carousel items
+  NODES_XPATH = '//g-scrolling-carousel//a' # Gets the carousel items
 
   # Expects `html` to be a Nokogiri::HTML object
   def initialize(html)
