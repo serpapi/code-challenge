@@ -26,7 +26,6 @@ class CarouselPageParser
   private
 
   def parse_a(a_element)
-    # Nokogiri::HTML adds extra tags (i.e. <body>)
     a_attributes = a_element.attributes.map { |k, v| [k, v&.text] }.to_h
 
     img_element = a_element.at('img')
@@ -43,7 +42,6 @@ class CarouselPageParser
 
     title = result['a']['title']
 
-    puts [name, title].join(' - ')
     additional_text = title.gsub(name, '').strip
     additional_text.tr!('()', '')
 

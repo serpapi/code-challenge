@@ -37,9 +37,3 @@ class Runner
     @browser.quit
   end
 end
-
-FILE_PATH = File.expand_path('files/van-gogh-paintings.html', File.dirname(__FILE__))
-FILE_URL = "file:///#{FILE_PATH}"
-OUTPUT_FILE_PATH = File.expand_path('generated-result.json', File.dirname(__FILE__))
-
-Runner.new(FILE_URL, OUTPUT_FILE_PATH).run
