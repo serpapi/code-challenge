@@ -68,7 +68,7 @@ page = @agent.get(file_url)
 # The content we want to scrape is in the <div>
 binding.pry
 
-content = page.search('g-scrolling-carousel/div/div')
+content = page.search('g-scrolling-carousel/div/div/a')
 # Scraper assumptions, that g-scrolling-carousel has a div that nests another div
 # This 2nd div has all of the items that we want
 
