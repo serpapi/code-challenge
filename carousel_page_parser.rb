@@ -45,19 +45,23 @@ class CarouselPageParser
     additional_text = title.gsub(name, '').strip
     additional_text.tr!('()', '')
 
-    extensions = [additional_text]
+    additional_text = nil if additional_text == '' # Would use .blank? but no ActiveCore::Support
+    extensions = [additional_text].compact
 
     google_base_url = 'https://www.google.com'
     url = result['a']['href']
     link = "#{google_base_url}#{url}"
     image = result['img']['src']
 
-    {
+    extracted_data = {
       "name" => name,
       "extensions" => extensions,
       "link" => link,
       "image" => image
     }
+
+    # TODO: Have this happen during data extraction
+    extracted_data.reject { |k, v| k == 'extensions' && v.empty? }
   rescue NoMethodError => e
 
   end
