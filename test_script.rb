@@ -48,3 +48,9 @@ puts "#{matches.count} matching:"
 puts matches.join(', ')
 puts "#{not_matching.count} not matching:"
 puts not_matching.join(', ')
+
+# Code to run for caspar.html
+# caspar_file_path = File.expand_path('files/caspar.html', File.dirname(__FILE__))
+# caspar_file_url = "file:///#{caspar_file_path}"
+# caspar_output = File.expand_path('caspar-generated-result.json', File.dirname(__FILE__))
+# Runner.new(caspar_file_url, caspar_output).run
