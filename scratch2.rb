@@ -126,7 +126,11 @@ carousel_items.each do |item|
   collected_results << data
 end
 
-puts collected_results.to_json
+generated_result = { 'artworks' => collected_results }
+
+File.open('generated-result.json', 'wb') do |file|
+  file.puts generated_result.to_json
+end
 
 browser.reset
 browser.quit
