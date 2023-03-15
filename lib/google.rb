@@ -8,6 +8,11 @@ require 'parser'
 
 module Google
   class Artworks
+    extend Forwardable
+    include Enumerable
+
+    def_delegators :items, :each
+
     attr_reader :items
 
     def initialize(items: [])

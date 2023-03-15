@@ -21,12 +21,20 @@ class Parser
   end
 
   def parse
-    @doc = @adapter.parse(file)
+    @doc = @adapter.parse(rendered_file)
   end
 
   private
 
   def file
     @file ||= File.open(@file_path)
+  end
+
+  def rendered_file
+    @rendered_file ||= `#{chrome_bin} --headless --headless --dump-dom --incognito --temp-profile #{@file_path}`
+  end
+
+  def chrome_bin
+    ENV.fetch('CHROME_BIN', 'google-chrome-stable')
   end
 end
