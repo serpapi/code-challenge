@@ -7,6 +7,19 @@ $LOAD_PATH.unshift ROOT.join('lib')
 
 require 'google'
 
+require 'optparse'
+
+@options = {
+  'chrome-path': "google-chrome-stable",
+}
+
+ARGV.options do |opts|
+  opts.banner = "Usage: #{File.basename($0)} [options] [file_path]"
+  opts.on("-h", "--help", "Show this message") { puts opts; exit }
+  opts.on("-c [PATH]", "--chrome-path [PATH]", String, "Path to the google chrome binary")
+end.parse!(into: @options)
+
 file_path = ARGV[0] || ROOT.join("files/van-gogh-paintings.html")
 
-pp Google::SearchPage.new(file_path).artworks.to_hash
+parser = Parser.new(chrome_path: @options[:'chrome-path'])
+puts Google::SearchPage.new(file_path, parser: parser).artworks.to_json

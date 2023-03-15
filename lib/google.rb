@@ -60,12 +60,13 @@ module Google
   end
 
   class SearchPage
-    def initialize(file_path, parser: Parser)
-      @parser = parser.new(file_path)
+    def initialize(file_path, parser: nil)
+      @file_path = file_path
+      @parser = parser || Parser.new
     end
 
     def doc
-      @doc ||= @parser.parse
+      @doc ||= @parser.parse(@file_path)
     end
 
     def artworks

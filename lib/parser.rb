@@ -1,25 +1,18 @@
 class Parser
-  def initialize(file_path)
-    @file_path = file_path
+  DEFAULT_CHROME_PATH = 'google-chrome-stable'
+
+  def initialize(chrome_path: DEFAULT_CHROME_PATH)
+    @chrome_path = chrome_path
   end
 
-  def parse
-    @doc = Nokolexbor::HTML(rendered_file)
+  def parse(file_path)
+    @doc = Nokolexbor::HTML(render_file(file_path))
   end
 
   private
 
-  def file
-    @file ||= File.open(@file_path)
-  end
-
-  def rendered_file
-    @rendered_file ||= begin
-      `#{chrome_bin} --headless --headless --dump-dom --incognito --temp-profile #{@file_path} 2> /dev/null`
-    end
-  end
-
-  def chrome_bin
-    ENV.fetch('CHROME_BIN', 'google-chrome-stable')
+  def render_file(file_path)
+    output = `#{@chrome_path} --headless --headless --dump-dom --incognito --temp-profile #{file_path} 2> /dev/null`
+    $?.success? ? output : raise("Failed to render file: #{file_path}")
   end
 end
