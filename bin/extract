@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+ROOT = Pathname.new(File.expand_path('..', __dir__))
+
+$LOAD_PATH.unshift ROOT.join('lib')
+
+require 'google'
+
+file_path = ARGV[0] || ROOT.join("files/van-gogh-paintings.html")
+
+pp Google::SearchPage.new(file_path).artworks.to_hash
