@@ -5,6 +5,8 @@ RSpec.describe "Artworks" do
 
   let(:file_path) { File.expand_path("../files/van-gogh-paintings.html", __dir__) }
 
+  it { expect(artworks.to_a).not_to be_empty }
+
   describe "artwork item" do
     subject(:artwork) { artworks.first }
 

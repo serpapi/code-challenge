@@ -6,4 +6,3 @@ gem 'nokolexbor'
 gem 'pry-byebug'
 
 gem 'rspec'
-# gem "rails"

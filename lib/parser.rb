@@ -1,27 +1,10 @@
-class NokolexborAdapter
-  class NokolexborDocument
-    def initialize(document)
-      @document = document
-    end
-
-    def css(selector)
-      @document.css(selector)
-    end
-  end
-
-  def parse(file)
-    NokolexborDocument.new(Nokolexbor::HTML(file))
-  end
-end
-
 class Parser
-  def initialize(file_path, adapter: NokolexborAdapter.new)
+  def initialize(file_path)
     @file_path = file_path
-    @adapter = adapter
   end
 
   def parse
-    @doc = @adapter.parse(rendered_file)
+    @doc = Nokolexbor::HTML(rendered_file)
   end
 
   private
@@ -31,7 +14,9 @@ class Parser
   end
 
   def rendered_file
-    @rendered_file ||= `#{chrome_bin} --headless --headless --dump-dom --incognito --temp-profile #{@file_path}`
+    @rendered_file ||= begin
+      `#{chrome_bin} --headless --headless --dump-dom --incognito --temp-profile #{@file_path} 2> /dev/null`
+    end
   end
 
   def chrome_bin
