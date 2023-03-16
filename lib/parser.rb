@@ -1,3 +1,5 @@
+require 'open3'
+
 class Parser
   DEFAULT_CHROME_PATH = 'google-chrome-stable'
 
@@ -12,7 +14,11 @@ class Parser
   private
 
   def render_file(file_path)
-    output = `#{@chrome_path} --headless --headless --dump-dom --incognito --temp-profile #{file_path} 2> /dev/null`
-    $?.success? ? output : raise("Failed to render file: #{file_path}")
+    stdout, stderr, status = Open3.capture3(@chrome_path, '--headless', '--dump-dom', '--incognito', '--temp-profile', file_path)
+
+    status.success? ? stdout : raise(RenderError, "Failed to render file: #{file_path}\n#{stderr}")
+  end
+
+  class RenderError < StandardError;
   end
 end
