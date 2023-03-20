@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'json'
 require_relative 'runner'
+require 'pry-byebug'
 
 # Constants for file paths
 FILE_PATH = File.expand_path('files/van-gogh-paintings.html', File.dirname(__FILE__))
@@ -23,6 +24,8 @@ Runner.new(FILE_URL, OUTPUT_FILE_PATH).run
 
 generated_result_file = File.read(generated_file)
 generated_results = JSON.parse(generated_result_file)
+
+binding.pry
 
 pairs = expected_results['artworks'].zip(generated_results['artworks'])
 
@@ -50,7 +53,7 @@ puts "#{not_matching.count} not matching:"
 puts not_matching.join(', ')
 
 # Code to run for caspar.html
-# caspar_file_path = File.expand_path('files/caspar.html', File.dirname(__FILE__))
-# caspar_file_url = "file:///#{caspar_file_path}"
-# caspar_output = File.expand_path('caspar-generated-result.json', File.dirname(__FILE__))
-# Runner.new(caspar_file_url, caspar_output).run
+caspar_file_path = File.expand_path('files/caspar.html', File.dirname(__FILE__))
+caspar_file_url = "file:///#{caspar_file_path}"
+caspar_output = File.expand_path('caspar-generated-result.json', File.dirname(__FILE__))
+Runner.new(caspar_file_url, caspar_output).run

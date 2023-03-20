@@ -9,6 +9,7 @@ require 'json'
 # ^ there's sudo pry here because of permissions stuff. I'd dig into this when there's more time to make it easier
 
 require_relative 'carousel_page_parser'
+require_relative 'carousel_artwork_struct'
 
 class Runner
   # Ferrum options
@@ -28,6 +29,8 @@ class Runner
 
     results = CarouselPageParser.new(@html).parse
     generated_result = { 'artworks' => results }
+
+    binding.pry
 
     File.open(@output_path, 'w') do |file|
       file.puts JSON.pretty_generate(generated_result)
