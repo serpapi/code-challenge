@@ -12,17 +12,6 @@ class CarouselPageParser
   end
 
   def parse
-    known_carousel_patterns = []
-
-    # carousel_candidates = @html.search('//div')
-    # carousel_candidates = carousel_candidates.select do |candidate|
-    #   div_search = candidate.search('div').any? { |div| div.inner_text.strip == 'Artworks' }
-    #   span_search = candidate.search('span').any? { |div| div.inner_text.strip == 'Artworks' }
-    #
-    #   div_search || span_search
-    # end
-
-    # Pattern 1
     carousel = @html.at_xpath('//g-scrolling-carousel')
 
     xpath = ".//a[starts-with(@href, '/search?')]"
@@ -31,26 +20,16 @@ class CarouselPageParser
     # Filter those without images
     candidates = candidates.select { |a_element| a_element.search('img').count == 1 }
 
+    # Filter divs, select only those with a child div that contains a span OR contains a div that contains 2 children divs
     candidates = candidates.select do |a_element|
       divs = a_element.search('div')
 
-      # Filter divs with a child div that contains a span
       divs.any? do |div|
         div_children_count = div.children.select { |child| child.name == 'div' }.count
         child_span_count = div.children.select { |child| child.name == 'span' }.count
         div_children_count == 2 || child_span_count == 1
       end
-
-      # # Filter divs with exactly 2 children div
-      # # Looks like a structure invariant we can use to tell if it's a carousel card/item
-      # # Method can lead to false positives, so we'll need to handle that when we attempt to extract data
-      # divs.any? do |div|
-      #   div_children_count = div.children.select { |child| child.name == 'div' }.count
-      #   div_children_count == 2
-      # end
     end
-
-    binding.pry
 
     candidates.each do |candidate|
       data = extract_raw_data(candidate)
@@ -86,8 +65,6 @@ class CarouselPageParser
   end
 
   def extract_raw_data(candidate)
-    # file:///Users/leea/personal/code-challenge/files/van-gogh-paintings.html
-
     data = {}
 
     img = candidate.at('img')
@@ -145,34 +122,5 @@ class CarouselPageParser
       "a" => a_attributes,
       "img" => img_attributes
     }
-  end
-
-  def extract_result_data(result)
-    name = result['a']['aria-label']
-
-    title = result['a']['title']
-
-    additional_text = title.gsub(name, '').strip
-    additional_text.tr!('()', '')
-
-    additional_text = nil if additional_text == '' # Would use .blank? but no ActiveCore::Support
-    extensions = [additional_text].compact
-
-    google_base_url = 'https://www.google.com'
-    url = result['a']['href']
-    link = "#{google_base_url}#{url}"
-    image = result['img']['src']
-
-    extracted_data = {
-      "name" => name,
-      "extensions" => extensions,
-      "link" => link,
-      "image" => image
-    }
-
-    # TODO: Have this happen during data extraction
-    extracted_data.reject { |k, v| k == 'extensions' && v.empty? }
-  rescue NoMethodError => e
-
   end
 end

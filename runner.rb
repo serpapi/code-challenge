@@ -30,8 +30,6 @@ class Runner
     results = CarouselPageParser.new(@html).parse
     generated_result = { 'artworks' => results }
 
-    binding.pry
-
     File.open(@output_path, 'w') do |file|
       file.puts JSON.pretty_generate(generated_result)
     end
