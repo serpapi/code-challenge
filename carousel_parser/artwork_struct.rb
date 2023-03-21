@@ -12,12 +12,18 @@ module CarouselParser
     end
 
     def to_h
-      {
+      result = {
         name: name,
-        extensions: extensions,
         link: link,
         image: image
       }
+
+      # Would use .present? but it's a rails thing
+      if extensions.any? { |m| !m.empty? }
+        result[:extensions] = extensions
+      end
+
+      result
     end
 
     def to_string

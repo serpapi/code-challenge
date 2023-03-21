@@ -40,8 +40,6 @@ module CarouselParser
         @collected_results << artwork.to_h
       end
 
-      binding.pry
-
       @collected_results
     end
 
@@ -108,9 +106,17 @@ module CarouselParser
       # Expects the div with exactly 2 children div
       div_data = {}
 
-      line_1, line_2 = div.children.map(&:inner_text)
-      div_data['line_1'] = line_1
-      div_data['line_2'] = line_2
+      # Nokogiri doesn't parse <wbr> correctly and will nest elements as children
+      # If it's a div with 2 divs
+
+      if div.children.count { |child| child.name == 'div' } == 2
+        line_1, line_2 = div.children.map(&:inner_text)
+        div_data['line_1'] = line_1
+        div_data['line_2'] = line_2
+      else
+        div_data['line_1'] = div.children.map(&:inner_text).join
+        div_data['line_2'] = ''
+      end
 
       div_data
     end

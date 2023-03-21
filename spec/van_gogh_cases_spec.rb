@@ -5,14 +5,6 @@ RSpec.describe 'Runner results for Van Gogh carousel' do
 
   subject { Runner.new(input_file_url, output_path).run }
 
-  before do
-    # Remove result file if it exists
-  end
-
-  after do
-    # Clean up result file if it exists
-  end
-
   let(:output_path) do
     project_root = File.expand_path('../', __dir__)
     _output_path = File.join(project_root, 'van-gough-output.json')
