@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 require 'json'
-require_relative 'runner'
 require 'pry-byebug'
+
+$LOAD_PATH.unshift('.')
+
+require_relative 'runner'
 
 # Constants for file paths
 FILE_PATH = File.expand_path('files/van-gogh-paintings.html', File.dirname(__FILE__))
@@ -24,8 +27,6 @@ Runner.new(FILE_URL, OUTPUT_FILE_PATH).run
 
 generated_result_file = File.read(generated_file)
 generated_results = JSON.parse(generated_result_file)
-
-binding.pry
 
 pairs = expected_results['artworks'].zip(generated_results['artworks'])
 

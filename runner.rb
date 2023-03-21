@@ -8,8 +8,9 @@ require 'json'
 # `BROWSER_PATH="/Applications/Google Chrome.app/Contents/MacOS" sudo pry`
 # ^ there's sudo pry here because of permissions stuff. I'd dig into this when there's more time to make it easier
 
-require_relative 'carousel_page_parser'
-require_relative 'carousel_artwork_struct'
+require_relative 'carousel_parser'
+require_relative 'carousel_parser/parser'
+require_relative 'carousel_parser/artwork_struct'
 
 class Runner
   # Ferrum options
@@ -27,7 +28,7 @@ class Runner
     @browser.go_to(@page_url)
     @html = Nokogiri::HTML(@browser.body)
 
-    results = CarouselPageParser.new(@html).parse
+    results = CarouselParser::Parser.new(@html).parse
     generated_result = { 'artworks' => results }
 
     File.open(@output_path, 'w') do |file|
