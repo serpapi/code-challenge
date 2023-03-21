@@ -3,7 +3,7 @@
 RSpec.describe 'Runner results for Van Gogh carousel' do
   # In practice I'd structure this differently, but since this is just an exercise I am keeping as is.
 
-  subject { Runner.new(input_file_url, output_path).run }
+  subject { Runner.new(input_file_url).run }
 
   let(:output_path) do
     project_root = File.expand_path('../', __dir__)
