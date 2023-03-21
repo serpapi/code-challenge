@@ -15,6 +15,19 @@ module CarouselParser
     def parse
       carousel = @html.at_xpath('//g-scrolling-carousel')
 
+      unless carousel
+        # Can happen when page has carousel but doesn't use the <g-scrolling-carousel ...
+
+        carousel_candidates = @html.search('div')
+
+        carousel = carousel_candidates.select do |div_element|
+          attrs = div_element.attributes.to_h
+
+          field = attrs['data-attrid']
+          field&.value&.include?('kc:/visual_art/visual_artist:works')
+        end.first
+      end
+
       xpath = ".//a[starts-with(@href, '/search?')]"
       candidates = carousel.search(xpath)
 
