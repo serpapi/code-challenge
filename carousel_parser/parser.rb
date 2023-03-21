@@ -40,6 +40,8 @@ module CarouselParser
         @collected_results << artwork.to_h
       end
 
+      binding.pry
+
       @collected_results
     end
 
