@@ -1,13 +1,10 @@
 require 'nokogiri'
 require 'json'
-require_relative 'lib/artwork_parser'
+require_relative 'lib/google_carousel_scraper'
 
-html_contents = File.read('files/van-gogh-paintings.html')
-doc = Nokogiri::HTML(html_contents)
+scraper = GoogleCarouselScraper.new("./files/van-gogh-paintings.html") 
+result = scraper.scrape_artworks
 
-artworks = doc.xpath('(//g-scrolling-carousel)[1]//div/div/div')
-result = parse_artworks(artworks)
-  
-File.open('result.json', 'w') do |f|
+File.open('artworks.json', 'w') do |f|
     f.write(JSON.pretty_generate(result))
 end
