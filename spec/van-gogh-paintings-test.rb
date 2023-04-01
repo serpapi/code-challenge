@@ -1,6 +1,3 @@
-require_relative '../lib/google_carousel_scraper'
-require 'nokogiri'
-
 RSpec.describe GoogleCarouselScraper do 
     before :all do 
         scraper = GoogleCarouselScraper.new("./files/van-gogh-paintings.html")

@@ -1,0 +1,5 @@
+require 'nokogiri'
+require_relative '../lib/google_carousel_scraper'
+require_relative 'van-gogh-paintings-test'
+require_relative 'people-also-search-for-test'
+require_relative 'portrait-of-marie-therese-test'
