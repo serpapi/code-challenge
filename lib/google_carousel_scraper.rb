@@ -9,11 +9,9 @@ class GoogleCarouselScraper
   def scrape_artworks 
     browser = Ferrum::Browser.new
     browser.go_to("file://#{Dir.pwd}/#{@target}")
-
     doc = Nokogiri::HTML.parse(browser.body)
     browser.quit
-    artworks = doc.xpath('(//g-scrolling-carousel)[1]//div/div/div')
-    
+    artworks = doc.xpath('(//g-scrolling-carousel)[1]//div[@style][@jsl] | (//g-scrolling-carousel)[1]//a[@jscontroller]')
     return parse_artworks(artworks)
   end
 
@@ -21,14 +19,14 @@ class GoogleCarouselScraper
   def parse_artworks(artworks)
       artworks_result = artworks.map do |artwork|
         artwork_obj = {}
-        name = artwork.at_xpath('.//span/..')&.text
+        name = artwork.at_xpath('.//a[@aria-label]')&.[]('aria-label') || artwork['aria-label']
         artwork_obj[:name] = name
         
-        extensions = artwork.xpath('.//div[not(@class)]/div[2]')
+        extensions = artwork.xpath('.//div[not(@class)]/div[2][starts-with(text(), "1")]')
         extensions_arr = extensions.map(&:text).compact
         artwork_obj[:extensions] = extensions_arr if extensions_arr.length > 0
         
-        link = artwork.at_xpath('.//a')&.[]('href')
+        link = artwork&.[]('href') || artwork.at_xpath('.//a')&.[]('href')
         artwork_obj[:link] = "https://www.google.com#{link}" if link
         
         image = artwork.at_xpath('.//img')&.[]('src')
