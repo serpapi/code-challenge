@@ -4,6 +4,16 @@ Goal is to extract a list of Van Gogh paintings from the attached Google search 
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
 
+## How to run
+
+`bundle install`
+
+`bundle exec ruby artworks.rb`
+
+OR
+
+`bundle exec ruby artworks.rb /full/path/to-file.html`
+
 ## Instructions
 
 This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
