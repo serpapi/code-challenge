@@ -1,5 +1,7 @@
 require_relative '../lib/google_parser'
 require_relative '../lib/node_parser'
+require_relative '../artworks'
+require 'ferrum'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
