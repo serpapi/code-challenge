@@ -31,6 +31,7 @@ class NodeParser
   end
 
   def image
-    node&.at_css('img')&.[]('src')
+    data = node&.at_css('img')&.[]('src')
+    data == "" ? nil : data
   end
 end
