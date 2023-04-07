@@ -1,4 +1,4 @@
-require './google_parser'
+require './lib/google_parser'
 
 relative_file_path = 'files/van-gogh-paintings.html'
 absolute_file_path = File.expand_path(relative_file_path)

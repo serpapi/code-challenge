@@ -11,7 +11,7 @@ class NodeParser
       name: name,
       extensions: extensions,
       link: link,
-      image: image,
+      image: image
     }
   end
 
