@@ -1,0 +1,45 @@
+GEM
+  specs:
+    addressable (2.8.2)
+      public_suffix (>= 2.0.2, < 6.0)
+    coderay (1.1.3)
+    crack (0.4.5)
+      rexml
+    hashdiff (1.0.1)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    method_source (1.0.0)
+    mini_mime (1.1.2)
+    multi_xml (0.6.0)
+    nokogiri (1.14.2-x86_64-darwin)
+      racc (~> 1.4)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    public_suffix (5.0.1)
+    racc (1.6.2)
+    rexml (3.2.5)
+    uri (0.12.0)
+    vcr (6.1.0)
+    webmock (3.18.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
+
+PLATFORMS
+  x86_64-darwin-22
+
+DEPENDENCIES
+  httparty
+  nokogiri
+  pry
+  uri
+  vcr
+  webmock
+
+RUBY VERSION
+   ruby 3.2.1p31
+
+BUNDLED WITH
+   2.4.7
