@@ -44,3 +44,5 @@ class Scraper
     return [items, array_list, images] # This return will be used on testing.
   end
 end
+
+Scraper.new.scrape('van-gogh-paintings.html')
