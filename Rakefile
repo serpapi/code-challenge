@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rake'
+require 'rspec/core/rake_task'
 require_relative './lib/vangogh'
 
 INFILE = './files/van-gogh-paintings.html'
@@ -39,5 +41,7 @@ task :clean do
   puts "Deleting generated file at #{OUTFILE}"
   File.delete(OUTFILE) if File.exists?(OUTFILE)
 end
+
+RSpec::Core::RakeTask.new(:spec)
 
 task :all => [:clean, :generate, :compare]
