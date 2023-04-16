@@ -1,10 +1,12 @@
 # frozen_string_literal: true
+
 class Parser
   def self.execute!(infile, outfile)
     new(infile, outfile).execute!
   end
 
   attr_reader :doc, :outfile
+
   def initialize(infile, outfile)
     # Docs say to preferentially use an IO object
     # instead of a string but when I did that I got

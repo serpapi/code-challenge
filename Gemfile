@@ -1,6 +1,9 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem 'rake'
-gem 'nokogiri'
+source 'https://rubygems.org'
+
 gem 'json'
+gem 'nokogiri'
+gem 'rake'
 gem 'rspec'
+gem 'rubocop'

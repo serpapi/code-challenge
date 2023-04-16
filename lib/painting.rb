@@ -2,6 +2,7 @@
 
 class Painting
   attr_reader :doc, :node
+
   def initialize(doc, node)
     @doc = doc
     @node = node
@@ -18,7 +19,7 @@ class Painting
   def extensions
     date = node.css('.klmeta').text
 
-    date == "" ? nil : [date]
+    date == '' ? nil : [date]
   end
 
   def link
@@ -29,7 +30,7 @@ class Painting
   # https://i.imgur.com/gOPS2.png
   # (Tho technically this isn't matching the markup so maybe we won't summon Zalgo?)
   def img_src
-    previous_id = "kximg#{id.gsub(/[^0-9]/, '').to_i-1}"
+    previous_id = "kximg#{id.gsub(/[^0-9]/, '').to_i - 1}"
     matchdata =
       if id == 'kximg0'
         doc.text.match(/\(function\(\){var s='(.*?)';var ii=\['kximg0'\];/)
@@ -50,8 +51,8 @@ class Painting
     # Weird structure because `image` must always be present even when nil,
     # but `extensions` should be left out entirely when empty
     hash = {
-      name: name,
-      link: link,
+      name:,
+      link:,
       image: img_src
     }
 
