@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Painting
   attr_reader :doc, :node
   def initialize(doc, node)
@@ -24,6 +25,9 @@ class Painting
     @link ||= "https://www.google.com#{node.attribute('href').value}"
   end
 
+  # I'm so, so sorry
+  # https://i.imgur.com/gOPS2.png
+  # (Tho technically this isn't matching the markup so maybe we won't summon Zalgo?)
   def img_src
     previous_id = "kximg#{id.gsub(/[^0-9]/, '').to_i-1}"
     matchdata =
