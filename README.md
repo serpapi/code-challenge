@@ -25,3 +25,5 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed).
 
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+
+If asked after a successful interview, can you send us a quote for 4 hours of your time on this challenge? You can work more on it if you want, but just be aware that extra time won't be compensated.
