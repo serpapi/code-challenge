@@ -1,28 +1,22 @@
 # Extract Van Gogh Paintings Code Challenge
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
-
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
-
 ## Instructions
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+Use `bundle install` to install dependencies
+Use `rspec` to run the specs
+Use `ruby run.rb` to run the code, which will print out a menu
+```
+Enter which page you want to scrape:
+ 1. Van Gogh
+ 2. Tom Cruise
+ 3. Tina Fey
+ exit to exit
+```
+And you can choose which file you would like to scrape, and JSON will be printed to the terminal.
 
-Fork this repository and make a PR when ready.
+## Notes
 
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
+I used the `nokogiri` gem to parse the HTML, and I've found that the image src contains only a partial one-pixel image instead of a full one. I figured out that I could pull it out from javascript, but I didn't know if I should, so I have displayed it in the other examples I have used.
+If you want me to use the javascript to pull out the full image, I can do that, but I figured I would leave it as is for now.
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
-
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
-
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
-
-Can you send us a quote for 4 hours of your time on this challenge? You can work more on it if you want, but just be aware that extra time won't be compensated.
+Great challenge! I had a lot of fun with it. I hope you like it! :D 
