@@ -32,7 +32,7 @@ class Scraper
       ).to_json
     end
 
-    File.open("files/#{@file_name}.json","w") do |f|
+    File.open("files/#{@file_name}-parsed.json","w") do |f|
       f.write({ artworks: artworks }.to_json)
     end
 

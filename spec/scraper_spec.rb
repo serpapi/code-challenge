@@ -16,7 +16,7 @@ describe Scraper do
       end
 
       it 'saves json file' do
-        expect(File.exist?('files/van-gogh-paintings.json')).to be_truthy
+        expect(File.exist?('files/van-gogh-paintings-parsed.json')).to be_truthy
       end
     end
 
