@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "artworks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string"},
+          "link": { "type": "string"},
+          "image": {"anyOf": [{ "type": "string"}, { "type": "null"}]},
+          "extensions": {
+            "type": "array",
+            "items": { "type": "string"}
+          }
+        }
+      }
+    }
+  }
+} 
