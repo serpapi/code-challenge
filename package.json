@@ -1,0 +1,30 @@
+{
+  "name": "serpapi",
+  "version": "1.0.0",
+  "description": "Goal is to extract a list of Van Gogh paintings from the attached Google search results page.",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serpapi/code-challenge.git"
+  },
+  "author": "Varun Agrawal <Varun@VarunAgw.com>",
+  "bugs": {
+    "url": "https://github.com/serpapi/code-challenge/issues"
+  },
+  "homepage": "https://github.com/serpapi/code-challenge#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.2",
+    "babel-jest": "^29.5.0",
+    "cheerio": "^1.0.0-rc.12",
+    "jest": "^29.5.0"
+  }
+}
