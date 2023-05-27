@@ -2,6 +2,22 @@
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
 
+## Requirements
+1. Node.js
+
+## Installation
+
+1. Clone this repository locally
+2. Run `npm i` to install all the dependencies
+
+## How to start
+
+1. Run `npm start` to run the program
+
+## How to test
+
+1. Run `npm test` to launch automated unit tests.
+
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
 
 ## Instructions
