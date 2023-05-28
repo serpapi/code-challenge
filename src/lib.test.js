@@ -1,7 +1,7 @@
 import {readFileSync} from "fs";
 import {extractGoogleSearchResultCarousel} from "./lib.js";
 
-test('adds 1 + 2 to equal 3', () => {
+test('extractGoogleSearchResultCarousel()', () => {
 
     const baseURI = "https://www.google.com/";
     const html = readFileSync("./files/van-gogh-paintings.html").toString();
