@@ -1,30 +1,41 @@
-import * as cheerio from 'cheerio';
+import {JSDOM} from 'jsdom';
+
+
+export function textContentToPlainText(data) {
+    data = data.replace(/(\r|\n)*/g, "").replace(/ {2,}/g, " ").trim();
+    return data;
+}
 
 export function extractGoogleSearchResultCarousel(html, baseURI) {
     const results = [];
 
-    // Loading cheerio client
-    const $ = cheerio.load(html, {
-        baseURI
-    });
-
+    // Loading JSDOM client
+    const dom = new JSDOM(html, {
+            url: baseURI,
+            runScripts: "dangerously"
+        }
+    );
 
     // Processing the carousel
-    $("g-scrolling-carousel .klitem-tr").each((i, el) => {
+    dom.window.document.querySelectorAll("g-scrolling-carousel .klitem-tr").forEach((el) => {
         const row = {};
 
-        row["name"] = $(el).find(".kltat").text();
+        row["name"] = textContentToPlainText(el.querySelector(".kltat").textContent);
 
-        const extensionData = $(el).find(".klmeta").text();
-        if (extensionData !== "") {
-            row["extensions"] = extensionData.split(', ');
+        const extensionEl = el.querySelector(".klmeta");
+        if (extensionEl !== null) {
+            row["extensions"] = textContentToPlainText(extensionEl.textContent).split(', ');
         }
 
-        row["link"] = $(el).find(">a").prop("href");
-        row["image"] = $(el).find("g-img img").prop("src") ?? null;
+
+        row["link"] = el.querySelector(":scope a").href;
+
+        const imageEl = el.querySelector("g-img img");
+        row["image"] = imageEl.src.length > 0 ? imageEl.src : null;
 
         results.push(row);
     });
 
+    dom.window.close();
     return results;
 }
