@@ -1,28 +1,36 @@
 # Extract Van Gogh Paintings Code Challenge
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+- **Planning:** 
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+1. FileManager Class: read HTML file from the files folder.
+   - read_file takes a file path and reads the content of the file, and returns it
+   - write_to_file takes a file path and data, and writes the data to the file in JSON format. 
+2. HtmlDocument Class: create a new object and parse the content using Nokogiri
+3. ArtworkExtractor Class:
+   - Initialize the class with a single 'a' element from the carousel
+4. Artwork Class:
+   - Initialize the class with name, image link, Google link and extension
+   - to_hash that returns a hash of the art including name, image link google link, and extension
 
-## Instructions
+- **Proposed Process:**
+  1. Use FileManager to read the HTML content
+  2. Create an HtmlDocument parse the HTML content
+  3. For each 'a' element in the carousel of the HtmlDocument:
+     - Create an ArtworkExtractor with the 'a' element.
+     - If the ArtworkExtractor indicates that a artwork exists:
+       - Use the methods of the ArtworkExtractor to extract the painting's data.
+       - Create a new Artwork object with this data.
+       - Add the Artwork object (converted to a hash using the to_hash method) to a list of artworks.
+  4. Use FileManager to write the list of artworks (in hash format) to a JSON file.
+  5. Return the list of artworks (in hash format). 
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+- **How to run:**
+  1. Run `bundle install` to install the necessary dependencies.
+  2. Run `ruby main.rb` to start the project.
+  3. Select the desired option for Van Gogh, Picasso, or Da Vinci artwork extraction.
+  4. Once the process completes, a JSON file containing the extracted artworks will be generated in the files folder.
 
-Fork this repository and make a PR when ready.
+- **Write up:**
+  I faced several obstacles while finishing the project, but I also gained important knowledge. One important finding was that different HTML structures require various processing techniques. The two other similar result pages I checked had different formats from the original Van Gogh HTML file, which had a different and constant structure(can refer to files/picasso-paintings_old.html). As a result, parsing the attributes became more challenging. 
 
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
-
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
-
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
-
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
-
-If asked after a successful interview, can you send us a quote for 4 hours of your time on this challenge? You can work more on it if you want, but just be aware that extra time won't be compensated.
+  One specific problem that came up has to do with the Google link. The Google link in the Van Gogh HTML file did not have the "https://www.google.com" prefix. The Google URL, on the other hand, was prefixed with "https://www.google.com" in the other two samples I downloaded. The proper extraction of the link was difficult due to this difference.I modified the parsing logic by adding a conditional check to find the prefix in order to solve the problem with the variations in the Google link. It appears, however, that this approach fell short of providing a comprehensive solution. In light of this, I would now proceed to further analyze the problem and choose various methods for dealing with the differences in the Google link. I would also think about more precisely extracting the Google URL using regular expressions or string manipulation methods. These techniques may be used to locate and isolate the relevant part of a link, regardless of how the prefix or other HTML components may vary.
