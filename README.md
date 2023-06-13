@@ -1,28 +1,15 @@
-# Extract Van Gogh Paintings Code Challenge
+## Build
+Needs Go >= 1.20 and `google-chrome` binary
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+Needs the following ENVs
+* `SCRAPE_URL`: a link to the scrape target, e.g. `file:///home/xxx/xxx`, `https://www.google.com/xxxxxxx`
+* `SCRAPE_OUTPUT_PATH`: a path to put the output file, including filename
+* `SCRAPE_EXPECTED_PATH`: path to `expected-array.json`, only required when running unit tests
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+`cd ./scraper && go build && scrape`
+## Testing
 
-## Instructions
-
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
-
-Fork this repository and make a PR when ready.
-
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
-
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
-
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
-
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
-
-If asked after a successful interview, can you send us a quote for 4 hours of your time on this challenge? You can work more on it if you want, but just be aware that extra time won't be compensated.
+Tested with the following URLs in addition to the provided HTML file.
+* https://www.google.com/search?client=firefox-b-1-d&sxsrf=APwXEdcmA0W3ily78S71bStVhDagsuBUCA:1686677318288&q=Zendaya&stick=H4sIAAAAAAAAAONgFuLVT9c3NEwzz06uNDLNVeLSz9U3SElJM7So0BLLTrbSLykDoviCovz0osRcq-TE4pJFrOxRqXkpiZWJAFnTZQk_AAAA&sa=X&ved=2ahUKEwjc2KDT4sD_AhWFKEQIHTXMBPMQ9OUBegQIDRAC&biw=1536&bih=377&dpr=2
+* https://www.google.com/search?client=firefox-b-1-d&sa=X&biw=1536&bih=843&sxsrf=APwXEdeCzEgyAPaHaKE4WDo-i8MdI294SQ:1686677932116&q=German+Shepherd&stick=H4sIAAAAAAAAAONgFuLUz9U3SCqxzClS4gAxs3NNk7XUspOt9JMy83Py0yv1U_JzU4tLMpMTS1JT4hPzMnMTc6ySilJTU4oXsfK7pxblJuYpBGekFmSkFqVMYGMEABLhp_JUAAAA&lei=rKmIZMHcBtnDkPIP652eoAo
+* https://www.google.com/search?client=firefox-b-1-d&sxsrf=APwXEddENDtYvGDvr-O3YHiWSz4B1NcIDQ:1686678161443&q=Cheetah&stick=H4sIAAAAAAAAAONgFuLUz9U3MDQzNDJT4gAxk1NMUrTss5Ot9JMy83Py0yv1M_PS8otyE3PiIQKZyUBmelF-aUFmXrpVUWpBUWpxal5JYklmWapCcUFqcmZq8SJWdueM1NSSxAwAo9_Y0WIAAAA&sa=X&ved=2ahUKEwj-46bl5cD_AhUILkQIHYXEDZMQ9OUBegQIHxAN&biw=1536&bih=843&dpr=2
