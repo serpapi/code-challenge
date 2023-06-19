@@ -10,14 +10,14 @@ module CarouselExtractor
 
   def get_carousel_heading(carousel)
     common_ancestor = carousel.ancestors.find do |ancestor|
-      ancestor.css('[role="heading"]').any?
+      ancestor.css('[aria-level="2"][role="heading"]').any?
     end
 
     if common_ancestor
-      heading_element = common_ancestor.css('[role="heading"]')
+      heading_element = common_ancestor.css('[aria-level="2"][role="heading"]')
       heading_text = heading_element.inner_text
       def extract_string(input)
-        match = input.match(/.*([A-Z][a-z]*)$/)
+        match = input.match(/.*([A-Z][a-z]*)/)
         match[1] if match
       end
       extract_string(heading_text)
@@ -26,6 +26,6 @@ module CarouselExtractor
 
 
   def get_carousel_content(carousel)
-    carousel.css('.klitem')
+    carousel.css('a')
   end
 end
