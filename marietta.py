@@ -2,8 +2,7 @@ from bs4 import BeautifulSoup
 import re
 import requests 
 
-site = requests.get("https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html") #get webpage content
-test = requests.get(
+site = requests.get("https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html")
 
 
 soup = BeautifulSoup(site.content, 'html.parser')
