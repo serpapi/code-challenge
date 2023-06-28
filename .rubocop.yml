@@ -1,0 +1,71 @@
+require:
+  - rubocop-rspec
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Max: 120
+  AllowURI: true
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/BlockDelimiters:
+  Exclude:
+    - "spec/**/*"
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%w': '()'
+    '%W': '()'
+    '%i': '()'
+    '%I': '()'
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - is_
+  Exclude:
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+RSpec/Rails/HttpStatus:
+  EnforcedStyle: numeric
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 15
+
+Style/HashSyntax:
+  Enabled: true
+  EnforcedShorthandSyntax: never
+
+Bundler/GemVersion:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: true
+  TreatCommentsAsGroupSeparators: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
