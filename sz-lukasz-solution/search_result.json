@@ -1,0 +1,1314 @@
+{
+    "search_metadata": {
+        "id": "64a2ac76629a01162427cb20",
+        "status": "Success",
+        "json_endpoint": "https://serpapi.com/searches/77694beef42b9cf5/64a2ac76629a01162427cb20.json",
+        "created_at": "2023-07-03 11:09:42 UTC",
+        "processed_at": "2023-07-03 11:09:42 UTC",
+        "google_url": "https://www.google.com/search?q=Van+Gogh+paintings&oq=Van+Gogh+paintings&uule=w+CAIQICIdQXVzdGluLFRYLFRleGFzLFVuaXRlZCBTdGF0ZXM&sourceid=chrome&ie=UTF-8",
+        "raw_html_file": "https://serpapi.com/searches/77694beef42b9cf5/64a2ac76629a01162427cb20.html",
+        "total_time_taken": 2.6
+    },
+    "search_parameters": {
+        "engine": "google",
+        "q": "Van Gogh paintings",
+        "location_requested": "Austin,Texas",
+        "location_used": "Austin,TX,Texas,United States",
+        "google_domain": "google.com",
+        "device": "desktop"
+    },
+    "search_information": {
+        "organic_results_state": "Results for exact spelling",
+        "query_displayed": "Van Gogh paintings",
+        "total_results": 75600000,
+        "time_taken_displayed": 0.93,
+        "menu_items": [
+            {
+                "position": 1,
+                "title": "Images",
+                "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ0pQJegQIDRAB",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_images&gl=us&google_domain=google.com&hl=en&q=Van+Gogh+paintings"
+            },
+            {
+                "position": 2,
+                "title": "Value",
+                "link": "https://www.google.com/search?q=Van+Gogh+paintings+value&uds=GzgA4C0SjFsnD9Q9otEVvlSQsOqCmyM5HYAR9qbO3BIEBq0XGWWcgyTLFJKQubraiCI2cQI&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQxKsJegQIDBAB&ictx=0",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Van+Gogh+paintings+value"
+            },
+            {
+                "position": 3,
+                "title": "Shopping",
+                "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=shop&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ0pQJegQIChAB",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=Van+Gogh+paintings"
+            },
+            {
+                "position": 4,
+                "title": "Famous",
+                "link": "https://www.google.com/search?q=Van+Gogh+famous+paintings&uds=GzoAOC0SeI7VOU-xNwJPU221wpGVnJYAgUHTAQYZOSrsrc7cYCIHLhG2JXq3dwkWlt6RcZgepLZBcVCN&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQxKsJegQICRAB&ictx=0",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Van+Gogh+famous+paintings"
+            },
+            {
+                "position": 5,
+                "title": "Names",
+                "link": "https://www.google.com/search?q=Van+Gogh+paintings+names&uds=GzgA-C0S7FguoKlPJTA6vFSwkmsQCRi0HVBwc6TC3hrjzG1OLyLKOAfpEvzgpReKyV7JvTXGAAE&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQxKsJegUIhAEQAQ&ictx=0",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Van+Gogh+paintings+names"
+            },
+            {
+                "position": 6,
+                "title": "Canvas",
+                "link": "https://www.google.com/search?q=Van+Gogh+paintings+Canvas&uds=GzoA-I3UTjVsB2KYNB2eBWGWDTCNA89HRd3eAUdyc5KRcS7KEoDw5WmqFO9zs-bBN4s1ghwE&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQxKsJegUIhgEQAQ&ictx=0",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Van+Gogh+paintings+Canvas"
+            },
+            {
+                "position": 7,
+                "title": "Techniques",
+                "link": "https://www.google.com/search?q=What+techniques+did+van+Gogh+use+in+his+paintings%3F&uds=G1cAiB0Jtq2F9TjRH0GLtVawCntjywMP6AG7QMJI6ioJ2rYKuAKHHDh-SzwNOcHAgg04xAIatvFCOIIekQ3sLCQabGV1tyHejg9-J1A6Sgo&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQxKsJegUIhwEQAQ&ictx=0",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=What+techniques+did+van+Gogh+use+in+his+paintings%3F"
+            },
+            {
+                "position": 8,
+                "title": "News",
+                "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=nws&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ0pQJegUIgwEQAQ",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Van+Gogh+paintings&tbm=nws"
+            },
+            {
+                "position": 9,
+                "title": "In order",
+                "link": "https://www.google.com/search?q=Van+Gogh+paintings+in+order&uds=Gz4A-K0OeDNfET1jloOGp46lpYKVXINIwKBtAYSNHnWUVmFvdebWlYAzzkG6BCFwyYjNV79KujbGgQI&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQxKsJegUIhQEQAQ&ictx=0",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Van+Gogh+paintings+in+order"
+            }
+        ]
+    },
+    "knowledge_graph": {
+        "title": "Vincent van Gogh",
+        "type": "Dutch painter",
+        "main_tab_text": "Overview",
+        "kgmid": "/m/07_m2",
+        "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/m/07_m2&hl=en-US&q=Vincent+van+Gogh&kgs=fcc0a15f7d042ddd&shndl=17&source=sh/x",
+        "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&hl=en-US&kgmid=%2Fm%2F07_m2&location=Austin%2CTexas&q=Vincent+van+Gogh",
+        "tabs": [
+            {
+                "text": "Artworks",
+                "si": "ACFMAn-S6zIY3sSj1AwxrOVUvJDJbNYA-RY3-o_qISisiYGBUIHlwrzxci7niKPrCzS6Jb2I-Ffq85vztjIEVSkOTcQBb_yjTHPXzZAYw6nb3Bc3-KlCMfJFUuXHU0bk7vjacSf7pa5b5OcAYqLUlWcLc7AbGznAkLVGo4bJ9EYX_2h19xXwp9HTz3jznlviqAB3QZhhdw-Kr1XD6Ah5M8d9qpM7B2P-9nRwsou6u6qTEdTrWcC5jj4kjrHB9ofYsSG3aE_VBnex79u8GQHYaeC3jhhYwnuKnhRr7pmIexnBnual9jyJLEGl4p35rvsfRO6svtU4g81vZT8bnf3ySZSqvMFimlKKfI8DNTlgq-QJyOu7N9SapBW8sW42PC_9sGsoFP3Jyf52muM5mRatPmmTvDMHd3mZnTXImHqMn7DEulVgbs4vSZ8FGNaQdWkqb_YPEUjB0IsD9ZGvvSp803jirsuW4oTfP6rb7giiLyl8AW_DVebL56vAuVJht7zzfMpdsseQSG4uL4hXgd4A5zquiRIROfC961EAW9L7NzzrgWAhG_KJgK-IckFTDDOVbDpSlwfEzPKmoTmc_bvTt89AQKGYnlhaTQ%3D%3D",
+                "link": "https://www.google.com/search?si=ACFMAn-S6zIY3sSj1AwxrOVUvJDJbNYA-RY3-o_qISisiYGBUIHlwrzxci7niKPrCzS6Jb2I-Ffq85vztjIEVSkOTcQBb_yjTHPXzZAYw6nb3Bc3-KlCMfJFUuXHU0bk7vjacSf7pa5b5OcAYqLUlWcLc7AbGznAkLVGo4bJ9EYX_2h19xXwp9HTz3jznlviqAB3QZhhdw-Kr1XD6Ah5M8d9qpM7B2P-9nRwsou6u6qTEdTrWcC5jj4kjrHB9ofYsSG3aE_VBnex79u8GQHYaeC3jhhYwnuKnhRr7pmIexnBnual9jyJLEGl4p35rvsfRO6svtU4g81vZT8bnf3ySZSqvMFimlKKfI8DNTlgq-QJyOu7N9SapBW8sW42PC_9sGsoFP3Jyf52muM5mRatPmmTvDMHd3mZnTXImHqMn7DEulVgbs4vSZ8FGNaQdWkqb_YPEUjB0IsD9ZGvvSp803jirsuW4oTfP6rb7giiLyl8AW_DVebL56vAuVJht7zzfMpdsseQSG4uL4hXgd4A5zquiRIROfC961EAW9L7NzzrgWAhG_KJgK-IckFTDDOVbDpSlwfEzPKmoTmc_bvTt89AQKGYnlhaTQ%3D%3D&hl=en-US&q=vincent+van+gogh+famous+paintings&kgs=fcc0a15f7d042ddd&shndl=17&source=sh/x",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&hl=en-US&location=Austin%2CTexas&q=vincent+van+gogh+famous+paintings&si=ACFMAn-S6zIY3sSj1AwxrOVUvJDJbNYA-RY3-o_qISisiYGBUIHlwrzxci7niKPrCzS6Jb2I-Ffq85vztjIEVSkOTcQBb_yjTHPXzZAYw6nb3Bc3-KlCMfJFUuXHU0bk7vjacSf7pa5b5OcAYqLUlWcLc7AbGznAkLVGo4bJ9EYX_2h19xXwp9HTz3jznlviqAB3QZhhdw-Kr1XD6Ah5M8d9qpM7B2P-9nRwsou6u6qTEdTrWcC5jj4kjrHB9ofYsSG3aE_VBnex79u8GQHYaeC3jhhYwnuKnhRr7pmIexnBnual9jyJLEGl4p35rvsfRO6svtU4g81vZT8bnf3ySZSqvMFimlKKfI8DNTlgq-QJyOu7N9SapBW8sW42PC_9sGsoFP3Jyf52muM5mRatPmmTvDMHd3mZnTXImHqMn7DEulVgbs4vSZ8FGNaQdWkqb_YPEUjB0IsD9ZGvvSp803jirsuW4oTfP6rb7giiLyl8AW_DVebL56vAuVJht7zzfMpdsseQSG4uL4hXgd4A5zquiRIROfC961EAW9L7NzzrgWAhG_KJgK-IckFTDDOVbDpSlwfEzPKmoTmc_bvTt89AQKGYnlhaTQ%3D%3D"
+            },
+            {
+                "text": "Videos",
+                "si": "ACFMAn9EJeTjqJvJer1BhUF_UpALf_ICm508WD-ZMIQNQaj_opKSNhwL0CUooI636ks-uJtSJG5k5XYn7gV-ly7xj2DZEu02bO2XRf2TM3iKpeV2aQLrXYI1r0Tp_vb4jjDhiN0hP3ey",
+                "link": "https://www.google.com/search?si=ACFMAn9EJeTjqJvJer1BhUF_UpALf_ICm508WD-ZMIQNQaj_opKSNhwL0CUooI636ks-uJtSJG5k5XYn7gV-ly7xj2DZEu02bO2XRf2TM3iKpeV2aQLrXYI1r0Tp_vb4jjDhiN0hP3ey&hl=en-US&q=vincent+van+gogh+videos&kgs=fcc0a15f7d042ddd&shndl=17&source=sh/x",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&hl=en-US&location=Austin%2CTexas&q=vincent+van+gogh+videos&si=ACFMAn9EJeTjqJvJer1BhUF_UpALf_ICm508WD-ZMIQNQaj_opKSNhwL0CUooI636ks-uJtSJG5k5XYn7gV-ly7xj2DZEu02bO2XRf2TM3iKpeV2aQLrXYI1r0Tp_vb4jjDhiN0hP3ey"
+            },
+            {
+                "text": "On view",
+                "si": "ACFMAn-DEpVMnDWqWw1_SxJthgoB0pd5ycjOHtu03URD63HJs65teHYVKVgSs-vWIXkzFmj2PYGQZ6pWAHWvZ9g7UaLP40wSpUEqzPbAWCxsnsAQo_UX5ARAN9O4BZxkZmTnjE7FIohA5_p7txN0G0w8yNVs7fwyRg%3D%3D",
+                "link": "https://www.google.com/search?si=ACFMAn-DEpVMnDWqWw1_SxJthgoB0pd5ycjOHtu03URD63HJs65teHYVKVgSs-vWIXkzFmj2PYGQZ6pWAHWvZ9g7UaLP40wSpUEqzPbAWCxsnsAQo_UX5ARAN9O4BZxkZmTnjE7FIohA5_p7txN0G0w8yNVs7fwyRg%3D%3D&hl=en-US&q=where+are+van+gogh+paintings&kgs=fcc0a15f7d042ddd&shndl=17&source=sh/x",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&hl=en-US&location=Austin%2CTexas&q=where+are+van+gogh+paintings&si=ACFMAn-DEpVMnDWqWw1_SxJthgoB0pd5ycjOHtu03URD63HJs65teHYVKVgSs-vWIXkzFmj2PYGQZ6pWAHWvZ9g7UaLP40wSpUEqzPbAWCxsnsAQo_UX5ARAN9O4BZxkZmTnjE7FIohA5_p7txN0G0w8yNVs7fwyRg%3D%3D"
+            }
+        ],
+        "description": "Vincent Willem van Gogh was a Dutch Post-Impressionist painter who posthumously became one of the most famous and influential figures in Western art history. In a period of 10 years, he created about 2,100 artworks, including around 860 oil paintings, most of which date from the last two years of his life.",
+        "source": {
+            "name": "Wikipedia",
+            "link": "https://en.wikipedia.org/wiki/Vincent_van_Gogh"
+        },
+        "born": "March 30, 1853, Zundert, Netherlands",
+        "born_links": [
+            {
+                "text": "Zundert, Netherlands",
+                "link": "https://www.google.com/search?q=Zundert&si=ACFMAn86XkhxzOC35jo3k1ec_mUa4PwHgnEtN6tbGWMWaJ9RArUb4FezPF6R9vgS_oi-Oh49scONjfk1EvHFA61wsFBjVorg2mwbF6qtmM0RzBE4FAXbnQykjtrk0EhBKouW6LA1HHPrQv-LYAm_3P9JPZorr9cYIYetx4vB8FF75MY8CMxsTgpNuzlbtMzoRV5ivaPP9QE9&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAHoECBYQAg"
+            }
+        ],
+        "died": "July 29, 1890, Auvers-sur-Oise, France",
+        "died_links": [
+            {
+                "text": "Auvers-sur-Oise, France",
+                "link": "https://www.google.com/search?q=Auvers-sur-Oise&si=ACFMAn_Gd9OM2CPb2aZmeZqmDNcQe6dffWLqUS3eIZkPr91_p-_zncBNlbOCcbJEZLGFOF8JBUtMa4qzA5mYxJoHjhgbapl_YuOWH5Vc7q61ZZ9JoMFwX_hWsUpZVWrQB0Ybm1sex653gW-KV78X0Bj0slMr7_gGcGP-Nal6Kp5c0RrjRYSHHP1NUEmVwCD9Dq8gsp7fI7ik&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAHoECBsQAg"
+            }
+        ],
+        "periods": "Post-Impressionism, Pointillism, Neo-Impressionism",
+        "periods_links": [
+            {
+                "text": "Post-Impressionism",
+                "link": "https://www.google.com/search?q=Post-Impressionism&si=ACFMAn_Gd9OM2CPb2aZmeZqmDNcQe6dffWLqUS3eIZkPr91_p3eQ92jVnAHprSrreflZNTqXci9tjaRZKwjPv8Z9S4WJ5C1vklklY174P_tVSNHipDqDte69IErALE3ENX5Lb4VFu4O-8ihma9BG4N_jqDGf_WzlBYodxq5TQV1iI_QilGYgtnX40mF1ai5pI3XDXUTLe-T2nMPL7bjtpH5vm4Ar4bxOMifPOR7zmMcpfXXfTlKoZhupgVJA0t9LyF1Dz21hPeXMZU-fGwUJIxIQbzMRQCzJJg%3D%3D&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAHoECBwQAg"
+            },
+            {
+                "text": "Pointillism",
+                "link": "https://www.google.com/search?q=Pointillism&si=ACFMAn_Gd9OM2CPb2aZmeZqmDNcQe6dffWLqUS3eIZkPr91_p-NXnAMnaCoPd0rPdqE4x3ENu3rRwqAYMvyPjQLyWu0bn_16AQn0rELqDscyUvgX8rZ_HwmvkRiL8pCFiiB0nmdbB-z5NM5AN6gkjNsTipJha3Vk8zWYZjbgL3GwsFlkDrivoCyCv3SMxa5mKsGKkt9KgAw0GZ78ZpCb4IgGIFwyb4FRxuInYhT-mtQ1yOOQSXsW5jbdWvQB8vASJxHWAVgh_2Ei&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAXoECBwQAw"
+            },
+            {
+                "text": "Neo-Impressionism",
+                "link": "https://www.google.com/search?q=Neo-Impressionism&si=ACFMAn_Gd9OM2CPb2aZmeZqmDNcQe6dffWLqUS3eIZkPr91_p0cdvXOqWYr437hgxPKFpF6yxYeXsVGfhIhYv1g4Fak9cvsY96irhapzyow9mrXw4lkNPVqnpQ3xVVWFbbCVozYUHBdnBM1xj_D4XGC3Nyh7wO6FkSgyVgJsGUiN2w65YlG9WL6P9ejhNfQGUIk7tz_sMTQ4U-kM-fxBTIgQykFMQTFvyInJcm_jIkA7DTkxLcOlNqu48f630Lv9upXvoC4sBN85fakzWaurse8BRZRwObPadg%3D%3D&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAnoECBwQBA"
+            }
+        ],
+        "siblings": "Theo van Gogh",
+        "siblings_links": [
+            {
+                "text": "Theo van Gogh",
+                "link": "https://www.google.com/search?q=Theodorus+van+Gogh&si=ACFMAn_Gd9OM2CPb2aZmeZqmDNcQe6dffWLqUS3eIZkPr91_p1kr1y75sF1d3mUisU1qBgGya_ZsrmMUEB4SEmbBk8tnTDpkoDM66it8kcGUzTvGo_wnGBdQJPzOk3OzOmnu6c5B4iBvFQOuHhLbyFhx7Qf_vzOxtLeM4yTnmoMY6AwYzC198cQuayUAT39biASx3PVnS213f4mem3Y7PE2NakyHnT-EnL23lDG90O5fDHW2-5LkLgQPGTSPPUFw0J9qYDLzipHOAXWYzS4wuMLFJ0u12O0riA%3D%3D&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAHoECBcQAg"
+            },
+            {
+                "text": "MORE",
+                "link": "https://www.google.com/search?q=vincent+van+gogh+siblings&stick=H4sIAAAAAAAAAOPgE-LQz9U3MI_PNdKSzE620i9IzS_ISQVSRcX5eVbFmUk5mXnpi1glyzLzklPzShTKEvMU0vPTMxSgUsUArrAEoEMAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ44YBKAF6BAgXEAM"
+            }
+        ],
+        "influenced_by": "Claude Monet, Rembrandt, Paul C\u00e9zanne",
+        "influenced_by_links": [
+            {
+                "text": "Claude Monet",
+                "link": "https://www.google.com/search?q=Claude+Monet&si=ACFMAn86XkhxzOC35jo3k1ec_mUa4PwHgnEtN6tbGWMWaJ9RAleeXF6psxPPTtD93YYHs8d3xKu05kMEdIzccP-ymscYD0FZkRiGF_Pox5WYoc1b-aczhxW8DDNeRQdv7LB8piwoxfWRp35tmnPPOvBXg4ORQkx7gLKhUx4qinH6qmKOm_PUJRqsqNokW19h8UhTflZNmfqZegfw_IDVlayECEb1hMsAuiJFjfCT60lyfos_J1EB8u0EfRtIm5M3Ruai16EUAonm&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAHoECBkQAg"
+            },
+            {
+                "text": "Rembrandt",
+                "link": "https://www.google.com/search?q=Rembrandt&si=ACFMAn_Gd9OM2CPb2aZmeZqmDNcQe6dffWLqUS3eIZkPr91_p74TIbWW6zLnXPUWf6nUZ6UcJv-Vj3Fr2rLLvJ05yKvMv6h1oMvdElvZy1sS-UUUZC0k2QOGQ46N9yTul9kzquN3rZu8lvo82IRoQcCz7L6v8Edlh4bz1o5pM185dw_Vlv7-1IMEGfoalK_D4hvbFyyBj2StuEOBUAVxYHHq4o1YEt_yq-r1ftJb7gEmYo5LFa8xC0ESbFPg2oFnECXebFCyrACv&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAXoECBkQAw"
+            },
+            {
+                "text": "Paul C\u00e9zanne",
+                "link": "https://www.google.com/search?q=Paul+C%C3%A9zanne&si=ACFMAn86XkhxzOC35jo3k1ec_mUa4PwHgnEtN6tbGWMWaJ9RAudyXALkbDaUu0JhvpA-xMrgXr7oJUoWrvqxvyOG4Ga4KnAFjwFD8wpN02HiKjzKyRDgaS_qFNo9G6zJw-LE8bUjdNnbLnXrSQN0odd65mZu0rZk8jqLRTGfBQziFEqTsk0Fm0v95a8tzTpt2HoEmS1U3NR_YBoTFCZOtlA5p7Z2gOzuItwyBMHpCa2ws2eUMKeO-mEqekWB9GUaSzb514SznKRd&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAnoECBkQBA"
+            },
+            {
+                "text": "MORE",
+                "link": "https://www.google.com/search?q=vincent+van+gogh+influenced+by&stick=H4sIAAAAAAAAAOPgE-LQz9U3MI_PNdJSzCi30k_Oz8lJTS7JzM_TLy_KLEktKrbKzEvLKU3NS04tXsQqV5YJZOSVKJQl5imk56dnKMBlUxSSKgF9GhfrUAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ44YBKAN6BAgZEAU"
+            }
+        ],
+        "parents": "Anna Carbentus van Gogh, Theodorus van Gogh",
+        "parents_links": [
+            {
+                "text": "Anna Carbentus van Gogh",
+                "link": "https://www.google.com/search?q=Anna+Carbentus+van+Gogh&si=ACFMAn8gKcw6L8cgu575hwcueyKgoe9ZYQ1m1yJZTLKy7VGJ2vkbvaKlhpwoDE_fh9CsUTWD4qi_4WGKGX2BK1LmoQDY_xyx-ZCc-Rgeu7cbK1Hdxp7OUQLpXt_ri5KT7ZYdSMA3hsB1vxEjPjp43yrv7HysEAo-fSoQbwQqXBfhIBHjfrfdnGf-r4WXat6g9UajxjowfquQScGyhp56Wq0QIViMy6tgNTg3JcZyUGgr7ACDCKkYWp-99ZgU1Wmj2NtPLPqApe3kKwhG-gLwjhBlkAruXknUvA%3D%3D&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAHoECBoQAg"
+            },
+            {
+                "text": "Theodorus van Gogh",
+                "link": "https://www.google.com/search?q=Theodorus+van+Gogh&si=ACFMAn8gKcw6L8cgu575hwcueyKgoe9ZYQ1m1yJZTLKy7VGJ2tdlt9ls9dFsInp1j4GOD6_Su8PWFlTukxK8Tu-YMB6Y7XqtwxJg9oNci6bP84kgvvabeFkez6Bq_VhBhG5xSZjAGMeXd0hKw-bSvAQkW8ag6zqDrbyZGfC1XyESnOqWA6ChhN3hrIles67MUwy8RNRY1YmfRgSZEjEEyhWZ_z5wIixOUJziOuYP8nALFUL2PekY5Gu25mR0ejmBVzWy_u-kjIUqV9JVHQiyxp4N7BRbHzId7A%3D%3D&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQmxMoAXoECBoQAw"
+            }
+        ],
+        "artworks": [
+            {
+                "name": "The Starry Night",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhWCSxKLiioV_DLTM0oAdKX0-E4AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAD",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16c33fc784634a10d9274b1dced0ae741d0.jpeg"
+            },
+            {
+                "name": "Van Gogh self-portrait",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Van+Gogh+self-portrait&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyTEk2z8nTUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYhULS8xTcM9Pz1AoTs1J0y3ILyopSswsAQAjTSJSVgAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAF",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16c3817739b31aee3ce9d6489c01f23d79a.jpeg"
+            },
+            {
+                "name": "The Potato Eaters",
+                "extensions": [
+                    "1885"
+                ],
+                "link": "https://www.google.com/search?q=The+Potato+Eaters&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMTCxMKrWUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUMyUhUC8ksSS_IVXBNLUouKAa5xmdtPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAH",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16cd0f9114d0ff62d73352dc6679660953c.jpeg"
+            },
+            {
+                "name": "Irises",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Irises+(painting)&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLGMzUvMi7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBT2LMotTixU0ChIz80oy89I1ATgwCCtPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAJ",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16c50613c5e793606aea88bc59d429653b4.jpeg"
+            },
+            {
+                "name": "Wheatfield with Crows",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Wheatfield+with+Crows&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMkw0KirWUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYRcMzUhNL0jJTc1IUyjNLMhSci_LLiwHOVDeyUwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAL",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16c448bcee5443691685ac359da2af90d9d.jpeg"
+            },
+            {
+                "name": "Caf\u00e9 Terrace at Night",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Caf%C3%A9+Terrace+at+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMyg2NLbSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYxZwT0w6vVAhJLSpKTE5VSCxR8MtMzygBABqaicVUAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAN",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16c983ab9490900d4c689280af94530c935.jpeg"
+            },
+            {
+                "name": "Vase with Fifteen Sunflowers",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Vase+with+Fifteen+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMUswsC9O0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWGXCEotTFcozSzIU3DLTSlJT8xSCS_PScvLLU4uKAbaRg_VbAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAP",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16c2f400f33270ba3770926c61dfae44a90.jpeg"
+            },
+            {
+                "name": "Almond Blossoms",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Almond+Blossoms&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyKM8uSa7SUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuV3zMnNz0tRcMrJLy7Ozy0GACmgDVFPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAR",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c6146455b79357ca16cea95c9d1b9e5a00324a60fb451a4053e.jpeg"
+            },
+            {
+                "name": "Self-Portrait",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Self-Portrait&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyyLLIrizQUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuUNTs1J0w3ILyopSswsAQANqVsCTQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAT",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN70sjks6kFiv0Z_K1QnZogNCjyGB65SBnIiTSfzv76PnuY5Ei"
+            },
+            {
+                "name": "Bedroom in Arles",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Bedroom+in+Arles&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArEsi02MCtO0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWAWcUlOK8vNzFTLzFByLclKLAbk5OxpPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAV",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcScFSw_R642g88BNxROXma6X_J9MND_-6hjZa6BrYq1GNaHC8f3"
+            },
+            {
+                "name": "The Night Caf\u00e9",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=The+Night+Caf%C3%A9&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHSjcrzqrSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtY-UMyUhX8MtMzShScE9MOrwQAFGTTjU0AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAX",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS1MROkMn19-0IR2wR6Ar713uV_a-sYup37d26RnsrofbsccJ-A"
+            },
+            {
+                "name": "Sunflowers",
+                "link": "https://www.google.com/search?q=Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMUszTjcu1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLmCS_PScvLLU4uKARitY11JAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAZ",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1s9TeQSMp52s4RilDMm5lMGHK26HjE3T6D-88O1l6Xf3pDCvv"
+            },
+            {
+                "name": "The Red Vineyard",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=The+Red+Vineyard&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLGMko3Ly7SUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhWCUlMUwjLzUisTi1IAQqiwSE4AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAb",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT_ycaStYQfCfAyrR6w6C_9Sblqhe2hDA_CxwpRlMpMcBfC88m4"
+            },
+            {
+                "name": "The Yellow House",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=The+Yellow+House&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFSzAsNCrSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhUiU3Ny8ssVPPJLi1MBeQbKy04AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAd",
+                "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8Xqz_RsOWlTbY-oCc__TfMcNFdqdF8Bfqy_h-emkw7NpsUfDB"
+            },
+            {
+                "name": "Tree Roots",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Tree+Roots&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGyzExzsyy1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLlCilJTFYLy80uKATU83dpJAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAf",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQAucvMgICgghEbYIIrm71Ofd56IIIHirgmhkNZb8a5Ue94BxLA"
+            },
+            {
+                "name": "Self-Portrait with Bandaged Ear",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Self-Portrait+with+Bandaged+Ear&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMk0pSqiy1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWOWDU3PSdAPyi0qKEjNLFMozSzIUnBLzUhLTU1MUXBOLAGGQvkZeAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAh",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8juuefle5MyKZKBLRgPjsGSJon7vkt91SM7WTRuZOOyAyUI1v"
+            },
+            {
+                "name": "The Bedroom",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Bedroom+in+Arles,+version+3&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGMCy0rUwy1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWKWdUlOK8vNzFTLzFByLclKLdRTKUouKM_PzFIwBlSoFWFoAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAj",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSHI0a_en6lWW-rrFGwlG9e-CAJBIBzly2zXaKdtquZPZ873-Tx"
+            },
+            {
+                "name": "Head of a Peasant Woman with White Cap",
+                "extensions": [
+                    "1885"
+                ],
+                "link": "https://www.google.com/search?q=Head+of+a+Peasant+Woman+with+White+Cap&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMNsqNT64oN9dSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9iVfNITUxRyE9TSFQISE0sTswrUQjPz03MUyjPLMlQCM_ILElVcE4sAAAxeyvhaAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAl",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGE8p0-5jZ18uqSF53o_1aorZkTkvjqwdTux1_QcCQpuxLqrgM"
+            },
+            {
+                "name": "Starry Night Over the Rh\u00f4ne",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Starry+Night+Over+the+Rh%C3%B4ne&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHMjE0tLbSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYZYJLEouKKhX8MtMzShT8y1KLFEoyUhWCMg5vyUsFAPm8p-xaAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAn",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTktZhNsSE10sxywubgQGn-hf7IMV2xAuM_88ZGgs-9qg4pMDQ"
+            },
+            {
+                "name": "Wheatfield Under Thunderclouds",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Wheatfield+Under+Thunderclouds&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyKra0MC3UUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYpULz0hNLEnLTM1JUQjNS0ktUgjJKAXRyTn5pSnFAAjWJy9eAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAp",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRYWuHoAs3ovVdQK400mIEVq36sOdstqw1sG3c-yh2ulDkxoOh9"
+            },
+            {
+                "name": "Self-Portrait with Dark Felt Hat at the Easel",
+                "extensions": [
+                    "1886"
+                ],
+                "link": "https://www.google.com/search?q=Self-Portrait+with+Dark+Felt+Hat+at+the+Easel&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArEss80LCyu1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWHWDU3PSdAPyi0qKEjNLFMozSzIUXBKLshXcUnNKFDwSSxSAqCQjVcE1sTg1BwCE0MedbAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAr",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRWXuzbt0TH08IOcjzKfCeMVIUcyHuhzXtYeqXq0gjFSinZq_2j"
+            },
+            {
+                "name": "Self-Portrait (Dedicated to Paul Gauguin)",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Self-Portrait+(Dedicated+to+Paul+Gauguin)&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMi3NN0gq0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWDWDU3PSdAPyi0qKEjNLFDRcUlMykxNLUlMUSvIVAhJLcxTcE0vTSzPzNAGQSZAtaAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAt",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTX_NSsEj8-CcAsdoJHHp5DjE87PSYWQgyfO7jrS6GLuiXINKx4"
+            },
+            {
+                "name": "Vase with Irises Against a Yellow Background",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Vase+with+Irises+Against+a+Yellow+Background&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyjDe1TDfVUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYtUJSyxOVSjPLMlQ8CzKLE4tVnBMT8zMKy5RSFSITM3JyS9XcEpMzk4vyi_NSwEAcCwqAmwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAv",
+                "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSGeWXBv7T8JYRFpipZ6b_BEMgaUtVOy3p9W7vRlf63eVt5S98s"
+            },
+            {
+                "name": "Wheat Field with Cypresses",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Wheat+Field+with+Cypresses&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMSnJMTeK1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWKXCM1ITSxTcMlNzUhTKM0syFJwrC4pSi4tTiwEkoHZyWQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAx",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-YYo-yqMf-K5i2GTIoT8OmNzoTdfxd55p4TbIcmtxLbyYvKzO"
+            },
+            {
+                "name": "The Harvest",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Harvest+at+La+Crau,+with+Montmajour+in+the+Background&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBrEMDczMypPitZSyk630yzKLSxNz4hOLSpCYmcUlVuX5RdnFi1hNPRKLylKLSxQSSxR8EhWcixJLdRTKM0syFHzz80pyE7PyS4sUMvMUSjJSFZwSk7PTi_JL81IApWcOrnUAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAz",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQYRbTMpLqlD9Rc_c7aKRgZP8SQjpz1lr2ZRstqEUdEpiAW0WcF"
+            },
+            {
+                "name": "Self-Portrait with Grey Felt Hat",
+                "extensions": [
+                    "1887"
+                ],
+                "link": "https://www.google.com/search?q=Self-Portrait+with+Grey+Felt+Hat&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMi3OK4w21lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWBWCU3PSdAPyi0qKEjNLFMozSzIU3ItSKxXcUnNKFDwSSwDZSjnfXwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA1",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHoYSG5pPI6BKHmX1XysusuYO0DE1p4FgkSkqXuKAh45gxHE54"
+            },
+            {
+                "name": "Garden with Courting Couples: Square Saint-Pierre",
+                "extensions": [
+                    "1887"
+                ],
+                "link": "https://www.google.com/search?q=Garden+with+Courting+Couples:+Square+Saint-Pierre&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMNi1OKzOqzNVSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9iNXRPLEpJzVMozyzJUHDOLwVK5qWDGAU5qcVWCsGFpYlFqQrBiZl5JboBmalFRakAeSFRZnMAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA3",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTVMdPfF5tngdlBg9t3IPdm_UVJdUuMeNeon9PUEnIwRVjL1WFO"
+            },
+            {
+                "name": "Skull of a Skeleton with Burning Cigarette",
+                "link": "https://www.google.com/search?q=Skull+of+a+Skeleton+with+Burning+Cigarette&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGyjMzTcnO1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLWCs0tzchTy0xQSFYKzU3NSS_LzFMozSzIUnEqL8jLz0hWcM9MTi1JLSlIB0MSNdGkAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA5",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq50ymnWBMVBiCv2Od6AEoYHIVbPyMMpAnY8pb6pLKu8uWt_or"
+            },
+            {
+                "name": "Vase with Twelve Sunflowers",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Vase+with+Twelve+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMUsyTKsu0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWKXDEotTFcozSzIUQspTc8pSFYJL89Jy8stTi4oBRq_hp1oAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA7",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6XrI81c8cVnrpZY8bF7dWF7549pz4iRRJ395p7NUHd4LcOSTQ"
+            },
+            {
+                "name": "Bulb Fields",
+                "extensions": [
+                    "1883"
+                ],
+                "link": "https://www.google.com/search?q=Bulb+Fields&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGScpNNzfO0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLmdSnOSFNwyU3NSigE_azG3SgAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA9",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS-77BonP_jX2WtclWZWUmm1JO4q9f46S3gdrlLVSkjWHJvc6oT"
+            },
+            {
+                "name": "Still Life: Vase with Pink Roses",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Still+Life:+Vase+with+Pink+Roses&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArHSs5JNq8q1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWBWCSzJzchR8MtNSrRTCEotTFcozSzIUAjLzshWC8otTiwFSM7DNXwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA_",
+                "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ1EOmqRbpomELIKc-UWmYzz9HWav5dOyX83PiZuzH640Fb548x"
+            },
+            {
+                "name": "Wheatfield with a reaper",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Wheatfield+with+a+reaper&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMNi1OKs41N9dSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9ilQjPSE0sSctMzUlRKM8syVBIVChKTSxILQIAUt03h1oAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBB",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSduXr92hfhtfLKGNDRMFkQJf1hGVOsUD9hgpdt160SaftEUt0p"
+            },
+            {
+                "name": "Two Cut Sunflowers",
+                "extensions": [
+                    "1887"
+                ],
+                "link": "https://www.google.com/search?q=Two+Cut+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyyM5LN8jWUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYhUKKc9XcC4tUQguzUvLyS9PLSoGALzyp65SAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBD",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTeJENoRRdcziLwAbNMfD5V0bvXsjxjpp7UV_NMZdGEqoipV3Tq"
+            },
+            {
+                "name": "Van Gogh's Chair",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Van+Gogh%27s+Chair&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyKiw2MY3XUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYhUIS8xTcM9Pz1AvVnDOSMwsAgDmt7jpUAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBF",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTgzi5qKAk9ugYqkyruOsGYkvZp-CQRFOrfHgq4r966EsSD9u6v"
+            },
+            {
+                "name": "Vase with Cornflowers and Poppies",
+                "link": "https://www.google.com/search?q=Vase+with+Cornflowers+and+Poppies&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMMksuT8-qyNFSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9iVQxLLE5VKM8syVBwzi_KS8vJL08tKlZIzEtRCMgvKMhMLQYAwRWIIWMAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBH",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSH-MW0OUaQuQnAfIbNb4Iff8MzOo8phqrvxDwcCYtu93Uky6J8"
+            },
+            {
+                "name": "Still Life with Cabbage and Clogs",
+                "extensions": [
+                    "1881"
+                ],
+                "link": "https://www.google.com/search?q=Still+Life+with+Cabbage+and+Clogs&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGSclNMjEu0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWBWDSzJzchR8MtNSFcozSzIUnBOTkhLTUxUS81IUnHPy04sB216jWGAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBJ",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR6gEzZxNdj_YYpD_ClMlpN5mJdnUPtyEJ8D2jfmCt_JWHJbZd_"
+            },
+            {
+                "name": "Prisoners Exercising",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Prisoners+Exercising&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGSyjLKDZO0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWEUCijKL8_NSi4oVXCtSi5IzizPz0gE4_UCrUwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBL",
+                "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTTQnAbE5g9Bs4KklOHZb_XzSrFoDiTgGs5q5edKYK31RyPoI73"
+            },
+            {
+                "name": "Gauguin's Chair",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Gauguin%27s+Chair&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyqDA3MzTXUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuV3TyxNL83MUy9WcM5IzCwCAE2t4BlPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBN",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS4-QJFoofCR_MQrC3_CgpZZwT-epC2pWi0gMysVqvUsRlT-xEV"
+            },
+            {
+                "name": "Valley with Ploughman Seen from Above",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Valley+with+Ploughman+Seen+from+Above&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyqCgzTavSUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYlUNS8zJSa1UKM8syVAIyMkvTc_ITcxTCE5NzVNIK8rPVXBMyi9LBQBHV_xgZQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBP",
+                "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSNYW-CZcP4TFlUJ3BPAffKLhO4bhBSeDEt0fMAsFz8MCHIZVYW"
+            },
+            {
+                "name": "Self-Portrait with a Straw Hat",
+                "extensions": [
+                    "1887"
+                ],
+                "link": "https://www.google.com/search?q=Self-Portrait+with+a+Straw+Hat&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMk0qSUwq1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWOWCU3PSdAPyi0qKEjNLFMozSzIUEhWCgbxyBY_EEgCJNhI4XQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBR",
+                "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGgOOZecdLffPaasArFimFkmUDOpm06iUMdceFycFDXz1s14aE"
+            },
+            {
+                "name": "L'Arl\u00e9sienne",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=L%27Arl%C3%A9sienne&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMMi0zyzZJK9NSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9i5fVRdyzKObyyODM1Ly8VAJpWSQVPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBT",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRre5q_2k10wTTbVSzqXS3yXZxwnA9Gun3c6-G1kLKSdEmxMQSd"
+            },
+            {
+                "name": "Bouquet of Flowers in a Vase",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Bouquet+of+Flowers+in+a+Vase&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMzi5LN0jKLtBSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9ilXHKLy0sTS1RyE9TcMvJL08tKlbIzFNIVAhLLE4FALCV_z9eAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBV",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMW7-DHoft2PLGLYamMsG6NUb6PVBJW7YTXYButLmx6V-f856o"
+            },
+            {
+                "name": "Cypresses",
+                "extensions": [
+                    "1889"
+                ],
+                "link": "https://www.google.com/search?q=Cypresses&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyqsiON0nTUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuV0riwoSi0uTi0GANrqAShJAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBX",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRqtdhRUgUvLazo2XmfSIv-QK_Td77dZt7nuC9zm-5J_lGaXFX"
+            },
+            {
+                "name": "At Eternity's Gate",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=Sorrowing+old+man&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHSTXLT8rSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBYPzi4ryyzPz0hXyc1IUchPzAKa-pQpPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBZ",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRSNBKd-byGME8eCM_IaRYk6_DogSNDEylS856eXI434ZLFEMIl"
+            },
+            {
+                "name": "Portrait of P\u00e8re Tanguy",
+                "extensions": [
+                    "1887"
+                ],
+                "link": "https://www.google.com/search?q=Portrait+of+P%C3%A8re+Tanguy&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArHSs1KyDMq0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWCUC8otKihIzSxTy0xQCDq8oSlUIScxLL60EAAnzD0BXAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBb",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSPNDWCt6qVfwy2kCx-N2McpWAGOPwU8snZMx846hfvlREhb0xj"
+            },
+            {
+                "name": "Vase with Five Sunflowers",
+                "extensions": [
+                    "1888"
+                ],
+                "link": "https://www.google.com/search?q=Vase+with+Five+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMTFLykoy0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWCXDEotTFcozSzIU3DLLUhWCS_PScvLLU4uKAb3NovZYAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBd",
+                "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSrRaGP33eggQSEL04jr6E98blbK7H4UJNJ_fOnFHMPdtj3tWAj"
+            },
+            {
+                "name": "Almond Blossom",
+                "link": "https://www.google.com/search?q=Almond+Blossom&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzTMMM8oy8pKr9RSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9i5XPMyc3PS1FwyskvLs7PBQCOQ0HkUAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBf",
+                "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-7DTt2swBAyyAj3H1RvIpTMA7srnDuPEOaUJTIT8ajkz2gSNx"
+            },
+            {
+                "name": "The Church at Auvers",
+                "extensions": [
+                    "1890"
+                ],
+                "link": "https://www.google.com/search?q=The+Church+at+Auvers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHM0tIq8rSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYRUIyUhWcM0qLkjMUEksUHEvLUouKAdarqiFSAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBh",
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVZg7ZPOqTSPYVWtehjx6E8IXLbrInGA8DK8ibU5pxmfcl7-q4"
+            },
+            {
+                "name": "Poppy Flowers",
+                "extensions": [
+                    "1887"
+                ],
+                "link": "https://www.google.com/search?q=Poppy+Flowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGSi5Kzy6u0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWHkD8gsKKhXccvLLU4uKAQyfeGpMAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBj",
+                "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS2LVpFl1El_E_rM0m2zP-Ye87b4X4mO6YwfH4dCp75iphy9tD8"
+            }
+        ],
+        "people_also_search_for": [
+            {
+                "name": "Pablo Picasso artwork",
+                "link": "https://www.google.com/search?si=ACFMAn9QlknPajhCNTwKxAtikEYpBB7cuv61qHlfIUqzAnvzXyg8_HaTgf2ZNdy1aQVjuXOeQPlLPKCBj1SNAy-djykghWtJuZeLuFZRPpnM2R2FdsGa2C5yKwxZUy7D33zeVztQp34SInKo55OHn5s9yHNrBtUJT5LooKSG5ptvbxBnCqtpcdKaZKON8zgVL9QpGpWLvoOvgTp7wGzNd033gVJm-EllKU0Qn09yU6FCJ27DNNOBAauYDwbIz3RIuUCSEakZq2Ho&q=Pablo+Picasso+artwork&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQs9oBKAB6BAgYEAI",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Pablo+Picasso+artwork&si=ACFMAn9QlknPajhCNTwKxAtikEYpBB7cuv61qHlfIUqzAnvzXyg8_HaTgf2ZNdy1aQVjuXOeQPlLPKCBj1SNAy-djykghWtJuZeLuFZRPpnM2R2FdsGa2C5yKwxZUy7D33zeVztQp34SInKo55OHn5s9yHNrBtUJT5LooKSG5ptvbxBnCqtpcdKaZKON8zgVL9QpGpWLvoOvgTp7wGzNd033gVJm-EllKU0Qn09yU6FCJ27DNNOBAauYDwbIz3RIuUCSEakZq2Ho",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c61ab9ebb9cb868695f28c7724a205f6383e939646f7062553d9f0791ad73ce5552.jpeg"
+            },
+            {
+                "name": "Claude Monet artwork",
+                "link": "https://www.google.com/search?si=ACFMAn9QlknPajhCNTwKxAtikEYpBB7cuv61qHlfIUqzAnvzXzZSN-y6ey1QMRk8sw771y-0k09-O7KIPZ-eoepQZoNrd33658KVHK2_oLqLnWoCVE1nyWvfQKuy6hVQi-aHD9OEWogTgrlqc-e-vKtYA-Zwbi9bbO9lqvj9GgFarEenbWH7Y02m_nk8Sn3XPRtBArbPudY-iuYBV9vM7fWknD0fKr8tCM2ekm_q1dzSmjS12JDe-zldaGG5roraRRLpEnmbV9Xy&q=Claude+Monet+artwork&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQs9oBKAF6BAgYEAM",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Claude+Monet+artwork&si=ACFMAn9QlknPajhCNTwKxAtikEYpBB7cuv61qHlfIUqzAnvzXzZSN-y6ey1QMRk8sw771y-0k09-O7KIPZ-eoepQZoNrd33658KVHK2_oLqLnWoCVE1nyWvfQKuy6hVQi-aHD9OEWogTgrlqc-e-vKtYA-Zwbi9bbO9lqvj9GgFarEenbWH7Y02m_nk8Sn3XPRtBArbPudY-iuYBV9vM7fWknD0fKr8tCM2ekm_q1dzSmjS12JDe-zldaGG5roraRRLpEnmbV9Xy",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c61ab9ebb9cb868695f28c7724a205f6383c2967826c27f3698d5b891a630f44e4b.jpeg"
+            },
+            {
+                "name": "Theo van Gogh artwork",
+                "link": "https://www.google.com/search?si=ACFMAn9EYA8-4bFStayEL7CdrjCE7wJK-nZuMfnawcKpsPEMQbAu3tIMGye6L-63Z_I4bktHp8-bMwJ895aU02tLVFBmJgzMlUM8BTALC8An3h_LT-IjuipofYBM-DnBgdS30vpiFyNW0Zi7LNwdmXkQm7F-F4mHSXE5mm-5akolrJwD3DRnluu9SbTEiSL1bFFhLZ9x2oNSzDtqgnkIvxHM2n9OnA3aez4iu4lbHQtfzl7Stsz1rliZbXfIU0COFWxtTIzMIysE&q=Theo+van+Gogh+artwork&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQs9oBKAJ6BAgYEAQ",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Theo+van+Gogh+artwork&si=ACFMAn9EYA8-4bFStayEL7CdrjCE7wJK-nZuMfnawcKpsPEMQbAu3tIMGye6L-63Z_I4bktHp8-bMwJ895aU02tLVFBmJgzMlUM8BTALC8An3h_LT-IjuipofYBM-DnBgdS30vpiFyNW0Zi7LNwdmXkQm7F-F4mHSXE5mm-5akolrJwD3DRnluu9SbTEiSL1bFFhLZ9x2oNSzDtqgnkIvxHM2n9OnA3aez4iu4lbHQtfzl7Stsz1rliZbXfIU0COFWxtTIzMIysE",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c61ab9ebb9cb868695f28c7724a205f63830683fff60a689a674e1ef6ef0e70e7e7.jpeg"
+            },
+            {
+                "name": "Leonardo da Vinci artwork",
+                "link": "https://www.google.com/search?si=ACFMAn9QlknPajhCNTwKxAtikEYpBB7cuv61qHlfIUqzAnvzX_n04om6g_7OAVd0qMjqRM526Q72Kz3b0vCR7WyPxJXxl2V6EEHu-TGLplb8fxXzCxdCpyNJMfdLRSUaaR_3ud2EwUiUBs3xYarti_ealtaD6CyeLStOn8nssXkSBiEKa-v89CA0UhYnG8WbIhPucYAnu5uk9FozWnMj0z8gzbmZIAd3qgzme4mJgZZbMfJXDrHrU_-yyJ-W-iuXXf79VIIEcvCA&q=Leonardo+da+Vinci+artwork&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQs9oBKAN6BAgYEAU",
+                "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Leonardo+da+Vinci+artwork&si=ACFMAn9QlknPajhCNTwKxAtikEYpBB7cuv61qHlfIUqzAnvzX_n04om6g_7OAVd0qMjqRM526Q72Kz3b0vCR7WyPxJXxl2V6EEHu-TGLplb8fxXzCxdCpyNJMfdLRSUaaR_3ud2EwUiUBs3xYarti_ealtaD6CyeLStOn8nssXkSBiEKa-v89CA0UhYnG8WbIhPucYAnu5uk9FozWnMj0z8gzbmZIAd3qgzme4mJgZZbMfJXDrHrU_-yyJ-W-iuXXf79VIIEcvCA",
+                "image": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/c125579c4e5b1d5a9af7571277164c61ab9ebb9cb868695f28c7724a205f6383b8c2e568daa7d9acf8a5776fa3541605.jpeg"
+            }
+        ],
+        "people_also_search_for_link": "https://www.google.com/search?q=Vincent+van+Gogh+artwork&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVKCs7QEgzNTUssTK4v9UitKgktSC4ofMXpxC7z8cU9YynHSmpPXGK25RMLzi7KLg1JzEktSU0Ly_ZOyUpNLhMS42FzzSjJLKoV4pLi44CYmcXNxcrE7FpWUAzXx_GIUC0jNL8hJVUjMKc5XKE5NLErOUEjLL1rEKhGWmZecmleiUJaYp-Cen56hkAjRNIstlgvTWUIeXOzBpRCrbYUocdQtNkmGWyt6VBj8xX7s68xY7frBxIr_5s-v86sZJwEAw2MMLSYBAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ4qYDegQIGBAG",
+        "people_also_search_for_stick": "H4sIAAAAAAAAAONgFuLQz9U3MI_PNVKCs7QEgzNTUssTK4v9UitKgktSC4ofMXpxC7z8cU9YynHSmpPXGK25RMLzi7KLg1JzEktSU0Ly_ZOyUpNLhMS42FzzSjJLKoV4pLi44CYmcXNxcrE7FpWUAzXx_GIUC0jNL8hJVUjMKc5XKE5NLErOUEjLL1rEKhGWmZecmleiUJaYp-Cen56hkAjRNIstlgvTWUIeXOzBpRCrbYUocdQtNkmGWyt6VBj8xX7s68xY7frBxIr_5s-v86sZJwEAw2MMLSYBAAA"
+    },
+    "inline_images": [
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhTEAA#imgrc=vZMxMo1BENMQMM",
+            "source": "https://www.britannica.com/biography/Vincent-van-Gogh",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae929056a8adc8a301192900626e8356f5b171c26d5a5ae0fb79.jpeg",
+            "original": "https://cdn.britannica.com/78/43678-050-F4DC8D93/Starry-Night-canvas-Vincent-van-Gogh-New-1889.jpg",
+            "title": "Vincent van Gogh | Biography, Art, & Facts | Britannica",
+            "source_name": "Encyclopedia Britannica"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhUEAA#imgrc=ChEgs0AaM91YZM",
+            "source": "https://www.vincentvangogh.org/",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae9282e0d74035795975be527e38bb6229389ed0fa4b9b7dd04e.jpeg",
+            "original": "https://www.vincentvangogh.org/images/self-portrait.jpg",
+            "title": "Vincent van Gogh: 300 Paintings Analysis & Complete Works",
+            "source_name": "www.vincentvangogh.org"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhXEAA#imgrc=-KkuuwMzLjv6GM",
+            "source": "https://www.standard.co.uk/culture/top-ten-vincent-van-gogh-paintings-art-lover-a4082941.html",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae927559e66f09331e0469fa29f72d000e6ceca81466c64216d9.jpeg",
+            "original": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/sei26139543-1-0.jpg?width=1200&auto=webp&quality=75",
+            "title": "Vincent van Gogh paintings: From Starry Night to Sunflowers ...",
+            "source_name": "Evening Standard"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhYEAA#imgrc=GLfwnBZMpoBZ5M",
+            "source": "https://yourstory.com/2023/05/van-gogh-art-perseverance-starry-night",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae926f05553b18d6ef35ce4aff9275e1a0f850a2dac2dbafee03.jpeg",
+            "original": "https://images.yourstory.com/cs/2/96eabe90392211eb93f18319e8c07a74/Imagejtb7-1684960500563.jpg?w=1152&fm=auto&ar=2:1&mode=crop&crop=faces",
+            "title": "Sunrise Chronicles: Vincent van Gogh Painting Life's ...",
+            "source_name": "YourStory"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhaEAA#imgrc=TKo1ofGrEqCbAM",
+            "source": "https://www.newyorker.com/culture/the-art-world/the-world-changing-trees-of-vincent-van-gogh",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae92212b817f13f512ab53168bd8c582d82156eb56c118459b0e.jpeg",
+            "original": "https://media.newyorker.com/photos/647a15fec91efd6c449e2964/master/w_2560%2Cc_limit/Arn-Van-Gogh-Secondary-1.jpg",
+            "title": "The World-Changing Trees of Vincent van Gogh | The New Yorker",
+            "source_name": "The New Yorker"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhcEAA#imgrc=4d2VLBf9rzLNPM",
+            "source": "https://www.smithsonianmag.com/smart-news/how-would-van-gogh-have-painted-the-remote-faroe-islands-180980910/",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD7Q2jxarqm7GIbPsHeo0uBdjgvrfwoCSAdxFnwHOhJg&s",
+            "original": "https://th-thumbnailer.cdn-si-edu.com/GgmJe7fORYYh66TivAfZwNkCfv0=/fit-in/1600x0/filters:focal(640x640:641x641)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/3e/0b/3e0b2b4b-2b70-4309-a308-8bbf08360e94/national_gallery_of_the_faroe_islands_ai_exhibit_insprired_by_van_gogh.png",
+            "title": "How Would van Gogh Have Painted the Faroe Islands? | Smart ...",
+            "source_name": "Smithsonian Magazine"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhbEAA#imgrc=BecSWmFgBWVyuM",
+            "source": "https://www.nationalgallery.org.uk/artists/vincent-van-gogh",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fJVpwv9PNc8EC3IS9IUIYMrFlxwZSrL3e5fhnbfM7w&s",
+            "original": "https://www.nationalgallery.org.uk/media/34074/n-3861-00-000045-hd.jpg?cc=0.19050260416666667,0,0.013664062499999968,0&width=350&height=350&rnd=132385890031600000&bgcolor=fff",
+            "title": "Vincent van Gogh (1853 - 1890) | National Gallery, London",
+            "source_name": "The National Gallery, London"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhVEAA#imgrc=ClKpewT7-PNeIM",
+            "source": "https://impressionistarts.com/timeline-vincent-van-gogh-life",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH7-vVHRPg2sElzKG2epIJI34vz7JwtwAGERA-94Oj&s",
+            "original": "https://impressionistarts.com/static/06a35d42f96dde3339fb162bf3675b55/c239c/van-gogh-cafe-terrace-at-night.jpg",
+            "title": "Timeline of van Gogh's life | ImpressionistArts",
+            "source_name": "ImpressionistArts"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhJEAA#imgrc=RephG1ZYc70AFM",
+            "source": "https://www.pixelle.co/vincent-van-gogh/",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtDqYr5vXmW9CD2BwVkNL1ICalK4wZ42ExTW9qIRA5CjrB807cRxQbX7lsZQ&s",
+            "original": "https://www.pixelle.co/wp-content/uploads/2016/12/Van-Gogh-900x660.jpg",
+            "title": "Vincent Van Gogh's Peace",
+            "source_name": "Pixelle.co"
+        },
+        {
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&source=univ&fir=vZMxMo1BENMQMM%252Cwpm9TCsLu_LuLM%252C_%253BChEgs0AaM91YZM%252CTkCil0EkMOecFM%252C_%253B-KkuuwMzLjv6GM%252CbC-U9Q3g-tsO4M%252C_%253BGLfwnBZMpoBZ5M%252CE0HFvvTrQzVgIM%252C_%253BTKo1ofGrEqCbAM%252CmBokn5QOJqsPIM%252C_%253B4d2VLBf9rzLNPM%252CnQOgIVAuP7hTtM%252C_%253BBecSWmFgBWVyuM%252CMwU3ZqtoC6GlqM%252C_%253BClKpewT7-PNeIM%252CbaLPIbr8-_PijM%252C_%253BRephG1ZYc70AFM%252CAllQB3PZpuqGbM%252C_%253BiB4qfWP5jZ1NBM%252CQsRuLKPixftL8M%252C_&usg=AI4_-kQUbgoub_PQYe9dk3iH090R3l83cg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ9AF6BAhSEAA#imgrc=iB4qfWP5jZ1NBM",
+            "source": "https://www.vangoghmuseum.nl/en/art-and-stories/art/vincent-van-gogh",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvPXgiMfYTU3hKYGdHBEh2t2YxUyQOuNFrjK6-uxze&s",
+            "original": "https://iiif.micr.io/HVTVF/full/300,/0/default.jpg",
+            "title": "Vincent van Gogh - Van Gogh Museum",
+            "source_name": "Van Gogh Museum"
+        }
+    ],
+    "inline_images_suggested_searches": [
+        {
+            "name": "starry night",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:starry+night:ftb1CTjlo2c%3D&usg=AI4_-kQNOCtqWGLOcq65aDuYTEtH2j751w&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAB6BAg3EBE",
+            "chips": "q:van+gogh+paintings,g_1:starry+night:ftb1CTjlo2c%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e33035fcaa7cff9790c6569aa7bbbbfe0c.jpeg"
+        },
+        {
+            "name": "sunflowers",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:sunflowers:e_1kO-Mgunw%3D&usg=AI4_-kReX6A7ySmXeQD7OaeLlKioP3nsUQ&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAF6BAg3EBU",
+            "chips": "q:van+gogh+paintings,g_1:sunflowers:e_1kO-Mgunw%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e37e8e19c45ff00edbbcdf9ddb14982bb9.jpeg"
+        },
+        {
+            "name": "portrait",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:portrait:rNczI6miTqY%3D&usg=AI4_-kSP1NGM9ezGCvMvP7GQNZX74rCzkg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAJ6BAg3EBk",
+            "chips": "q:van+gogh+paintings,g_1:portrait:rNczI6miTqY%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e37e88dfb815ff8cad6a1e9a4a19b05064.jpeg"
+        },
+        {
+            "name": "easy",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:easy:z8BvPlKgaNo%3D&usg=AI4_-kSukNlQF1JH62bVRBGaLiVvsvVsOw&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAN6BAg3EB0",
+            "chips": "q:van+gogh+paintings,g_1:easy:z8BvPlKgaNo%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e36be69eafc37449cc10ceb921c22abfc1.jpeg"
+        },
+        {
+            "name": "landscape",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:landscape:vRoRT-L9Edg%3D&usg=AI4_-kTn2LP99G5PbrQSnEyQUzdNz4n8Pw&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAR6BAg3ECE",
+            "chips": "q:van+gogh+paintings,g_1:landscape:vRoRT-L9Edg%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e3b07f0cc9943441baa99bd9ca1d51e256.jpeg"
+        },
+        {
+            "name": "wallpaper",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:wallpaper:UyEVGwbI8iE%3D&usg=AI4_-kT2-Wg-Ngt1luXlpViNUiq6NyLZ8Q&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAV6BAg3ECU",
+            "chips": "q:van+gogh+paintings,g_1:wallpaper:UyEVGwbI8iE%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e379020e7fbcaeabcb07650aae5dafd4df.jpeg"
+        },
+        {
+            "name": "cafe",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:cafe:zxqZeXbBvbw%3D&usg=AI4_-kTAuDepEd4XH5v1DHtuyi7WyFmbsA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAZ6BAg3ECk",
+            "chips": "q:van+gogh+paintings,g_1:cafe:zxqZeXbBvbw%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e328ca0d02e56677ed6eb92ee33557f404.jpeg"
+        },
+        {
+            "name": "vase",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:vase:Dib26lxWYQk%3D&usg=AI4_-kTbBJjHV7yitUely2KXexVDTx2DXw&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAd6BAg3EC0",
+            "chips": "q:van+gogh+paintings,g_1:vase:Dib26lxWYQk%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/33e6e7e651deae922bbefc83d2380a8b62dec23580038a4de6527cb0a07d37e3e96cab4ba3f6b09a1e5afa28facdd937.jpeg"
+        },
+        {
+            "name": "tree",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:tree:qUBpZM4BfBo%3D&usg=AI4_-kS5wVA3Y0Y_i_jkcoqOK5b3bmU_5Q&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAh6BAg3EDE",
+            "chips": "q:van+gogh+paintings,g_1:tree:qUBpZM4BfBo%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgNj4ZkWjdMKc9zlPSPK_id_z9Zff3r0RQcNuAsWQe-w&s"
+        },
+        {
+            "name": "wheat field",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:wheat+field:fLLvfbGUiSg%3D&usg=AI4_-kTKSio3Nt5whsf4ppLjLlL35BHBrA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAl6BAg3EDU",
+            "chips": "q:van+gogh+paintings,g_1:wheat+field:fLLvfbGUiSg%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG9QvqLfhSVIYShWLJlj_Gl4wasVILljLyzhCufJEl-A&s"
+        },
+        {
+            "name": "early",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:early:Oy4w6Jv1Q48%3D&usg=AI4_-kQTd3oZpf-TZMpQktwojAzThrhNdA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAp6BAg3EDk",
+            "chips": "q:van+gogh+paintings,g_1:early:Oy4w6Jv1Q48%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEEAS37sKhdUDpzfuYepjzE9XTIMMgzCNyNNLmIMiMCA&s"
+        },
+        {
+            "name": "almond blossom",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:almond+blossom:nT89RHjl_pk%3D&usg=AI4_-kS5MNmqJ7LZWMXfQrz-CfpCkhZMHg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAt6BAg3ED0",
+            "chips": "q:van+gogh+paintings,g_1:almond+blossom:nT89RHjl_pk%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkfZLzD2yri8v_IyyhgfoTqyNhp70HprJNp99joIgQWg&s"
+        },
+        {
+            "name": "museum",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:museum:9ntiAFrMwpg%3D&usg=AI4_-kQu6L3imkfFVJoCf1zyZgLP904mjQ&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKAx6BAg3EEE",
+            "chips": "q:van+gogh+paintings,g_1:museum:9ntiAFrMwpg%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSI7Xla0zXUtz3UqjXSGrIhXfsdfy7dohLNhOnmXXJog&s"
+        },
+        {
+            "name": "simple",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:simple:Jy3MOgDo3Ls%3D&usg=AI4_-kQHuaajcKIRFrGNHhtWxGIQwdyQZA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKA16BAg3EEU",
+            "chips": "q:van+gogh+paintings,g_1:simple:Jy3MOgDo3Ls%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR-m7-P8LaEHEDh-iQkd_RUbztAqlc6aFLVo5Z2pwYSg&s"
+        },
+        {
+            "name": "self portrait",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:self+portrait:fGmFOr1LqZ4%3D&usg=AI4_-kTe_oFrrk-1u-nlnH74u8Jg6CGjFQ&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKA56BAg3EEk",
+            "chips": "q:van+gogh+paintings,g_1:self+portrait:fGmFOr1LqZ4%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXDNrS07KxcL8YZ4oIteySWC_1NP2bnvhq8ajU_IyfPw&s"
+        },
+        {
+            "name": "eiffel tower",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:eiffel+tower:AeZbsG4q7x4%3D&usg=AI4_-kQMatty6bakHtFiF_uLEV0rmegB5Q&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKA96BAg3EE0",
+            "chips": "q:van+gogh+paintings,g_1:eiffel+tower:AeZbsG4q7x4%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCbKmjd_wcWForTVTvZXI5f_mTMYiMncES_oLXUHQdew&s"
+        },
+        {
+            "name": "still life",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:still+life:ypCN0_mP2tQ%3D&usg=AI4_-kSxed5CNQIo-324mbzE9FPj0DlqmQ&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKBB6BAg3EFE",
+            "chips": "q:van+gogh+paintings,g_1:still+life:ypCN0_mP2tQ%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQymsLNS8qzNk-cpOM0YFEDoIky9Bp5_y3-fIyOpudRxQ&s"
+        },
+        {
+            "name": "bedroom",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:bedroom:UCrogihmmKU%3D&usg=AI4_-kRREqMCSF6TFKr3H9dRRn0CXFJ2dg&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKBF6BAg3EFU",
+            "chips": "q:van+gogh+paintings,g_1:bedroom:UCrogihmmKU%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8rUoHtEYuDpc-fU2WqagOcM5ZIUUZxmnJtkll4soeVw&s"
+        },
+        {
+            "name": "artist",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:artist:3TMaQLMgEQo%3D&usg=AI4_-kT3ChsLNUr9QRhHkB-6_nVIGnD2oQ&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKBJ6BAg3EFk",
+            "chips": "q:van+gogh+paintings,g_1:artist:3TMaQLMgEQo%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3O0hLTskCQaEqKWzVCmnOsPzd1kWhSqQCs9kWU76Lpg&s"
+        },
+        {
+            "name": "blue",
+            "link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=isch&chips=q:van+gogh+paintings,g_1:blue:PbzzOqcrnNU%3D&usg=AI4_-kRwvtrSJ5LCjVPXbe5WoA5g1uevTA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQgIoDKBN6BAg3EF0",
+            "chips": "q:van+gogh+paintings,g_1:blue:PbzzOqcrnNU%3D",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdlcWs3HGCDqL9nNeF7JyGMACepvkNaBTBeeesvY32FA&s"
+        }
+    ],
+    "inline_videos": [
+        {
+            "position": 1,
+            "title": "Van Gogh, the Painter With 900 Paintings | Full documentary",
+            "link": "https://www.google.com#fpstate=ive&vld=cid:82735140,vid:J_ovJb_Cv98",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/051819bfb21a19d2e0721da3cdc1a6e349a55b287ba2145c844f13e1cee8e50a.jpeg",
+            "channel": "Best Documentary",
+            "platform": "YouTube",
+            "date": "Mar 19, 2023",
+            "key_moments": [
+                {
+                    "time": "13:31",
+                    "title": "Blending of Colors",
+                    "link": "https://www.youtube.com/watch?v=J_ovJb_Cv98&vl=en&t=811"
+                },
+                {
+                    "time": "20:26",
+                    "title": "Entrance to the Public Park",
+                    "link": "https://www.youtube.com/watch?v=J_ovJb_Cv98&vl=en&t=1226"
+                },
+                {
+                    "time": "25:57",
+                    "title": "Yellow Cafe",
+                    "link": "https://www.youtube.com/watch?v=J_ovJb_Cv98&vl=en&t=1557"
+                },
+                {
+                    "time": "36:45",
+                    "title": "Second Floor Inn",
+                    "link": "https://www.youtube.com/watch?v=J_ovJb_Cv98&vl=en&t=2205"
+                },
+                {
+                    "time": "45:11",
+                    "title": "Mental Instability",
+                    "link": "https://www.youtube.com/watch?v=J_ovJb_Cv98&vl=en&t=2711"
+                },
+                {
+                    "time": "47:33",
+                    "title": "Van Gogh's Letters",
+                    "link": "https://www.youtube.com/watch?v=J_ovJb_Cv98&vl=en&t=2853"
+                },
+                {
+                    "time": "48:03",
+                    "title": "1937 Exhibition in Paris",
+                    "link": "https://www.youtube.com/watch?v=J_ovJb_Cv98&vl=en&t=2883"
+                }
+            ]
+        },
+        {
+            "position": 2,
+            "title": "Vincent van Gogh Paintings",
+            "link": "https://www.google.com#fpstate=ive&vld=cid:2b811123,vid:3EJ9IB9rWcE",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/051819bfb21a19d21367dda41ac38fbe39a94ec3a04960952010d21a33121cdd.jpeg",
+            "channel": "TheHistoryOfArt",
+            "platform": "YouTube",
+            "date": "May 13, 2022"
+        },
+        {
+            "position": 3,
+            "title": "Immersive Van Gogh: Why Art is in Crisis",
+            "link": "https://www.google.com#fpstate=ive&vld=cid:46d4ca91,vid:cOFBAJStuk8",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/051819bfb21a19d2da9fb416194c1ede1dec3082c36f8c3be010ab6dabfde0b3.jpeg",
+            "channel": "Broey Deschanel",
+            "platform": "YouTube",
+            "date": "4 days ago"
+        }
+    ],
+    "top_stories": [
+        {
+            "title": "Tiny Van Gogh Gallery Created Inside a Watch By an Artist With a Microscope",
+            "link": "https://www.goodnewsnetwork.org/tiny-van-gogh-gallery-created-inside-watch-w-microscope/",
+            "source": "Good News Network",
+            "date": "1 day ago",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/86163cdc582cda2507c5bdcb1522eeb7e4fed3fe47820681.jpeg"
+        },
+        {
+            "title": "In the spotlight: the only collector who bought a Van Gogh during Vincent's lifetime",
+            "link": "https://www.theartnewspaper.com/2023/06/30/in-the-spotlight-the-only-collector-who-bought-a-van-gogh-during-vincents-lifetime",
+            "source": "The Art Newspaper",
+            "date": "2 days ago",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/86163cdc582cda25c4939df28b15883af2c791f8ec5f4954.jpeg"
+        },
+        {
+            "title": "From The Starry Night to a wheatfield: Van Gogh's darkest symbol",
+            "link": "https://www.bbc.com/culture/article/20230612-from-the-starry-night-to-a-wheatfield-van-goghs-darkest-symbol",
+            "source": "BBC",
+            "date": "3 weeks ago",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/86163cdc582cda25b3d6868fffb88baefe2ba08e620a2958.jpeg"
+        },
+        {
+            "title": "1500 Paintings & Drawings by Vincent van Gogh Have Been Digitized & Put Online",
+            "link": "https://www.openculture.com/2023/06/1500-paintings-drawings-by-vincent-van-gogh-have-been-digitized-put-online.html",
+            "source": "Open Culture",
+            "date": "5 days ago",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/86163cdc582cda25782c9de986915428489aaaae3a7eb228.jpeg"
+        }
+    ],
+    "top_stories_link": "https://www.google.com/search?q=Van+Gogh+paintings&tbm=nws&source=univ&tbo=u&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQt8YBKAF6BAh1EAY",
+    "top_stories_serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings&tbm=nws",
+    "related_questions": [
+        {
+            "question": "What is Van Gogh's most famous piece of artwork?",
+            "snippet": "Starry Night, 1889 Van Gogh's painting Starry Night (1889), is one of his most iconic.",
+            "title": "Starry Night",
+            "link": "https://magazine.artland.com/van-gogh-famous-paintings/#:~:text=Starry%20Night%2C%201889,one%20of%20his%20most%20iconic.",
+            "displayed_link": "https://magazine.artland.com \u203a Articles and Features",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrd2CAG3IOr7TcmnWiPlrBE1tuuz2MGHaKqXVdYRlMcUb4LPi7Zr_YhJlGAg&s",
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoYXQgaXMgVmFuIEdvZ2gncyBtb3N0IGZhbW91cyBwaWVjZSBvZiBhcnR3b3JrPyIsImxrIjoiR2k5M2FHRjBJR2x6SUhaaGJpQm5iMmRvSjNNZ2JXOXpkQ0JtWVcxdmRYTWdjR2xsWTJVZ2IyWWdZWEowZDI5eWF3IiwiYnMiOiJjMDJPTVE3Q01CQUVCYVVyQ2dxTDZnb1FJZzAwMUM1cHFFbDlDaGY3UkdKYnZrTW9yLUFidkladjhBMVFpb2gyWnpXNzVtZ09kVUFGRnJoZ2hGUHlZU3ZRSjFGb3NVOTNnY3pVRUtRV3NPZ2psWnV6bjduWm02b09WT2dYRW1qNDhjS2VJM2FUQlRKeVZJNWVuSDJmemM2czZ6RDh6MHdGa0FTU3FXSHNuSDJ0VEdVMjQ2VnJJaG5kb2xqS0FKRjlVQ2lVQ3dsRmRmYTVYTXktIiwiaWQiOiJmY180In0=",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoYXQgaXMgVmFuIEdvZ2gncyBtb3N0IGZhbW91cyBwaWVjZSBvZiBhcnR3b3JrPyIsImxrIjoiR2k5M2FHRjBJR2x6SUhaaGJpQm5iMmRvSjNNZ2JXOXpkQ0JtWVcxdmRYTWdjR2xsWTJVZ2IyWWdZWEowZDI5eWF3IiwiYnMiOiJjMDJPTVE3Q01CQUVCYVVyQ2dxTDZnb1FJZzAwMUM1cHFFbDlDaGY3UkdKYnZrTW9yLUFidkladjhBMVFpb2gyWnpXNzVtZ09kVUFGRnJoZ2hGUHlZU3ZRSjFGb3NVOTNnY3pVRUtRV3NPZ2psWnV6bjduWm02b09WT2dYRW1qNDhjS2VJM2FUQlRKeVZJNWVuSDJmemM2czZ6RDh6MHdGa0FTU3FXSHNuSDJ0VEdVMjQ2VnJJaG5kb2xqS0FKRjlVQ2lVQ3dsRmRmYTVYTXktIiwiaWQiOiJmY180In0%3D"
+        },
+        {
+            "question": "Where are the original Van Gogh paintings?",
+            "snippet": "For the largest collection of Van Gogh works, head to the Van Gogh Museum in Amsterdam where you will see over 200 of his paintings including The Potato Eaters, Almond Blossom, Wheatfield with Crows, self-portraits, plus many of his drawings and letters.",
+            "title": "Museums | Van Gogh Gallery",
+            "link": "https://www.vangoghgallery.com/museum/#:~:text=For%20the%20largest%20collection%20of,of%20his%20drawings%20and%20letters.",
+            "displayed_link": "https://www.vangoghgallery.com \u203a museum",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/d39f225c87492546b5191460bc2f619b1d8bdc502d091e5b69532c44204c5b6d.png",
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoZXJlIGFyZSB0aGUgb3JpZ2luYWwgVmFuIEdvZ2ggcGFpbnRpbmdzPyIsImxrIjoiR2lsM2FHVnlaU0JoY21VZ2RHaGxJRzl5YVdkcGJtRnNJSFpoYmlCbmIyZG9JSEJoYVc1MGFXNW5jdyIsImJzIjoiYzAyT01RN0NNQkFFQmFVckNncUw2Z29RSWcwMDFDNXBxRWw5Q2hmN1JHSmJ2a01vci1BYnZJWnY4QTFRaW9oMlp6Vzc1bWdPZFVBRkZyaGdoRlB5WVN2UUoxRm9zVTkzZ2N6VUVLUVdzT2dqbFp1em43blptNm9PVk9nWEVtajQ4Y0tlSTNhVEJUSnlWSTVlbkgyZnpjNnM2ekQ4ejB3RmtBU1NxV0hzbkgydFRHVTI0NlZySWhuZG9saktBSkY5VUNpVUN3bEZkZmE1WE15LSIsImlkIjoiZmNfNCJ9",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoZXJlIGFyZSB0aGUgb3JpZ2luYWwgVmFuIEdvZ2ggcGFpbnRpbmdzPyIsImxrIjoiR2lsM2FHVnlaU0JoY21VZ2RHaGxJRzl5YVdkcGJtRnNJSFpoYmlCbmIyZG9JSEJoYVc1MGFXNW5jdyIsImJzIjoiYzAyT01RN0NNQkFFQmFVckNncUw2Z29RSWcwMDFDNXBxRWw5Q2hmN1JHSmJ2a01vci1BYnZJWnY4QTFRaW9oMlp6Vzc1bWdPZFVBRkZyaGdoRlB5WVN2UUoxRm9zVTkzZ2N6VUVLUVdzT2dqbFp1em43blptNm9PVk9nWEVtajQ4Y0tlSTNhVEJUSnlWSTVlbkgyZnpjNnM2ekQ4ejB3RmtBU1NxV0hzbkgydFRHVTI0NlZySWhuZG9saktBSkY5VUNpVUN3bEZkZmE1WE15LSIsImlkIjoiZmNfNCJ9"
+        },
+        {
+            "question": "Why is Van Gogh painting so special?",
+            "snippet": "Van Gogh's finest works were produced in less than three years in a technique that grew more and more impassioned in symbolic and intense color, in surface tension, and in the movement and vibration of form and line.",
+            "title": "Top 7 Vincent van Gogh Paintings And What Makes Them Masterpieces",
+            "date": "Apr 14, 2020",
+            "link": "https://www.tallengestore.com/blogs/artists/top-7-vincent-van-gogh-paintings-and-what-makes-them-masterpieces#:~:text=Van%20Gogh's%20finest%20works%20were,vibration%20of%20form%20and%20line.",
+            "displayed_link": "https://www.tallengestore.com \u203a blogs \u203a artists \u203a top-7-vi...",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLYZ7fK7s0yZXFUGUoFcLuzOfDk6I0d8Ence9agVM&s",
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoeSBpcyBWYW4gR29naCBwYWludGluZyBzbyBzcGVjaWFsPyIsImxrIjoiR2lOM2FIa2dhWE1nZG1GdUlHZHZaMmdnY0dGcGJuUnBibWNnYzI4Z2MzQmxZMmxoYkEiLCJicyI6ImMwMk9NUTdDTUJBRUJhVXJDZ3FMNmdvUUlnMDAxQzVwcUVsOUNoZjdSR0pidmtNb3ItQWJ2SVp2OEExUWlvaDJaelc3NW1nT2RVQUZGcmhnaEZQeVlTdlFKMUZvc1U5M2djelVFS1FXc09namxadXpuN25abTZvT1ZPZ1hFbWo0OGNLZUkzYVRCVEp5Vkk1ZW5IMmZ6YzZzNnpEOHowd0ZrQVNTcVdIc25IMnRUR1UyNDZWcklobmRvbGpLQUpGOVVDaVVDd2xGZGZhNVhNeS0iLCJpZCI6ImZjXzQifQ==",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoeSBpcyBWYW4gR29naCBwYWludGluZyBzbyBzcGVjaWFsPyIsImxrIjoiR2lOM2FIa2dhWE1nZG1GdUlHZHZaMmdnY0dGcGJuUnBibWNnYzI4Z2MzQmxZMmxoYkEiLCJicyI6ImMwMk9NUTdDTUJBRUJhVXJDZ3FMNmdvUUlnMDAxQzVwcUVsOUNoZjdSR0pidmtNb3ItQWJ2SVp2OEExUWlvaDJaelc3NW1nT2RVQUZGcmhnaEZQeVlTdlFKMUZvc1U5M2djelVFS1FXc09namxadXpuN25abTZvT1ZPZ1hFbWo0OGNLZUkzYVRCVEp5Vkk1ZW5IMmZ6YzZzNnpEOHowd0ZrQVNTcVdIc25IMnRUR1UyNDZWcklobmRvbGpLQUpGOVVDaVVDd2xGZGZhNVhNeS0iLCJpZCI6ImZjXzQifQ%3D%3D"
+        },
+        {
+            "question": "What does the starry night represent?",
+            "snippet": "The Starry Night symbolizes Van Gogh's deteriorating mental state. It also symbolizes his connection to nature and his interest in traveling to the stars through death.",
+            "title": "Starry Night by Vincent Van Gogh | Analysis, Description & Facts",
+            "date": "Feb 23, 2022",
+            "link": "https://study.com/academy/lesson/van-goghs-starry-night-description-analysis-facts.html#:~:text=The%20Starry%20Night%20symbolizes%20Van,to%20the%20stars%20through%20death.",
+            "displayed_link": "https://study.com \u203a academy \u203a lesson \u203a van-goghs-starry...",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE1pliuC7taSw1pFqP7T3OhuM_HKgMUm3k4bIAEqnmLWmi-Kpz3A9i9Dpagg&s",
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoYXQgZG9lcyB0aGUgc3RhcnJ5IG5pZ2h0IHJlcHJlc2VudD8iLCJsayI6IkdpUjNhR0YwSUdSdlpYTWdkR2hsSUhOMFlYSnllU0J1YVdkb2RDQnlaWEJ5WlhObGJuUSIsImJzIjoiYzAyT01RN0NNQkFFQmFVckNncUw2Z29RSWcwMDFDNXBxRWw5Q2hmN1JHSmJ2a01vci1BYnZJWnY4QTFRaW9oMlp6Vzc1bWdPZFVBRkZyaGdoRlB5WVN2UUoxRm9zVTkzZ2N6VUVLUVdzT2dqbFp1em43blptNm9PVk9nWEVtajQ4Y0tlSTNhVEJUSnlWSTVlbkgyZnpjNnM2ekQ4ejB3RmtBU1NxV0hzbkgydFRHVTI0NlZySWhuZG9saktBSkY5VUNpVUN3bEZkZmE1WE15LSIsImlkIjoiZmNfNCJ9",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRW9zQkNreEJUV3N5Ykd4TGRFRklkeTFHU0dWMlowSk1UblJoU2twaFpERTNXRVkyU1U4dGN6WndZVFIxTjNKM1R6VmFlSFJvTmxCVlYzUjNia05pUldjeE5Hb3dhMlZxVkdScGFHUldNRUoxRWhka05ubHBXazE2ZEVoaGFXMDFUbTlRYm5GUFIzRkJPQm9pUVV4RlV6bDFUbmR0YUVFMU1IVk5Va2hMU201M2QwaG5TMkpsYTAwMldEbEVRUSIsImZjdiI6IjMiLCJlaSI6ImQ2eWlaTXp0SGFpbTVOb1BucU9HcUE4IiwicWMiOiJDaEoyWVc0Z1oyOW5hQ0J3WVdsdWRHbHVaM01RQUgzLU54OF8iLCJxdWVzdGlvbiI6IldoYXQgZG9lcyB0aGUgc3RhcnJ5IG5pZ2h0IHJlcHJlc2VudD8iLCJsayI6IkdpUjNhR0YwSUdSdlpYTWdkR2hsSUhOMFlYSnllU0J1YVdkb2RDQnlaWEJ5WlhObGJuUSIsImJzIjoiYzAyT01RN0NNQkFFQmFVckNncUw2Z29RSWcwMDFDNXBxRWw5Q2hmN1JHSmJ2a01vci1BYnZJWnY4QTFRaW9oMlp6Vzc1bWdPZFVBRkZyaGdoRlB5WVN2UUoxRm9zVTkzZ2N6VUVLUVdzT2dqbFp1em43blptNm9PVk9nWEVtajQ4Y0tlSTNhVEJUSnlWSTVlbkgyZnpjNnM2ekQ4ejB3RmtBU1NxV0hzbkgydFRHVTI0NlZySWhuZG9saktBSkY5VUNpVUN3bEZkZmE1WE15LSIsImlkIjoiZmNfNCJ9"
+        }
+    ],
+    "organic_results": [
+        {
+            "position": 1,
+            "title": "Collection - Van Gogh Museum",
+            "link": "https://www.vangoghmuseum.nl/en/collection",
+            "displayed_link": "https://www.vangoghmuseum.nl \u203a collection",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944553982a32dd5d3f165a3d753e8e70916d.jpeg",
+            "favicon": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445201261450008fac8fbd6db92d8f239fc.png",
+            "snippet": "Explore 1000+ paintings, drawings and letters by Vincent van Gogh. As well as many artworks by his contemporaries and other 19th-century artists in the Van ...",
+            "snippet_highlighted_words": [
+                "paintings",
+                "drawings",
+                "van Gogh"
+            ],
+            "images": [
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944533e83d0a1acfabfa5058252eade50f93.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944533e83d0a1acfabfa8f98d9ddff17be61.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944533e83d0a1acfabfa5d2e4a33a0e2117d.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944533e83d0a1acfabfae77e1fbf916f2aad.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944533e83d0a1acfabfa791f1f3caf0f21b0.jpeg"
+            ],
+            "sitelinks": {
+                "inline": [
+                    {
+                        "title": "Weaver Vincent van Gogh, 1884",
+                        "link": "https://www.vangoghmuseum.nl/en/collection/d0423V1962"
+                    },
+                    {
+                        "title": "Field with Poppies Vincent van...",
+                        "link": "https://www.vangoghmuseum.nl/en/collection/s0033V1962"
+                    },
+                    {
+                        "title": "Sunflowers",
+                        "link": "https://www.vangoghmuseum.nl/en/collection/s0031V1962"
+                    }
+                ]
+            },
+            "about_this_result": {
+                "keywords": [
+                    "van",
+                    "gogh"
+                ],
+                "languages": [
+                    "English"
+                ],
+                "regions": [
+                    "United States"
+                ]
+            },
+            "cached_page_link": "https://webcache.googleusercontent.com/search?q=cache:7j1-rAVeJOcJ:https://www.vangoghmuseum.nl/en/collection&cd=20&hl=en&ct=clnk&gl=us",
+            "source": "vangoghmuseum.nl"
+        },
+        {
+            "position": 2,
+            "title": "Vincent van Gogh: 300 Paintings Analysis & Complete ...",
+            "link": "https://www.vincentvangogh.org/",
+            "displayed_link": "https://www.vincentvangogh.org",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445a83a5273e488977c30c4069b1ed4e670.jpeg",
+            "favicon": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445c701435dc480f455c38e9c6091c8f69f.jpeg",
+            "snippet": "The career of Vincent van Gogh as a painter was short, but his paintings revolutionized artistic practice and styles. The intensity of his vision, his wonderful ...",
+            "snippet_highlighted_words": [
+                "van Gogh",
+                "painter",
+                "paintings"
+            ],
+            "sitelinks": {
+                "inline": [
+                    {
+                        "title": "Biography",
+                        "link": "https://www.vincentvangogh.org/biography.jsp"
+                    },
+                    {
+                        "title": "Vincent Van Gogh's Paintings...",
+                        "link": "https://www.vincentvangogh.org/arles.jsp"
+                    },
+                    {
+                        "title": "Van Gogh's Self-Portraits",
+                        "link": "https://www.vincentvangogh.org/van-gogh-self-portraits.jsp"
+                    },
+                    {
+                        "title": "Chronology",
+                        "link": "https://www.vincentvangogh.org/chronology.jsp"
+                    }
+                ]
+            },
+            "about_this_result": {
+                "keywords": [
+                    "van",
+                    "gogh",
+                    "paintings"
+                ],
+                "related_keywords": [
+                    "painter",
+                    "works"
+                ],
+                "languages": [
+                    "English"
+                ],
+                "regions": [
+                    "United States"
+                ]
+            },
+            "cached_page_link": "https://webcache.googleusercontent.com/search?q=cache:TkCil0EkMOcJ:https://www.vincentvangogh.org/&cd=43&hl=en&ct=clnk&gl=us",
+            "source": "vincentvangogh.org"
+        },
+        {
+            "position": 3,
+            "title": "Vincent van Gogh Paintings and Complete Catalog of Works",
+            "link": "https://www.vangoghgallery.com/painting/",
+            "displayed_link": "https://www.vangoghgallery.com \u203a painting",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445189fb2fdf92f797a0d4883cc24fcaec9.jpeg",
+            "favicon": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944538bce8b76722e126fc999f27f2a20279.png",
+            "snippet": "View Van Gogh paintings like Starry Night, Sunflowers, Irises and The Potato Eaters and learn about the myths and work of the greatest post-Impressionist ...",
+            "snippet_highlighted_words": [
+                "Van Gogh paintings",
+                "Irises",
+                "The Potato Eaters"
+            ],
+            "about_this_result": {
+                "keywords": [
+                    "van",
+                    "gogh",
+                    "paintings"
+                ],
+                "related_keywords": [
+                    "painting",
+                    "works"
+                ],
+                "languages": [
+                    "English"
+                ],
+                "regions": [
+                    "United States"
+                ]
+            },
+            "cached_page_link": "https://webcache.googleusercontent.com/search?q=cache:oHZY8ZIcDTIJ:https://www.vangoghgallery.com/painting/&cd=44&hl=en&ct=clnk&gl=us",
+            "source": "Van Gogh Gallery"
+        },
+        {
+            "position": 4,
+            "title": "Vincent van Gogh - 1931 artworks - painting",
+            "link": "https://www.wikiart.org/en/vincent-van-gogh",
+            "displayed_link": "https://www.wikiart.org \u203a vincent-van-gogh",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445c65a261f27240661b2e07851cc5e3803.jpeg",
+            "favicon": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445d6d1c9db1b18a09c305a6ce4c8fce663.png",
+            "snippet": "Order Oil Painting reproduction \u00b7 The Potato Eaters - Vincent van Gogh \u00b7 Paul Gauguin's Armchair - Vincent van Gogh \u00b7 Red Vineyards at Arles - Vincent van Gogh.",
+            "snippet_highlighted_words": [
+                "Painting",
+                "The Potato Eaters",
+                "van Gogh",
+                "van Gogh",
+                "van Gogh"
+            ],
+            "rich_snippet": {
+                "bottom": {
+                    "extensions": [
+                        "Art Movement: Post",
+                        "ImpressionismActive Years: 1880",
+                        "1890Art institution: Royal Academy of Fine Arts, Ant...Wikipedia: en.wikipedia.org/wiki/Vincent_van_..."
+                    ],
+                    "detected_extensions": {
+                        "impressionism_active_years": 1880,
+                        "art_institution_royal_academy_of_fine_arts_ant_wikipedia_enwikipediaorg_wiki_vincent_van": 1890
+                    }
+                }
+            },
+            "about_this_result": {
+                "keywords": [
+                    "van",
+                    "gogh",
+                    "paintings"
+                ],
+                "related_keywords": [
+                    "painting"
+                ],
+                "languages": [
+                    "English"
+                ],
+                "regions": [
+                    "United States"
+                ]
+            },
+            "cached_page_link": "https://webcache.googleusercontent.com/search?q=cache:S9RBzyLnnJkJ:https://www.wikiart.org/en/vincent-van-gogh&cd=45&hl=en&ct=clnk&gl=us",
+            "related_pages_link": "https://www.google.com/search?q=related:https://www.wikiart.org/en/vincent-van-gogh+Van+Gogh+paintings",
+            "source": "Wikiart"
+        },
+        {
+            "position": 5,
+            "title": "Top 7 Famous Van Gogh Paintings Everyone Should Know",
+            "link": "https://magazine.artland.com/van-gogh-famous-paintings/",
+            "displayed_link": "https://magazine.artland.com \u203a Articles and Features",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc7944575cded0bfd57304e6c7148d2b223bebd.jpeg",
+            "favicon": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445f771b5222cfc1cac128bfe9830df9072.png",
+            "snippet": "The Most Famous Paintings by Vincent Van Gogh \u00b7 Starry Night, 1889 \u00b7 Sunflowers, 1889 \u00b7 Self-Portrait, 1889 \u00b7 The Potato Eaters, 1885 \u00b7 Wheatfield with Crows, 1890.",
+            "snippet_highlighted_words": [
+                "Paintings",
+                "Van Gogh",
+                "The Potato Eaters",
+                "Wheatfield with Crows"
+            ],
+            "about_this_result": {
+                "keywords": [
+                    "van",
+                    "gogh",
+                    "paintings"
+                ],
+                "languages": [
+                    "English"
+                ],
+                "regions": [
+                    "United States"
+                ]
+            },
+            "cached_page_link": "https://webcache.googleusercontent.com/search?q=cache:HmCCymQDnU8J:https://magazine.artland.com/van-gogh-famous-paintings/&cd=49&hl=en&ct=clnk&gl=us",
+            "source": "Artland"
+        },
+        {
+            "position": 6,
+            "title": "List of works by Vincent van Gogh",
+            "link": "https://en.wikipedia.org/wiki/List_of_works_by_Vincent_van_Gogh",
+            "displayed_link": "https://en.wikipedia.org \u203a wiki \u203a List_of_works_by_V...",
+            "favicon": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445a90834d34a7c687010978b8290abc7f2.png",
+            "about_this_result": {
+                "keywords": [
+                    "van",
+                    "gogh",
+                    "paintings"
+                ],
+                "related_keywords": [
+                    "works"
+                ],
+                "languages": [
+                    "English"
+                ],
+                "regions": [
+                    "United States"
+                ]
+            },
+            "cached_page_link": "/search?q=related:https://en.wikipedia.org/wiki/List_of_works_by_Vincent_van_Gogh+Van+Gogh+paintings",
+            "rich_snippet_table": [
+                {
+                    "image_title": "Weaver Facing Right (Half\u2011Figure)",
+                    "date": "January 1884",
+                    "current_location": "Private Collection"
+                },
+                {
+                    "image_title": "Weaver Facing Right",
+                    "date": "February 1884",
+                    "current_location": "Private Collection"
+                },
+                {
+                    "image_title": "The Old Tower at Nuenen with a Ploughman",
+                    "date": "February 1884",
+                    "current_location": "Kr\u00f6ller\u2011M\u00fcller Museum, Otterlo"
+                }
+            ],
+            "source": "Wikipedia"
+        },
+        {
+            "position": 7,
+            "title": "Vincent Van Gogh Art Prints",
+            "link": "https://www.globalgallery.com/search/artist/vincent+van+gogh",
+            "displayed_link": "https://www.globalgallery.com \u203a search \u203a artist \u203a vince...",
+            "thumbnail": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc79445bfa4a1207ab3fb72d6a960073c4f1be9.jpeg",
+            "favicon": "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc794458072669ead70eaefb10e98b81a2a3d77.png",
+            "date": "278 Items",
+            "snippet": "Explore our collection of Vincent Van Gogh fine art prints, giclees, posters and hand crafted ... Vincent Van Gogh - Self Portrait Without Beard ...",
+            "snippet_highlighted_words": [
+                "Van Gogh",
+                "art",
+                "Van Gogh - Self Portrait"
+            ],
+            "images": [
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc794457ea9e707058a97a184815979ab7f3187.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc794457ea9e707058a97a1b26fba982651a530.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc794457ea9e707058a97a139510baf46bcc98a.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc794457ea9e707058a97a1a291cf71166c007f.jpeg",
+                "https://serpapi.com/searches/64a2ac76629a01162427cb20/images/71ffdb366a4412142bb747ae9fc794457ea9e707058a97a1bb7391aaacd66432.jpeg"
+            ],
+            "about_this_result": {
+                "keywords": [
+                    "van",
+                    "gogh"
+                ],
+                "related_keywords": [
+                    "art"
+                ],
+                "languages": [
+                    "English"
+                ],
+                "regions": [
+                    "United States"
+                ]
+            },
+            "cached_page_link": "https://webcache.googleusercontent.com/search?q=cache:KpAxgo5-pFwJ:https://www.globalgallery.com/search/artist/vincent%2Bvan%2Bgogh&cd=55&hl=en&ct=clnk&gl=us",
+            "source": "Global Gallery"
+        }
+    ],
+    "related_searches": [
+        {
+            "query": "van gogh self-portrait",
+            "link": "https://www.google.com/search?q=Van+Gogh+self-portrait&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAgtEAE"
+        },
+        {
+            "query": "van gogh starry night",
+            "link": "https://www.google.com/search?q=Van+Gogh+Starry+Night&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAgrEAE"
+        },
+        {
+            "query": "vincent van gogh videos",
+            "link": "https://www.google.com/search?q=Vincent+van+Gogh+videos&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAgwEAE"
+        },
+        {
+            "query": "van gogh sunflowers",
+            "link": "https://www.google.com/search?q=Van+Gogh+Sunflowers&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAgvEAE"
+        },
+        {
+            "query": "vincent van gogh ear",
+            "link": "https://www.google.com/search?q=Vincent+van+Gogh+ear&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAguEAE"
+        },
+        {
+            "query": "vincent van gogh cause of death",
+            "link": "https://www.google.com/search?q=Vincent+van+Gogh+cause+of+death&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAgsEAE"
+        },
+        {
+            "query": "how many van gogh paintings are in private collections",
+            "link": "https://www.google.com/search?q=How+many+Van+Gogh+paintings+are+in+private+collections&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAgxEAE"
+        },
+        {
+            "query": "vincent van gogh quotes",
+            "link": "https://www.google.com/search?q=Vincent+van+Gogh+quotes&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQ1QJ6BAgqEAE"
+        }
+    ],
+    "pagination": {
+        "current": 1,
+        "next": "https://www.google.com/search?q=Van+Gogh+paintings&oq=Van+Gogh+paintings&start=10&sourceid=chrome&ie=UTF-8",
+        "other_pages": {
+            "2": "https://www.google.com/search?q=Van+Gogh+paintings&oq=Van+Gogh+paintings&start=10&sourceid=chrome&ie=UTF-8",
+            "3": "https://www.google.com/search?q=Van+Gogh+paintings&oq=Van+Gogh+paintings&start=20&sourceid=chrome&ie=UTF-8",
+            "4": "https://www.google.com/search?q=Van+Gogh+paintings&oq=Van+Gogh+paintings&start=30&sourceid=chrome&ie=UTF-8",
+            "5": "https://www.google.com/search?q=Van+Gogh+paintings&oq=Van+Gogh+paintings&start=40&sourceid=chrome&ie=UTF-8"
+        }
+    },
+    "serpapi_pagination": {
+        "current": 1,
+        "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings&start=10",
+        "next": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings&start=10",
+        "other_pages": {
+            "2": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings&start=10",
+            "3": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings&start=20",
+            "4": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings&start=30",
+            "5": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&location=Austin%2CTexas&q=Van+Gogh+paintings&start=40"
+        }
+    }
+}

@@ -1,0 +1,382 @@
+[
+    {
+        "name": "The Starry Night",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhWCSxKLiioV_DLTM0oAdKX0-E4AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAD",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Van Gogh self-portrait",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Van+Gogh+self-portrait&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyTEk2z8nTUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYhULS8xTcM9Pz1AoTs1J0y3ILyopSswsAQAjTSJSVgAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAF",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "The Potato Eaters",
+        "extensions": [
+            "1885"
+        ],
+        "link": "https://www.google.com/search?q=The+Potato+Eaters&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMTCxMKrWUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUMyUhUC8ksSS_IVXBNLUouKAa5xmdtPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAH",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Irises",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Irises+(painting)&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLGMzUvMi7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBT2LMotTixU0ChIz80oy89I1ATgwCCtPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAJ",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Wheatfield with Crows",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Wheatfield+with+Crows&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMkw0KirWUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYRcMzUhNL0jJTc1IUyjNLMhSci_LLiwHOVDeyUwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAL",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Caf\u00e9 Terrace at Night",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Caf%C3%A9+Terrace+at+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMyg2NLbSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYxZwT0w6vVAhJLSpKTE5VSCxR8MtMzygBABqaicVUAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAN",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Vase with Fifteen Sunflowers",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Vase+with+Fifteen+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMUswsC9O0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWGXCEotTFcozSzIU3DLTSlJT8xSCS_PScvLLU4uKAbaRg_VbAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAP",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Almond Blossoms",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Almond+Blossoms&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyKM8uSa7SUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuV3zMnNz0tRcMrJLy7Ozy0GACmgDVFPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAR",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Self-Portrait",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Self-Portrait&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyyLLIrizQUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuUNTs1J0w3ILyopSswsAQANqVsCTQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAT",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Bedroom in Arles",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Bedroom+in+Arles&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArEsi02MCtO0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWAWcUlOK8vNzFTLzFByLclKLAbk5OxpPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAV",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "The Night Caf\u00e9",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=The+Night+Caf%C3%A9&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHSjcrzqrSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtY-UMyUhX8MtMzShScE9MOrwQAFGTTjU0AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAX",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Sunflowers",
+        "link": "https://www.google.com/search?q=Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMUszTjcu1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLmCS_PScvLLU4uKARitY11JAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAZ",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "The Red Vineyard",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=The+Red+Vineyard&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLGMko3Ly7SUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhWCUlMUwjLzUisTi1IAQqiwSE4AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAb",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "The Yellow House",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=The+Yellow+House&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFSzAsNCrSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhUiU3Ny8ssVPPJLi1MBeQbKy04AAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAd",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Tree Roots",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Tree+Roots&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGyzExzsyy1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLlCilJTFYLy80uKATU83dpJAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAf",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Self-Portrait with Bandaged Ear",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Self-Portrait+with+Bandaged+Ear&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMk0pSqiy1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWOWDU3PSdAPyi0qKEjNLFMozSzIUnBLzUhLTU1MUXBOLAGGQvkZeAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAh",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "The Bedroom",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Bedroom+in+Arles,+version+3&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGMCy0rUwy1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWKWdUlOK8vNzFTLzFByLclKLdRTKUouKM_PzFIwBlSoFWFoAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAj",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Head of a Peasant Woman with White Cap",
+        "extensions": [
+            "1885"
+        ],
+        "link": "https://www.google.com/search?q=Head+of+a+Peasant+Woman+with+White+Cap&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMNsqNT64oN9dSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9iVfNITUxRyE9TSFQISE0sTswrUQjPz03MUyjPLMlQCM_ILElVcE4sAAAxeyvhaAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAl",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Starry Night Over the Rh\u00f4ne",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Starry+Night+Over+the+Rh%C3%B4ne&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHMjE0tLbSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYZYJLEouKKhX8MtMzShT8y1KLFEoyUhWCMg5vyUsFAPm8p-xaAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAn",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Wheatfield Under Thunderclouds",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Wheatfield+Under+Thunderclouds&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyKra0MC3UUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYpULz0hNLEnLTM1JUQjNS0ktUgjJKAXRyTn5pSnFAAjWJy9eAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAp",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Self-Portrait with Dark Felt Hat at the Easel",
+        "extensions": [
+            "1886"
+        ],
+        "link": "https://www.google.com/search?q=Self-Portrait+with+Dark+Felt+Hat+at+the+Easel&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArEss80LCyu1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWHWDU3PSdAPyi0qKEjNLFMozSzIUXBKLshXcUnNKFDwSSxSAqCQjVcE1sTg1BwCE0MedbAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAr",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Self-Portrait (Dedicated to Paul Gauguin)",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Self-Portrait+(Dedicated+to+Paul+Gauguin)&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMi3NN0gq0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWDWDU3PSdAPyi0qKEjNLFDRcUlMykxNLUlMUSvIVAhJLcxTcE0vTSzPzNAGQSZAtaAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAt",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Vase with Irises Against a Yellow Background",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Vase+with+Irises+Against+a+Yellow+Background&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyjDe1TDfVUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYtUJSyxOVSjPLMlQ8CzKLE4tVnBMT8zMKy5RSFSITM3JyS9XcEpMzk4vyi_NSwEAcCwqAmwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAv",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Wheat Field with Cypresses",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Wheat+Field+with+Cypresses&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMSnJMTeK1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWKXCM1ITSxTcMlNzUhTKM0syFJwrC4pSi4tTiwEkoHZyWQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAx",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "The Harvest",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Harvest+at+La+Crau,+with+Montmajour+in+the+Background&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBrEMDczMypPitZSyk630yzKLSxNz4hOLSpCYmcUlVuX5RdnFi1hNPRKLylKLSxQSSxR8EhWcixJLdRTKM0syFHzz80pyE7PyS4sUMvMUSjJSFZwSk7PTi_JL81IApWcOrnUAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRAz",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Self-Portrait with Grey Felt Hat",
+        "extensions": [
+            "1887"
+        ],
+        "link": "https://www.google.com/search?q=Self-Portrait+with+Grey+Felt+Hat&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMi3OK4w21lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWBWCU3PSdAPyi0qKEjNLFMozSzIU3ItSKxXcUnNKFDwSSwDZSjnfXwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA1",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Garden with Courting Couples: Square Saint-Pierre",
+        "extensions": [
+            "1887"
+        ],
+        "link": "https://www.google.com/search?q=Garden+with+Courting+Couples:+Square+Saint-Pierre&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMNi1OKzOqzNVSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9iNXRPLEpJzVMozyzJUHDOLwVK5qWDGAU5qcVWCsGFpYlFqQrBiZl5JboBmalFRakAeSFRZnMAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA3",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Skull of a Skeleton with Burning Cigarette",
+        "link": "https://www.google.com/search?q=Skull+of+a+Skeleton+with+Burning+Cigarette&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGyjMzTcnO1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLWCs0tzchTy0xQSFYKzU3NSS_LzFMozSzIUnEqL8jLz0hWcM9MTi1JLSlIB0MSNdGkAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA5",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Vase with Twelve Sunflowers",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Vase+with+Twelve+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMUsyTKsu0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWKXDEotTFcozSzIUQspTc8pSFYJL89Jy8stTi4oBRq_hp1oAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA7",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Bulb Fields",
+        "extensions": [
+            "1883"
+        ],
+        "link": "https://www.google.com/search?q=Bulb+Fields&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGScpNNzfO0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWLmdSnOSFNwyU3NSigE_azG3SgAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA9",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Still Life: Vase with Pink Roses",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Still+Life:+Vase+with+Pink+Roses&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArHSs5JNq8q1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWBWCSzJzchR8MtNSrRTCEotTFcozSzIUAjLzshWC8otTiwFSM7DNXwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRA_",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Wheatfield with a reaper",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Wheatfield+with+a+reaper&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMNi1OKs41N9dSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9ilQjPSE0sSctMzUlRKM8syVBIVChKTSxILQIAUt03h1oAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBB",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Two Cut Sunflowers",
+        "extensions": [
+            "1887"
+        ],
+        "link": "https://www.google.com/search?q=Two+Cut+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyyM5LN8jWUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYhUKKc9XcC4tUQguzUvLyS9PLSoGALzyp65SAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBD",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Van Gogh's Chair",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Van+Gogh%27s+Chair&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyKiw2MY3XUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYhUIS8xTcM9Pz1AvVnDOSMwsAgDmt7jpUAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBF",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Vase with Cornflowers and Poppies",
+        "link": "https://www.google.com/search?q=Vase+with+Cornflowers+and+Poppies&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMMksuT8-qyNFSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9iVQxLLE5VKM8syVBwzi_KS8vJL08tKlZIzEtRCMgvKMhMLQYAwRWIIWMAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBH",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Still Life with Cabbage and Clogs",
+        "extensions": [
+            "1881"
+        ],
+        "link": "https://www.google.com/search?q=Still+Life+with+Cabbage+and+Clogs&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGSclNMjEu0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWBWDSzJzchR8MtNSFcozSzIUnBOTkhLTUxUS81IUnHPy04sB216jWGAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBJ",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Prisoners Exercising",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Prisoners+Exercising&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGSyjLKDZO0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWEUCijKL8_NSi4oVXCtSi5IzizPz0gE4_UCrUwAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBL",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Gauguin's Chair",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Gauguin%27s+Chair&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyqDA3MzTXUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuV3TyxNL83MUy9WcM5IzCwCAE2t4BlPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBN",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Valley with Ploughman Seen from Above",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Valley+with+Ploughman+Seen+from+Above&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyqCgzTavSUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYlUNS8zJSa1UKM8syVAIyMkvTc_ITcxTCE5NzVNIK8rPVXBMyi9LBQBHV_xgZQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBP",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Self-Portrait with a Straw Hat",
+        "extensions": [
+            "1887"
+        ],
+        "link": "https://www.google.com/search?q=Self-Portrait+with+a+Straw+Hat&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMk0qSUwq1lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWOWCU3PSdAPyi0qKEjNLFMozSzIUEhWCgbxyBY_EEgCJNhI4XQAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBR",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "L'Arl\u00e9sienne",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=L%27Arl%C3%A9sienne&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMMi0zyzZJK9NSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9i5fVRdyzKObyyODM1Ly8VAJpWSQVPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBT",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Bouquet of Flowers in a Vase",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Bouquet+of+Flowers+in+a+Vase&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzRMzi5LN0jKLtBSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9ilXHKLy0sTS1RyE9TcMvJL08tKlbIzFNIVAhLLE4FALCV_z9eAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBV",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Cypresses",
+        "extensions": [
+            "1889"
+        ],
+        "link": "https://www.google.com/search?q=Cypresses&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyqsiON0nTUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYuV0riwoSi0uTi0GANrqAShJAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBX",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "At Eternity's Gate",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=Sorrowing+old+man&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHSTXLT8rSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBYPzi4ryyzPz0hXyc1IUchPzAKa-pQpPAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBZ",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Portrait of P\u00e8re Tanguy",
+        "extensions": [
+            "1887"
+        ],
+        "link": "https://www.google.com/search?q=Portrait+of+P%C3%A8re+Tanguy&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArHSs1KyDMq0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWCUC8otKihIzSxTy0xQCDq8oSlUIScxLL60EAAnzD0BXAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBb",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Vase with Five Sunflowers",
+        "extensions": [
+            "1888"
+        ],
+        "link": "https://www.google.com/search?q=Vase+with+Five+Sunflowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArFMTFLykoy0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWCXDEotTFcozSzIU3DLLUhWCS_PScvLLU4uKAb3NovZYAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBd",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Almond Blossom",
+        "link": "https://www.google.com/search?q=Almond+Blossom&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1U_XNzTMMM8oy8pKr9RSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9i5XPMyc3PS1FwyskvLs7PBQCOQ0HkUAAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBf",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "The Church at Auvers",
+        "extensions": [
+            "1890"
+        ],
+        "link": "https://www.google.com/search?q=The+Church+at+Auvers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLHM0tIq8rSUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYRUIyUhWcM0qLkjMUEksUHEvLUouKAdarqiFSAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBh",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    },
+    {
+        "name": "Poppy Flowers",
+        "extensions": [
+            "1887"
+        ],
+        "link": "https://www.google.com/search?q=Poppy+Flowers&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiArGSi5Kzy6u0lLKTrfTLMotLE3PiE4tKkJiZxSVW5flF2cWLWHkD8gsKKhXccvLLU4uKAQyfeGpMAAAA&sa=X&ved=2ahUKEwiMhYmhs_L_AhUoE1kFHZ6RAfUQtq8DegQIJRBj",
+        "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    }
+]
