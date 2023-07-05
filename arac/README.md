@@ -31,6 +31,24 @@ bundle install
 
 ## Usage
 
+### Usage for Reviewers of the Assignment
+
+To review my solution, please follow these steps:
+
+1. Pull the branch locally.
+2. Navigate to the `arac/` directory.
+3. Install the dependencies using `bundle install`.
+4. Run the tests using `rspec`.
+
+If you want to review the specific test suite related to the "Extract Van Gogh Paintings Code Challenge", you can find the tests in `spec/arac/serpapi_spec.rb`. This test file contains a suite of tests tailored to the requirements of the assignment. Here's how you can run them:
+
+1. Ensure you are in the `arac/` directory.
+2. Run the specific test suite using rspec `spec/arac/serpapi_spec.rb`.
+
+If all tests pass, that indicates that the Arac library is successfully extracting the required information from the HTML.
+
+### General Usage
+
 Here's a simple usage example:
 
 ```ruby
@@ -50,7 +68,7 @@ puts data[:author] # Should output: John Doe
 
 In this example, we initialize a new Arac instance with a block. Within this block, the `item` method is used to define the output specification. After setting up the output specification, we use the `capture_from` method to perform the data extraction. The extracted data can be accessed using the keys specified in the `item` method calls.
 
-### Nested Items Extraction
+#### Nested Items Extraction
 
 Arac supports nested item extraction. This allows you to scope your search within a specific part of the HTML document and extract multiple pieces of data from it. Here's an example:
 
@@ -81,7 +99,7 @@ For example, `methods: [[:attr, 'href'], [:to_s]]` means that first the `attr` m
 
 In the absence of a specific `:methods` option, the item method defaults to `methods: []`.
 
-### Array of Nested Items Extraction
+#### Array of Nested Items Extraction
 
 Arac also supports extraction of arrays of nested items. This is useful when you need to extract similar data from multiple elements in the page. Here's an example:
 

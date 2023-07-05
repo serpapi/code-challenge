@@ -4,7 +4,6 @@ require 'arac'
 
 RSpec.describe 'SerpApi' do
   let(:html) { File.read(File.join(File.dirname(__FILE__), 'fixtures', 'van-gogh-paintings.html')) }
-  let(:expected_output) { JSON.parse(File.read(File.join(File.dirname(__FILE__), 'fixtures', 'expected-array.json'))) }
 
   before do
     arac = Arac.new do
