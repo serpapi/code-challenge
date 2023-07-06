@@ -43,7 +43,7 @@ To review my solution, please follow these steps:
 If you want to review the specific test suite related to the "Extract Van Gogh Paintings Code Challenge", you can find the tests in `spec/arac/serpapi_spec.rb`. This test file contains a suite of tests tailored to the requirements of the assignment. Here's how you can run them:
 
 1. Ensure you are in the `arac/` directory.
-2. Run the specific test suite using rspec `spec/arac/serpapi_spec.rb`.
+2. Run the specific test suite using `rspec spec/arac/serpapi_spec.rb`.
 
 If all tests pass, that indicates that the Arac library is successfully extracting the required information from the HTML.
 
