@@ -7,8 +7,8 @@ require 'nokogiri'
 #
 # Example:
 #   arac = Arac.new do
-#     item :title, selector: "h1", methods: [[:text]]
-#     item :author, selector: ".author", methods: [[:text]]
+#     item :title, selector: 'h1', methods: [[:text]]
+#     item :author, selector: '.author', methods: [[:text]]
 #   end
 #
 #   html = "<html><body><h1>My First Heading</h1><p class="author">John Doe</p></body></html>"

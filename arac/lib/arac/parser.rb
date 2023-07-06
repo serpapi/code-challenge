@@ -10,8 +10,8 @@ module Arac
   #
   #   html = "<h1>Hello, world!</h1>"
   #   parser = Arac::Parser.new(html)
-  #   headings = parser.extract("h1", [["text"]])
-  #   puts headings # Output: ["Hello, world!"]
+  #   headings = parser.extract("h1")
+  #   puts headings # Output: ['Hello, world!']
   #
   class Parser
     # Initializes a Parser instance with the HTML content to be parsed.
