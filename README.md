@@ -1,18 +1,18 @@
-# Step by Step Intrustion to run the Challenege Solution and Test Script
+# Step by Step Instructions to run the Challenge Solution and Test Script
 ## Note that this Technical Challenge was completed using Python and Pytest.
 
-Depending on how the user intends running the solution. Firstly clone the Repo as the case may be and on successful cloning of the Repo,
-into users local environment, run the `pip install -r requirements.txt` to installed all the dependencies to enable a smooth running of the scripts.
+Depending on how the user intends to run the solution. Firstly clone the Repo as the case may be and on successful cloning of the Repo,
+into users' local environment, run the `pip install -r requirements.txt` to install all the dependencies to enable a smooth running of the scripts.
 
-To get started, it is important that user should have Python already Installed along side the installation requirements file as instructed above.
+To get started, it is important that the user should have Python already Installed alongside the installation requirements file as instructed above.
 Activate a virtual environment by running `source serp\bin\activate` while assuming the user is using a MacOS or Linux.
-Idealy the virtual environment should be activated automaticaly but when it doesn't use the command issued above.
+Ideally, the virtual environment should be activated automatically but when it doesn't use the command issued above.
 
-To run the solution use the command `python3 main.py <html_file_path>`. The `html_file_path` is the html file to be scrapped.
-For example `python3 main.py woman_art.html` and that should display the necessary data as expected.
+To run the solution use the command `python3 main.py <html_file_path>`. The `html_file_path` is the HTML file to be scrapped.
+For example `python3 main.py woman_art.html` and should display the necessary data as expected.
 
 To run the unit test on the script `main.py`, all the user needs to do is to run the `pytest` command from the terminal,
-and that should give a 100% pass rate based on tested output.
+and that should give a 100% pass rate based on the tested output.
 
 ---
 
