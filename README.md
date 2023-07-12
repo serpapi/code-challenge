@@ -1,9 +1,10 @@
 ## Run file
 1. To test 
 Run `rspec rspec_test/spec`
+or `./test.sh`
 
 2. To show result in console
-a. uncomment parts in comments # we comment this for testing purpose
+a. uncomment parts in process method @main.rb file # we comment this for testing purpose
 b. run this code
 ```
 ruby main.rb

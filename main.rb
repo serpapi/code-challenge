@@ -55,12 +55,12 @@ class ArtworkExtractor
     artworks = []
     carousel = document.at_css('g-scrolling-carousel')
 
-    carousel.css('div.MiPcId').each do |node|
+    carousel.css('.klitem-tr').each do |node|
       artwork = {}
 
-      name_div = node.at_css('div.kltat')
-      meta_div = node.at_css('div.ellip.klmeta')
-      link_node = node.at_css('a.klitem')
+      name_div = node.at_css('.kltat')
+      meta_div = node.at_css('.klmeta')
+      link_node = node.at_css('.klitem')
       img_node = node.at_css('img')
 
       artwork['name'] = name_div.text.strip if name_div
