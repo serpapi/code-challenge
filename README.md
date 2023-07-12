@@ -1,7 +1,15 @@
 ## Run file
+1. To test 
+Run `rspec rspec_test/spec`
+
+2. To show result in console
+a. uncomment parts in comments # we comment this for testing purpose
+b. run this code
 ```
 ruby main.rb
 ```
+
+
 
 # Extract Van Gogh Paintings Code Challenge
 

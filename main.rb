@@ -13,9 +13,12 @@ class ArtworkExtractor
     doc = Nokogiri::HTML(html)
 
     img_dict = extract_base64_image_data(doc)
-    artworks = extract_artworks(doc, img_dict)
+    extract_artworks(doc, img_dict)
 
-    puts JSON.pretty_generate('artworks' => artworks)
+    # UNCOMMENT THIS
+    # To print the answer in a pretty JSON format
+    # artworks = extract_artworks(doc, img_dict)
+    # puts JSON.pretty_generate('artworks' => artworks)
   end
 
   private
