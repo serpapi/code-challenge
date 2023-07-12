@@ -5,12 +5,23 @@ require 'nokogiri'
 module GoogleSearch
   module Parser
     class ArtworkResults
+      ITEM_SELECTOR       = '//a[@class="klitem"]'
+      ID_SELECTOR         = './/g-img/img'
+      EXTENSIONS_SELECTOR = './/div[contains(@class, "klmeta")]'
+      THUMBNAILS_SELECTOR = '//img[@data-src]'
+
+      EMBEDDED_THUMBNAILS_REGEX = %r{
+        var\s?(?:^[^a-zA-Z_$]|\w+)\s?=\s?'(data:image/[^;]+;base64[^']+)';
+        \s?
+        var\s?(?:^[^a-zA-Z_$]|\w+)\s?=\s?\['([a-z0-9_]+)'\];
+      }x
+
       def initialize(io)
         @doc = Nokogiri::HTML(io)
       end
 
       def results
-        artworks = @doc.xpath('//a[@class="klitem"]').map do |item|
+        artworks = @doc.xpath(ITEM_SELECTOR).map do |item|
           build_artwork_item(item)
         end
 
@@ -20,7 +31,7 @@ module GoogleSearch
       private
 
       def build_artwork_item(item)
-        item_id = item.at_css('g-img > img')['id']
+        item_id = item.xpath(ID_SELECTOR).first['id']
 
         {
           name: item['aria-label'],
@@ -35,17 +46,13 @@ module GoogleSearch
       end
 
       def prase_embedded_artwork_thumbnails
-        regex = %r{
-          var\s?(?:^[^a-zA-Z_$]|\w+)\s?=\s?'(data:image/[^;]+;base64[^']+)';
-          \s?
-          var\s?(?:^[^a-zA-Z_$]|\w+)\s?=\s?\['([a-z0-9_]+)'\];
-        }x
-
-        @doc.content.scan(regex).each_with_object({}) { |(url, id), h| h[id] = unescape_hex(url) }
+        @doc.content.scan(EMBEDDED_THUMBNAILS_REGEX).each_with_object({}) do |(url, id), h|
+          h[id] = unescape_hex(url)
+        end
       end
 
       def parse_remote_artwork_thumbnails
-        @doc.xpath('//img[@data-src]').to_h do |img_tag|
+        @doc.xpath(THUMBNAILS_SELECTOR).to_h do |img_tag|
           [img_tag['id'], img_tag['data-src']]
         end
       end
@@ -55,7 +62,7 @@ module GoogleSearch
       end
 
       def build_extensions(item)
-        extensions = item.css('div.klmeta').map(&:content)
+        extensions = item.xpath(EXTENSIONS_SELECTOR).map(&:content)
         return nil unless extensions.any?
 
         extensions
