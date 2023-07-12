@@ -9,8 +9,9 @@ b. run this code
 ```
 ruby main.rb
 ```
-
-
+## Limitation on task
+Currently we should work with local file. Which have a different results with "live search", means carousel format now different on Google.
+So I can't test for other cases.
 
 # Extract Van Gogh Paintings Code Challenge
 
