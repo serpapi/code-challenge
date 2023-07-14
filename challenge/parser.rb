@@ -6,11 +6,11 @@ module Challenge
     ITEM_META_CSS = '.klmeta'
     BASE_URL = 'https://www.google.com/'
 
-    attr_reader :document, :image_script
+    attr_reader :document, :image_scripts
 
     def initialize(document)
       @document = document
-      set_image_script
+      set_image_scripts
     end
 
     def parse
@@ -20,8 +20,8 @@ module Challenge
 
     private
 
-    def set_image_script
-      @image_script = document.css('script').find do |script|
+    def set_image_scripts
+      @image_scripts = document.css('script').select do |script|
         script.text.include?('setImagesSrc') && script.text.include?('data:image')
       end
     end
@@ -47,32 +47,35 @@ module Challenge
     end
 
     def image_extractor
-      @image_extractor ||= ImageExtractor.new(image_script)
+      @image_extractor ||= ImageExtractor.new(image_scripts)
     end
   end
 
   class ImageExtractor
     REGEX_GROUP_NAME = 'data_uri'
 
-    def initialize(script)
-      @script = script
+    def initialize(scripts)
+      @scripts = scripts
     end
 
     def extract(image_tag)
       @id = image_tag.attr('id')
       return unless @id
 
-      match = regex.match(script_text)
-      return unless match
+      search_image_in_script
+      return unless @match
 
-      image_data_uri = match[REGEX_GROUP_NAME]
+      image_data_uri = @match[REGEX_GROUP_NAME]
       image_data_uri.gsub('\\', '')
     end
 
     private
 
-    def script_text
-      @script_text ||= @script.text
+    def search_image_in_script
+      @scripts.each do |script|
+        @match = regex.match(script.text)
+        break if @match
+      end
     end
 
     def regex
