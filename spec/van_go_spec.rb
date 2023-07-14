@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+require 'json'
 require_relative './../challenge/challenge'
 
 describe 'Van Gogh Artwork' do
@@ -47,12 +50,30 @@ describe 'Van Gogh Artwork' do
   end
 
   describe 'Arwork Collection' do
-    it 'is an array' do
-      expect(@results).to be_an(Array)
+    before :all do
+      @expected_array = expected_array
+    end
+    it 'has an entry for all items' do
+      expect(@results.size).to equal(expected_array.size)
     end
 
-    it 'has an entry for all items' do
-      expect(@results.size).to equal(51)
+    it 'should match expected array' do
+      # A few links are problematic with respect to escaped characters.
+      # For example a single quote(') character might be unesca character (as in At+Eternity's+Gate)
+      # Either way the link is still valid
+      # For that reason, we choose to unescape links before performing a comparison
+      expect(@results.tap { |r| unescape_links(r) }).to eql(expected_array.tap { |r| unescape_links(r) })
     end
+  end
+end
+
+def expected_array
+  content = File.read('files/expected-array.json')
+  JSON.parse(content, symbolize_names: true)[:artworks]
+end
+
+def unescape_links(items)
+  items.map do |item|
+    item[:link] = CGI.unescape(item[:link])
   end
 end
