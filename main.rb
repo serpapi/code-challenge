@@ -1,10 +1,8 @@
-require 'nokogiri'
-require_relative './parser'
+require_relative "./challenge/challenge.rb"
 
 fname = 'files/van-gogh-paintings.html'
 
-html = File.read(fname)
-doc = Nokogiri::HTML html
-result = Parser.new(doc).parse
+document = Challenge::HtmlFileParser.new(fname).parse
+result = Challenge::Parser.new(document).parse
 
 pp result
