@@ -1,0 +1,35 @@
+{
+  "name": "serp-task",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "muzam1l",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "dev": "tsdx watch --target node --format cjs",
+    "build": "tsdx build --target node --format cjs",
+    "test": "npm run build && tsdx test",
+    "start": "npm run build && node dist/index.js"
+  },
+  "devDependencies": {
+    "tsdx": "^0.14.1",
+    "tslib": "^2.6.0",
+    "@types/jsdom": "^21.1.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "jsdom": "^22.1.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "es5",
+    "bracketSpacing": true
+  }
+}
