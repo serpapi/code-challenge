@@ -1,4 +1,4 @@
-require 'Nokogiri'
+require 'nokogiri'
 
 module Challenge
   class HtmlFileParser

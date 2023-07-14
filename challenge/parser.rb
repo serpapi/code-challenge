@@ -27,8 +27,8 @@ module Challenge
     end
 
     def parse_item(item)
-      name = item.attributes['aria-label']&.value
-      href = item.attributes['href'].value
+      name = item.attr('aria-label')
+      href = item.attr('href')
       link = URI.join(BASE_URL, href).to_s
       image_tag = item.at_css('img')
       image = image_extractor.extract(image_tag)
