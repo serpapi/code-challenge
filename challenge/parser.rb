@@ -76,7 +76,7 @@ module Challenge
     end
 
     def regex
-      %r[(?<#{REGEX_GROUP_NAME}>data:image/.{3,4};base64,([a-z]|[A-Z]|[0-9]|\+|/|\\)*)';var.ii=\[.#{@id}]
+      %r[(?<#{REGEX_GROUP_NAME}>data:image/.{3,4};base64,([a-z]|[A-Z]|[0-9]|\+|/|\\)*)';var..{1,2}=\[.#{@id}]
     end
   end
 end
