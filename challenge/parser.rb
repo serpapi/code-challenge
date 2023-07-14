@@ -3,7 +3,7 @@ require 'uri'
 module Challenge
   class Parser
     ITEM_CSS = 'a.klitem,a.klitem-tr'
-    ITEM_META_CSS = '.klmeta'
+    ITEM_META_CSS = '.klmeta,.ellip'
     BASE_URL = 'https://www.google.com/'
 
     attr_reader :document, :image_scripts
@@ -41,9 +41,10 @@ module Challenge
 
     def get_extensions(item)
       metadata = item.css(ITEM_META_CSS)
-      return unless metadata
+      return metadata.map(&:text) unless metadata.empty?
 
-      metadata.map(&:text)
+      extension = item.text.gsub(item.attr('aria-label'), '')
+      extension.empty? ? [] : [extension]
     end
 
     def image_extractor
