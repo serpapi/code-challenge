@@ -26,3 +26,31 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+## Usage
+
+To get started follow these steps:
+
+1. Install all the necessary dependencies with the following command on your terminal:
+
+    ```
+    npm install
+    ```
+
+2. Run the following comand to generated the json with the possible solution for the Van Gogh challenge:
+
+    ```
+    npm run van
+    ```
+
+3. Run the following comand to generated the json with the possible solution for the Generic Search Result challenge:
+
+    ```
+    npm run ext
+    ```
+
+## Tests
+
+To run the tests use the following command:
+
+    npm test
