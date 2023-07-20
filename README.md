@@ -1,5 +1,22 @@
 ## Enter any artists name and thi script will extract html ifle, sample json file of paintings
 
+This script is parsing html and extracting carousel data from google with Selenium in Python.
+
+There was a challenge since my carousel looks a bit different when I search for artist name + painter (or is it even a carousel) from the one from the challenge, I am not sure if it is a regional difference by Google or something else (I didn't use VPN).
+
+So, additionally this script will prompt you to enter the painter's name.
+
+Then it will go ahead search for that painter with query "painter name + paintings" and parse that html page, store it in file raw_file.html, next it will extract names of the paintings from the list, image link and year to separate json file data.json
+
+It is locating and extracting data by class names that I found for each attribute.
+
+In next iterations I would find a way to search and extract carousel data easier, and target the exact carousel. 
+I see now the value for using SerpAPI that you can use specific localization, advanced filters and use knowledge graph with exact granularity. It makes the whole process seamless and easy.
+
+Hope you liked my approach.
+
+
+
 
 
 # Extract Van Gogh Paintings Code Challenge
