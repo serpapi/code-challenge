@@ -1,3 +1,7 @@
+## Enter any artists name and thi script will extract html ifle, sample json file of paintings
+
+
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.

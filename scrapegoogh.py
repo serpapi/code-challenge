@@ -3,10 +3,18 @@
 # Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import json, requests
 
-url = 'http://www.google.com/search?q=gustav+klimt+paintings'
+#enter artist name and converting it to search query
+artist_name = input("Enter the name of the painter: ")
+search_query = artist_name.lower().replace(" ", "+")
+
+url = 'http://www.google.com/search?q=' + search_query + '+paintings'
+
+
+#url = 'http://www.google.com/search?q=gustav+klimt+paintings'
 
 #classes found by inspecting elements in google
 # name = 'pgNMRc'
@@ -14,7 +22,12 @@ url = 'http://www.google.com/search?q=gustav+klimt+paintings'
 # link = 'iELo6'
 # year = 'cxzHyb'
 
-driver = webdriver.Chrome()
+options = Options()
+options.add_argument("--headless=new")
+driver = webdriver.Chrome(options=options)
+
+
+#driver = webdriver.Chrome()
 driver.get(url)
 
 #expand to view more of the carousel
@@ -34,6 +47,10 @@ def get_text_from_elements(class_name):
 def get_src_from_elements(class_name):
     elements = driver.find_elements(By.CLASS_NAME, class_name)
     return [element.get_attribute('src') for element in elements]
+
+# def get_src_from_elements(class_name):
+#     elements = driver.find_elements(By.CLASS_NAME, class_name)
+#     return [element.get_attribute('href') for element in elements]
 
 #save JSON data to a file
 
