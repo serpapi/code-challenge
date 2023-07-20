@@ -1,0 +1,66 @@
+<!doctype html>
+<head>
+  <title>Test Data Page</title>
+  <style>some-class { font-family: serif }</style>
+</head>
+<body>
+  <div>
+    <g-scrolling-carousel>
+
+      <div class="klitem-tr">
+        <a class="klitem" href="/search?foo=example1">
+          <div>
+            <div>
+              <g-img>
+                <img src="base64 data example 1">
+              </g-img>
+            </div>
+          </div>
+          <div>
+            <div class="kltat">
+              <span>Some Title</span> <wbr><span>example 1</span>
+            </div>
+            <div class="klmeta">2001</div>
+          </div>
+        </a> <!-- end of a.klitem-->
+      </div> <!-- end of div.klitem-tr -->
+
+      <div class="klitem-tr">
+        <a class="klitem" href="/search?foo=example2">
+          <div>
+            <div>
+              <g-img>
+                <img src=""> <!-- no src, oh no! -->
+              </g-img>
+            </div>
+          </div>
+          <div>
+            <div class="kltat">
+              <span>Some Title</span> <wbr><span>example 2</span>
+            </div>
+            <div class="ellip klmeta">2002</div>
+          </div>
+        </a> <!-- end of a.klitem-->
+      </div> <!-- end of div.klitem-tr -->
+
+      <div class="klitem-tr">
+        <a class="klitem" href="/search?foo=example3">
+          <div>
+            <div>
+              <g-img>
+                <img src="base64 data example 3">
+              </g-img>
+            </div>
+          </div>
+          <div>
+            <!-- no div.kltat, so sad :( -->
+
+            <div class="ellip klmeta fooby barbie">2003</div>
+          </div>
+        </a> <!-- end of a.klitem-->
+      </div> <!-- end of div.klitem-tr -->
+
+    </g-scrolling-carousel>
+  </div>
+
+</body>
