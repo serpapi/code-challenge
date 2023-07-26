@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "serpapi-code-challenge"
+version = "0.1.0"
+description = ""
+authors = ["Mikhail Astashkevich <asmisha@tut.by>"]
+readme = "README.md"
+packages = [{include = "serpapi"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+beautifulsoup4 = "^4.12.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+[tool.poetry.scripts]
+execute = "serpapi.execute:cli"

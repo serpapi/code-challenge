@@ -26,3 +26,15 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+## Solution
+
+### Available commands
+- `make execute` will execute the parser against the sample Van Gogh paintings html file.
+- `make test` will execute tests.
+
+### Notes
+1. The provided html sample seems obsolete - I couldn't find another query, which would produce the same page layout.
+2. The parser I realized supports two possible layouts of the carousel - the sample one and the one that I see when looking for paintings in Google Search. I added two example pages to the files directory and included them in tests.
+3. The instructions provided imply there are two types of images: image and thumbnail, however I only found one image type in both layouts, which is included to the results.
+4. Time spent: 2 hours
