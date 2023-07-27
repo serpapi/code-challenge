@@ -1,6 +1,9 @@
+#!/usr/bin/ruby
+
 require 'json'
 require 'nokolexbor'
 require 'uri'
+
 
 class GoogleSerpParser
   BASE_URL = 'https://www.google.com/'
@@ -58,6 +61,8 @@ class GoogleSerpParser
   end
 end
 
+
+# This file can also be used as a command-line tool for convenience.
 if __FILE__ == $PROGRAM_NAME
   puts JSON.pretty_generate GoogleSerpParser.new(ARGV[0]).parse_carousel
 end
