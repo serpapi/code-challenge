@@ -105,6 +105,9 @@ describe GoogleSerpParser do
     it_behaves_like('SERP with carousel',
                     'spec/support/van-gogh-paintings.html',
                     'artworks') do
+      it 'should correctly handle Unicode text' do
+        expect(items).to include(include('name' => 'Café Terrace at Night'))
+      end
       it 'should match expected JSON file' do
         expected_json = 'spec/support/van-gogh-paintings_expected.json'
         expected = JSON.load(File.read(expected_json))
