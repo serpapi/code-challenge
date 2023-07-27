@@ -13,9 +13,9 @@ module GoogleCarousel
 
       def fetch_images
         if img_sources.empty?
-          # [[img_source, img_id]]
+          # Extracted array format: [[img_source, img_id]]
           image_sources_list.each do |obj|
-            img_sources[obj[1]] = obj[0]
+            img_sources[obj[1]] = obj[0].tr('\\', '')
           end
         end
 

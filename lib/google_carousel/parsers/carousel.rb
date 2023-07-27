@@ -20,15 +20,19 @@ module GoogleCarousel
           end
         end
 
-        result = { artworks: [] }
+        result = { "artworks" => [] }
         carousel_items.each do |item|
-          result[:artworks] << {
-            name: item.name,
-            link: item.link
+          img_id = item.img_id
+
+          result["artworks"] << {
+            "name" => item.name,
+            "link" => item.link,
+            "extensions" => item.extensions,
+            "image" => carousel_images.fetch(img_id, '')
           }
         end
 
-        result.to_json
+        result
       end
 
       def carousel_images
