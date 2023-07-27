@@ -1,11 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    byebug (11.1.3)
     diff-lcs (1.5.0)
-    nokogiri (1.15.3-x86_64-linux)
-      racc (~> 1.4)
-    racc (1.7.1)
+    nokolexbor (0.5.0-x86_64-linux)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
@@ -24,8 +21,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  byebug
-  nokogiri
+  nokolexbor
   rspec
 
 BUNDLED WITH

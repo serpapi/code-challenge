@@ -1,12 +1,12 @@
 require 'json'
-require 'nokogiri'
+require 'nokolexbor'
 require 'uri'
 
 class GoogleSerpParser
   BASE_URL = 'https://www.google.com/'
 
   def initialize(file)
-    @doc = Nokogiri::HTML5(File.read(file))
+    @doc = Nokolexbor::HTML(File.read(file))
     @img_scripts = @doc.css('script').map(&:text)
       .select {|s| s.include?('setImagesSrc')}
   end

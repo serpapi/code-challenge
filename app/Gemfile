@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "nokogiri"
-gem "rspec"
+gem 'nokolexbor'
+gem 'rspec'
