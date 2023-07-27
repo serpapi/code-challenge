@@ -46,11 +46,13 @@ class GoogleSerpParser
     # Remove any whitespace and brackets surrounding extension text.
     extension_m = el['title'][short_name.size..].match('^\W*\((.*)\)\W*$')
     # The order specified here is significant when converting the hash to JSON.
-    ret = { name: short_name }
-    ret[:extensions] = [extension_m[1]] if extension_m
-    ret[:link] = el['href'] ? URI.join(BASE_URL, el['href']).to_s : nil
-    ret[:image] = get_image(el.at_css('img')['id'])
-    ret
+    # TODO: Consider whether hash keys should be symbols instead.
+    {
+      'name' => short_name,
+      'extensions' => extension_m ? [extension_m[1]] : [],
+      'link' => el['href'] ? URI.join(BASE_URL, el['href']).to_s : nil,
+      'image' => get_image(el.at_css('img')['id']),
+    }
   end
 
   def get_image(id)
