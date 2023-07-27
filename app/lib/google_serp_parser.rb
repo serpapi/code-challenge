@@ -11,7 +11,7 @@ class GoogleSerpParser
   def initialize(file)
     @doc = Nokolexbor::HTML(File.read(file))
     @img_scripts = @doc.css('script').map(&:text)
-      .select {|s| s.include?('setImagesSrc')}
+      .select { |s| s.include?('setImagesSrc') }
   end
 
   # The page may contain multiple instances of g-scrolling-carousel.
@@ -32,6 +32,9 @@ class GoogleSerpParser
   # g-scrolling-carousel.  This will correspond to:
   #   Paintings
   #   Prime ministers
+  #
+  # Also replace spaces with dashes, since hash keys that contain spaces
+  # are not particularly programmer-friendly.
   def parse_category_name()
     @doc.at_xpath(
       '(//*[@id="extabar"]//*[
