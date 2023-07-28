@@ -11,7 +11,7 @@ module GoogleCarousel
       end
 
       def parse
-        @doc = Nokolexbor::HTML(raw_html.encode('utf-8'))
+        @doc = Nokolexbor::HTML(raw_html)
 
         carousel_items = []
         doc.at_css('g-scrolling-carousel').traverse do |x|
