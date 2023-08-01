@@ -1,0 +1,2 @@
+class MissingFileError < StandardError
+end
