@@ -3,8 +3,7 @@ module Parsers
     attr_reader :document
 
     def initialize(file_path:)
-      contents = File.read(file_path)
-      @document = Nokogiri::HTML(document)
+      @document = File.open(file_path) { |f| Nokogiri::HTML(f) }
     rescue Errno::ENOENT
       raise MissingFileError, "Missing file in the following path: #{file_path}"
     end

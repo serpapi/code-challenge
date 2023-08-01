@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'pry'
 require 'rspec'
 
 # Loads all classes and modules in /app dir
