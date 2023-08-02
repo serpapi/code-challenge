@@ -6,6 +6,8 @@ module Parsers
     IMAGE_EXTENSIONS_CLASS = 'ellip'
     IMAGE_LINK_CLASS = 'klitem'
 
+    GOOGLE_BASE_URL = 'https://www.google.com'
+
     def initialize(file_path:)
       super
     end
@@ -14,8 +16,10 @@ module Parsers
       paintings_slider_elements_html = document.search(".appbar .#{IMAGE_SLIDER_CLASS}")
       images_script = document.css('script').find { |script| script.text.include?('setImagesSrc') && script.text.include?('data:image') }
 
-      paintings_slider_elements_html.map { |image_html| as_image_record(image_html:, images_script:) }
-                                    .map(&:to_h)
+      images = paintings_slider_elements_html.map { |image_html| as_image_record(image_html:, images_script:) }
+                                             .map(&:to_h)
+
+      { artworks: images }
     end
 
     private
@@ -45,12 +49,12 @@ module Parsers
 
       match = args[:images_script].content.match(/s='([\S]*)';var ii=\['#{image_id}'\]/)
 
-      match[1].gsub('\\', '') if match
+      match[1].gsub('\\', '') if match # I couldn't figure out why I need to escape '/' character in order to make my link result look like the one in the expected-array.json
     end
 
     def link(**args)
       link_node = args[:image_html].search("a.#{IMAGE_LINK_CLASS}").first
-      link_node.get_attribute('href') if link_node
+      "#{GOOGLE_BASE_URL}#{link_node.get_attribute('href')}" if link_node
     end
 
     def name(**args)
