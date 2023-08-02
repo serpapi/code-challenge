@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.0'
 
+gem 'json'
 gem 'nokogiri'
 gem 'pry'
 gem 'rake'

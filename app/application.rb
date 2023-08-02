@@ -1,3 +1,4 @@
+require 'json'
 require 'nokogiri'
 require 'pry'
 require 'rspec'
