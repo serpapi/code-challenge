@@ -1,0 +1,21 @@
+{
+  "name": "serpapi-code-challenge",
+  "version": "1.0.0",
+  "description": "Goal is to extract a list of Van Gogh paintings from the attached Google search results page.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest parse",
+    "gen": "vitest gen"
+  },
+  "author": "Shibo Lyu <hi@lao.sb>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
