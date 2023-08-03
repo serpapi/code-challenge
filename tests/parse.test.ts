@@ -15,7 +15,7 @@ async function readAndTest(name: string) {
 
   const result = parse(html)
   const expected = JSON.parse(expectedJsonString)
-  expect(result).toBe(expected)
+  expect(result).toStrictEqual(expected)
 }
 
 test('Van Gogh Paintings', async () => {
