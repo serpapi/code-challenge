@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 import * as fs from 'node:fs/promises'
 
-import { parse } from '../src/parse'
+import { autoDetectAndParse } from '../src/parse'
 
 async function readAndTest(name: string) {
   const [html, expectedJsonString] = await Promise.all([
@@ -13,11 +13,19 @@ async function readAndTest(name: string) {
     }),
   ])
 
-  const result = parse(html)
+  const result = autoDetectAndParse(html)
   const expected = JSON.parse(expectedJsonString)
   expect(result).toStrictEqual(expected)
 }
 
 test('Van Gogh Paintings', async () => {
   await readAndTest('van-gogh-paintings')
+})
+
+test('Leonardo da Vinci Paintings', async () => {
+  await readAndTest('leonardo-da-vinci-paintings')
+})
+
+test('Michelangelo Artworks', async () => {
+  await readAndTest('michelangelo-artworks')
 })

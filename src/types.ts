@@ -1,8 +1,8 @@
-export type CarrouselItem = {
+export type ResultItem = {
   name: string
   extensions?: string[]
   link: string
   image: string | null
 }
 
-export type CarrouselItems = CarrouselItem[]
+export type ResultItems = ResultItem[]
