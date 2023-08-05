@@ -24,9 +24,6 @@ class Extractor
 
   def artworks
     @artworks ||= doc.css('a.klitem').each_with_object([]) do |node, result|
-      p '=++++++++++++++++++++1'
-      p node.to_html
-      p '=++++++++++++++++++++2'
       artwork = Artwork.new(node, artwork_nodes_id_source_map)
       result << artwork.to_h
     end
