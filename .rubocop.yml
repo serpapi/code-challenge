@@ -1,0 +1,200 @@
+# RuboCop is a code linter.
+#
+# USAGE:
+# See https://docs.rubocop.org/rubocop/usage/basic_usage.html
+# TL;DR
+#   $ rubocop path/to/file.rb
+#   $ rubocop entire_folder
+#   $ rubocop # everything
+#
+# It can also integrate into your text editor.
+# See https://docs.rubocop.org/rubocop/integration_with_other_tools.html
+# TL;DR
+# * Atom:         Install package "linter-rubocop"
+# * RubyMine:     Preferences > Editor > Inspections > Ruby > RuboCop [√]
+# * Sublime Text: Install package "Sublime RuboCop"
+
+
+# EXTENSIONS:
+# Many cops are being extracted out of the core rubocop library and into separate gems.
+# They need to be added to Gemfile (`require: false`) and listed here.
+# See https://docs.rubocop.org/rubocop/extensions.html
+
+
+# COP CONFIGURATION:
+# See https://docs.rubocop.org/rubocop/cops.html#available-cops
+#  for a list of cops and their configuration settings.
+# The rules come from bbatsov’s https://rubystyle.guide/
+#
+# Default Config: https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml
+#
+# IMPORTANT: In general, the default Rubocop rules are overly totalitarian.  We
+# are not obligated to accept them but may change/disable them to suit our
+# tastes.  **We**, the developers, tell Rubocop how to behave; he does not
+# dictate to **us** how to behave.  Still, we are installing rubocop so that
+# code reviews can focus on the **big picture** and not get bogged down with
+# silly linting issues.  If you don't like a rule, feel free to discuss changing
+# it on Slack #dev.
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'app/services/migrator.rb'
+
+Bundler/OrderedGems:
+  TreatCommentsAsGroupSeparators: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/ExtraSpacing:
+  AllowBeforeTrailingComments: true  # Allow >1 space before EOL comment
+
+Layout/HashAlignment:
+  EnforcedColonStyle:      [key, table]  # key
+  EnforcedHashRocketStyle: [key, table]  # key
+
+Layout/LineLength:
+  Max: 132  # 80
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:  # Enforce `{ foo: 1, bar: 2 }` vs. `{foo: 1, bar: 2}`
+  Enabled: false
+
+Layout/SpaceInsidePercentLiteralDelimiters:  # Enforce `%w(foo bar baz)` vs. `%w( foo bar baz )`
+  Enabled: false
+
+Layout/SpaceInsideStringInterpolation:  # Enforce `"#{no_space}"` vs. `"#{ space }"`
+  Enabled: false
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/MissingSuper:
+  Exclude:
+    - 'app/services/**/*'
+
+Metrics/AbcSize:      # Measure of Code Complexity
+  Enabled: false      # Having to refactor an existing, heavy method will unexpectedly mushroom the scope of a given task.
+  # Instead, we should periodically run just this cop manually and create tasks specifically for refactoring.
+
+Metrics/ClassLength:  # Limit LOC in a class definition
+  Enabled: false
+
+Metrics/CyclomaticComplexity: # limits number of if branches in method (default: 6)
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ParameterLists:  # Limit number of (positional) arguments
+  CountKeywordArgs: false
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# Requires to group all `attr_accessor` together
+# This doesn't allow commeting about specific attr_accessor
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/AccessModifierDeclarations:  # May a single method be flagged `private`?
+  Enabled: false
+
+Style/AsciiComments:  # Restricts comments to ASCII-only
+  Enabled: false
+
+Style/ClassCheck:  # Favor `Object#is_a?` vs. `Object#kind_of?` (synonymous methods)
+  Enabled: false
+
+Style/CommandLiteral:  # Favor backticks vs. `%x(ls -l)`
+  Enabled: false
+
+Style/ConditionalAssignment:  # Favor `x = if … ; a ; else b ; end` vs. `if … ; x = a ; else x = b ; end`
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/FormatString:   # Favor `format` over `String#%`
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashSyntax:
+  Exclude:
+    # Allow use of `task :foo => :bar` instead of `task foo: :bar` for defining
+    # Rake tasks with dependencies.
+    - '**/*.rake'
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/IfUnlessModifier:  # Favor if-modifer (`do_something if foo`) over a traditional if-statement
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Style/NegatedWhile:
+  Enabled: false
+
+Style/NumericPredicate: # Favor `num.zero?` and `num.positive?` over `num == 0` and `num > 0`
+  Enabled: false
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/RescueStandardError: # Favor using `rescue StandardError => e` over `rescue => e`
+  Enabled: false
+
+Style/SingleLineMethods:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: true
+
+Style/StringLiterals:  # Plays favorites between single-quotes and double-quotes
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:  # Ditto but inside "#{...}"
+  Enabled: false
+
+Style/SymbolArray:  # Favor %i[red green blue] over [:red, :green, :blue]
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/WordArray: # Favor %w[101 second additional] over ["101", "second", "additional"]
+  Enabled: false
