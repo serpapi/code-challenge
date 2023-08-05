@@ -5,6 +5,10 @@ class Artwork
   GOOGLE_HOST = 'https://www.google.com'
 
   def initialize(node, nodes_id_source_map)
+    p '===========================1'
+    p node
+    p '===========================2'
+
     @node = node
     @nodes_id_source_map = nodes_id_source_map
   end
