@@ -198,3 +198,7 @@ Style/TrailingCommaInHashLiteral:
 
 Style/WordArray: # Favor %w[101 second additional] over ["101", "second", "additional"]
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
