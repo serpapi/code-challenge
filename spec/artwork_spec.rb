@@ -25,7 +25,8 @@ RSpec.describe Artwork do
         </div>
 
         <div>
-          <div class="kltat"><span>Portrait of</span>
+          <div class="kltat">
+            <span>Portrait of</span>
             <wbr>
               <span>Adeline Ravoux</span>
               <wbr></wbr>

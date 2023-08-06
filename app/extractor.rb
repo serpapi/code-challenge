@@ -8,8 +8,7 @@ require_relative 'artwork'
 class Extractor
   attr_reader :result
 
-  def initialize
-    file_path = 'files/van-gogh-paintings.html'
+  def initialize(file_path = 'files/van-gogh-paintings.html')
     @html = File.read(file_path)
     @doc = Nokogiri::HTML(html)
   end
@@ -35,9 +34,9 @@ class Extractor
 
   def artwork_nodes_id_source_map
     @artwork_nodes_id_source_map ||= doc.css('script').each_with_object({}) do |script_tag, result|
-      script_content = script_tag.text
+      script_content = prepare_content(script_tag.text)
 
-      next unless script_content.include?('function _setImagesSrc(')
+      next unless script_content.include?('function_setImagesSrc(')
 
       array_content = script_content.split('(function(){')
       array_content[1..].each do |element|
@@ -47,10 +46,20 @@ class Extractor
   end
 
   def artwork_node_id(element)
-    element.match(/var ii=\[(.*?)\];/m)[1].gsub("'", '')
+    match = element.match(/varii=\[(.*?)\];/m)
+    return unless match
+
+    match[1].gsub("'", '')
   end
 
   def artwork_node_src(element)
-    element.match(/var s='(.*)';/m)[1].gsub("\\", '')
+    match = element.match(/vars='(.*)';/m)
+    return unless match
+
+    match[1].gsub("\\", '')
+  end
+
+  def prepare_content(content)
+    content.delete("\n").delete(' ')
   end
 end
