@@ -7,6 +7,10 @@ GEM
     iniparse (1.5.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
+    mini_portile2 (2.8.4)
+    nokogiri (1.15.3)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     overcommit (0.60.0)
       childprocess (>= 0.6.3, < 5)
       iniparse (~> 1.4)
@@ -17,6 +21,7 @@ GEM
       racc
     racc (1.7.1)
     rainbow (3.1.1)
+    rake (13.0.6)
     regexp_parser (2.8.1)
     rexml (3.2.6)
     rspec (3.12.0)
@@ -52,7 +57,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  nokogiri (~> 1.15, >= 1.15.3)
   overcommit (~> 0.60.0)
+  rake
   rspec (~> 3.12)
   rubocop
 

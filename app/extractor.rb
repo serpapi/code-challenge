@@ -15,7 +15,11 @@ class Extractor
   end
 
   def extract
-    @result = { artworks: artworks }.to_json
+    @result = { artworks: artworks }
+  end
+
+  def to_json(options = {})
+    @result.to_json(options)
   end
 
   private
@@ -50,7 +54,3 @@ class Extractor
     element.match(/var s='(.*)';/m)[1].gsub("\\", '')
   end
 end
-
-extractor = Extractor.new
-extractor.extract
-p extractor.result

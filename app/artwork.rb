@@ -32,7 +32,8 @@ class Artwork
     date = node.at('div.klmeta')
     return [] unless date
 
-    @extensions = [date.text.gsub(/\s+/, ' ').strip]
+    date = date.text.gsub(/\s+/, ' ').strip
+    @extensions = [date]
   end
 
   def link
