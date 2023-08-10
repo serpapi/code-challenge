@@ -3,6 +3,8 @@ require "open-uri"
 require "uri"
 
 def get_serp_for_file(file_name, main_json_key)
+  raise "Parser requires HTML files" unless file_name.end_with? ".html"
+
   file_path = File.join(__dir__, "files", file_name)
 
   raise "File not found: #{file_path}" unless File.file? file_path
@@ -40,14 +42,17 @@ def get_extensions_list(input_element)
   sibling_children = input_element.next_sibling.children
 
   input_element.next_sibling.children.each do |cur_child|
-    if cur_child.children[0].name == "div"
-      cur_child.children.each do |grand_child|
-        grand_child.children.each do |great_grand_child|
-          output_list += great_grand_child.children.map(&:text)
-        end
-      end
-    else
+    # handle old google layout
+    if cur_child.children[0].name != "div"
       output_list << cur_child.text
+      next
+    end
+
+    # handle new google layout
+    cur_child.children.each do |grand_child|
+      grand_child.children.each do |great_grand_child|
+        output_list += great_grand_child.children.map(&:text)
+      end
     end
   end
 

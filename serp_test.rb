@@ -92,4 +92,39 @@ describe "Google Serp Parsing" do
 
   end
 
+  describe "Invalid Web Pages" do
+
+    before :all do
+      @main_json_key = "errors"
+    end
+
+    it "breaks for non-existent html files" do
+      file_name = "non-existent-file.html"
+      error_message = "File not found: " + File.join(__dir__, "files", file_name)
+
+      expect {
+        get_serp_for_file(file_name, @main_json_key)
+      }.to raise_error(RuntimeError, error_message)
+    end
+
+    it "breaks for empty html files" do
+      file_name = "empty-file.html"
+      error_message = "Unexpected number of carousels found in extrabar"
+
+      expect {
+        get_serp_for_file(file_name, @main_json_key)
+      }.to raise_error(RuntimeError, error_message)
+    end
+
+    it "breaks for non-html files" do
+      file_name = "example-file.json"
+      error_message = "Parser requires HTML files"
+
+      expect {
+        get_serp_for_file(file_name, @main_json_key)
+      }.to raise_error(RuntimeError, error_message)
+    end
+
+  end
+
 end
