@@ -1,14 +1,22 @@
 # Working solution
 
+Run tests:
 ```
 bundle
 bundle exec rspec
+```
+
+To see JSON outputs:
+```
 bundle exec ruby scrape_challenge.rb
 bundle exec ruby scrape_updated.rb
 ```
 
 Original HTML for the challenge is outdates.
 There are two scrapers, one for the given file and other for the new ones.
+Edit filepaths in these files to check against other input.
+
+Thanks!
 
 # Extract Van Gogh Paintings Code Challenge
 
