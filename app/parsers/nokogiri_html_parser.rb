@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Parsers
+  # Nokogiri wrapper service
+  # returns a parsed document
   class NokogiriHtmlParser
     attr_reader :filepath
 

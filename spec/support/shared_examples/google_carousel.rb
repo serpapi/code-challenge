@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'Google Carousel' do |raw_filepath, json_filepath|
   expected_result = JSON.parse(File.read(json_filepath), symbolize_names: true)
   heading = expected_result.keys.first

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Scrapers
+  # Parent class for versioned scrapers
+  # Keeps methods common to them
   class GoogleCarousel
-    BASE_URL = 'https://www.google.com'
-
     def initialize(raw:, parsed:)
       @raw = raw
       @parsed = parsed
@@ -44,8 +44,12 @@ module Scrapers
       parsed.css(all_boxes_selector)
     end
 
+    def base_url
+      raw.scan(%r{https://www\.google\.[a-z]+}).first
+    end
+
     def link
-      "#{BASE_URL}#{link_element['href']}"
+      "#{base_url}#{link_element['href']}"
     end
 
     def name

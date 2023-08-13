@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Scrapers
+  # Carousel scraper adjusted to the current Google SERP output
+  # Named after the date of scraping files for other examples
   class GoogleCarousel20230813 < GoogleCarousel
     private
 

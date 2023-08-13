@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Scrapers
+  # Carousel scraper adjusted to the original challenge file
+  # Named after the commit date of that file
   class GoogleCarousel20190319 < GoogleCarousel
     private
 
