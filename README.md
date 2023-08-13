@@ -1,8 +1,8 @@
 # Working solution
 
-Run tests:
+## v0.2
+Run specs:
 ```
-bundle
 bundle exec rspec
 ```
 
@@ -16,7 +16,13 @@ Original HTML for the challenge is outdates.
 There are two scrapers, one for the given file and other for the new ones.
 Edit filepaths in these files to check against other input.
 
+## v0.1
+
+Check this tag for a first simple scraping script: [v0.1]
+
 Thanks!
+
+[v0.1]: https://github.com/vysogot/code-challenge/tree/v0.1
 
 # Extract Van Gogh Paintings Code Challenge
 
