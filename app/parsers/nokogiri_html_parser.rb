@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Parsers
   class NokogiriHtmlParser
     attr_reader :filepath

@@ -1,9 +1,10 @@
-require_relative './app/app.rb'
+# frozen_string_literal: true
+
+require_relative './app/app'
 
 # This one is the solution to the code-challenge
 # but it's outdates hence the other scraper
 raw_filepath = './files/van-gogh-paintings.html'
-json_filepath = './files/expected-array.json'
 
 raw = File.read(raw_filepath)
 parsed = Parsers::NokogiriHtmlParser.new(filepath: raw_filepath).call

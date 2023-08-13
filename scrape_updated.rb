@@ -1,8 +1,9 @@
-require_relative './app/app.rb'
+# frozen_string_literal: true
+
+require_relative './app/app'
 
 # This one uses current google layout
 raw_filepath = './files/jan-matejko-paintings.html'
-json_filepath = './files/expected-array-updated-matejko.json'
 
 raw = File.read(raw_filepath)
 parsed = Parsers::NokogiriHtmlParser.new(filepath: raw_filepath).call
