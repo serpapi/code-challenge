@@ -1,9 +1,14 @@
 # Working solution
 
-Run with:
 ```
-bundle exec rspec scraper.rb
+bundle
+bundle exec rspec
+bundle exec ruby scrape_challenge.rb
+bundle exec ruby scrape_updated.rb
 ```
+
+Original HTML for the challenge is outdates.
+There are two scrapers, one for the given file and other for the new ones.
 
 # Extract Van Gogh Paintings Code Challenge
 
