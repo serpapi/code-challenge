@@ -13,13 +13,7 @@ module Scrapers
     def call
       carousel_elements.each do |element|
         reset(element)
-
-        items << {}.tap do |entry|
-          entry[:name] = name
-          entry[:extensions] = [year] unless year.nil?
-          entry[:link] = link
-          entry[:image] = image
-        end
+        add_entry_to_items
       end
 
       { heading.to_sym => items }
@@ -30,6 +24,15 @@ module Scrapers
     attr_reader :raw, :parsed
     attr_accessor :items, :current_element
     attr_writer :link_element
+
+    def add_entry_to_items
+      items << {}.tap do |entry|
+        entry[:name] = name
+        entry[:extensions] = [year] unless year.nil?
+        entry[:link] = link
+        entry[:image] = image
+      end
+    end
 
     def reset(element)
       self.current_element = element
