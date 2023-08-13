@@ -2,7 +2,7 @@
 
 module Parsers
   # Nokogiri wrapper service
-  # returns a parsed document
+  # Returns a parsed document
   class NokogiriHtmlParser
     attr_reader :filepath
 
