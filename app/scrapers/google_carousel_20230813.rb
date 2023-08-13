@@ -2,7 +2,7 @@
 
 module Scrapers
   # Carousel scraper adjusted to the current Google SERP output
-  # Named after the date of scraping files for other examples
+  # Named after the date of source files for additional examples
   class GoogleCarousel20230813 < GoogleCarousel
     private
 

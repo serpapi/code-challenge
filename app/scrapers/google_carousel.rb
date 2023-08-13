@@ -2,7 +2,6 @@
 
 module Scrapers
   # Parent class for versioned scrapers
-  # Keeps methods common to them
   class GoogleCarousel
     def initialize(raw:, parsed:)
       @raw = raw

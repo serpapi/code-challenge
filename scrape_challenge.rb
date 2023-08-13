@@ -3,7 +3,7 @@
 require_relative './app/app'
 
 # This one is the solution to the code-challenge
-# but it's outdates hence the other scraper
+# but the source file is outdated hence another scraper
 raw_filepath = './files/van-gogh-paintings.html'
 
 raw = File.read(raw_filepath)
