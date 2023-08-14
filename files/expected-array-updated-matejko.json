@@ -103,6 +103,9 @@
     },
     {
       "name": "Wernyhora",
+      "extensions": [
+        "1884"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Wernyhora&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tZP1zc0MjSvMsgy1lLKTrbSL8ssLk3MiU8sKkFiZhaXWJXnF2UXL2LlDE8tyqvMyC9KnMDGCADLWqFlTQAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEC0",
       "image": null
     },
@@ -113,11 +116,17 @@
     },
     {
       "name": "Kazanie Skargi",
+      "extensions": [
+        "1864"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Kazanie+Skargi&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4gIxywyTLNPjtZSyk630yzKLSxNz4hOLSpCYmcUlVuX5RdnFi1j5vBOrEvMyUxWCsxOL0jMnsDECABnOm3BRAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEDM",
       "image": null
     },
     {
       "name": "Self-portrait",
+      "extensions": [
+        "1892"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=jan+matejko+self-portrait&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tVP1zc0TM4uSS9LrkrTUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYpXMSsxTyE0sSc3KzlcoTs1J0y3ILyopSswsmcDGCAAftx46XwAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEDY",
       "image": null
     },
@@ -133,46 +142,73 @@
     },
     {
       "name": "Dziewica Orleańska",
+      "extensions": [
+        "1886"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Dziewica+Orlea%C5%84ska&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tZP1zcsKDPIs0w311LKTrbSL8ssLk3MiU8sKkFiZhaXWJXnF2UXL2IVdqnKTC3PTE5U8C_KSU082lKcnTiBjREAmhNpUlcAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglED8",
       "image": null
     },
     {
       "name": "Śluby Jana Kazimierza",
+      "extensions": [
+        "1893"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=%C5%9Aluby+Jana+Kazimierza&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tZP1zc0MjYzSMkx0lLKTrbSL8ssLk3MiU8sKkFiZhaXWJXnF2UXL2IVOzorpzSpUsErMS9RwTuxKjM3M7WoKnECGyMAEM8yJVoAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEEI",
       "image": null
     },
     {
       "name": "Portrait of Stanisław Tarnowski",
+      "extensions": [
+        "1890"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=jan+matejko+portrait+of+stanis%C5%82aw+tarnowski&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tVP1zc0TM4uSS_PqjLUUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYtXJSsxTyE0sSc3KzlcoyC8qKUrMLFHIT1MoLknMyyw-2pRYrlCSWJSXX16cnTmBjREAtRuG7HIAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEEU",
       "image": null
     },
     {
       "name": "Alchemik Sędziwój",
+      "extensions": [
+        "1867"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Alchemik+S%C4%99dziw%C3%B3j&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tZP1zc0TSnILa-01FLKTrbSL8ssLk3MiU8sKkFiZhaXWJXnF2UXL2IVdsxJzkjNzcxWCD4yM6Uqs_zw5qwJbIwA87vb8lcAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEEg",
       "image": null
     },
     {
       "name": "Jan Sobieski pod Wiedniem",
+      "extensions": [
+        "1883"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Jan+Sobieski+pod+Wiedniem&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tZP1zcsKDM0zTYw1FLKTrbSL8ssLk3MiU8sKkFiZhaXWJXnF2UXL2KV9ErMUwjOT8pMLc7OVCjIT1EIz0xNyctMzZ3AxggASYAYTV0AAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEEs",
       "image": null
     },
     {
       "name": "Chrzest Litwy",
+      "extensions": [
+        "1888"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Chrzest+Litwy&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tZP1zc0MixPTqpM0lLKTrbSL8ssLk3MiU8sKkFiZhaXWJXnF2UXL2Lldc4oqkotLlHwySwpr5zAxggAk5winFEAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEE4",
       "image": null
     },
     {
       "name": "Christianization of Lithuania AD 1387",
+      "extensions": [
+        "1889"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=christianization+of+lithuania+ad+1387&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tVP1zc0TM4uSa-wNM7VUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYlVNzigCcjMT8zKrEksy8_MU8tMUcjJLMkqBIokKiSkKhsYW5hPYGAENic9CawAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEFE",
       "image": null
     },
     {
       "name": "Zaprowadzenie chrześcijaństwa",
+      "extensions": [
+        "1889"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Zaprowadzenie+chrze%C5%9Bcija%C5%84stwa&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4gIxy4zNLM1MtZSyk630yzKLSxNz4hOLSpCYmcUlVuX5RdnFi1jloxILivLLE1OqUvMyUxWSM4qqUo_OTs7MSjzaUlxSnjiBjREATBxt6GIAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEFQ",
       "image": null
     },
     {
       "name": "Alchemist Sendivogius",
+      "extensions": [
+        "1867"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=jan+matejko+alchemist+sendivogius&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tVP1zc0TM4uSS8qMc7RUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYlXMSsxTyE0sSc3KzldIzEnOSM0FyioUp-alZJblp2eWFk9gYwQAlQ1HfWcAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEFc",
       "image": null
     },
@@ -188,11 +224,17 @@
     },
     {
       "name": "Portret Alfreda Potockiego",
+      "extensions": [
+        "1879"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Portret+Alfreda+Potockiego&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tVP1zc0TM4uSS8uyCnQUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYpUKyC8qKUotUXDMSStKTUlUCMgvyU_OzkxNz5_AxggAubsRw2AAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEGA",
       "image": null
     },
     {
       "name": "Founding of the Lubrański Academy in Poznań",
+      "extensions": [
+        "1886"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=jan+matejko+founding+of+the+lubra%C5%84ski+academy+in+pozna%C5%84&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tVP1zc0TM4uSa8wqCrQUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYrXMSsxTyE0sSc3KzldIyy_NS8nMS1fIT1MoyUhVyClNKko82lKcnamQmJyYkppbqZCZp1CQX5UHFJ3AxggA0frEaX8AAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEGM",
       "image": null
     },
@@ -203,16 +245,25 @@
     },
     {
       "name": "Śmierć Przemysława w Rogoźnie",
+      "extensions": [
+        "1875"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=%C5%9Amier%C4%87+Przemys%C5%82awa+w+Rogo%C5%BAnie&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4gIxy4zNjPLitZSyk630yzKLSxNz4hOLSpCYmcUlVuX5RdnFi1gVj87KzUwtOtKuEFBUlZpbWXy0KbE8UaFcISg_Pf_orrzM1AlsjAC2OFY3ZAAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEGk",
       "image": null
     },
     {
       "name": "Założenie Akademii Lubrańskiego w Poznaniu",
+      "extensions": [
+        "1886"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=Za%C5%82o%C5%BCenie+Akademii+Lubra%C5%84skiego+w+Poznaniu&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tZP1zc0MijIKzQp0VLKTrbSL8ssLk3MiU8sKkFiZhaXWJXnF2UXL2LVjUo82pR_dE9qXmaqgmN2Ykpqbmamgk9pUlHi0Zbi7MzU9HyFcoWA_Kq8xLzM0glsjACxINQ6cQAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEGw",
       "image": null
     },
     {
       "name": "View of Bebek near Constantinople",
+      "extensions": [
+        "1872"
+      ],
       "link": "https://www.google.com/search?sa=X&sca_esv=556508295&biw=1423&bih=718&sxsrf=AB5stBg_L58iOgDpkWg3yiMRjFFDbN4cTQ:1691925193694&q=view+of+bebek+near+constantinople&stick=H4sIAAAAAAAAAONgFuLUz9U3MDKqqDBS4tVP1zc0TM4uSS-pLKjQUspOttIvyywuTcyJTywqQWJmFpdYlecXZRcvYlUsy0wtV8hPU0hKTUrNVshLTSxSSM7PKy5JzCvJzMsvyEmdwMYIAArhbsxnAAAA&ved=2ahUKEwiYjaDBwNmAAxWpERAIHfztCroQ-BZ6BAglEG8",
       "image": null
     },

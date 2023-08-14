@@ -56,6 +56,9 @@ module Scrapers
     end
 
     def year
+      year_match = link_element['title'].match(/\((\d{4})\)/)
+      return year_match[1] if year_match
+
       year_match = link_element.css('div').last&.inner_html
       year_match if year_match && year_match.to_i.to_s.size == year_match.size
     end

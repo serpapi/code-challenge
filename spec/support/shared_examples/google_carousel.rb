@@ -14,6 +14,10 @@ RSpec.shared_examples 'Google Carousel' do |raw_filepath, json_filepath|
     expect(@result.keys.first).to eq(heading)
   end
 
+  it 'is exactly the same' do
+    expect(@result).to eq(expected_result)
+  end
+
   expected_result[heading].each_with_index do |item, index|
     context "for item at index #{index}" do
       item.each_pair do |key, value|
