@@ -4,6 +4,8 @@ Goal is to extract a list of Van Gogh paintings from the attached Google search 
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
 
+## How to run
+ ``ruby  bin/super_parser.rb``
 ## Instructions
 
 This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
@@ -26,3 +28,4 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
