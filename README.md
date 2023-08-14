@@ -1,3 +1,28 @@
+# Working solution
+
+## v0.2
+Run specs:
+```
+bundle exec rspec
+```
+
+To see JSON outputs:
+```
+bundle exec ruby scrape.rb
+```
+
+Original HTML for the challenge is outdated.
+There are two scrapers, one for the challenge HTML file and another for the new ones.
+Edit filepaths in `scrape.rb` to check against other input.
+
+## v0.1
+
+Check this tag for a first simple scraping script: [v0.1]
+
+Thanks!
+
+[v0.1]: https://github.com/vysogot/code-challenge/tree/v0.1
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
@@ -21,7 +46,7 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed).
 
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
