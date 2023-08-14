@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Build output
+build/
+dist/
+out/
+
+# Editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# Package lock files
+package-lock.json
+yarn.lock
+
+# macOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs
