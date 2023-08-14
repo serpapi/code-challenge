@@ -1,49 +1,48 @@
 require 'nokogiri'
 
+# Class: CarouselParser
+# Public interface for parsing input data and extracting relevant information.
 class CarouselParser
-	def initialize(html)
-		@html = html
-	end
+  def initialize(html)
+    @html = html
+  end
 
-	# Based on the layout type run a different parsing
+  def parse
+    raise NotImplementedError, "Subclasses have to implement 'parse' method."
+  end
 
+  private
 
-	# Parser purpose:
-	# Extract item name, extensions array (data), Google Link and thumbnails
-	def parse
-		doc = Nokogiri::HTML(@html)
+  def create_collection(items)
+    items.each_with_object([]) do |item, collection|
+      extensions = get_extensions(item)
 
-		collection = {
-			artworks: []
-		}
+      record = {
+        name: get_item_name(item)
+      }
 
-		# Get the carousel
-		carousel = doc.css("g-scrolling-carousel");
-		# Get the carousel items
-		items = carousel.css("a");
+      record[:extensions] = extensions if extensions
+      record[:link] = get_link(item)
+      record[:image] = get_thumbnail(item)
 
-		puts items[0].css()
+      collection << record
+    end
+  end
 
-		items.each do |item|
-			# Get the carousel description
-			item_content = item.css('*:nth-child(2)');
+  # Define default methods that will be used if not overridden by subclasses
+  def get_name(item)
+    # Default implementation
+  end
 
-			item_name = item_content.css('> *:nth-child(1)').text.strip
-			item_extensions = item_content.css('> *:nth-child(2)').text.strip
-			item_link = item["href"] ? "https://google.com#{item["href"]}" : nil
-			item_image = item.css("img")[0] ? item.css("img")[0]["data-key"] : nil
+  def get_extensions(item)
+    # Default implementation
+  end
 
-			collection[:artworks] << {
-				name: item_name,
-				extensions: [item_extensions],
-				link: item_link,
-				image: item_image
-			}
-		end
+  def get_link(item)
+    # Default implementation
+  end
 
-		# puts collection[:artworks][0]
-
-		# Return an array containing the extracted data
-		collection
-	end
+  def get_image(item)
+    # Default implementation
+  end
 end
