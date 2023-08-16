@@ -30,17 +30,18 @@ module Services
         name = build_name(node)
         year = node.css('.klmeta')[0]&.text
         link = build_link(node)
-        image = node.css('g-img img')[0]&.attributes&.[]('src')&.value
+        image = build_image(node)
         build_carousel_item(name, year, link, image)
       end
     end
 
     def build_carousel_item(name, year, link, image)
-      item = {}
-      item['name'] = name
+      item = {
+        'name' => name,
+        'image' => image,
+        'link' => link
+      }
       item['extensions'] = [year] if year
-      item['link'] = link
-      item['image'] = image
       item
     end
 
@@ -54,6 +55,10 @@ module Services
 
     def build_name(node)
       node.attributes['aria-label'].value
+    end
+
+    def build_image(node)
+      node.css('g-img img')[0]&.attributes&.[]('src')&.value
     end
   end
 end
