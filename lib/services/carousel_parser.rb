@@ -18,7 +18,7 @@ module Services
       parser = ::Nokogiri::HTML(@html)
 
       # get carousel items
-      parent_nodes = parser.css('g-scrolling-carousel')[0].css('a')
+      parent_nodes = parser.css('g-scrolling-carousel')[0]&.css('a') || []
       # map carousel items to our special flavour artwork array :)
       build_items_by_parent_nodes(parent_nodes)
     end
