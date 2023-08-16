@@ -33,7 +33,7 @@ describe Services::CarouselParser do
       @expected = JSON.parse("{ #{expected_file.read} } ")['artists']
     end
 
-    %w[name link].each do |expected_test_attribute|
+    %w[name link image].each do |expected_test_attribute|
       it "gets the correct #{expected_test_attribute}s" do
         expected = @expected.map { |artist| artist[expected_test_attribute] }
         actual = @parsed_carousel.map { |artist| artist[expected_test_attribute] }

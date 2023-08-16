@@ -30,8 +30,7 @@ module Services
         name = build_name(node)
         year = node.css('.klmeta')[0]&.text
         link = build_link(node)
-        image = node.css('.klic img')[0]&.attributes&.[]('src')&.value
-
+        image = node.css('g-img img')[0]&.attributes&.[]('src')&.value
         build_carousel_item(name, year, link, image)
       end
     end
