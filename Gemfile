@@ -14,4 +14,8 @@ gem 'json', '~> 2.6'
 
 gem 'watir', '~> 7.3'
 
-gem "uri", "~> 0.12.2"
+gem 'uri', '~> 0.12.2'
+
+group :development do
+  gem 'rubocop', '~> 1.56'
+end
