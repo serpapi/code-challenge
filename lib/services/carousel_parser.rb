@@ -46,7 +46,7 @@ module Services
     end
 
     def build_link(node)
-      link = node&.attributes&.[]('href')&.value
+      link = node.attributes&.[]('href')&.value
       return unless link
 
       link = [URL, link].join unless link.start_with? URL
