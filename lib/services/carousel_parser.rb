@@ -52,7 +52,7 @@ module Services
     end
 
     def build_name(node)
-      node.css('.kltat')[0]&.text || node.text
+      node.attributes['aria-label'].value
     end
   end
 end
