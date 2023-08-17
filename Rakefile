@@ -22,9 +22,8 @@ namespace :google do
 
     fixture = Fixture.load!(app.fixture_path("google/carousel/#{variant}"))
 
-    page_api = app.page_api_handler
     parser = app.parser(:google_carousel).new(
-      page_api:,
+      page_api: app.page_api_handler,
       data: fixture.data
     )
 
