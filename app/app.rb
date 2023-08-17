@@ -5,6 +5,15 @@ require 'dry-configurable'
 class App
   include Dry::Configurable
 
+  PARSERS = {
+    google_carousel: Parser::Google::Carousel
+  }.freeze
+
+  PAGE_API_ADAPTERS = {
+    nokogiri: PageApi::Nokogiri,
+    nokolexbor: PageApi::Nokolexbor
+  }.freeze
+
   setting :page_api_adapter, default: :nokolexbor
   setting :fixtures_path
 
@@ -13,22 +22,10 @@ class App
   end
 
   def parser(parser)
-    case parser
-    in :google_carousel
-      Parser::Google::Carousel
-    in value
-      raise Errors::ParserNotFound, "provided: '#{value}'"
-    end
+    PARSERS[parser] || raise(Errors::ParserNotFound, "provided: '#{value}'")
   end
 
   def page_api_handler
-    case config.page_api_adapter
-    in :nokogiri
-      PageApi::Nokogiri
-    in :nokolexbor
-      PageApi::Nokolexbor
-    in value
-      raise Errors::PageAdapterNotFound, "provided: '#{value}'"
-    end
+    PAGE_API_ADAPTERS[config.page_api_adapter] || raise(Errors::PageAdapterNotFound, "provided: '#{value}'")
   end
 end
