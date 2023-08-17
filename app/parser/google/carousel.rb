@@ -2,12 +2,13 @@
 
 module Parser
   module Google
-    # TODO: This parser works with Artwork type of content.
-    # There're plenty of different content types for carousel:
+    # TODO: This parser works with Artwork type of layout.
+    # There're plenty of different carousel types:
     #   -- Albums
     #   -- Songs
     #   ....
-    # To make it working for each content type available in carousel
+    #
+    # To make this working with each carousel type available
     # this parser should detect the type and choose related parser implementation for it
 
     class Carousel

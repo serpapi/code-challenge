@@ -14,7 +14,7 @@ end
 namespace :google do
   desc 'Manualy run Google Carousel parser'
   task carousel: :load do
-    variant = 'variant2'
+    variant = 'variant1'
 
     app = App.new.configure do |config|
       config.fixtures_path = "#{__dir__}/fixtures"

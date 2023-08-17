@@ -4,6 +4,20 @@ Goal is to extract a list of Van Gogh paintings from the attached Google search 
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
 
+## Installation
+
+Install required ruby version
+
+  $ asdf install
+
+Install dependencies
+
+  $ bundle install
+
+## Usage
+
+$ rake google:carousel
+
 ## Instructions
 
 This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
@@ -21,8 +35,8 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed).
 
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
