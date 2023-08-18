@@ -1,28 +1,32 @@
-# Extract Van Gogh Paintings Code Challenge
+# Google Search Scrolling Carousel Parser
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+## Dependencies
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+```shell
+bundle install
+```
 
-## Instructions
+## Specs
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+```shell
+% bin/rspec
 
-Fork this repository and make a PR when ready.
+# Randomized with seed 27526
+# ..............
+#
+# Finished in 0.10585 seconds (files took 0.0838 seconds to load)
+# 14 examples, 0 failures
+#
+# Randomized with seed 27526
+```
 
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
+## Implementation
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
+For the purposes of this exercise I implemented two parser classes
+(`Google::CarouselV1`, `Google::CarouselV2`) as specialized subclasses of a
+`Google::SearchResultParser` parent class.
 
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
+I use `Nokogiri` to handle the basic HTML parsing logic.
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
-
-The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+With more time I'd extend the parent class to automatically detect which parser
+to use for a given document.

@@ -1,0 +1,17 @@
+# See https://docs.rubocop.org/rubocop/configuration
+
+require:
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+
+Style/NumberedParametersLimit:
+  Max: 2
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+RSpec/MultipleExpectations:
+  Max: 5
