@@ -5,7 +5,7 @@ module Parser
     BASE_SEARCH_URL = 'https://www.google.com'
 
     class ImageCarousel
-      attr_reader :html
+      attr_reader :html, :page
 
       def initialize(html)
         @html = html
@@ -13,12 +13,16 @@ module Parser
       end
 
       def carousel
-        @carousel ||= @page.css('g-scrolling-carousel').first
+        @carousel ||= page.css('g-scrolling-carousel').first
       end
 
       def image_elements
-        @image_elements ||= carousel.css('a').map do |element|
-          ImageContainer.new(element)
+        @image_elements ||= begin
+          return [] if carousel.nil?
+
+          carousel.css('a').map do |element|
+            ImageContainer.new(element)
+          end
         end
       end
 
@@ -43,7 +47,9 @@ module Parser
 
       def image_base64
         @image_base64 ||= begin
-          scripts = @page.css('script').select { |x| x.text.include? '_setImagesSrc' }.first
+          scripts = page.css('script').select { |x| x.text.include? '_setImagesSrc' }.first
+          return {} if scripts.nil?
+
           scripts
             .children.text
             .split(";(function(){var s='")
