@@ -3,7 +3,7 @@ require 'base64'
 require 'open-uri'
 require_relative '../carousel_parser'
 
-class KlitemParser < CarouselParser
+class KlitemParser2023 < CarouselParser
   def parse
     doc = Nokogiri::HTML(@html)
 
@@ -23,7 +23,7 @@ class KlitemParser < CarouselParser
     carousel = get_carousel(doc)
     items = get_items(carousel)
 
-    items.length and items[0]&.children&.length == 2
+    items.length and items[0]&.children&.length == 1
   end
 
   private
@@ -40,20 +40,23 @@ class KlitemParser < CarouselParser
 
   def get_items(carousel)
     # Select every a-tag containing the substring klitem
-    carousel&.css('a[class~=klitem]') || []
+    carousel&.css('a[class~=klitem-tr]') || []
   end
 
   def get_item_name(item)
-    item&.css('*:nth-child(2)')&.children&.[](0)&.text&.strip
+    item&.css('.FozYP')&.children&.[](0)&.text&.strip
   end
 
   def get_extensions(item)
     extensions = []
-    found_extensions = item.css('*:nth-child(2) > *:nth-child(2)').text.strip
 
-    return nil if found_extensions.length < 1
+    item&.css('.FozYP')&.children&.drop(1)&.each do |element|
+      text = element.text.strip
+      extensions.push(text) if text.match?(/[a-zA-Z0-9]/)
+    end
 
-    extensions << found_extensions
+    return nil if extensions.length < 1
+
     extensions
   end
 

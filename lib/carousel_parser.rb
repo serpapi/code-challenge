@@ -1,5 +1,7 @@
 require 'nokogiri'
 
+GOOGLE_DOMAIN = 'https://www.google.com'
+
 # Class: CarouselParser
 # Public interface for parsing input data and extracting relevant information.
 class CarouselParser
@@ -9,6 +11,10 @@ class CarouselParser
 
   def parse
     raise NotImplementedError, "Subclasses have to implement 'parse' method."
+  end
+
+  def is_suitable
+    raise NotImplementedError, "Subclasses have to implement 'is_suitable' method."
   end
 
   private
