@@ -31,9 +31,9 @@ RSpec.describe Google::CarouselV1 do
       end
     end
 
-    it "returns the expected list of images", skip: "pending fix" do
+    it "returns the expected list of images" do
       parser.items.zip(expected_list).each do |item, expected|
-        expect(item.image).to eq(expected[:image])
+        expect(item.image.to_s).to eq(expected[:image].to_s)
       end
     end
   end

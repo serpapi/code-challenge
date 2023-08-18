@@ -11,8 +11,9 @@ module Google
         doc
         .css("g-scrolling-carousel")
         .css("a.klitem")
-        .zip(images)
-        .map { CarouselV1Item.new(_1, image: _2) }
+        .map { |node| [node, node.css("img").attr("id").value] }
+        .map { |node, image_id| [node, images[image_id]] }
+        .map { |node, image| CarouselV1Item.new(node:, image:) }
     end
 
     def images
@@ -21,9 +22,8 @@ module Google
         .css("script")
         .find { _1.text.match?(/_setImagesSrc/) }
         &.text
-        &.scan(/var s='(.+?)'/)
-        &.flatten
-        .to_a
+        &.scan(/var s='(.+?)';var ii=\['(.+?)'\];/)
+        .to_h(&:reverse)
     end
 
     def parseable?
@@ -35,9 +35,9 @@ module Google
   class CarouselV1Item
     attr_accessor :node, :image
 
-    def initialize(node, image: nil)
+    def initialize(node:, image: nil)
       self.node = node
-      self.image = image
+      self.image = image.to_s.tr("\\", "")
     end
 
     def name
