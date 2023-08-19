@@ -6,7 +6,7 @@ output = []
 
 #search parameters sent to Serp API to pull the data
 params = {
-  "q": "Van Gough paintings",
+  "q": "Van Gogh paintings",
   "location": "Austin, Texas, United States",
   "google_domain": "google.com",
   "hl": "en",
