@@ -1,0 +1,16 @@
+{
+  "name": "serpapi-scrape-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "npx jest"
+  },
+  "author": "danny bowen <danny@helter.net>",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.6.2",
+    "puppeteer": "^21.1.0"
+  }
+}
