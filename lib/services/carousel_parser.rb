@@ -104,7 +104,7 @@ if __FILE__ == $PROGRAM_NAME
     exit
   end
   html = File.read(file_path)
-  parser = Services::CarouselParser.call(html)
+  parser = Services::CarouselParser.call(html, ARGV[1])
   result = parser.to_json
   puts result
 end
