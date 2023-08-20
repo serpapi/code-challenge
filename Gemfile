@@ -2,8 +2,6 @@
 
 source 'https://rubygems.org'
 
-# gem "rails"
-
 gem 'json', '~> 2.6'
 gem 'nokolexbor', '~> 0.5.0'
 gem 'rspec', '~> 3.12'
