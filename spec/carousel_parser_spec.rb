@@ -7,7 +7,7 @@ describe Services::CarouselParser do
   describe :original_challenge do
     before :all do
       file_content = File.read("#{Dir.pwd}/files/van-gogh-paintings.html")
-      @parsed_carousel = Services::CarouselParser.call(file_content)
+      @parsed_carousel = Services::CarouselParser.call(file_content, 'artworks')['artworks']
       expected_file = File.open('files/expected-array.json')
       @expected = JSON.parse(expected_file.read)['artworks']
     end
@@ -24,7 +24,7 @@ describe Services::CarouselParser do
   describe :queen_song_writers do
     before :all do
       file_content = File.read("#{Dir.pwd}/files/queen-song-writers.html")
-      @parsed_carousel = Services::CarouselParser.call(file_content)
+      @parsed_carousel = Services::CarouselParser.call(file_content, 'artists')['artists']
       expected_file = File.open('files/expected-artists.json')
       @expected = JSON.parse(expected_file.read)['artists']
     end
@@ -41,7 +41,7 @@ describe Services::CarouselParser do
   describe :buildings_in_bonn do
     before :all do
       file_content = File.read("#{Dir.pwd}/files/buildings-in-bonn.html")
-      @parsed_carousel = Services::CarouselParser.call(file_content)
+      @parsed_carousel = Services::CarouselParser.call(file_content, 'buildings')['buildings']
       expected_file = File.open('files/expected-buildings.json')
       @expected = JSON.parse(expected_file.read)['buildings']
     end

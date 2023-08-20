@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'abstract_service'
+require 'json'
 require 'nokolexbor'
 require 'uri'
 require_relative 'logger'
@@ -14,8 +15,9 @@ module Services
     META_TAG = '.klmeta'
     NAME_LABEL = 'aria-label'
 
-    def initialize(html)
+    def initialize(html, result_name = nil)
       super()
+      @result_name = result_name
       @parser = ::Nokolexbor::HTML(html)
     end
 
@@ -23,7 +25,11 @@ module Services
       # get carousel items
       parent_nodes = @parser&.css(CAROUSEL_TAG)&.[](0)&.css('a') || []
       # map carousel items to our special flavour artwork array :)
-      build_items_by_parent_nodes(parent_nodes)
+      results = build_items_by_parent_nodes(parent_nodes)
+
+      {
+        @result_name || 'results' => results
+      }
     end
 
     private
@@ -84,4 +90,21 @@ module Services
         &.delete('\\')
     end
   end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  if ARGV.empty?
+    puts 'Please enter a path to an HTML file.'
+    exit
+  end
+
+  file_path = ARGV[0]
+  unless File.exist?(file_path)
+    puts 'The given file does not exist.'
+    exit
+  end
+  html = File.read(file_path)
+  parser = Services::CarouselParser.call(html)
+  result = parser.to_json
+  puts result
 end
