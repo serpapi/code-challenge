@@ -78,11 +78,10 @@ module Services
 
     def extract_base64(id)
       @parser
-        &.xpath("//script[contains(., '#{id}')]")
-        &.first
+        &.xpath("//script[contains(., '#{id}')][1]")
         &.text
-        &.[](/(data:image[^']+)/m, 1)
-        &.gsub('\\', '')
+        &.[](/(data:image[^']+)/, 1)
+        &.delete('\\')
     end
   end
 end
