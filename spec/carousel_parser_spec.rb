@@ -12,7 +12,7 @@ describe Services::CarouselParser do
     %w[name link year].each do |expected_test_attribute|
       it "gets the correct #{expected_test_attribute}s" do
         expected, actual = expected_and_actual_values(expected_test_attribute)
-        expect(expected).to eq(actual)
+        expect(actual).to eq(expected)
       end
     end
   end
@@ -25,7 +25,7 @@ describe Services::CarouselParser do
     %w[name link image].each do |expected_test_attribute|
       it "gets the correct #{expected_test_attribute}s" do
         expected, actual = expected_and_actual_values(expected_test_attribute)
-        expect(expected).to eq(actual)
+        expect(actual).to eq(expected)
       end
     end
   end
@@ -38,7 +38,7 @@ describe Services::CarouselParser do
     %w[name link image].each do |expected_test_attribute|
       it "gets the correct #{expected_test_attribute}s" do
         expected, actual = expected_and_actual_values(expected_test_attribute)
-        expect(expected).to eq(actual)
+        expect(actual).to eq(expected)
       end
     end
   end
