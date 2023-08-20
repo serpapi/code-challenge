@@ -46,8 +46,8 @@ describe Services::CarouselParser do
   private
 
   def load_data(html, json, root_node_name)
-    file_content = File.read("files/#{html}")
-    actual = Services::CarouselParser.call(file_content, root_node_name)[root_node_name]
+    html_file_content = File.read("files/#{html}")
+    actual = Services::CarouselParser.call(html_file_content, root_node_name)[root_node_name]
     expected_file = File.read("files/#{json}")
     expected = JSON.parse(expected_file)[root_node_name]
 
