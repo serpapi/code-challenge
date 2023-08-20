@@ -2,16 +2,12 @@
 
 require 'services/carousel_parser'
 require 'json'
-require 'watir'
 
 describe Services::CarouselParser do
-  before :all do
-    @browser = Watir::Browser.new :chrome, headless: true
-  end
   describe :original_challenge do
     before :all do
-      @browser.goto("file://#{Dir.pwd}/files/van-gogh-paintings.html")
-      @parsed_carousel = Services::CarouselParser.call(@browser.html)
+      file_content = File.read("#{Dir.pwd}/files/van-gogh-paintings.html")
+      @parsed_carousel = Services::CarouselParser.call(file_content)
       expected_file = File.open('files/expected-array.json')
       @expected = JSON.parse(expected_file.read)['artworks']
     end
@@ -27,8 +23,8 @@ describe Services::CarouselParser do
 
   describe :queen_song_writers do
     before :all do
-      @browser.goto("file://#{Dir.pwd}/files/queen-song-writers.html")
-      @parsed_carousel = Services::CarouselParser.call(@browser.html)
+      file_content = File.read("#{Dir.pwd}/files/queen-song-writers.html")
+      @parsed_carousel = Services::CarouselParser.call(file_content)
       expected_file = File.open('files/expected-artists.json')
       @expected = JSON.parse(expected_file.read)['artists']
     end
@@ -44,8 +40,8 @@ describe Services::CarouselParser do
 
   describe :buildings_in_bonn do
     before :all do
-      @browser.goto("file://#{Dir.pwd}/files/buildings-in-bonn.html")
-      @parsed_carousel = Services::CarouselParser.call(@browser.html)
+      file_content = File.read("#{Dir.pwd}/files/buildings-in-bonn.html")
+      @parsed_carousel = Services::CarouselParser.call(file_content)
       expected_file = File.open('files/expected-buildings.json')
       @expected = JSON.parse(expected_file.read)['buildings']
     end

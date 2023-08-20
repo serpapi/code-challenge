@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'abstract_service'
-require 'nokogiri'
+require 'nokolexbor'
 require 'uri'
 require_relative 'logger'
 
@@ -16,14 +16,12 @@ module Services
 
     def initialize(html)
       super()
-      @html = html
+      @parser = ::Nokolexbor::HTML(html)
     end
 
     def call
-      parser = ::Nokogiri::HTML(@html)
-
       # get carousel items
-      parent_nodes = parser&.css(CAROUSEL_TAG)&.[](0)&.css('a') || []
+      parent_nodes = @parser&.css(CAROUSEL_TAG)&.[](0)&.css('a') || []
       # map carousel items to our special flavour artwork array :)
       build_items_by_parent_nodes(parent_nodes)
     end
@@ -65,7 +63,8 @@ module Services
     end
 
     def build_image(node)
-      image = node&.css(IMAGE_TAG)&.[](0)&.attributes&.[]('src')&.value
+      id = node&.css(IMAGE_TAG)&.[](0)&.attributes&.[]('id')
+      image = extract_base64(id)
       Services::Logger.instance.log(:warn, "no image found for #{node.inspect}") if image.nil?
       image
     end
@@ -75,6 +74,15 @@ module Services
       # since meta info is not always existent, we will log this as an info.
       Services::Logger.instance.log(:info, "no meta info found for #{node.inspect}") if meta.nil?
       meta
+    end
+
+    def extract_base64(id)
+      @parser
+        &.xpath("//script[contains(., '#{id}')]")
+        &.first
+        &.text
+        &.[](/(data:image[^']+)/m, 1)
+        &.gsub('\\', '')
     end
   end
 end
