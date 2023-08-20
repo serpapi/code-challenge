@@ -11,8 +11,7 @@ describe Services::CarouselParser do
 
     %w[name link year].each do |expected_test_attribute|
       it "gets the correct #{expected_test_attribute}s" do
-        expected = @expected.map { |artwork| artwork[expected_test_attribute] }
-        actual = @actual.map { |artwork| artwork[expected_test_attribute] }
+        expected, actual = expected_and_actual_values(expected_test_attribute)
         expect(expected).to eq(actual)
       end
     end
@@ -25,8 +24,7 @@ describe Services::CarouselParser do
 
     %w[name link image].each do |expected_test_attribute|
       it "gets the correct #{expected_test_attribute}s" do
-        expected = @expected.map { |artist| artist[expected_test_attribute] }
-        actual = @actual.map { |artist| artist[expected_test_attribute] }
+        expected, actual = expected_and_actual_values(expected_test_attribute)
         expect(expected).to eq(actual)
       end
     end
@@ -39,18 +37,26 @@ describe Services::CarouselParser do
 
     %w[name link image].each do |expected_test_attribute|
       it "gets the correct #{expected_test_attribute}s" do
-        expected = @expected.map { |building| building[expected_test_attribute] }
-        actual = @actual.map { |building| building[expected_test_attribute] }
+        expected, actual = expected_and_actual_values(expected_test_attribute)
         expect(expected).to eq(actual)
       end
     end
   end
 
+  private
+
   def load_data(html, json, root_node_name)
     file_content = File.read("files/#{html}")
     actual = Services::CarouselParser.call(file_content, root_node_name)[root_node_name]
-    expected_file = File.open("files/#{json}")
-    expected = JSON.parse(expected_file.read)[root_node_name]
+    expected_file = File.read("files/#{json}")
+    expected = JSON.parse(expected_file)[root_node_name]
+
+    [expected, actual]
+  end
+
+  def expected_and_actual_values(expected_test_attribute)
+    expected = @expected.map { |building| building[expected_test_attribute] }
+    actual = @actual.map { |building| building[expected_test_attribute] }
 
     [expected, actual]
   end
