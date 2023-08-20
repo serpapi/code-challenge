@@ -10,5 +10,10 @@ describe Services::Logger do
       stub_const('ENV', {}) # mock env
       expect { logger_instance.log(:error, 'TEST LOG MESSAGE') }.to output(/TEST LOG MESSAGE/).to_stderr
     end
+
+    it 'does not post a log entry' do
+      stub_const('ENV', { 'RUBY_LOGGER_ENABLED' => 0 }) # mock env
+      expect { logger_instance.log(:error, 'TEST LOG MESSAGE') }.to_not output(/TEST LOG MESSAGE/).to_stderr
+    end
   end
 end

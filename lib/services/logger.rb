@@ -15,12 +15,22 @@ module Services
       log_level = ENV.fetch('RUBY_LOG_LEVEL', 'INFO')
       log_output = ENV.fetch('RUBY_LOG_OUTPUT', $stderr)
 
+      return unless logger_enabled?
+
       @logger = ::Logger.new(log_output)
       @logger.level = ::Logger.const_get(log_level)
     end
 
     def log(severity, message)
-      @logger.public_send(severity, message)
+      @logger.public_send(severity, message) if logger_enabled?
+    end
+
+    private
+
+    # Per default, the logger is always enabled. If you want to disable it,
+    # you can just set the ENV variable below to 0.
+    def logger_enabled?
+      ENV.fetch('RUBY_LOGGER_ENABLED', 1) == 1
     end
   end
 end
