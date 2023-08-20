@@ -3,6 +3,7 @@
 require_relative 'abstract_service'
 require 'nokogiri'
 require 'uri'
+require_relative 'logger'
 
 module Services
   # parse google search carousel
@@ -22,7 +23,7 @@ module Services
       parser = ::Nokogiri::HTML(@html)
 
       # get carousel items
-      parent_nodes = parser.css(CAROUSEL_TAG)[0]&.css('a') || []
+      parent_nodes = parser&.css(CAROUSEL_TAG)&.[](0)&.css('a') || []
       # map carousel items to our special flavour artwork array :)
       build_items_by_parent_nodes(parent_nodes)
     end
@@ -36,34 +37,44 @@ module Services
       end
     end
 
-    def build_carousel_item(name, year, link, image)
+    def build_carousel_item(name, meta, link, image)
       item = {
         'name' => name,
         'image' => image,
         'link' => link
       }
-      item['extensions'] = [year] if year
+      item['extensions'] = [meta] if meta
       item
     end
 
     def build_link(node)
-      link = node.attributes&.[]('href')&.value
-      return unless link
+      link = node&.attributes&.[]('href')&.value
+      if link.nil?
+        Services::Logger.instance.log(:warn, "no link found for #{node.inspect}")
+        return
+      end
 
       link = [URL, link].join unless link.start_with? URL
       link
     end
 
     def build_name(node)
-      node.attributes[NAME_LABEL].value
+      name = node.attributes[NAME_LABEL].value
+      Services::Logger.instance.log(:error, "no name found for #{node.inspect}") if name.nil?
+      name
     end
 
     def build_image(node)
-      node.css(IMAGE_TAG)[0]&.attributes&.[]('src')&.value
+      image = node&.css(IMAGE_TAG)&.[](0)&.attributes&.[]('src')&.value
+      Services::Logger.instance.log(:warn, "no image found for #{node.inspect}") if image.nil?
+      image
     end
 
     def build_meta(node)
-      node.css(META_TAG)[0]&.text
+      meta = node&.css(META_TAG)&.[](0)&.text
+      # since meta info is not always existent, we will log this as an info.
+      Services::Logger.instance.log(:info, "no meta info found for #{node.inspect}") if meta.nil?
+      meta
     end
   end
 end
