@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'services/abstract_service'
+require_relative 'abstract_service'
 require 'nokogiri'
 require 'uri'
 
