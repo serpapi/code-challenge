@@ -8,6 +8,10 @@ module Services
   # parse google search carousel
   class CarouselParser < AbstractService
     URL = 'https://www.google.com'
+    CAROUSEL_TAG = 'g-scrolling-carousel'
+    IMAGE_TAG = 'g-img img'
+    META_TAG = '.klmeta'
+    NAME_LABEL = 'aria-label'
 
     def initialize(html)
       super()
@@ -18,7 +22,7 @@ module Services
       parser = ::Nokogiri::HTML(@html)
 
       # get carousel items
-      parent_nodes = parser.css('g-scrolling-carousel')[0]&.css('a') || []
+      parent_nodes = parser.css(CAROUSEL_TAG)[0]&.css('a') || []
       # map carousel items to our special flavour artwork array :)
       build_items_by_parent_nodes(parent_nodes)
     end
@@ -27,11 +31,8 @@ module Services
 
     def build_items_by_parent_nodes(parent_nodes)
       parent_nodes.map do |node|
-        name = build_name(node)
-        year = node.css('.klmeta')[0]&.text
-        link = build_link(node)
-        image = build_image(node)
-        build_carousel_item(name, year, link, image)
+        params = %i[name meta link image].map(&(proc { |item| send("build_#{item}", node) }))
+        build_carousel_item(*params)
       end
     end
 
@@ -54,11 +55,15 @@ module Services
     end
 
     def build_name(node)
-      node.attributes['aria-label'].value
+      node.attributes[NAME_LABEL].value
     end
 
     def build_image(node)
-      node.css('g-img img')[0]&.attributes&.[]('src')&.value
+      node.css(IMAGE_TAG)[0]&.attributes&.[]('src')&.value
+    end
+
+    def build_meta(node)
+      node.css(META_TAG)[0]&.text
     end
   end
 end
