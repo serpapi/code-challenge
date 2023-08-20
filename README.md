@@ -6,7 +6,7 @@ Hi there. This neat little program can extract thumbnails and information from a
 You will need the following prerequisites:
 
 - Ruby 3.2.2
-- Bundler (get the 2.4.18 or newer)
+- Bundler (get 2.4.18 or newer)
 
 After a call to `bundle install`, you should be golden :-)!
 
