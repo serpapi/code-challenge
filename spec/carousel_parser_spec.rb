@@ -55,9 +55,8 @@ describe Services::CarouselParser do
   end
 
   def expected_and_actual_values(expected_test_attribute)
-    expected = @expected.map { |building| building[expected_test_attribute] }
-    actual = @actual.map { |building| building[expected_test_attribute] }
-
-    [expected, actual]
+    [@expected, @actual].map do |array|
+      array.map { |item| item[expected_test_attribute] }
+    end
   end
 end
