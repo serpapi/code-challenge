@@ -28,6 +28,8 @@ module Parser
         category = get_category(page)
 
         Parser::Response.new({ category => elements })
+      rescue StandardError => e
+        Parser::Error.new(e)
       end
 
       private

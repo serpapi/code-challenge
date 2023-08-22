@@ -16,6 +16,7 @@ RSpec.describe Parser::Google::Carousel do
     describe 'variant1' do
       let(:fixture_name) { 'variant1' }
 
+      # TODO: extract into shared_examples
       it 'should parse google results' do
         expect(parser.parse).to be_instance_of(Parser::Response)
       end

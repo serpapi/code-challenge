@@ -3,7 +3,7 @@
 module Utils
   def self.get_base_url(page)
     case page.css('base').to_a
-    in [base] if base['href']&.length&.> 0
+    in [base] if base['href']&.length&.positive?
       base['href']
     else
       nil
@@ -11,8 +11,8 @@ module Utils
   end
 
   def self.add_host(url, params)
-    case [url, params]
-    in '/', { base_url: String } if base_url.size.positive?
+    case [url[0], params]
+    in ['/', { base_url: base_url }] if base_url&.length&.positive?
       File.join(base_url, url)
     else
       url
