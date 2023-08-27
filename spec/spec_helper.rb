@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "hamilton/code/challenge"
+require "challenge"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
