@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hamilton-code-challenge (0.1.0)
+    challenge (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -56,7 +56,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  hamilton-code-challenge!
+  challenge!
   nokogiri (~> 1.15)
   rake (~> 13.0)
   rspec (~> 3.0)
