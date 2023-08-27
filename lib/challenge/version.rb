@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
-    module Challenge
-      VERSION = "0.1.0"
-    end
+module Challenge
+  VERSION = "0.1.0"
+end

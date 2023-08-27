@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
+# frozen_string_literal: true
 
-require './lib/challenge.rb'
+require "./lib/challenge"
 
-puts Challenge.process_page()
+puts Challenge.process_page
