@@ -44,3 +44,5 @@ ruby lib/main.rb
 from root.
 
 Output is currently just dumping the JSON straight to console, since an output mechanism wasn't explicitily stipulated.
+
+Also, I know the code isn't probably symantic Ruby, my head is still mostly in TypeScript land, but I tried to fix what I could.
