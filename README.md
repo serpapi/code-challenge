@@ -26,3 +26,21 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+
+## Notes from Hamilton on the Project
+
+I kept the project as lightweight as possible in order to faciliate development speed. Obviously in a production environment this would would
+live inside a more robust server platform system, including database backing, APIs for access, and a robustly defined core Class
+
+A note: it looks like Google's search results may have changed since this project started? The search carousel I was receiving were more complex and varied than the one provided in the test data. I assumed that since the modern stuff didn't match the test data, we weren't expected to serve that use case, but it also made it hard to test the robustness and resiliency of my solution, since there wasn't really any comparison data to utilize.
+
+I didn't add any options for configuring different input files or even being able to make live search queries, but that would probably be my next big step.
+
+To use the project from the command line, just clone the repo and run
+```
+ruby lib/main.rb
+```
+from root.
+
+Output is currently just dumping the JSON straight to console, since an output mechanism wasn't explicitily stipulated.

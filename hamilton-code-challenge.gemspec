@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/hamilton/code/challenge/version"
+require_relative "lib/challenge/version"
 
 Gem::Specification.new do |spec|
   spec.name = "hamilton-code-challenge"
