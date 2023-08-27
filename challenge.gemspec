@@ -3,7 +3,7 @@
 require_relative "lib/challenge/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "hamilton-code-challenge"
+  spec.name = "challenge"
   spec.version = Challenge::VERSION
   spec.authors = ["greatbacon"]
   spec.email = ["hamiltonjreed@gmail.com"]
