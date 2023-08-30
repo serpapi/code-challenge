@@ -13,7 +13,6 @@ def main():
     imageCounter = 0
     for picture in pictures:
         painting_details = {}
-
         painting_details["name"] = getPaintingName(picture)
         painting_details["extensions"] = getPaintingExtension(picture)
         painting_details["link"] = getPaintingLink(picture)
@@ -36,7 +35,7 @@ def getPaintingName(picture):
     """
     Parse for title before "("
     """
-    title = re.findall(r'title=([^"\d]*)"', picture).strip()
+    title = re.findall(r'title=([^"\d])"', picture).strip()
     return title
 
 
