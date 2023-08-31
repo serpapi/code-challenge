@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'json'
 
-# Get the input HTML file path from command line arguments
+# Get the input HTML file path from command line arguments if van-gogh-paintings.html is not available
 input_file_path = 'van-gogh-paintings.html'
 
 unless File.exist?(input_file_path)
