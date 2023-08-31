@@ -23,13 +23,16 @@ RSpec.describe 'HTML Parser' do
   end
 
   describe 'output file' do
-    let(:expected_output_filename) { 'expected-array.json' }
-    let(:generated_output_filename) { 'output.json' }
-
     it 'matches the expected output' do
+      # Load the generated output JSON
+      generated_output_filename = 'van-gogh-paintings_output.json'
       generated_output = JSON.parse(File.read(generated_output_filename))
+
+      # Load the expected output JSON
+      expected_output_filename = 'expected-array.json'
       expected_output = JSON.parse(File.read(expected_output_filename))
 
+      # Compare the generated output with the expected output
       expect(generated_output).to eq(expected_output)
     end
   end
