@@ -2,11 +2,16 @@ require 'nokogiri'
 require 'json'
 
 # Get the input HTML file path from command line arguments
-input_file_path = ARGV[0]
+input_file_path = 'van-gogh-paintings.html'
 
-if input_file_path.nil? || !File.exist?(input_file_path)
-  puts "Please provide a valid input HTML file path."
-  exit
+unless File.exist?(input_file_path)
+  puts "The 'van-gogh-paintings.html' file is not found. Please provide a valid input HTML file path:"
+  input_file_path = gets.chomp
+
+  unless File.exist?(input_file_path)
+    puts "The specified input HTML file does not exist. Exiting."
+    exit
+  end
 end
 
 # Load the HTML file
