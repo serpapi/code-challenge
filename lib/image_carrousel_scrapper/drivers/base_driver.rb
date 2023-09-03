@@ -14,6 +14,10 @@ class ImageCarrouselScrapper
       def carrousel_list
         raise NotImplementedError
       end
+
+      def parser
+        @parser ||= Nokogiri::HTML(file.read)
+      end
     end
   end
 end
