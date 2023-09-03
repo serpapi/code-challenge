@@ -1,18 +1,11 @@
 # frozen_string_literal: true
 
 require 'nokogiri'
+require_relative 'base_driver'
 
 class ImageCarrouselScrapper
   module Drivers
-    class NokogiriDriver
-      RESULT = Struct.new(:name, :extensions, :link, :image, keyword_init: true)
-
-      attr_reader :file
-
-      def initialize(file)
-        @file = file
-      end
-
+    class NokogiriDriver < BaseDriver
       def carrousel_list
         carrousel_items.map do |item|
           name = item.attributes['aria-label']&.value
