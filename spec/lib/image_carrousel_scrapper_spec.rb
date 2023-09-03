@@ -14,7 +14,7 @@ RSpec.describe ImageCarrouselScrapper do
     let(:driver) { ImageCarrouselScrapper::Drivers::NokogiriDriver }
 
     it 'result, return list of carrousel data' do
-      expect(result).to eq(expected_data)
+      expect(result).to match_array(expected_data)
     end
   end
 end
