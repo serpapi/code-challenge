@@ -12,7 +12,7 @@ class ImageCarrouselScrapper
           next unless name
 
           RESULT.new(
-            name: item.attribute('aria-label')&.value,
+            name:,
             image: image_src(item),
             link: google_link(item.attribute('href')&.value)
           ).tap do |result|
