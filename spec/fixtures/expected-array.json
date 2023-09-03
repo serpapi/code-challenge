@@ -1,4 +1,4 @@
-"artworks": [
+{"artworks": [
   {
     "name": "The Starry Night",
     "extensions": [
@@ -386,4 +386,4 @@
     "link": "https://www.google.com/search?gl=us&hl=en&q=Portrait+of+Adeline+Ravoux&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLi1k_XNzQyyjYzTq7SUspOttIvyywuTcyJTywqQWJmFpdYlecXZRc_YozkFnj5456wVMCkNSevMXpxEaFJSIWLzTWvJLOkUkiKi0cKbrsGgxQXF5zHs4hVKiC_qKQoMbNEIT9NwTElNSczL1UhKLEsv7QCAOSAHzG2AAAA&npsic=0&sa=X&ved=0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYIxQE",
     "image": null
   }
-]
+]}
