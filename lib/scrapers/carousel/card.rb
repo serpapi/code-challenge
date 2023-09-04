@@ -7,11 +7,23 @@ module Scrapers
 
       def to_hash
         {
-          name: nil,
-          extensions: nil,
-          link: nil,
-          image: nil
+          name: name,
+          extensions: extensions,
+          link: link,
+          image: image
         }
+      end
+
+      def name
+      end
+
+      def extensions
+      end
+
+      def link
+      end
+
+      def image
       end
     end
   end
