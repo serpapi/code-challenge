@@ -3,7 +3,7 @@ require_relative "./carousel/card"
 module Scrapers
   module Carousel
     def scrape_carousel
-      anchors.map { |node| Card.new(node).to_hash }
+      anchors.map { |node| Card.new(node, @document).to_hash }
     end
 
     def carousel

@@ -4,7 +4,8 @@ require "json"
 
 describe Scrapers::Carousel::Card do
   let(:node) { Nokogiri::HTML(File.read("spec/fixtures/card.html")).css("a").first }
-  let(:subject) { Scrapers::Carousel::Card.new(node) }
+  let(:document) { Nokogiri::HTML(File.read("spec/fixtures/van-gogh-paintings.html")) }
+  let(:subject) { Scrapers::Carousel::Card.new(node, document) }
 
   let(:expected) { JSON.load(File.open("spec/fixtures/expected-array.json"))["artworks"][0] }
 
@@ -28,7 +29,7 @@ describe Scrapers::Carousel::Card do
 
   context "empty extensions" do
     let(:node) { Nokogiri::HTML(File.read("spec/fixtures/card_no_extensions.html")).css("a").first }
-    let(:subject) { Scrapers::Carousel::Card.new(node) }
+    let(:subject) { Scrapers::Carousel::Card.new(node, document) }
 
     it "returns nil" do
       expect(nil).to eq(subject.to_hash[:extensions])

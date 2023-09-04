@@ -3,8 +3,9 @@ module Scrapers
     class Card
       GOOGLE_BASE_URL = "https://www.google.com"
 
-      def initialize(node)
+      def initialize(node, document)
         @node = node
+        @document = document
       end
 
       def to_hash
@@ -12,7 +13,7 @@ module Scrapers
         hash[:name] = name
         hash[:extensions] = extensions if extensions.any?
         hash[:link] = GOOGLE_BASE_URL + path
-        hash[:image] = nil
+        hash[:image] = image_url
         hash
       end
 
@@ -29,6 +30,15 @@ module Scrapers
       end
 
       def image_url
+        img_id = @node.search("img").first.attribute("id").value
+
+        split_text = @document.text.split(img_id)[0].gsub("';var ii=['", "")
+        result = split_text.split("var s='").last.delete("\\")
+
+        return if result.include?(" ")
+        result
+      rescue
+        nil
       end
     end
   end
