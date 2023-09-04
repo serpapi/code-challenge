@@ -37,4 +37,20 @@ describe Scraper do
       end
     end
   end
+
+  context "other types of searches" do
+    ["dogs", "noodles", "paintings"].each do |search_name|
+      let(:subject) { Scraper.new("spec/fixtures/#{search_name}.html") }
+      let(:results) { subject.scrape_carousel }
+
+      it "extracts data corrrectly" do
+        results.each do |result|
+          expect(result[:name]).to be_a String
+          expect(result[:extensions]).to be_a Array
+          expect(result[:link]).to be_a String
+          expect(result[:image]).to be_a String if result[:image]
+        end
+      end
+    end
+  end
 end
