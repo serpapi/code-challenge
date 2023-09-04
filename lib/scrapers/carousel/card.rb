@@ -15,6 +15,7 @@ module Scrapers
       end
 
       def name
+        @_name ||= @node.attribute("aria-label").value
       end
 
       def extensions
