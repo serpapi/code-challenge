@@ -25,7 +25,7 @@ module Scrapers
       def link
       end
 
-      def image
+      def image_url
       end
     end
   end
