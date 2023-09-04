@@ -1,14 +1,9 @@
+require_relative "./carousel/card"
+
 module Scrapers
   module Carousel
     def scrape_carousel
-      anchors.map do |node|
-        {
-          name: nil,
-          extensions: nil,
-          link: nil,
-          image: nil
-        }
-      end
+      anchors.map { |node| Card.new(node).to_hash }
     end
 
     def carousel
