@@ -6,11 +6,17 @@ The Extract Van Gogh Paintings Scraper is a Ruby-based solution designed to extr
 ## Prerequisites
 Before running the script, ensure you have the following prerequisites installed:
 
-- Ruby 3.2.2
+```shell
+Ruby "3.2.2"
+```
 ## Running the Scraper
 1. Clone or fork this repository to your local machine.
 2. Open your terminal and navigate to the project directory.
-3. Run the following command in your terminal:
+3. Install dependencies:
+```
+bundle install
+```
+4. Run the scraper:
 ```
 ruby ./lib/commands/scrape.rb files/van-gogh-paintings.html
 ```
