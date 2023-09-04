@@ -9,6 +9,10 @@ describe Scraper do
 
     let(:results) { subject.scrape_carousel }
 
+    it "scrapes the exact number of results" do
+      expect(expected.size).to eq(results.size)
+    end
+
     it "matches names with expected results" do
       results.each_with_index do |result, i|
         expect(expected[i]["name"]).to eq(result[:name])
