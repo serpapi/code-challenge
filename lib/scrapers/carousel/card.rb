@@ -6,12 +6,12 @@ module Scrapers
       end
 
       def to_hash
-        {
-          name: name,
-          extensions: extensions,
-          link: link,
-          image: image
-        }
+        hash = {}
+        hash[:name] = name
+        hash[:extensions] = extensions if extensions.any?
+        hash[:link] = nil
+        hash[:image] = nil
+        hash
       end
 
       def name
@@ -19,6 +19,7 @@ module Scrapers
       end
 
       def extensions
+        @_extensions ||= @node.text.gsub(name, "")&.strip&.split(",")
       end
 
       def link
