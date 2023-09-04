@@ -1,6 +1,8 @@
 module Scrapers
   module Carousel
     class Card
+      GOOGLE_BASE_URL = "https://www.google.com"
+
       def initialize(node)
         @node = node
       end
@@ -9,7 +11,7 @@ module Scrapers
         hash = {}
         hash[:name] = name
         hash[:extensions] = extensions if extensions.any?
-        hash[:link] = nil
+        hash[:link] = GOOGLE_BASE_URL + path
         hash[:image] = nil
         hash
       end
@@ -22,7 +24,8 @@ module Scrapers
         @_extensions ||= @node.text.gsub(name, "")&.strip&.split(",")
       end
 
-      def link
+      def path
+        @_link ||= @node.attribute("href")&.value
       end
 
       def image_url

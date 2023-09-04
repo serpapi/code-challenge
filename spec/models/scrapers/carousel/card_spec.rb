@@ -18,7 +18,7 @@ describe Scrapers::Carousel::Card do
     end
 
     it "parses the link correctly" do
-      expect(expected["link"]).to include(subject.link)
+      expect(expected["link"]).to include(subject.path)
     end
 
     it "parses the image correctly" do
