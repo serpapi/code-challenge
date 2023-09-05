@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'uri'
-require 'json'
 
 module Parser
   class ApplicationParser
-    BASE64_PREFIX = 'data:image/jpeg'.freeze
+    BASE64_PREFIX = 'data:image/jpeg'
 
     def initialize(*); end
 
@@ -21,7 +22,7 @@ module Parser
     end
 
     def parse_file
-      Nokogiri::HTML(file)
+      Nokogiri::HTML(read_file)
     rescue Nokogiri::SyntaxError
       raise "The HTML file at path: #{self.class::FILE_PATH} is invalid. Please, check it and try again."
     end
