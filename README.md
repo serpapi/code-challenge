@@ -1,28 +1,50 @@
-# Extract Van Gogh Paintings Code Challenge
+### Runnning
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+You can run the script directly with `ruby run`, which will write the output to `files/output.json`. Or, you can launch an interactive console with `bin/console` and call `Parser::Google::Carousel.call` from there.
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+### Tests
 
-## Instructions
+You can run the tests via `bundle exec rspec`.
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+### Development
 
-Fork this repository and make a PR when ready.
+I initially used `split()` to find the images inside the `<script>` tag, but running this over 1.000 iterations proved to be quite slow.
+So instead I replaced it with a regex, which is much faster.
 
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
+`scan()` directly finds all occurrences of the pattern in a string, while split creates an array of substrings and each iterates over them.
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
+I've also replaced `Hash#[]` with `Hash#merge!` to avoid creating a new hash on each iteration.
 
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
+These are some benchmarks I ran:
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+```ruby
+Benchmark.bm do |x|
+  x.report(:split) do
+    doc.xpath("//script[contains(., '_setImagesSrc')]").text.split('(function ()').each_with_object({}) do |node, images|
+      next unless node.include?('data:image/jpeg')
+  
+      id = node.match(/var ii = \['(.*)'\]/)&.captures&.first
+      image_base64 = node.match(/s = '(.*)'; var ii/)&.captures&.first&.gsub(/\\x3d/, '=')
 
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+      images[id] = image_base64
+    end
+  end
+  
+  x.report(:scan) do
+    scripts = doc.xpath("//script[contains(., '_setImagesSrc')]").text
+    scripts.scan(/var ii = \['(.*?)'\].*?s = '(.*?)'; var ii/).each_with_object({}) do |(id, image_base64), images|
+      next unless image_base64.include?('data:image/jpeg')
 
-The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+      image_base64.gsub!(/\\x3d/, '=')
+      images.merge!(id => image_base64)
+    end
+  end
+end
+```
+Running this 1.000 times, gives a very noticeable difference:
+```bash
+       user       system     total       real
+
+split  0.001236   0.000111   0.001347 (  0.001348)
+scan   0.000646   0.000026   0.000672 (  0.000673)
+```

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require './lib/parser'
+
+puts 'Parsing..'
+output = Parser::Google::Carousel.call
+puts 'Writing..'
+File.open('./files/output.json', 'w') { |file| file.write(output) }
+puts 'Done!'

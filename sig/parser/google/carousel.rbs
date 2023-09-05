@@ -1,0 +1,11 @@
+module Parser
+  module Google
+    class Carousel
+      BASE_URL: String
+      FILE_PATH: String
+      HTML_STRUCTURE: Hash[Symbol, String]
+      SCRIPT_PATTERN: String
+      IMAGE_PATTERN: Regexp
+    end
+  end
+end

@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require './lib/parser'
+
+require 'irb'
+require 'irb/completion'
+
+def reload!
+  files = $LOADED_FEATURES.select { |feat| feat =~ %r{/lib/parser/} }
+  files.each { |file| load file }
+end
+
+IRB.start(__FILE__)
