@@ -4,13 +4,13 @@ module Parser
   module Google
     class Carousel < ApplicationParser
 
-      SRUCTURE ||= {
+      HTML_STRUCTURE ||= {
         container: '.klcc',
-        item:			 '.klitem',
-        title:		 '.kltat',
-        year:			 '.klmeta',
-        image:		 '.klic g-img img' # .M4dUYb - This could also work, but without more context, and the fact that the source is static and the class looking like a randomly generated one, I'm not sure if it's reliable.
-      }
+        item: '.klitem',
+        title: '.kltat',
+        year: '.klmeta',
+        image: '.klic g-img img'
+      }.freeze
 
       # <div class='klcc'>
       # 	> g-scrolling-carousel > div > div > div
@@ -30,52 +30,60 @@ module Parser
       # > indicates that the div is a direct child of another div, or some HTML element.
 
       def call
+        image_id_to_base64 = build_image_id_to_base64_map
+
+        doc.css(HTML_STRUCTURE[:item]).map do |item|
+          build_result(item, image_id_to_base64)
+        end
+      end
+
+      def build_result(item, image_id_to_base64)
+        name = item.css(HTML_STRUCTURE[:title])&.text&.strip.gsub(/\s+/, ' ')
+        year = item.css(HTML_STRUCTURE[:year])&.text&.strip
+        image = item.css(HTML_STRUCTURE[:image])
+        link = item.attr('href')
+
+        {
+          name: name,
+          extensions: [year],
+          link: link,
+          image: image_id_to_base64[image.attr('id').value]
+        }
+      end
+
+      private
+
+      def file = @file ||= read_file
+      def doc = @doc ||= parse_file
+
+      def read_file
+        File.read('files/van-gogh-paintings.html')
+      rescue Errno::ENOENT
+        raise "File not found at path: #{'lib/van-gogh-paintings.html'}"
+      end
+
+      def parse_file
+        Nokogiri::HTML(file)
+      rescue Nokogiri::SyntaxError
+        raise "Invalid HTML file at path: #{'lib/van-gogh-paintings.html'}"
+      end
+
+      def build_image_id_to_base64_map
         doc = Nokogiri::HTML(file)
-        images_array = doc.xpath("//script[contains(., '_setImagesSrc')]").text.split('(function()').each_with_object({}) do |node, images|
-          begin
-            id = node.match(/var ii=\['(.*)'\]/)&.captures&.first
 
-            # The String is a Base64 safe encoded value, and the padding comes as '\x3d' instead of '='.
-            # We need to replace it if we want to get the actual Base64 value.
-            #
-            image_base64 = node.match(/s='(.*)';var ii/)&.captures&.first&.gsub(/\\x3d/, '=')
+        doc.xpath("//script[contains(., '_setImagesSrc')]").text.split('(function()').each_with_object({}) do |node, images|
+          next unless node.include?('data:image/jpeg')
 
-            images[id] = image_base64
-          rescue
+          id = node.match(/var ii=\['(.*)'\]/)&.captures&.first
 
-          end
-        end
+          # The String is a Base64 safe encoded value, and the padding comes as '\x3d' instead of '='.
+          # We need to replace it if we want to get the actual Base64 value.
+          #
+          image_base64 = node.match(/s='(.*)';var ii/)&.captures&.first&.gsub(/\\x3d/, '=')
 
-        [].tap do |data|
-          doc.css(SRUCTURE[:item]).each_with_object({}) do |item, object|
-
-            title	 = item.css(SRUCTURE[:title])&.text&.strip.gsub(/\s+/, ' ')
-            year	 = item.css(SRUCTURE[:year])&.text&.strip
-
-            # NOTE: The initial image is a placeholder. The actual image is loaded via JS.
-            #
-            image	 = item.css(SRUCTURE[:image])
-            link = item.attr('href')
-
-            data << {
-              title: title,
-              extensions: [year],
-              link: link,
-              image: images_array[image.attr('id').value]
-            }
-          end
+          images[id] = image_base64
         end
       end
-
-      def file
-        return @_file if defined?(@_file)
-        @_file ||= File.read('files/van-gogh-paintings.html')
-      end
-
-      def doc
-        return @_config if defined?(@_config)
-        @_doc = Nokogiri::HTML(file)
-        end
     end
   end
 end
