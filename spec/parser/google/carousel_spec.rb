@@ -1,0 +1,68 @@
+require 'spec_helper'
+require './lib/parser'
+
+RSpec.describe Parser::Google::Carousel do
+  let(:carousel) { described_class }
+  let(:sample_html) { File.read('spec/fixtures/sample.html') }
+  let(:result) { JSON.parse(carousel.call) }
+
+  describe '#call' do
+    before do
+      allow_any_instance_of(described_class).to receive(:parse_file).and_return(Nokogiri::HTML(sample_html))
+    end
+
+    it 'returns a JSON object with artworks key' do
+      expect(result).to have_key('artworks')
+    end
+
+    it 'returns artworks with the correct structure' do
+      artwork = result['artworks'].first
+
+      expect(artwork).to have_key('name')
+      expect(artwork).to have_key('extensions')
+      expect(artwork).to have_key('link')
+      expect(artwork).to have_key('image')
+    end
+  end
+
+  describe '#build_image_id_to_base64_map' do
+    it 'returns a hash' do
+      expect(carousel.new.send(:build_image_id_to_base64_map)).to be_a(Hash)
+    end
+  end
+
+  describe '#build_result' do
+    let(:item) { result['artworks'].first }
+
+    it 'returns a hash' do
+      Nokogiri::HTML(sample_html).css(carousel::HTML_STRUCTURE[:item]).first.tap do |item|
+        expect(carousel.new.send(:build_result, item)).to be_a(Hash)
+      end
+    end
+
+    it 'returns a hash with the correct keys' do
+      expect(item['name']).to eq('The Starry Night')
+      expect(item['extensions']).to eq(['1889'])
+      expect(item['link']).to eq('https://www.google.com/search?gl=us&hl=en&q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxY8YI7kFXv64JywVMGnNyWuMXlxEaBJS4WJzzSvJLKkUkuLikYLbrcEgxcUF5_EsYhUIyUhVCC5JLCqqVPDLTM8oAQDmNFnDqgAAAA&npsic=0&sa=X&ved=0ahUKEwiL2_Hon4_hAhXNZt4KHTOAACwQ-BYILw')
+      expect(item['image']).to eq('data:image/jpeg;base64,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')
+    end
+  end
+
+  describe '#read_file' do
+    context 'when file exists' do
+      it 'reads the file' do
+        expect(carousel.new.send(:read_file)).to eq(sample_html)
+      end
+    end
+
+    context 'when file doesn\'t exist' do
+      before do
+        carousel::FILE_PATH = ''
+      end
+
+      it 'raises an error' do
+        expect { carousel.new.send(:read_file) }.to raise_error(RuntimeError, /Couldn't find a file at path/)
+      end
+    end
+  end
+end

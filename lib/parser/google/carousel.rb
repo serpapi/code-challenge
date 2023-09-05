@@ -4,7 +4,8 @@ require 'json'
 
 module Parser
   module Google
-    class Carousel < Google
+    class Carousel < ApplicationParser
+      BASE_URL = 'https://www.google.com'
       FILE_PATH = './files/van-gogh-paintings.html'
 
       HTML_STRUCTURE = {
@@ -25,7 +26,8 @@ module Parser
       IMAGE_PATTERN = /var ii=\['(.*?)'\].*?s='(.*?)';var ii/
 
       def call
-        doc.css(HTML_STRUCTURE[:item]).each_with_object({ artworks:[] }) do |item, results|
+        doc.css(HTML_STRUCTURE[:item]).each_with_object({ artworks: [] }) do |item, results|
+
           # NOTE: I haven't come across a `nil` item, but it's a good practice to ensure we don't break the code if we
           # get a `nil` item.
           #
@@ -43,6 +45,7 @@ module Parser
         @build_image_id_to_base64_map ||= begin
           scripts = doc.xpath(SCRIPT_PATTERN).text
           scripts.scan(IMAGE_PATTERN).each_with_object({}) do |(id, image_base64), images|
+
             # Using `scan()` with a regexp gives us a more accurate capture and this
             # is not needed anymore, but just for an extra layer of safety, we can
             # skip the image if it doesn't start with the expected prefix.
@@ -57,6 +60,7 @@ module Parser
       end
 
       def build_result(item)
+
         # NOTE: It's a good practice to extract each attribute to a separate method. It makes the code more readable and
         # it allows us to easily test each one in isolation and make sure it returns the expected value, or raise an
         # error if it doesn't.
