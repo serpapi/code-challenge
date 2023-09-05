@@ -1,0 +1,7 @@
+module Parser
+  module Google
+    class Google
+      BASE_URL: String
+    end
+  end
+end
