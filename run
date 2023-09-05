@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require './lib/parser'
+Parser::Google::Carousel.call

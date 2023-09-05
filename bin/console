@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require './lib/parser'
+
+require 'irb'
+require 'irb/completion'
+
+def reload!
+  files = $LOADED_FEATURES.select { |feat| feat =~ /\/lib\/parser\// }
+  files.each { |file| load file }
+end
+
+IRB.start(__FILE__)
