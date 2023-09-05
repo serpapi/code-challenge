@@ -14,8 +14,8 @@ gem 'nokogiri', '~> 1.15'
 group :development do
 
   # Linting
-  gem 'rubocop', '~> 1.56'
   gem 'reek', '~> 6.1'
+  gem 'rubocop', '~> 1.56'
 end
 
 group :test do
