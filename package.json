@@ -9,6 +9,8 @@
     "node": "^20.6.0"
   },
   "devDependencies": {
+    "@tsconfig/node18": "^18.2.1",
+    "@types/node": "^20.5.9",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
@@ -19,6 +21,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "scripts": {
+    "start": "ts-node src/index.ts",
     "prepare": "husky install"
   }
 }
