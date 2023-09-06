@@ -6,6 +6,7 @@
   "author": "Derek Liang <fr.derekliang@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
     "node": "^20.6.0"
   },
   "devDependencies": {

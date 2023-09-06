@@ -52,3 +52,4 @@ build-iPhoneSimulator/
 
 # node/js
 node_modules
+yarn-error.log
