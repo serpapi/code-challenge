@@ -3,8 +3,6 @@ package org.example
 import org.json.JSONObject
 import org.junit.Test
 import java.io.File
-import kotlin.math.exp
-import kotlin.test.assertEquals
 
 class HelloTest {
   @Test
