@@ -34,9 +34,10 @@ const extractStringValue = (s: string) => {
   return extractString(val);
 };
 
-export const parseScriptForImages = (scriptData: string) => {
-  const idToImageDataMap: Record<string, ImageData> = {};
-
+export const parseScriptForImages = (
+  scriptData: string,
+  idToImageDataMap: Record<string, ImageData> = {},
+) => {
   const functions = scriptData
     .split("function")
     .filter((s) => s.indexOf("base64") > -1);
@@ -104,14 +105,28 @@ export const parseScriptForImages = (scriptData: string) => {
 };
 
 export const parseScript = (scripts: cheerio.Element[]) => {
-  const setImageScript = scripts.find(
-    (s) => (s.children[0] as CheerioText).data.indexOf("_setImagesSrc") > -1,
-  );
-
-  if (setImageScript) {
-    return parseScriptForImages(
-      (setImageScript.children[0] as CheerioText).data,
+  const setImageScripts = scripts.filter((s) => {
+    const firstChild = s.children[0] as CheerioText;
+    if (!firstChild) {
+      return false;
+    }
+    return (
+      firstChild.data.indexOf("_setImagesSrc") > -1 &&
+      firstChild.data.indexOf("data:image") > -1
     );
+  });
+
+  if (setImageScripts) {
+    const idToImageDataMap: Record<string, ImageData> = {};
+
+    setImageScripts.forEach((script) => {
+      parseScriptForImages(
+        (script.children[0] as CheerioText).data,
+        idToImageDataMap,
+      );
+    });
+
+    return idToImageDataMap;
   }
 };
 
@@ -125,19 +140,31 @@ export const parseHtml = (html: string) => {
     throw new Error("Failed to parse script for images");
   }
 
-  const caroselTableImages = $(".klitem-tr .klitem img").toArray();
-  const caroselTableRows = $(".klitem-tr .klitem").toArray();
+  let caroselTableImages = $(".klitem-tr .klitem img").toArray();
+  let caroselTableRows = $(".klitem-tr .klitem").toArray();
+
+  if (caroselTableImages.length === 0 || caroselTableRows.length === 0) {
+    caroselTableImages = $(".pla-unit .pla-unit-img-container img").toArray();
+    caroselTableRows = $(
+      ".pla-unit .pla-unit-single-clickable-target",
+    ).toArray();
+  }
 
   const extractedRows = caroselTableRows.map((row, index) => {
-    const image = caroselTableImages[index];
-    const imageId = image.attribs.id;
-    const imageData = idToImageDataMap[imageId];
-
     const { attributes } = row;
 
     const result: Result = {
-      image: imageData?.imageData || null,
+      image: null,
     };
+
+    const image = caroselTableImages[index];
+    if (image) {
+      const imageId = image.attribs.id;
+      const imageData = idToImageDataMap[imageId];
+      if (imageData?.imageData) {
+        result.image = imageData.imageData;
+      }
+    }
 
     let title: string | undefined;
 
@@ -147,7 +174,11 @@ export const parseHtml = (html: string) => {
           title = a.value;
           break;
         case "href":
-          result.link = `https://www.google.com${a.value}`;
+          if (a.value.indexOf("http") === -1) {
+            result.link = `https://www.google.com${a.value}`;
+          } else {
+            result.link = a.value;
+          }
           break;
         case "aria-label":
           result.name = a.value;

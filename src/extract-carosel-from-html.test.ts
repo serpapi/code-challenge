@@ -15,6 +15,25 @@ describe("extract carosel from html", () => {
     const results = await parseHtml(htmlFile);
     expect(results).toEqual(expectedOutput);
   });
+
+  test("should parse best running shoes to correct output", async () => {
+    const htmlFile = (
+      await readFile(path.resolve("files/best-running-shoes-2023-09-07.html"))
+    ).toString();
+
+    const results = await parseHtml(htmlFile);
+    expect(results.artworks.length).toEqual(12);
+    expect(results.artworks[0]).toEqual({
+      image: expect.any(String),
+      link: "https://www.nike.com/t/pegasus-40-mens-road-running-shoes-mVJdmS/DV3853-100?nikemt=true",
+      name: "Nike Men's Pegasus 40 Road Running Shoes in White, Size: 10.5 | DV3853-100 for $130.00 from Nike",
+    });
+    expect(results.artworks[1]).toEqual({
+      image: expect.any(String),
+      link: "https://www.brooksrunning.com/en_us/hyperion-tempo-mens-running-shoes/1103391D448.110.html",
+      name: "Brooks Running Men's Hyperion Tempo Road Running Shoes, Navy/Nightlife/Blue 11.0 - Shop the best at Brooks for $89.95 was $150 from Brooks Running",
+    });
+  });
 });
 
 describe("parse script for images", () => {
