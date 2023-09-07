@@ -19,22 +19,31 @@ interface CheerioText {
 const extractValue = (s: string) => {
   const equalStartAt = s.indexOf("=");
   const semiColonEndAt = s.lastIndexOf(";");
-  return s.substring(equalStartAt + 1, semiColonEndAt);
+  return s.substring(
+    equalStartAt > 0 ? equalStartAt + 1 : 0,
+    semiColonEndAt > -1 ? semiColonEndAt : s.length,
+  );
+};
+
+const extractString = (s: string) => {
+  return s.replaceAll('"', "").replaceAll("'", "");
 };
 
 const extractStringValue = (s: string) => {
   const val = extractValue(s);
-  return val.substring(1, val.length - 1);
+  return extractString(val);
 };
 
 export const parseScriptForImages = (scriptData: string) => {
-  const idToImageMap: Record<string, ImageData> = {};
+  const idToImageDataMap: Record<string, ImageData> = {};
 
-  const functions = scriptData.split("function");
+  const functions = scriptData
+    .split("function")
+    .filter((s) => s.indexOf("base64") > -1);
 
   functions.forEach((f: string) => {
     const splits = f
-      .split(/(\s)/)
+      .split(/[ ;]+/)
       .map((s) => s.trim())
       .filter((s) => s.length > 0);
 
@@ -42,26 +51,52 @@ export const parseScriptForImages = (scriptData: string) => {
 
     const item: ImageData = {};
 
+    let parsingImage = false;
+    let parsingId = false;
+
     for (let i = 0; i < splits.length; i++) {
-      if (splits[i] == "var" && splits[i + 1].indexOf("data:image") > -1) {
-        const imageData = extractStringValue(splits[i + 1]);
-        console.log(decodeURIComponent(imageData));
-        item.imageData = imageData;
+      if (splits[i].indexOf("var") > -1) {
+        if (!parsingImage) {
+          parsingImage = true;
+        } else if (parsingImage) {
+          parsingImage = false;
+          parsingId = true;
+        }
+        continue;
       }
-      if (splits[i] == "var" && splits[i + 1].indexOf("ii=[") > -1) {
+
+      if (parsingImage) {
+        if (splits[i].indexOf("data:image") > -1) {
+          const imageFirstPart = extractStringValue(splits[i]);
+          item.imageData = imageFirstPart;
+        } else if (splits[i].indexOf("base64") > -1) {
+          const imageSecondPart = extractString(splits[i]);
+          if (item.imageData) {
+            item.imageData += `;${imageSecondPart}`;
+          }
+        }
+      }
+
+      if (
+        parsingId &&
+        (splits[i].indexOf('["') > -1 || splits[i].indexOf("['") > -1)
+      ) {
         try {
-          const idArray = JSON.parse(extractValue(splits[i + 1]));
+          const val = extractValue(splits[i]);
+          const idArray = JSON.parse(val.replaceAll("'", '"'));
           item.id = idArray[0];
-        } catch {}
+        } catch (error) {
+          console.error("Failed to parse: ", error);
+        }
       }
     }
 
     if (item.id) {
-      idToImageMap[item.id] = item;
+      idToImageDataMap[item.id] = item;
     }
   });
 
-  return idToImageMap;
+  return idToImageDataMap;
 };
 
 export const parseScript = (scripts: cheerio.Element[]) => {
@@ -70,18 +105,17 @@ export const parseScript = (scripts: cheerio.Element[]) => {
   );
 
   if (setImageScript) {
-    parseScriptForImages((setImageScript.children[0] as CheerioText).data);
+    return parseScriptForImages(
+      (setImageScript.children[0] as CheerioText).data,
+    );
   }
-
-  return setImageScript;
 };
 
 export const parseHtml = (html: string) => {
   const $ = cheerio.load(html);
   const scripts = $("script").toArray();
 
-  parseScript(scripts);
-
+  const caroselTableImages = $(".klitem-tr .klitem img").toArray();
   const caroselTableRows = $(".klitem-tr .klitem").toArray();
 
   const extractedRows = caroselTableRows.map((row, index) => {
