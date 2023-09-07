@@ -70,7 +70,7 @@ export const parseScriptForImages = (scriptData: string) => {
           const imageFirstPart = extractStringValue(splits[i]);
           item.imageData = imageFirstPart;
         } else if (splits[i].indexOf("base64") > -1) {
-          const imageSecondPart = extractString(splits[i]);
+          const imageSecondPart = extractString(splits[i]).replaceAll("\\", "");
           if (item.imageData) {
             item.imageData += `;${imageSecondPart}`;
           }
@@ -115,14 +115,24 @@ export const parseHtml = (html: string) => {
   const $ = cheerio.load(html);
   const scripts = $("script").toArray();
 
+  const idToImageDataMap = parseScript(scripts);
+
+  if (!idToImageDataMap) {
+    throw new Error("Failed to parse script for images");
+  }
+
   const caroselTableImages = $(".klitem-tr .klitem img").toArray();
   const caroselTableRows = $(".klitem-tr .klitem").toArray();
 
   const extractedRows = caroselTableRows.map((row, index) => {
+    const image = caroselTableImages[index];
+    const imageId = image.attribs.id;
+    const imageData = idToImageDataMap[imageId];
+
     const { attributes } = row;
 
     const result: Result = {
-      image: null,
+      image: imageData?.imageData || null,
     };
 
     let title: string | undefined;
