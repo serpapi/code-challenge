@@ -28,6 +28,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
   }
 }
