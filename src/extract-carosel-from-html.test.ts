@@ -13,7 +13,7 @@ describe("extract carosel from html", () => {
     ).toString();
 
     const results = await parseHtml(htmlFile);
-    expect(results).toBe(expectedOutput);
+    expect(results).toEqual(expectedOutput);
   });
 });
 
@@ -77,5 +77,14 @@ describe("parse script for images", () => {
         },
       }),
     );
+  });
+
+  test("should parse script for image data #7 - minified", async () => {
+    const script = (
+      await readFile(path.resolve("files/script-7.txt"))
+    ).toString();
+
+    const results = parseScriptForImages(script);
+    expect(results.kximg7.imageData?.length).toBe(5417);
   });
 });

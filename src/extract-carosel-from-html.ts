@@ -51,21 +51,24 @@ export const parseScriptForImages = (scriptData: string) => {
 
     const item: ImageData = {};
 
-    let parsingImage = false;
-    let parsingId = false;
+    let state:
+      | "initial"
+      | "parsing_image"
+      | "done_parsing_image"
+      | "parsing_id" = "initial";
 
     for (let i = 0; i < splits.length; i++) {
       if (splits[i].indexOf("var") > -1) {
-        if (!parsingImage) {
-          parsingImage = true;
-        } else if (parsingImage) {
-          parsingImage = false;
-          parsingId = true;
+        if (state === "initial") {
+          state = "parsing_image";
+          continue;
+        } else if (state === "done_parsing_image") {
+          state = "parsing_id";
+          continue;
         }
-        continue;
       }
 
-      if (parsingImage) {
+      if (state === "parsing_image") {
         if (splits[i].indexOf("data:image") > -1) {
           const imageFirstPart = extractStringValue(splits[i]);
           item.imageData = imageFirstPart;
@@ -74,11 +77,12 @@ export const parseScriptForImages = (scriptData: string) => {
           if (item.imageData) {
             item.imageData += `;${imageSecondPart}`;
           }
+          state = "done_parsing_image";
         }
       }
 
       if (
-        parsingId &&
+        state === "parsing_id" &&
         (splits[i].indexOf('["') > -1 || splits[i].indexOf("['") > -1)
       ) {
         try {
