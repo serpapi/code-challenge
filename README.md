@@ -21,8 +21,24 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed).
 
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+## Getting Started
+
+- `html_name` is the HTML file name in `files/` directory
+
+`$ npx ts-node src/index.ts <html_name>`
+
+Running the script will output to `output/` directory with the `<html_name>.json`
+
+Examples:
+
+```
+npx ts-node src/index.ts van-gogh-paintings
+npx ts-node src/index.ts best-running-shoes-2023-09-07
+npx ts-node src/index.ts indoor-plants-2023-09-07
+```

@@ -48,8 +48,6 @@ export const parseScriptForImages = (
       .map((s) => s.trim())
       .filter((s) => s.length > 0);
 
-    console.log(splits);
-
     const item: ImageData = {};
 
     let state:
