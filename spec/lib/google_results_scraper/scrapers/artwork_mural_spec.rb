@@ -1,9 +1,9 @@
-describe GoogleResultsScraper::Scraper do
-  describe '#extract_artworks' do
+describe GoogleResultsScraper::Scrapers::ArtworkMural do
+  describe '#extract' do
     ['van-gogh', 'claude-monet', 'paul-gauguin'].each do |page|
       describe "with #{page} page" do
         let(:input) { File.read(File.join('spec', 'fixtures', 'artwork-mural', "#{page}.html")) }
-        subject { GoogleResultsScraper::Scraper.new(input).extract_artworks }
+        subject { described_class.new(input).extract }
 
         it 'respects the expected format' do
           is_expected.to be_a(Array)

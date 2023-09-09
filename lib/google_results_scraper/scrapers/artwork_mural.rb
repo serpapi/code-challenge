@@ -1,11 +1,15 @@
 module GoogleResultsScraper
   module Scrapers
-    module ArtworkMural
+    class ArtworkMural
       VED_MAP = {
         artwork_mural_wrapper: 54353,
       }
 
-      def extract_artworks
+      def initialize(html)
+        @html = Nokogiri::HTML(html)
+      end
+
+      def extract
         artwork_mural = Util::Ved.find_element_with_type(@html, VED_MAP[:artwork_mural_wrapper])
         return [] if artwork_mural.nil?
         artwork_mural.css('a').map { |node| extract_artwork(node) }.compact

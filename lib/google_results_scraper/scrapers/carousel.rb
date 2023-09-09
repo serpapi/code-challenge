@@ -1,13 +1,17 @@
 module GoogleResultsScraper
   module Scrapers
-    module Carousel
+    class Carousel
       VED_MAP = {
         carousel_wrapper: 2924,
         carousel_item: 2936,
         carousel_breadcrumb_title: 6102,
       }
 
-      def extract_carousels
+      def initialize(html)
+        @html = Nokogiri::HTML(html)
+      end
+
+      def extract
         Util::Ved.elements_with_type(@html, VED_MAP[:carousel_wrapper])
           .map { |node| extract_carousel(node) }
           .reject { |carousel| carousel[:title].empty? }
