@@ -1,4 +1,4 @@
-describe 'GoogleResultsScraper' do
+describe GoogleResultsScraper::Scraper do
   describe '#extract_carousels' do
     ['jrr-tokien', 'van-gogh', 'red-hot-chili-peppers', 'van-gogh-original'].each do |page|
       describe "with #{page} page" do
