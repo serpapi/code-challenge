@@ -1,6 +1,6 @@
 describe GoogleResultsScraper::Scrapers::Carousel do
   describe '#extract' do
-    ['jrr-tokien', 'van-gogh', 'red-hot-chili-peppers', 'van-gogh-original'].each do |page|
+    ['jrr-tolkien', 'van-gogh', 'red-hot-chili-peppers', 'van-gogh-original'].each do |page|
       describe "with #{page} page" do
         let(:input) { File.read(File.join('spec', 'fixtures', 'carousel', "#{page}.html")) }
         subject { described_class.new(input).extract }
