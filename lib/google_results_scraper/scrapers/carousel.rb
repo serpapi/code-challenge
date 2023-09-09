@@ -26,7 +26,7 @@ module GoogleResultsScraper
               uri.scheme = 'https' if uri.scheme.nil?
               uri.host = 'google.com' if uri.host.nil?
               image = item.css('img').first
-              name = (item['data-entityname'] || data['aria-label']).strip
+              name = (item['data-entityname'] || item['aria-label']).strip
 
               {
                 name: name,

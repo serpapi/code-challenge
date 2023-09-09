@@ -1,8 +1,8 @@
 describe 'GoogleResultsScraper' do
   describe '#extract_carousels' do
-    ['jrr-tokien', 'van-gogh', 'red-hot-chili-peppers'].each do |page|
+    ['jrr-tokien', 'van-gogh', 'red-hot-chili-peppers', 'van-gogh-original'].each do |page|
       describe "with #{page} page" do
-        let(:input) { File.read(File.join('spec', 'fixtures', "#{page}.html")) }
+        let(:input) { File.read(File.join('spec', 'fixtures', 'carousel', "#{page}.html")) }
         subject { GoogleResultsScraper::Scraper.new(input).extract_carousels }
 
         it 'respects the expected format' do
@@ -25,7 +25,7 @@ describe 'GoogleResultsScraper' do
         end
 
         it "extracts the expected data" do
-          expected_output = JSON.parse(File.read(File.join('spec', 'fixtures', "#{page}.json")), symbolize_names: true)
+          expected_output = JSON.parse(File.read(File.join('spec', 'fixtures', 'carousel', "#{page}.json")), symbolize_names: true)
           is_expected.to eq(expected_output)
         end
       end
