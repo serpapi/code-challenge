@@ -1,10 +1,10 @@
-require_relative '../van_gogh_paintings.rb'
-RSpec.describe VanGoghPaintings do
+require_relative '../google/carousel_parser.rb'
+RSpec.describe Google::CarouselParser do
   before(:context) do
     # This block will run once before any examples in this spec file
     # Load a file or perform any necessary setup here
     html_file_path = './files/van-gogh-paintings.html'
-    my_instance = VanGoghPaintings.new(html_file_path)
+    my_instance = Google::CarouselParser.new(html_file_path)
     @artworks = my_instance.artworks
   end
   it 'should test VanGoghPaintings' do
@@ -35,7 +35,7 @@ RSpec.describe VanGoghPaintings do
       # This block will run once before any examples in this spec file
       # Load a file or perform any necessary setup here
       html_file_path = nil
-      @my_instance = VanGoghPaintings.new(html_file_path)
+      @my_instance = Google::CarouselParser.new(html_file_path)
     end
     it "error with no file" do
       expect(@my_instance.error).to eq("No File")
