@@ -8,7 +8,9 @@ module Google
 
     def initialize(file_path=nil)
       @doc = nil
-      @node_items = {'Items' => 'a.klitem'}
+      # Find and extract the carousel elements
+      #carousel_elements = doc.css('div.g [role="heading"]')
+      @node_items = {'Items' => 'g-scrolling-carousel a.klitem, g-scrolling-carousel a.klitem-tr'}
       @node_map = {
         'Name' => 'div.kltat',
         'Date' => 'div.ellip',
@@ -66,9 +68,9 @@ module Google
 end
 
 
-html_file_path = './files/van-gogh-paintings.html'
-my_instance = Google::CarouselParser.new(html_file_path)
-puts my_instance.artworks[:artworks].inspect
+#html_file_path = '../files/van-gogh-paintings.html'
+#my_instance = Google::CarouselParser.new(html_file_path)
+#puts my_instance.artworks[:artworks].inspect
 
 
 
