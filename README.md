@@ -15,8 +15,9 @@ Ensure you have Ruby installed on your machine. This script was developed and te
 
 1. Clone the repository 
 ```
-git clone 
-cd dir
+git clone git@github.com:Hopperman/code-challenge.git
+cd code-challenge
+git checkout hanno-challenge
 ```
 
 2. Bundle
