@@ -2,8 +2,8 @@ require 'json'
 require 'nokogiri'
 
 class CarouselExtractor
-  class InvalidCarouselLocationError < StandardError;end
-  class InvalidCarouselItemError < StandardError;end
+  class InvalidCarouselLocationError < StandardError; end
+  class InvalidCarouselItemError < StandardError; end
 
   # These should work with both the provided html file and current Google formatting.
   BASE_URL = 'https://www.google.com'.freeze
@@ -34,16 +34,16 @@ class CarouselExtractor
 
   def preprocess!
     @carousel_element = document.css(CAROUSEL_LOCATION)
-    if carousel_element.empty?
-      raise InvalidCarouselLocationError.new('Carousel not found, CAROUSEL_LOCATION may need to be adjusted.')
-    end
+    return unless carousel_element.empty?
+
+    raise InvalidCarouselLocationError, 'Carousel not found, CAROUSEL_LOCATION may need to be adjusted.'
   end
 
   def document
     @document ||= begin
-                    html = File.read(file_path)
-                    Nokogiri::HTML(html)
-                  end
+      html = File.read(file_path)
+      Nokogiri::HTML(html)
+    end
   end
 
   def extract_carousel
@@ -51,10 +51,10 @@ class CarouselExtractor
       carousel_element = {
         name: retrieve_name(element),
         link: "#{BASE_URL}#{element['href']}",
-        image:  retrieve_image(element)
+        image: retrieve_image(element)
       }
       extensions = retrieve_extensions(element)
-      carousel_element.merge!(extensions: extensions) if extensions.any?
+      carousel_element.merge!(extensions:) if extensions.any?
       collection << carousel_element
     rescue InvalidCarouselItemError
       next
@@ -63,9 +63,8 @@ class CarouselExtractor
 
   def retrieve_name(element)
     name = element['aria-label'] || element['title']
-    if name.nil? || name.strip.empty?
-      raise InvalidCarouselItemError
-    end
+    raise InvalidCarouselItemError if name.nil? || name.strip.empty?
+
     name
   end
 
@@ -74,6 +73,7 @@ class CarouselExtractor
     image_id = image_element['id'] if image_element
 
     return unless image_id
+
     find_image_base64_by_id(image_id)
   end
 
@@ -83,9 +83,10 @@ class CarouselExtractor
 
       next unless script_content.include?(image_id)
 
-      regex = /var s='(data:image\/[^']+)';var ii=\['#{image_id}'\];_setImagesSrc\(ii,s\);/
+      regex = %r{var s='(data:image/[^']+)';var ii=\['#{image_id}'\];_setImagesSrc\(ii,s\);}
       match = script_content.match(regex)
       return unless match
+
       return match[1].gsub('\\', '')
     end
     nil
