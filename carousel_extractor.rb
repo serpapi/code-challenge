@@ -85,6 +85,7 @@ class CarouselExtractor
 
       regex = /var s='(data:image\/[^']+)';var ii=\['#{image_id}'\];_setImagesSrc\(ii,s\);/
       match = script_content.match(regex)
+      return unless match
       return match[1].gsub('\\', '')
     end
     nil

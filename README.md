@@ -1,3 +1,47 @@
+# Overview
+This script is a code challenge for SerpApi and leverages Nokogiri to parse and extract specific elements, specifically carousels, from Google search results HTML. The results are then transformed into a more readable JSON format.
+
+# Features
+* Parses Google search results HTML.
+* Targets and extracts carousels based on the g-scrolling-carousel element.
+* Transforms extracted data into prettified JSON for easy reading.
+
+# Setup
+## Dependencies
+
+Ensure you have Ruby installed on your machine. This script was developed and tested on Ruby version 3.2.2
+
+## Installation
+
+1. Clone the repository 
+```
+git clone 
+cd dir
+```
+
+2. Bundle
+```
+bundle install
+```
+
+# Executing the script
+
+`ruby scrape.rb`
+
+# Limitations
+
+* The script assumes the presence of the g-scrolling-carousel element in the HTML. If Google changes their markup, this script may require updates.
+
+# Troubleshooting
+
+* InvalidCarouselLocationError: Ensure that the HTML file being parsed contains the g-scrolling-carousel element
+
+# Testing
+Tests are written in RSpec.
+
+To run the test suite:
+`bundle exec rspec`
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
