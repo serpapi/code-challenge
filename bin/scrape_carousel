@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/google_carousel_scraper'
+
+require 'nokolexbor'
+require 'json'
+
+abort("Usage: #{$PROGRAM_NAME} [FILE]") if ARGV.size > 1
+
+doc = Nokolexbor::Document.parse(ARGF.read)
+puts JSON.pretty_generate(GoogleCarouselScraper.new(doc).to_a)
