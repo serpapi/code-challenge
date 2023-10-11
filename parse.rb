@@ -5,7 +5,6 @@ def parse_carousel(fn)
     html = File.read(fn)
 
     doc = Nokogiri::HTML(html, nil, 'utf-8')
-    doc.encoding = 'utf-8'
 
     first_item = true
     prev_item = nil
