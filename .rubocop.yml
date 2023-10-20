@@ -1,0 +1,20 @@
+require:
+  - rubocop-rspec
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 35
+
+RSpec/FilePath:
+  SpecSuffixOnly: true
+
+Layout/LineLength:
+  Max: 120
+
+RSpec/NestedGroups:
+  Max: 5
+
+Layout/BlockAlignment:
+  Enabled: false
