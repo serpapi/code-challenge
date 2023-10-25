@@ -1,3 +1,5 @@
+I completed this challenge using Node.js. My code is in the 'scraper.js' file. The output created by this file can be seen in the 'paintingArray.js' file. 
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
