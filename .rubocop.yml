@@ -1,0 +1,23 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - Guardfile
+  NewCops: disable
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  Enabled: false
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/PredicateMatcher:
+  Enabled: false
