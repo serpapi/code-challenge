@@ -1,7 +1,6 @@
 require "spec_helper"
 
-
-RSpec.describe Parser do
+RSpec.describe CarouselParser do
   subject(:parser) do
     described_class.new(html_string:)
   end
@@ -12,6 +11,12 @@ RSpec.describe Parser do
   describe "#initialize" do
     it "assigns the correct variables" do
       expect(parser.instance_variable_get(:@html_string)).to eq(html_string)
+    end
+  end
+
+  describe "#call" do
+    it "returns the parsed array of carousel items" do
+      expect(parser.call).to match(expected_result)
     end
   end
 end

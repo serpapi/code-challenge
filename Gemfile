@@ -11,8 +11,8 @@ group :development do
 end
 
 group :development, :test do
-  gem "byebug"
   gem "awesome_print"
+  gem "byebug"
 end
 
 group :test do
