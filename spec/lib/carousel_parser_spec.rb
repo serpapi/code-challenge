@@ -15,15 +15,8 @@ RSpec.describe CarouselParser do
   end
 
   describe "#call" do
-    xit "returns the parsed array of carousel items" do
+    it "returns the parsed array of carousel items" do
       expect(parser.call["artworks"]).to match_array(expected_result["artworks"])
-    end
-
-    it "the first carousel item is parsed correctly" do
-      actual_first = parser.call["artworks"][1]
-      expected_first = expected_result["artworks"][1]
-
-      expect(actual_first).to match(expected_first)
     end
   end
 end

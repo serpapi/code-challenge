@@ -9,16 +9,13 @@ class CarouselParser
   end
 
   def call
-    category = categories.last # artworks
-
     carousel_selector = "div.appcenter.gic g-scrolling-carousel div"
     carousel = root.css(carousel_selector).xpath("./div")
 
     carousel_items = carousel.xpath("./div")
+    items = carousel_items.map(&method(:parse_item))
 
-    items = carousel_items.map { |item| parse_item(item) }
-
-    { category.downcase => items }
+    { categories.last.downcase => items }
   end
 
   private
@@ -32,14 +29,12 @@ class CarouselParser
 
   def parse_item(item)
     a = item.css("a.klitem")
-    extensions = [a.css("div.klmeta").text] # TODO: return real array
+    extensions = [a.css("div.klmeta").text]
     extensions = nil if extensions == [""]
 
-    # image
     img = a.css("img")
     img_id = img.attribute("id").value
 
-    # we could probably also execute this js if we really wanted to
     image_js_snippet = image_sources_from_script.find { |snippet| snippet.include?(img_id) }
     base64_image_regex = /(data:image\/.+)';\s*var [a-z]+\s*=\s*\['#{img_id}'\]/
     base64_image = unescape(image_js_snippet[base64_image_regex, 1]) if image_js_snippet
@@ -71,6 +66,7 @@ class CarouselParser
     @html ||= Nokogiri::HTML(html_string)
   end
 
+  # appbar wraps the entire carousel
   def root
     @root ||= html.css("#appbar")
   end
