@@ -46,10 +46,10 @@ class CarouselParser
 
     parsed_item = {
       "name" => a.attribute("aria-label").value,
-      "link" => "#{HOSTNAME}#{a.attribute('href').value}"
+      "link" => "#{HOSTNAME}#{a.attribute('href').value}",
+      "image" => base64_image
     }
     parsed_item["extensions"] = extensions if extensions
-    parsed_item["image"] = base64_image unless base64_image.nil?
 
     parsed_item
   end
