@@ -33,6 +33,7 @@ class CarouselParser
   def parse_item(item)
     a = item.css("a.klitem")
     extensions = [a.css("div.klmeta").text] # TODO: return real array
+    extensions = nil if extensions == [""]
 
     # image
     img = a.css("img")
@@ -40,23 +41,23 @@ class CarouselParser
 
     # we could probably also execute this js if we really wanted to
     image_js_snippet = image_sources_from_script.find { |snippet| snippet.include?(img_id) }
-    base64_image_regex = /(data:image\/.+)';\s*var [a-z]+\s*=\s*\['kximg2'\]/
-    base64_image = image_js_snippet[base64_image_regex, 1] if image_js_snippet
+    base64_image_regex = /(data:image\/.+)';\s*var [a-z]+\s*=\s*\['#{img_id}'\]/
+    base64_image = unescape(image_js_snippet[base64_image_regex, 1]) if image_js_snippet
 
     parsed_item = {
       name: a.attribute("aria-label").value,
       link: "#{HOSTNAME}#{a.attribute('href').value}"
     }
-    parsed_item[:extensions] = extensions unless extensions.empty?
-    parsed_item[:base64_image] = base64_image unless base64_image.nil?
+    parsed_item[:extensions] = extensions if extensions
+    parsed_item[:image] = base64_image unless base64_image.nil?
 
     parsed_item
   end
 
   def image_sources_from_script
     @image_sources_from_script ||= images_script
-                                   .split("function")
-                                   .select { |snippet| snippet.include?("data:image") }
+      .split("function")
+      .select { |snippet| snippet.include?("data:image") }
   end
 
   def images_script
@@ -72,5 +73,10 @@ class CarouselParser
 
   def root
     @root ||= html.css("#appbar")
+  end
+
+  # TODO: might be a lib that does this more robustly/safely/etc
+  def unescape(string)
+    string.gsub("\\", "")
   end
 end
