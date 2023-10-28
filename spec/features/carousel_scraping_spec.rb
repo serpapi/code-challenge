@@ -1,0 +1,18 @@
+require_relative "../../services/carousel_scraper_service"
+
+RSpec.describe "scraping Google search results" do
+  subject(:scraper) do
+    CarouselScraperService.new(input_file:)
+  end
+
+  describe "scraping carousel images from an HTML file" do
+    context "with Van Gogh paintings" do
+      let(:input_file) { "spec/fixtures/van-gogh-paintings.html" }
+      let(:expected_result) { JSON.parse(File.read("spec/fixtures/expected-array.json")) }
+
+      it "returns the expected parsed array" do
+        expect(JSON.parse(scraper.call)["artworks"]).to match_array(expected_result["artworks"])
+      end
+    end
+  end
+end
