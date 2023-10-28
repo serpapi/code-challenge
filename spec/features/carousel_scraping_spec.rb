@@ -8,7 +8,16 @@ RSpec.describe "scraping Google search results" do
   describe "scraping carousel images from an HTML file" do
     context "with Van Gogh paintings" do
       let(:input_file) { "spec/fixtures/van-gogh-paintings.html" }
-      let(:expected_result) { JSON.parse(File.read("spec/fixtures/expected-array.json")) }
+      let(:expected_result) { JSON.parse(File.read("spec/fixtures/expected-array-van-gogh.json")) }
+
+      it "returns the expected parsed array" do
+        expect(JSON.parse(scraper.call)["artworks"]).to match_array(expected_result["artworks"])
+      end
+    end
+
+    context "with Degas paintings" do
+      let(:input_file) { "spec/fixtures/edgar-degas-paintings.html" }
+      let(:expected_result) { JSON.parse(File.read("spec/fixtures/expected-array-degas.json")) }
 
       it "returns the expected parsed array" do
         expect(JSON.parse(scraper.call)["artworks"]).to match_array(expected_result["artworks"])
