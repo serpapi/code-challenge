@@ -45,11 +45,11 @@ class CarouselParser
     base64_image = unescape(image_js_snippet[base64_image_regex, 1]) if image_js_snippet
 
     parsed_item = {
-      name: a.attribute("aria-label").value,
-      link: "#{HOSTNAME}#{a.attribute('href').value}"
+      "name" => a.attribute("aria-label").value,
+      "link" => "#{HOSTNAME}#{a.attribute('href').value}"
     }
-    parsed_item[:extensions] = extensions if extensions
-    parsed_item[:image] = base64_image unless base64_image.nil?
+    parsed_item["extensions"] = extensions if extensions
+    parsed_item["image"] = base64_image unless base64_image.nil?
 
     parsed_item
   end
