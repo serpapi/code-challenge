@@ -2,7 +2,7 @@ require "json"
 require "nokogiri"
 
 class CarouselParser
-  HOSTNAME = "https://www.google.com"
+  HOSTNAME = "https://www.google.com".freeze
 
   def initialize(html_string:)
     @html_string = html_string
@@ -40,7 +40,7 @@ class CarouselParser
 
     # we could probably also execute this js if we really wanted to
     image_js_snippet = image_sources_from_script.find { |snippet| snippet.include?(img_id) }
-    base64_image_regex = /(data:image\/.+)'\;\s*var [a-z]+\s*=\s*\['kximg2'\]/
+    base64_image_regex = /(data:image\/.+)';\s*var [a-z]+\s*=\s*\['kximg2'\]/
     base64_image = image_js_snippet[base64_image_regex, 1] if image_js_snippet
 
     parsed_item = {
@@ -54,11 +54,9 @@ class CarouselParser
   end
 
   def image_sources_from_script
-    @image_sources_from_script ||= begin
-      images_script
-        .split("function")
-        .select { |snippet| snippet.include?("data:image") }
-    end
+    @image_sources_from_script ||= images_script
+                                   .split("function")
+                                   .select { |snippet| snippet.include?("data:image") }
   end
 
   def images_script
