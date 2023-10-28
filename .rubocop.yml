@@ -27,3 +27,5 @@ Metrics/MethodLength:
   Enabled: false
 Style/RegexpLiteral:
   Enabled: false
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
