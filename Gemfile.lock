@@ -33,6 +33,8 @@ GEM
     lumberjack (1.2.9)
     method_source (1.0.0)
     nenv (0.3.0)
+    nokogiri (1.15.4-x86_64-linux)
+      racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -98,6 +100,7 @@ DEPENDENCIES
   guard
   guard-rspec
   guard-rubocop
+  nokogiri
   rspec
   rubocop
   rubocop-rspec

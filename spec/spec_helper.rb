@@ -1,3 +1,5 @@
+require "byebug"
+
 # auto require all necessary files
 # frameworks like Rails would do this for you automatically
 Dir.glob(File.join("./lib/**/*.rb"), &method(:require))

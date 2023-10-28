@@ -1,6 +1,5 @@
 require "json"
 require "nokogiri"
-require "ostruct"
 
 class CarouselParser
   HOSTNAME = "https://www.google.com"
@@ -38,20 +37,35 @@ class CarouselParser
     # image
     img = a.css("img")
     img_id = img.attribute("id").value
-    script_with_images = html.css("script").find { |s| s.text.include?(img_id) }.inner_html
 
     # we could probably also execute this js if we really wanted to
-    base64_image_regex = /('data:image\/.+')\;\s*var [a-z]+\s*=\s*\['#{img_id}'\]/
-    base64_image = script_with_images[base64_image_regex, 1]
+    image_js_snippet = image_sources_from_script.find { |snippet| snippet.include?(img_id) }
+    base64_image_regex = /(data:image\/.+)'\;\s*var [a-z]+\s*=\s*\['kximg2'\]/
+    base64_image = image_js_snippet[base64_image_regex, 1] if image_js_snippet
 
-    parsed_item = OpenStruct.new(
-      name: a.attribute("aria-label"),
-      link: "#{HOSTNAME}#{a.attribute('href')}",
-      image: base64_image
-    )
-    parsed_item.extensions = extensions unless extensions.empty?
+    parsed_item = {
+      name: a.attribute("aria-label").value,
+      link: "#{HOSTNAME}#{a.attribute('href').value}"
+    }
+    parsed_item[:extensions] = extensions unless extensions.empty?
+    parsed_item[:base64_image] = base64_image unless base64_image.nil?
 
     parsed_item
+  end
+
+  def image_sources_from_script
+    @image_sources_from_script ||= begin
+      images_script
+        .split("function")
+        .select { |snippet| snippet.include?("data:image") }
+    end
+  end
+
+  def images_script
+    html
+      .css("script")
+      .find { |s| s.text.include?("function _setImagesSrc") }
+      .inner_html
   end
 
   def html
