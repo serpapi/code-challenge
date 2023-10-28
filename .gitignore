@@ -51,3 +51,8 @@ build-iPhoneSimulator/
 .DS_Store
 
 .byebug_history
+
+# personal worklog
+.worklog
+
+__previewed_images__/
