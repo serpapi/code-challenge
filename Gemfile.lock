@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.20.0)
+    nokogiri (1.15.4-x86_64-darwin)
+      racc (~> 1.4)
+    racc (1.7.1)
+    rake (13.1.0)
+
+PLATFORMS
+  x86_64-darwin-21
+
+DEPENDENCIES
+  minitest (~> 5.20)
+  nokogiri (~> 1.15)
+  rake (~> 13.1)
+
+BUNDLED WITH
+   2.4.21
