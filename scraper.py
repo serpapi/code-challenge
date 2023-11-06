@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 def parser():
   # Read given Van Gogh Painting HTML file and parse with BeautifulSoup
-  HTMLfile = open("./files/van-gogh-paintings.html","r")
+  HTMLfile = open("././files/van-gogh-paintings.html","r")
   page = HTMLfile.read()
   soup = BeautifulSoup(page, "html.parser")
 
