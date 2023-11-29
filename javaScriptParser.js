@@ -33,7 +33,11 @@ try {
         const paintingName      = $(element).find('div.kltat').text().trim();
         const paintingExtension = $(element).find('div.ellip.klmeta').text().trim();
         const paintingImageUrl  = $(element).find('img').attr('data-src');
-        console.log(`Index: ${index + 1}, Painting Name: ${paintingName}, Extension: ${paintingExtension}, Image URL: ${paintingImageUrl}`);
+        const paintingThumbnail = $(element).find('img').attr('src');
+
+        console.log(
+            `Index: ${index + 1}, Painting Name: ${paintingName}, 
+        Extension: ${paintingExtension}, Image URL: ${paintingImageUrl}  , Thumbnail: ${paintingThumbnail}`);
     });
 
 
