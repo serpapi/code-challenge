@@ -1,5 +1,7 @@
-const fs   = require('fs');
-const path = require('path');
+const fs      = require('fs');
+const path    = require('path');
+const cheerio = require('cheerio');
+
 const filename  = 'van-gogh-paintings.html';
 const directory = 'files';
 
@@ -19,3 +21,12 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
         }
     });
 });
+
+// Load HTML content into Cheerio
+try {
+    const htmlContent = fs.readFileSync(filePath, 'utf8');
+    const $ = cheerio.load(htmlContent);
+    console.log($.html());
+} catch (err) {
+    console.error('Error:', err);
+}
