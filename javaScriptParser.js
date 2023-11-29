@@ -27,13 +27,13 @@ try {
     const htmlContent = fs.readFileSync(filePath, 'utf8');
     const $ = cheerio.load(htmlContent);
 
-    // Select divs with class 'kltat' and extract painting names
+    // Loop div with class 'MiPcId klitem-tr' and extractdata
     $('div.MiPcId.klitem-tr').each((index, element) => {
 
         const paintingName      = $(element).find('div.kltat').text().trim();
         const paintingExtension = $(element).find('div.ellip.klmeta').text().trim();
-        ;
-        console.log(`Index: ${index + 1}, Painting Name: ${paintingName}, Extension: ${paintingExtension}`);
+        const paintingImageUrl  = $(element).find('img').attr('data-src');
+        console.log(`Index: ${index + 1}, Painting Name: ${paintingName}, Extension: ${paintingExtension}, Image URL: ${paintingImageUrl}`);
     });
 
 
