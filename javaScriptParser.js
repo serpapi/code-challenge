@@ -34,6 +34,12 @@ try {
         console.log(`Index: ${index + 1}, Painting Name: ${paintingName}`);
     });
 
+    // Select all divs with class 'ellip klmeta' and extract painting extensions
+    $('div.ellip.klmeta').each((index, element) => {
+        const paintingExtension = $(element).text().trim();
+        console.log(`Painting Extension ${index + 1}: ${paintingExtension}`);
+    });
+
 
 
 
