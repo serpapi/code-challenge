@@ -1,3 +1,15 @@
+## Code Challenge
+I decided to use Javascript and try a Library called [cheerio](https://cheerio.js.org/) for parsing the HTML file.
+## Requirements
+
+To test the file, you will need:
+- Node.js installed on your machine
+- NPM (Node Package Manager)
+- Cheerio (installed via npm: `npm install cheerio`)
+
+
+
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
