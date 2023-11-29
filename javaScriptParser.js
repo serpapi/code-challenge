@@ -28,16 +28,12 @@ try {
     const $ = cheerio.load(htmlContent);
 
     // Select divs with class 'kltat' and extract painting names
-    $('div.kltat').each((index, element) => {
+    $('div.MiPcId.klitem-tr').each((index, element) => {
 
-        const paintingName = $(element).text().trim();
-        console.log(`Index: ${index + 1}, Painting Name: ${paintingName}`);
-    });
-
-    // Select all divs with class 'ellip klmeta' and extract painting extensions
-    $('div.ellip.klmeta').each((index, element) => {
-        const paintingExtension = $(element).text().trim();
-        console.log(`Painting Extension ${index + 1}: ${paintingExtension}`);
+        const paintingName      = $(element).find('div.kltat').text().trim();
+        const paintingExtension = $(element).find('div.ellip.klmeta').text().trim();
+        ;
+        console.log(`Index: ${index + 1}, Painting Name: ${paintingName}, Extension: ${paintingExtension}`);
     });
 
 
