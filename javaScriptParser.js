@@ -26,7 +26,21 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
 try {
     const htmlContent = fs.readFileSync(filePath, 'utf8');
     const $ = cheerio.load(htmlContent);
-    console.log($.html());
+
+    // Select divs with class 'kltat' and extract painting names
+    $('div.kltat').each((index, element) => {
+
+        const paintingName = $(element).text().trim();
+        console.log(`Index: ${index + 1}, Painting Name: ${paintingName}`);
+    });
+
+
+
+
+
+
 } catch (err) {
     console.error('Error:', err);
 }
+
+
