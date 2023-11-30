@@ -26,19 +26,22 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
 try {
     const htmlContent = fs.readFileSync(filePath, 'utf8');
     const $ = cheerio.load(htmlContent);
+    const extractedData = [];
 
     // Loop div with class 'MiPcId klitem-tr' and extractdata
     $('div.MiPcId.klitem-tr').each((index, element) => {
 
         const paintingName      = $(element).find('div.kltat').text().trim();
-        const paintingExtension = $(element).find('div.ellip.klmeta').text().trim();
+        const paintingExtension = [$(element).find('div.ellip.klmeta').text().trim()];
         const paintingImageUrl  = $(element).find('img').attr('data-src');
         const paintingThumbnail = $(element).find('img').attr('src');
 
-        console.log(
-            `Index: ${index + 1}, Painting Name: ${paintingName}, 
-        Extension: ${paintingExtension}, Image URL: ${paintingImageUrl}  , Thumbnail: ${paintingThumbnail}`);
+
     });
+
+// Now extractedData contains an array of objects, each representing painting data
+    console.log(JSON.stringify(extractedData, null, 2));
+
 
 
 
