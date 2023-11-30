@@ -55,13 +55,6 @@ try {
     // Display a success message
     console.log('Data extracted and saved to van-gogh-paintings.json');
 
-
-
-
-
-
-
-
 } catch (err) {
     console.error('Error:', err);
 }
