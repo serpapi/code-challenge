@@ -1,0 +1,359 @@
+[
+  {
+    "painting_name": "The Starry Night",
+    "extensions": [
+      "1889"
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "Irises",
+    "extensions": [
+      "1889"
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "Sunflowers",
+    "extensions": [
+      ""
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "Van Gogh self-portrait",
+    "extensions": [
+      "1889"
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "Café Terrace at Night",
+    "extensions": [
+      "1888"
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "The Potato Eaters",
+    "extensions": [
+      "1885"
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "Cypresses",
+    "extensions": [
+      "1889"
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "Wheatfield with Crows",
+    "extensions": [
+      "1890"
+    ],
+    "thumbnail_url": "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  },
+  {
+    "painting_name": "The Yellow House",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://lh5.googleusercontent.com/p/AF1QipNeCAxLA4cenRzHtZrb_SNlBgMr5s1_L67YvhZc=w179-h120-k-no"
+  },
+  {
+    "painting_name": "Starry Night Over the Rhône",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuRdrR2n44VU9G3jSQu3R8LUtlV2Dp62Pcxlut_T9Tf4E0YiQO3etI7FWKPnfECxFmixU"
+  },
+  {
+    "painting_name": "Almond Blossoms",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAFKICr2COgwYEig7_5aaEuls7o-UqrLitHI2XoCf4eFu6n4WxnS7Oh0FewPWJDE-2bVM"
+  },
+  {
+    "painting_name": "At Eternity's Gate",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1GMBcGVKyTvgLDH6hXWDBOxE22jQbRV-H-3fAbceVNv-ft0FyBTLb4R4Lyo-MwZF_p18"
+  },
+  {
+    "painting_name": "The Red Vineyard",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_p3wU-Y7zX21aijY9nMRtDevqkQzfMJcdySPtu92BpHkxitxB7JNKJQ64DwV59rv11go"
+  },
+  {
+    "painting_name": "The Night Café",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBPsmnCGcLQaDGZg7IYO0j25cu9zsCMV3tjfAoBMBFzFw5PsNSAUMjc92IsBAyKwVhwb0"
+  },
+  {
+    "painting_name": "Self-portrait without beard",
+    "extensions": [
+      "1889"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRvcGD3WNEN5qvXdJa2F0nb_b87qcbcHmybArCRfixB64223PSetDVKHOb6f_vDMHXuqI"
+  },
+  {
+    "painting_name": "Self-Portrait with Bandaged Ear",
+    "extensions": [
+      "1889"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm5jcZFHc3ZdPIilP259E0kjEsvWw4Jt29M6iLnUwdK0Z0t9Q6RPH17XedfVGCv30gw48"
+  },
+  {
+    "painting_name": "Peasant Woman Against a Background of Wheat",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl06r2YXoXlrJecYc35ElSn8N8XehA1t1k8JADCmhFxWTE_yUbB7Cba8Zf_bqeZOFxtsw"
+  },
+  {
+    "painting_name": "Field with plowing farmers",
+    "extensions": [
+      ""
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTULuhEdUfiVOMLwUVr7u3qxAyRy4wZLI6TuO6MqKa3ReYGF-BIOyruplL50-_qgnThzjE"
+  },
+  {
+    "painting_name": "Wheat Field with Cypresses",
+    "extensions": [
+      "1889"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPt4ldU_pJKgyE8mQDuhRHnBdLd_NKpKhDHeCmPtl8nwVxaoV47n02MZRRabTEiWaSi50"
+  },
+  {
+    "painting_name": "Olive Trees",
+    "extensions": [
+      "1889"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb05kuY7oVvvtmJHdpTu2uj5RVDEO3AW9WATgoO8tLQDCJfkooW_EYk4JOgq0zoBCyxKs"
+  },
+  {
+    "painting_name": "Bedroom in Arles",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0WaNCiAq8Y6QM6fMJBZgNls2fl4Bu-O4SAuy_P5PYLW3S3FavfHTmmtKXkfodCp6g0ao"
+  },
+  {
+    "painting_name": "Portrait of Père Tanguy",
+    "extensions": [
+      "1887"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLve6Ws5vaS114lWocli2D7O_tl5Gr9pq7I_HpfCcA1WFBPRwElmey10YSJHH-bL8Gb1o"
+  },
+  {
+    "painting_name": "Portrait of the Postman Joseph Roulin",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTempKiuxZD52DEIJ7dJcHzSKgRAzOjHzFQPIvqyPqwdgs0sosGwFCSGnnHEnwDBG09Mdw"
+  },
+  {
+    "painting_name": "The Church at Auvers",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvqt3BYjxt2q-yQkD8EU5L4f3-1Qazd2m6ktCyv-KhQKi6FdQni8fLgcn_pfjFVu4nGZ8"
+  },
+  {
+    "painting_name": "The garden of the Asylum",
+    "extensions": [
+      "1889"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFmD_MwKjAT2imT5g_9SnFjH166JOWV5EeiLMMkeV9Z-y2PYZFlraGIe98sqUpsVBprQY"
+  },
+  {
+    "painting_name": "Le Moulin de Blute-Fin",
+    "extensions": [
+      "1886"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwzohlBwuIJjIYh6fhGKF4gqQItxdIaexoaBGNPkgxbQOc_sBYtIiLoBZbhq2QNg0FXWI"
+  },
+  {
+    "painting_name": "Enclosed Field with Ploughman",
+    "extensions": [
+      ""
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFR4DFYaZIQXuwAXsRB4ZeooZj8bCU58lhzFSWxH9HxiHbP6MyVVcih0A0NuodU5hnHEE"
+  },
+  {
+    "painting_name": "Van Gogh's Chair",
+    "extensions": [
+      ""
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEj9rxzbSbHAj84D-FWKjinNFpq-6dFRFFbHRs16EnkAP4wWQaZHYpmWc_3sfG8-Juqoo"
+  },
+  {
+    "painting_name": "Autumn Landscape with Four Trees",
+    "extensions": [
+      "1885"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ZZzSbgzzXMf2SIplmbsL3iN8SWYuHT2uZbY_9KgMeW_36w9iQtcG6PSAjxH5i-ijrQ4"
+  },
+  {
+    "painting_name": "Fishing Boats on the Beach at Saintes-Maries",
+    "extensions": [
+      ""
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTikbsO6OReyIw7HoCDgWVsEUWyD4byaiO_p6A9MRMOAP0W4EoQ-tHVLWj4yhBWp9NJ-Ds"
+  },
+  {
+    "painting_name": "Skull of a Skeleton with Burning Cigarette",
+    "extensions": [
+      ""
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKy2pPMI_vuEuP2QvHnKGSVYfDy6i5cnB5C4WwUaNcbPy2b-7fyh0hOjLvY_lTAXg9ttw"
+  },
+  {
+    "painting_name": "Self-Portrait with Grey Felt Hat",
+    "extensions": [
+      "1887"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfRlnZfZPrxcGD8NCXNn0s_k1IGJFQoUL1uFjilpOPjUoqEBjO_PgjQPA07Gqy4xEUta4"
+  },
+  {
+    "painting_name": "White House at Night",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvmb3tFTQEYW0Ex4B5ojcBytqchIgWxYs5mmUhvTYmEj6of0fEJNZ9OCxHQkUUTxgyktE"
+  },
+  {
+    "painting_name": "Woman Sewing",
+    "extensions": [
+      "1885"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsgfdPo7KVSfWNLRh7TlD40U7nNIwmT8gFiX2Tc9zCZm5Sv8vEXVI_1zdzclpH8B0Rj1U"
+  },
+  {
+    "painting_name": "Arles: View from the Wheat Fields",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbzhgK1nIVyiDcVCuoMWE7zh7Dll-QkWuHfQrbdMFfn2xrnYf8nVIYVToIB7i9xjTsiSE"
+  },
+  {
+    "painting_name": "The siesta (after Millet)",
+    "extensions": [
+      ""
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyvqBaVO1ioG8-xosBBuQL-Ni0sjzaJ43hTqRkVEpKdcs3bD5s3a-VVsPzna-5L0vphQY"
+  },
+  {
+    "painting_name": "Sorrow",
+    "extensions": [
+      "1882"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCs5q-AYoH9jO5294TrA5n3hXhPYgxDDI_93U5lmWLYzdjyiHUvRahl54V56MYtmXaavY"
+  },
+  {
+    "painting_name": "Sunset at Montmajour",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUKbV-_3Kyimn_1wXmDTMP6LV5Q7n2qJ0B0LczyPK1dd6LracMEzhJyZNqofUhLIXwxOY"
+  },
+  {
+    "painting_name": "Avenue of Poplars in Autumn",
+    "extensions": [
+      "1884"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT81XrAhceBcb-4GXUtT2qNwUSu5oDUlkjyK14eRQ2zI0xnSo57XLAn0ZNugzm9k_xCzec"
+  },
+  {
+    "painting_name": "The Pink Peach Tree",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG0fGPBEYACMV16nb3ugEiqeICrZB2jxA0wdDjLUuzburuev2OhkSDovy1YKGDT0_zzII"
+  },
+  {
+    "painting_name": "Road with Cypress and Star",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXmLjzPzk2NQ4jdhMhNHqPbKsTTx2Z_4svEFkXNMeN0lCL1d-V4yolFSjy4YQrJ-2bsrA"
+  },
+  {
+    "painting_name": "Bulb Fields",
+    "extensions": [
+      "1883"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqzFWQP4gu2EwUy4b9fvOdbfVupYTfzscZOkVII1zzzQ_C2b_tqveFpk4uJv9UwVjbdfk"
+  },
+  {
+    "painting_name": "Gauguin's Chair",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ku8ozeXLAXrE2zMlr3feW0LUxmqdkxu36FHwgmL3a8OyVJLmxrCpmUzYZbGgvoc6hQ0"
+  },
+  {
+    "painting_name": "View of Arles, Flowering Orchards",
+    "extensions": [
+      "1889"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Ey-0SUbyQNxbYzVYGdjMIHCon9afpuMmnbfaGpNixZnnZlOK2mN-X8TTcyqKgnj9KiE"
+  },
+  {
+    "painting_name": "Poppy Flowers",
+    "extensions": [
+      "1887"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOYgwc_Z7BUqWswL7sIWTAvHd4pu7Fl_ICpr9POD71Mp3eXnvT5wDIe5C3BdP96lxNIcY"
+  },
+  {
+    "painting_name": "View of Arles with Irises in the Foreground",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqMr_yDGA83ap37UtaKmTJcOYAAt-Qz-LgrLqMUk3z_XwmIEIRH9IocmmnNQoLyF8LUAY"
+  },
+  {
+    "painting_name": "The Road Menders",
+    "extensions": [
+      "1889"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc7ADOqXu959RzpY6IAIsS26LrMyXAFYq_E_f3R4sZkNCjSB1AlS9PwVP1L_o-9VhMk4Y"
+  },
+  {
+    "painting_name": "La Mousmé",
+    "extensions": [
+      "1888"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_kZeXMiqPnf0TWBijghqWugmBNJ-dHoqfP6BUEOohcqcrM2haBxcOR63EvIfToTAWzk"
+  },
+  {
+    "painting_name": "Avenue of Poplars at Sunset",
+    "extensions": [
+      "1884"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPC67M6OPquB4e8wfGWtIqTETSHPNAItvRRpBtRJhfVUO4ECtFzHIDXLARNx_kbPEVs2w"
+  },
+  {
+    "painting_name": "Prisoners Exercising",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTVRfY4DqCGP9K3jraoa-vxTXyU71BdYuAUYCHYA1oYYP8ZJ1OxWwaWHXzi-xtv_dB1rU"
+  },
+  {
+    "painting_name": "Portrait of Adeline Ravoux",
+    "extensions": [
+      "1890"
+    ],
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmR9iWuhqp5vU6ZZ5_RvP9A5yswjdEPK35qoTsvewSXTIZ0AOV9K4G0XUtULINVH--Jpo"
+  }
+]
