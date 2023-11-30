@@ -36,10 +36,18 @@ try {
         const paintingImageUrl  = $(element).find('img').attr('data-src');
         const paintingThumbnail = $(element).find('img').attr('src');
 
+        // Store extracted data in an object
+        const paintingData = {
+            painting_name: paintingName,
+            extensions: paintingExtension,
+            image_url: paintingImageUrl,
+            thumbnail_url: paintingThumbnail,
+        };
 
+        // Push the object to the extracted data array
+        extractedData.push(paintingData);
     });
 
-// Now extractedData contains an array of objects, each representing painting data
     console.log(JSON.stringify(extractedData, null, 2));
 
 
