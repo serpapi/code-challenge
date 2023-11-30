@@ -46,9 +46,15 @@ try {
 
         // Push the object to the extracted data array
         extractedData.push(paintingData);
+
     });
 
-    console.log(JSON.stringify(extractedData, null, 2));
+    // Save extracted data to a JSON file
+    fs.writeFileSync('van-gogh-paintings.json', JSON.stringify(extractedData, null, 2));
+
+    // Display a success message
+    console.log('Data extracted and saved to van-gogh-paintings.json');
+
 
 
 
