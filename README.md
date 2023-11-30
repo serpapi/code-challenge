@@ -6,6 +6,7 @@ To test the file, you will need:
 - Node.js installed on your machine
 - NPM (Node Package Manager)
 - Cheerio (installed via npm: `npm install cheerio`)
+- Mocha (installed via npm: `npm install -g mocha`)
 
 ## CC Instructions
 
@@ -13,6 +14,7 @@ To test the file, you will need:
 2. cd to the `serpapi-code-challenge` directory.
 3. Install dependencies by running: `npm install`
 4. To parse the HTML file, run:  `node javaScriptParser.js`
+5. To execute the test file, run: `mocha javaScriptParserTest.js`
 
 
 
