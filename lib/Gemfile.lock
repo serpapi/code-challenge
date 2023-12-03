@@ -1,0 +1,35 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    diff-lcs (1.5.0)
+    json (2.7.0)
+    nokogiri (1.15.5-x86_64-linux)
+      racc (~> 1.4)
+    racc (1.7.3)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  json
+  nokogiri
+  rspec
+
+RUBY VERSION
+   ruby 2.7.2p137
+
+BUNDLED WITH
+   2.4.19
