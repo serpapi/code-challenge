@@ -11,7 +11,7 @@ Due to the dated nature of the original challenge, and the fact that I had in a 
 While searching different topics, I noticed that this "Top X" drop-down would be a decent example.
 This example serves a similar purpose of the carousel and has many pages that it can be tested against for repeatability.
 
-![Nfl Top Athletes]([files\top-athlete-example.png](https://github.com/kozeee/SerpApi_Code_Challenge/blob/master/files/top-athlete-example.png))
+![Nfl Top Athletes](https://github.com/kozeee/SerpApi_Code_Challenge/blob/master/files/top-athlete-example.png)
 
 ### Solution
 
