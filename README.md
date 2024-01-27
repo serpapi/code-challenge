@@ -1,3 +1,21 @@
+# USAGE
+
+Before: `bundle install`
+Tests: `rspec` from top directory
+Program: `ruby run.rb`
+Notes: 
+
+Requires selenium and chromedriver to be installed. This program uses 
+selenium to execute the JavaScript since the painting data URLs are set via 
+JavaScript and doing it that way felt a little less fragile than assuming a 
+specific structure or ordering to their JavaScript, although it does 
+unfortunately require additional pre-reqs.
+
+Current implementation uses the local copy of the file because content from 
+raw.githubusercontent.com sets a text/plain content type. This makes selenium
+escape the content which would add even more work when parsing.
+
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
