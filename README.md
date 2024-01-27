@@ -1,8 +1,11 @@
 # USAGE
 
 Before: `bundle install`
+
 Tests: `rspec` from top directory
+
 Program: `ruby run.rb`
+
 Notes: 
 
 Requires selenium and chromedriver to be installed. This program uses 
