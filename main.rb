@@ -4,6 +4,12 @@ require "json"
 def parse_carousel(file)
 	host = "https://www.google.com"
 	html = Nokogiri.HTML5(file)
+
+	encoded_images = {}
+	html.inner_html.scan(/_setImagesSrc.+?var s=\'(.*?)\'.*?var ii=\[\'(.*?)\'/) do |source, id|
+		encoded_images[id] = source.gsub("\\", "")
+	end
+
 	carousel = html.css("g-scrolling-carousel").first
 	items = carousel.css(".klitem")
 	images = []
@@ -13,8 +19,7 @@ def parse_carousel(file)
 		hash["name"] = item.attribute("aria-label").value
 		hash["extensions"] = item.css(".klmeta").map(&:text)
 		hash["link"] = "#{host}#{item.attribute('href')}"
-		hash["img"] = item.css("img").attribute("src")&.value
-
+		hash["image"] = encoded_images[item.css("img").attribute("id").value]
 		images.push(hash)
 	end
 
