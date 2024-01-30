@@ -1,28 +1,11 @@
-# Extract Van Gogh Paintings Code Challenge
+# Code Challenge
+Extracts a list of Van Gogh paintings from a local HTML page and exports a JSON file.
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+Install gems with `bundle install`, run tests with `rspec` or `bundle exec rspec`, and start the program with `ruby main.rb` or `bundle exec ruby main.rb`.
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+## Notes
+This challenge was completed with simplicity in mind, so I went for a single file approach and used `nokogiri` to parse HTML. Image sources are replaced via JS after the page is rendered, making `selenium` a good alternative, but I chose to parse the sources with regular expressions.
 
-## Instructions
+I wasn't able to find another page with a carousel. See `files/alt-van-gogh-paintings.html` or `files/red-apple.html` to see how results appear to me. Compare those with the provided Van Gogh file and the page inside an iframe inside [SerpAPIs documentation](https://serpapi.com/google-inline-images).
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
-
-Fork this repository and make a PR when ready.
-
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
-
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
-
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
-
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
-
-The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+To fulfill the requirement of testing this in multiple pages, I made an alternative version. Run it with `ruby alt.rb` or `bundle exec ruby alt.rb`. This alternative version will parse 3 pages with similar results: `alt-la-tour-paintings.html`, `alt-picasso-paintings.html`, and `alt-van-gogh-paintings.html`. It's not able to parse `red-apple.html` due to a different layout, for example.
