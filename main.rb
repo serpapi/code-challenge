@@ -1,15 +1,18 @@
 require "nokogiri"
 require "json"
 
+def get_encoded_images(html)
+	images = {}
+	html.inner_html.scan(/_setImagesSrc.+?var s=\'(.*?)\'.*?var ii=\[\'(.*?)\'/) do |source, id|
+		images[id] = source.gsub("\\", "")
+	end
+	return images
+end
+
 def parse_carousel(file)
 	host = "https://www.google.com"
 	html = Nokogiri.HTML5(file)
-
-	encoded_images = {}
-	html.inner_html.scan(/_setImagesSrc.+?var s=\'(.*?)\'.*?var ii=\[\'(.*?)\'/) do |source, id|
-		encoded_images[id] = source.gsub("\\", "")
-	end
-
+	encoded_images = get_encoded_images(html)
 	carousel = html.css("g-scrolling-carousel").first
 	items = carousel.css(".klitem")
 	images = []
@@ -20,6 +23,7 @@ def parse_carousel(file)
 		hash["extensions"] = item.css(".klmeta").map(&:text)
 		hash["link"] = "#{host}#{item.attribute('href')}"
 		hash["image"] = encoded_images[item.css("img").attribute("id").value]
+
 		images.push(hash)
 	end
 
@@ -46,12 +50,11 @@ def write_json(name, json)
 	File.write(path, json)
 end
 
-def run
-	filename = "van-gogh-paintings"
+def run(filename)
 	json = parse_carousel(
 		get_html(filename)
 	)
 	write_json(filename, json)
 end
 
-run
+run("van-gogh-paintings")
