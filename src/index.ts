@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { parse } from 'node-html-parser';
 
 export const readFile = (fileName: string) => {
     try {
@@ -9,3 +10,11 @@ export const readFile = (fileName: string) => {
     }
     return null;
 };
+
+export const getHtmlNodeFromFile = (fileName: string) => {
+    const str = readFile(fileName);
+    if (str === null) return null;
+    return parse(str);
+};
+
+console.log(getHtmlNodeFromFile('./files/van-gogh-paintings.html'));
