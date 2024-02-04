@@ -17,18 +17,18 @@ export const getHtmlNodeFromFile = (fileName: string) => {
     return parse(str);
 };
 
-export const getNodeWithCarrouselItems = (node: HTMLElement) => {
+export const getNodeWithCarouselItems = (node: HTMLElement) => {
     const possibleItemsListNode = node.childNodes[0].childNodes[0];
     if (possibleItemsListNode.childNodes.length > 1) return possibleItemsListNode as HTMLElement;
     return possibleItemsListNode.childNodes[0] as HTMLElement;
 };
 
-export const getItemNodesFromFileWithCarrousel = (fileName: string) => {
+export const getItemNodesFromFileWithCarousel = (fileName: string) => {
     const root = getHtmlNodeFromFile(fileName);
     if (root === null) return [];
-    const carrousel = root.querySelector('g-scrolling-carousel');
-    if (carrousel === null) return [];
-    const itemsParent = getNodeWithCarrouselItems(carrousel);
+    const carousel = root.querySelector('g-scrolling-carousel');
+    if (carousel === null) return [];
+    const itemsParent = getNodeWithCarouselItems(carousel);
     return itemsParent.childNodes.map(c => c as HTMLElement);
 };
 
@@ -39,8 +39,8 @@ interface ArtworkResult {
     image: string | null,
 }
 
-export const getArtworkFromNodes = (carrouselItems: HTMLElement[]) => {
-    return carrouselItems.map(i => {
+export const getArtworkFromNodes = (carouselItems: HTMLElement[]) => {
+    return carouselItems.map(i => {
         const result: ArtworkResult = {
             name: '',
             link: 'https://www.google.com', // allow addition of google domain to link since img tag links use local domain
@@ -59,7 +59,14 @@ export const getArtworkFromNodes = (carrouselItems: HTMLElement[]) => {
     });
 };
 
+/**
+ * Given an html file of a google search result for an artist, returns an array
+ * of information about each painting in the carousel element of the page.
+ * 
+ * @param fileName 
+ * @returns 
+ */
 export const getArtworkFromFile = (fileName: string) => {
-    const items = getItemNodesFromFileWithCarrousel(fileName);
+    const items = getItemNodesFromFileWithCarousel(fileName);
     return getArtworkFromNodes(items);
 };

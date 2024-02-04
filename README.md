@@ -1,3 +1,17 @@
+# Submission
+This is my submission for the SerpApi takehome code test.
+
+## How To Run
+Please ensure your machine has the latest version of Node installed. This solution uses Typescript and Node.
+After cloning the repo to your machine, navigate to the cloned directory and run `npm install` from the command line.
+The main function is `getArtworkFromFile`. Run `npm run test` to see this function tested by the tests defined in
+/test/index.test.ts. 
+
+## Known Issues
+
+
+# Original Challenge
+
 # Extract Van Gogh Paintings Code Challenge
 
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
