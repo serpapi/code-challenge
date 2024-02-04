@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { parse } from 'node-html-parser';
+import { parse, HTMLElement } from 'node-html-parser';
 
 export const readFile = (fileName: string) => {
     try {
@@ -17,4 +17,19 @@ export const getHtmlNodeFromFile = (fileName: string) => {
     return parse(str);
 };
 
+export const getCarrouselNodeFromHtmlNode = (node: HTMLElement | null) => {
+    if (node === null) return null;
+    const rawTagName = node.rawTagName;
+    const carouselTagName = 'g-scrolling-carousel';
+    if (node.tagName?.toLowerCase() === carouselTagName) return node;
+    const childrenArray = Array.from(node.childNodes) as HTMLElement[];
+    for (let i = 0; i < childrenArray.length; i++) {
+        const childResult = getCarrouselNodeFromHtmlNode(childrenArray[i]) as (HTMLElement | null);
+        if (childResult?.tagName.toLowerCase() === carouselTagName) return childResult;
+    }
+    return null;
+};
+
+const root = getHtmlNodeFromFile('./files/van-gogh-paintings.html');
+const carrouselElement = getCarrouselNodeFromHtmlNode(root);
 console.log(getHtmlNodeFromFile('./files/van-gogh-paintings.html'));
