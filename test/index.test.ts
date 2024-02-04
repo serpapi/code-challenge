@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { getArtworkFromFile, getHtmlNodeFromFile, readFile } from "../src";
 
 describe('pre tests', () => {
@@ -18,14 +19,36 @@ describe('van gogh html parsing', () => {
     });
     test('all entries have names', () => artwork.forEach(work => expect(work.name.length).toBeGreaterThan(0)));
     test('all entries have links', () => artwork.forEach(work => expect(work.link.length).toBeGreaterThan(0)));
-    test('all entries have images', () => artwork.forEach(work => expect(work.image.length).toBeGreaterThan(0)));
-    test('all entries have extensions with date', () => artwork.forEach(work => {
-        expect(work.extensions.length).toBe(1);
-        let year: number | null = null;
-        try {
-            year = Number.parseInt(work.extensions[0]);
-        } catch (err) {} // do nothing
-        expect(year).not.toBeNull;
-        expect(typeof year).toBe('number');
+    test('all entries have images, if defined', () => artwork.forEach(work => {
+        if (work.image !== null) expect(work.image.length).toBeGreaterThan(0);
     }));
+});
+
+describe('compare to expected array', () => {
+    const found = getArtworkFromFile('./files/van-gogh-paintings.html');
+    const expected = JSON.parse(fs.readFileSync('./files/expected-array.json').toString()) as Array<any>;
+    test('same size', () => expect(found.length).toBe(expected.length));
+    test('same names', () => {
+        for (let i = 0; i < found.length; i++) {
+            expect(found[i].name).toBe(expected[i].name);
+        }
+    });
+    test('same links', () => {
+        for (let i = 0; i < found.length; i++) {
+            expect(found[i].link).toBe(expected[i].link);
+        }
+    });
+    test('same extensions', () => {
+        for (let i = 0; i < found.length; i++) {
+            expect(found[i].extensions).toEqual(expected[i].extensions);
+        }
+    });
+    test('same images', () => {
+        for (let i = 0; i < found.length; i++) {
+            expect(found[i].image).toEqual(expected[i].image);
+        }
+    });
+    test('same array', () => {
+        expect(found).toEqual(expected);
+    });
 });

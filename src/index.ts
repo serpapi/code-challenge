@@ -34,30 +34,26 @@ export const getItemNodesFromFileWithCarrousel = (fileName: string) => {
 
 interface ArtworkResult {
     name: string,
-    extensions: string[],
+    extensions?: string[],
     link: string,
-    image: string,
+    image: string | null,
 }
 
 export const getArtworkFromNodes = (carrouselItems: HTMLElement[]) => {
     return carrouselItems.map(i => {
         const result: ArtworkResult = {
             name: '',
-            extensions: [],
-            link: '',
-            image: '',
+            link: 'https://www.google.com', // allow addition of google domain to link since img tag links use local domain
+            image: null,
         };
         const anchor = i.querySelector('a');
         if (anchor !== null) {
             result.name = anchor.attributes['aria-label'];
-            result.extensions = anchor.querySelectorAll('.klmeta').map(e => e.innerText);
-            result.link = anchor.attributes['href'];
+            const extensions = anchor.querySelectorAll('.klmeta').map(e => e.innerText);
+            if (extensions.length > 0) result.extensions = extensions;
+            result.link += anchor.attributes['href'];
             const image = anchor.querySelector('img')?.attributes['src'];
             if (image !== undefined) result.image = image;
-            else {
-                const dataImage = anchor.querySelector('img')?.attributes['data-src'];
-                if (dataImage !== undefined) result.image = dataImage;
-            } 
         }
         return result;
     });
@@ -67,10 +63,3 @@ export const getArtworkFromFile = (fileName: string) => {
     const items = getItemNodesFromFileWithCarrousel(fileName);
     return getArtworkFromNodes(items);
 };
-
-const vangoghItems = getItemNodesFromFileWithCarrousel('./files/van-gogh-paintings.html');
-const leoneItems = getItemNodesFromFileWithCarrousel('./files/leone-movies.html');
-
-const artworkForVanGogh = getArtworkFromFile('./files/van-gogh-paintings.html');
-
-console.log(getHtmlNodeFromFile('./files/van-gogh-paintings.html'));
