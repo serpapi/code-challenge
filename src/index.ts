@@ -30,6 +30,7 @@ export const getCarrouselNodeFromHtmlNode = (node: HTMLElement | null) => {
     return null;
 };
 
-const root = getHtmlNodeFromFile('./files/van-gogh-paintings.html');
-const carrouselElement = getCarrouselNodeFromHtmlNode(root);
+const carrouselElementVangogh = getCarrouselNodeFromHtmlNode(getHtmlNodeFromFile('./files/van-gogh-paintings.html'));
+const carrouselElementMonet = getCarrouselNodeFromHtmlNode(getHtmlNodeFromFile('./files/monet-paintings.html'));
+const carrouselElementLeone = getCarrouselNodeFromHtmlNode(getHtmlNodeFromFile('./files/leone-movies.html'));
 console.log(getHtmlNodeFromFile('./files/van-gogh-paintings.html'));
