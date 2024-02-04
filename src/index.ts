@@ -59,9 +59,14 @@ export const getArtworkFromNodes = (carrouselItems: HTMLElement[]) => {
     });
 };
 
+export const getArtworkFromFile = (fileName: string) => {
+    const items = getItemNodesFromFileWithCarrousel(fileName);
+    return getArtworkFromNodes(items);
+};
+
 const vangoghItems = getItemNodesFromFileWithCarrousel('./files/van-gogh-paintings.html');
 const leoneItems = getItemNodesFromFileWithCarrousel('./files/leone-movies.html');
 
-const artworkForVanGogh = getArtworkFromNodes(vangoghItems);
+const artworkForVanGogh = getArtworkFromFile('./files/van-gogh-paintings.html');
 
 console.log(getHtmlNodeFromFile('./files/van-gogh-paintings.html'));
