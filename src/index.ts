@@ -53,7 +53,11 @@ export const getArtworkFromNodes = (carrouselItems: HTMLElement[]) => {
             result.extensions = anchor.querySelectorAll('.klmeta').map(e => e.innerText);
             result.link = anchor.attributes['href'];
             const image = anchor.querySelector('img')?.attributes['src'];
-            result.image = image === undefined ? '' : image;
+            if (image !== undefined) result.image = image;
+            else {
+                const dataImage = anchor.querySelector('img')?.attributes['data-src'];
+                if (dataImage !== undefined) result.image = dataImage;
+            } 
         }
         return result;
     });
