@@ -8,7 +8,8 @@ The main function is `getArtworkFromFile`. Run `npm run test` to see this functi
 /test/index.test.ts. 
 
 ## Known Issues
-
+The image links are not parsed correctly.
+This solution only works for the supplied van-gogh file.
 
 # Original Challenge
 
