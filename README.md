@@ -4,6 +4,20 @@ Goal is to extract a list of Van Gogh paintings from the attached Google search 
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
 
+## (My) instructions
+
+`poetry` is required to run this project (recommended: `v1.7.1`).
+
+In the project root:
+
+```bash
+$ poetry install
+$ poetry run pytest
+
+# To dump the json output
+$ poetry run python -m challenge.main
+```
+
 ## Instructions
 
 This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
