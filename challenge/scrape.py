@@ -2,8 +2,8 @@ import re
 
 from bs4 import BeautifulSoup
 
-def scrape_art():
-    with open('./files/van-gogh-paintings.html', 'r') as f:
+def scrape_art(filename):
+    with open(filename, 'r') as f:
         parser = BeautifulSoup(f, 'html.parser')
 
     img_lookup = {}
