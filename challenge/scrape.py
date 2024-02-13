@@ -3,19 +3,14 @@ import re
 from bs4 import BeautifulSoup
 
 def scrape_art():
-    with open('./files/us-presidents.html', 'r') as f:
+    with open('./files/van-gogh-paintings.html', 'r') as f:
         parser = BeautifulSoup(f, 'html.parser')
 
-    scripts = parser.find_all('script')
-    image_load_js = ''
-    for script in scripts:
-        if '_setImagesSrc' in script.text:
-            image_load_js = script.text
-    
-    img_matches = re.findall(r"'(data:image/jpeg;base64.*?)';.*?\['(.*?)'\];", image_load_js, re.DOTALL)
     img_lookup = {}
-    for match in img_matches:
-        img_lookup[match[1]] = match[0]
+    for script in parser.find_all('script'):
+        img_matches = re.findall(r"'(data:image/jpeg;base64.*?)';.*?\['(.*?)'\];", script.text, re.DOTALL)
+        for match in img_matches:
+            img_lookup[match[1]] = match[0]
 
     results = parser.find_all('a', attrs={'class': 'klitem'})
     # 'klitem-tr' seems to work for newer versions of the page
