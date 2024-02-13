@@ -3,7 +3,7 @@ import re
 from bs4 import BeautifulSoup
 
 def scrape_art():
-    with open('./files/van-gogh-paintings.html', 'r') as f:
+    with open('./files/us-presidents.html', 'r') as f:
         parser = BeautifulSoup(f, 'html.parser')
 
     scripts = parser.find_all('script')
@@ -18,6 +18,8 @@ def scrape_art():
         img_lookup[match[1]] = match[0]
 
     results = parser.find_all('a', attrs={'class': 'klitem'})
+    # 'klitem-tr' seems to work for newer versions of the page
+    results = results if len(results) > 0 else parser.find_all('a', attrs={'class': 'klitem-tr'})
     json_result = { 'artworks': [] }
     for art in results:
         entry = {
@@ -28,13 +30,13 @@ def scrape_art():
         if year := art.find('div', attrs={'class': 'klmeta'}):
             entry['extensions'] = [ year.text ]
 
-        image_id = art.find('g-img').img['id']
-        if image_id in img_lookup:
-            # Handle pesky hex escapes ('\' isn't valid b64 anyways..)
-            # Still loads using <img src=...>
-            entry['image'] = img_lookup[image_id].replace('\\', '')
-        else:
-            entry['image'] = None
+        entry['image'] = None
+        if gimg := art.find('g-img'):
+            img = gimg.find('img')
+            if img and img['id'] in img_lookup:
+                # Handle pesky hex escapes ('\' isn't valid b64 anyways..)
+                # Still loads using <img src=...>
+                entry['image'] = img_lookup[img['id']].replace('\\', '')
 
         json_result['artworks'].append(entry)
     
