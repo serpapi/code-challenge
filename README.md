@@ -15,7 +15,7 @@ $ poetry install
 $ poetry run pytest
 
 # To dump the json output
-$ poetry run python -m challenge.main
+$ poetry run python -m challenge.main files/van-gogh-paintings.html
 ```
 
 ## Instructions
