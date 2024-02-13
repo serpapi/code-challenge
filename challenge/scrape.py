@@ -22,8 +22,8 @@ def scrape_art():
             'link': 'https://www.google.com' + art['href']
         }
 
-        if year := art.find('div', attrs={'class': 'klmeta'}):
-            entry['extensions'] = [ year.text ]
+        if year_match := re.search(r"\((\d+(-\d+)?)\)$", art['title']):
+            entry['extensions'] = [ year_match.group(1) ]
 
         entry['image'] = None
         if gimg := art.find('g-img'):
