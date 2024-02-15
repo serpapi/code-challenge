@@ -6,10 +6,12 @@
   "type": "commonjs",
   "scripts": {
     "start": "node src/index",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "preset": "jest-puppeteer",
+    "testTimeout": 20000
   },
   "keywords": [],
   "author": "",
