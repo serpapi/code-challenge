@@ -1,6 +1,6 @@
 # Code Challenge Submission for Nathan Bornstein
 
-The main technologies I'm using for this challenge are JavaScript, Puppeteer (a headless browser) and Jest-Puppeteer
+The main technologies I'm using for this challenge are JavaScript/Node, Puppeteer (a headless browser) and Jest-Puppeteer
 for the testing suite. I apologize for not using Ruby/Rails, but I've started to dive into its syntax and become
 more familiar with it. Its class syntax looks pretty similar to JavaScript's class syntax, so hopefully it shouldn't
 take too much time to become familiar with it.
