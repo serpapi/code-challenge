@@ -42,7 +42,7 @@ const vanGoghScrape = async (url) => {
     });
 
     await browser.close();
-}
+};
 
 
 //modern google searches seemed to have changed the selector names on their
@@ -70,7 +70,9 @@ const modernScrape = async (url) => {
     })
 
     await browser.close();
-}
+};
+
 //invoke the scraping goodness
-// vanGoghScrape(url1);
-modernScrape(url2);
+vanGoghScrape(url1);
+modernScrape(url2); //claude monet
+modernScrape(url3); //keith harris
