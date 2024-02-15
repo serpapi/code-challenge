@@ -55,7 +55,8 @@ const modernScrape = async (url) => {
 
     const scrapedData = await page.$$eval('#search .iELo6', //modern naming scheme
     (elements) => elements.map(e => ({
-        name: e.querySelector('.pgNMRc').innerText
+        name: e.querySelector('.pgNMRc').innerText,
+        extensions: [e.querySelector('.cxzHyb')?.innerText]
     })));
 
     console.log(scrapedData);
