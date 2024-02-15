@@ -1,0 +1,26 @@
+{
+  "name": "junior-full-stack-code-challenge",
+  "version": "1.0.0",
+  "description": "Nathan Bornstein's Submission",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index",
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "preset": "jest-puppeteer",
+    "testTimeout": 20000
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^22.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-puppeteer": "^10.0.1"
+  }
+}
