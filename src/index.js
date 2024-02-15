@@ -16,10 +16,12 @@ const vanGoghScrape = async () => {
     const page = await browser.newPage();
     await page.goto(url);
 
+
     const scrapedData = await page.$$eval('.klbar .klitem', 
     (elements) => elements.map(e => ({
         name: e.querySelector('.kltat').innerText,
-        extensions: [e.querySelector('.ellip.klmeta')?.innerText]
+        extensions: [e.querySelector('.ellip.klmeta')?.innerText],
+        link: e.href
     })))
 
     console.log(scrapedData);
