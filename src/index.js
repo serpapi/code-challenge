@@ -76,3 +76,8 @@ const modernScrape = async (url) => {
 vanGoghScrape(url1);
 modernScrape(url2); //claude monet
 modernScrape(url3); //keith harris
+
+module.exports = {
+    vanGoghScrape,
+    modernScrape
+};
