@@ -15,15 +15,16 @@ const vanGoghScrape = async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
-
-
+   
+    //this puppeteer method uses a combination of Array.from() & .querySelectorAll()
+    //to scrape through every selector passed in as the first argument(s)
     const scrapedData = await page.$$eval('.klbar .klitem', 
     (elements) => elements.map(e => ({
         name: e.querySelector('.kltat').innerText,
         extensions: [e.querySelector('.ellip.klmeta')?.innerText],
         link: e.href,
         image: e.querySelector('img').src
-    })))
+    })));
 
     console.log(scrapedData);
 
