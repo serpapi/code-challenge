@@ -4,7 +4,7 @@ const path = require('path');
 const url1 = 'file:' + path.resolve(__dirname, '../files/van-gogh-paintings.html');
 const url2 = 'https://rb.gy/os3b0t'; 
 
-
+//test for .html file page's title
 describe('Google', () => {
     beforeAll(async () => {
       await page.goto(url1);
@@ -15,7 +15,8 @@ describe('Google', () => {
     });
   });
 
-  describe('Google', () => {
+//test for live URL's title
+describe('Google', () => {
     beforeAll(async () => {
       await page.goto(url2);
     });
