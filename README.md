@@ -1,28 +1,20 @@
-# Extract Van Gogh Paintings Code Challenge
+# Code Challenge Submission for Nathan Bornstein
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+The main technologies I'm using for this challenge are JavaScript, Puppeteer (a headless browser) and Jest-Puppeteer
+for the testing suite. I apologize for not using Ruby/Rails, but I've started to dive into its syntax and become
+more familiar with it. Its class syntax looks pretty similar to JavaScript's class syntax, so hopefully it shouldn't
+take too much time to become familiar with it.
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+I've left detailed comments in the code, so hopefully every action is explained well. Please let me know if 
+any further clarification is needed! The necessary `.json` files are included in this repo as well.
 
-## Instructions
+To use this repo, first run:
+- `npm i` to install all dependencies
+- `npm start` to execute `index.js` in the `src` directory
+- To test, run the command `npm test`
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+I was having some issues with Jest and had to finagle the timeout on it to be longer than its default setting. It was giving 
+an `EventEmitter` warning of a possible memory leak. The tests still pass, but I wasn't able to figure out what was going 
+on with that within the alotted 4 hour timeframe.
 
-Fork this repository and make a PR when ready.
-
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
-
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
-
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
-
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
-
-The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+Thank you for the opportunity! This was a fun little challenge 🙂
