@@ -11,11 +11,18 @@ const url = 'file:' + path.resolve(__dirname, '../files/van-gogh-paintings.html'
 
 
 const vanGoghScrape = async () => {
+    //spins up a headless browser and navigates to specified url
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
 
+    const scrapedData = await page.$$eval('.klbar .klitem', 
+    (elements) => elements.map(e => ({
+        name: e.querySelector('.kltat').innerText
+    })))
 
+    console.log(scrapedData);
+    
     await browser.close();
 }
 
