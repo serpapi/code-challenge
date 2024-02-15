@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node main",
+    "start": "node src/index",
     "test": "jest --coverage"
   },
   "jest": {
