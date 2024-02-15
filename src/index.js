@@ -57,7 +57,8 @@ const modernScrape = async (url) => {
     (elements) => elements.map(e => ({
         name: e.querySelector('.pgNMRc').innerText,
         extensions: [e.querySelector('.cxzHyb')?.innerText],
-        link: e.querySelector('a').href
+        link: e.querySelector('a').href,
+        image: e.querySelector('img').src
     })));
 
     console.log(scrapedData);
