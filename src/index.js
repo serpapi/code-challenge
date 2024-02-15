@@ -21,7 +21,8 @@ const vanGoghScrape = async () => {
     (elements) => elements.map(e => ({
         name: e.querySelector('.kltat').innerText,
         extensions: [e.querySelector('.ellip.klmeta')?.innerText],
-        link: e.href
+        link: e.href,
+        image: e.querySelector('img').src
     })))
 
     console.log(scrapedData);
