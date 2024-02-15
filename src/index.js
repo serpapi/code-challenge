@@ -53,6 +53,7 @@ const modernScrape = async (url) => {
     const page = await browser.newPage();
     await page.goto(url);
 
+
     const scrapedData = await page.$$eval('#search .iELo6', //modern naming scheme
     (elements) => elements.map(e => ({
         name: e.querySelector('.pgNMRc').innerText,
@@ -61,7 +62,12 @@ const modernScrape = async (url) => {
         image: e.querySelector('img').src
     })));
 
-    console.log(scrapedData);
+
+    fs.writeFile('modernData.json', 
+    JSON.stringify(scrapedData, null, scrapedData.length), (err) => {
+        if (err) throw new Error('There was an error writing the scraped data');
+        console.log('Scraped data successfully written!');
+    })
 
     await browser.close();
 }
