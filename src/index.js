@@ -55,8 +55,13 @@ const modernScrape = async (url) => {
 
     const scrapedData = await page.$$eval('#search .iELo6', //modern naming scheme
     (elements) => elements.map(e => ({
-        
+        name: e.querySelector('.pgNMRc').innerText
     })));
+
+    console.log(scrapedData);
+
+    await browser.close();
 }
 //invoke the scraping goodness
-vanGoghScrape(url1);
+// vanGoghScrape(url1);
+modernScrape(url2);
