@@ -7,4 +7,9 @@ class ScraperTool
   end
 
   attr_reader :url
+
+  def scrape_carousel
+    result_hash = {}
+    result_hash.to_json
+  end
 end
