@@ -17,7 +17,7 @@ class ScraperTool
     result_key = keyword(first_carousel)
 
     result_hash = {}
-    result_hash[result_key] = []
+    result_hash[result_key] = cards_data(first_carousel)
     result_hash.to_json
   end
 
@@ -35,5 +35,13 @@ class ScraperTool
     current_node = carousel
     current_node = current_node.parent until current_node.at('[role="heading"]')
     current_node
+  end
+
+  def cards_data(carousel)
+    cards = carousel.xpath('.//a')
+
+    cards.map do |_card|
+      {}
+    end
   end
 end
