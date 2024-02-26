@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'nokogiri'
+require 'ferrum'
 require 'open-uri'
 
 # Class that scrapes carousel that returns json
@@ -14,8 +15,7 @@ class ScraperTool
   BASE_URL = 'https://www.google.com'
 
   def scrape_carousel
-    doc = Nokogiri::HTML(File.open(url))
-    first_carousel = doc.at('g-scrolling-carousel')
+    first_carousel = get_carousel
     result_key = keyword(first_carousel)
 
     result_hash = {}
@@ -24,6 +24,15 @@ class ScraperTool
   end
 
   private
+
+  def get_carousel
+    # Ferrum runs JavaScript to get transformed image data
+    browser = Ferrum::Browser.new
+    browser.go_to("file://#{url}")
+    html = browser.body
+    doc = Nokogiri::HTML5(html)
+    doc.at('g-scrolling-carousel')
+  end
 
   def keyword(carousel)
     carousel_ancestor = find_carousel_ancestor(carousel)
@@ -40,7 +49,7 @@ class ScraperTool
   end
 
   def cards_data(carousel)
-    cards = carousel.xpath('.//a')
+    cards = carousel.xpath('.//a[@href]')
 
     cards.map do |card|
       card_data(card)
@@ -55,7 +64,7 @@ class ScraperTool
     result['name'] = text_values.first
     result['extensions'] = extensions if extensions.any?
     result['link'] = BASE_URL + card['href']
-    result['image'] = ''
+    result['image'] = image(card)
 
     result
   end
@@ -67,5 +76,10 @@ class ScraperTool
     # handles case where word is split between elements
     name += values.shift while name.end_with?(' ')
     [name, values]
+  end
+
+  def image(card)
+    image_el = card.at('img')
+    image_el['src']
   end
 end

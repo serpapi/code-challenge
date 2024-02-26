@@ -63,6 +63,20 @@ describe ScraperTool do
     expect(link).to eq(@expected_result[keyword].first['link'])
   end
 
+  it 'has the expected result image value' do
+    keyword = @result_hash.keys.first
+    image = @result_hash[keyword].first['image']
+
+    expect(image).to eq(@expected_result[keyword].first['image'])
+  end
+
+  it 'has the expected nil result image value' do
+    keyword = @result_hash.keys.first
+    image = @result_hash[keyword].last['image']
+
+    expect(image).to be_nil
+  end
+
   # it 'returns json' do
   #   root_dir = File.expand_path('.')
   #   url = "#{root_dir}/files/van-gogh-paintings.html"
