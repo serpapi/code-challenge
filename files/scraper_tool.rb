@@ -40,13 +40,30 @@ class ScraperTool
   def cards_data(carousel)
     cards = carousel.xpath('.//a')
 
-    cards.map do |_card|
-      {
-        name: '',
-        extensions: '',
-        link: '',
-        image: ''
-      }
+    cards.map do |card|
+      card_data(card)
     end
+  end
+
+  def card_data(card)
+    text_values = name_and_extensions(card)
+    extensions = text_values.last
+
+    result = {}
+    result['name'] = text_values.first
+    result['extensions'] = extensions if extensions.any?
+    result['link'] = ''
+    result['image'] = ''
+
+    result
+  end
+
+  def name_and_extensions(card)
+    values = card.xpath('.//text()').map(&:text)
+
+    name = values.shift
+    # handles case where word is split between elements
+    name += values.shift while name.end_with?(' ')
+    [name, values]
   end
 end

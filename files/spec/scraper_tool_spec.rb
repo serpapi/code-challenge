@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 require 'rspec'
 require 'json'
 require_relative '../scraper_tool'
@@ -33,6 +34,28 @@ describe ScraperTool do
     expect(first_result_keys).to eq(@expected_result[keyword].first.keys)
   end
 
+  it 'has the expected result name value' do
+    keyword = @result_hash.keys.first
+    name = @result_hash[keyword].first['name']
+
+    expect(name).to eq(@expected_result[keyword].first['name'])
+  end
+
+  it 'has the expected result extension values' do
+    keyword = @result_hash.keys.first
+    extensions = @result_hash[keyword].first['extensions']
+
+    expect(extensions).to eq(@expected_result[keyword].first['extensions'])
+  end
+
+  it 'has the expected empty result extension values' do
+    keyword = @result_hash.keys.first
+
+    result_without_extensions = @result_hash[keyword].find { |hash| hash['extensions'].nil? }
+
+    expect(result_without_extensions).to_not be(nil)
+  end
+
   # it 'returns json' do
   #   root_dir = File.expand_path('.')
   #   url = "#{root_dir}/files/van-gogh-paintings.html"
@@ -45,3 +68,5 @@ describe ScraperTool do
   # it 'returns empty json if file is not found' do
   # end
 end
+
+# rubocop:enable Metrics/BlockLength
