@@ -26,3 +26,10 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+## How to run 🏃‍♀️🏃🏃‍♂️
+```
+bundle install
+ruby run_scrape.rb
+```
+
