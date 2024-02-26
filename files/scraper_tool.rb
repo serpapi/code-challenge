@@ -41,7 +41,12 @@ class ScraperTool
     cards = carousel.xpath('.//a')
 
     cards.map do |_card|
-      {}
+      {
+        name: '',
+        extensions: '',
+        link: '',
+        image: ''
+      }
     end
   end
 end

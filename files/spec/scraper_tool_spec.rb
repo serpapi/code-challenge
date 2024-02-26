@@ -12,20 +12,25 @@ describe ScraperTool do
     @expected_result = JSON.parse(file)
 
     painting_url = "#{root_dir}/files/van-gogh-paintings.html"
-    @tool = ScraperTool.new(painting_url)
+    tool = ScraperTool.new(painting_url)
+    @result_hash = JSON.parse(tool.scrape_carousel)
   end
 
   it 'has a keyword' do
-    result_hash = JSON.parse(@tool.scrape_carousel)
-
-    expect(result_hash.keys).to eq(@expected_result.keys)
+    expect(@result_hash.keys).to eq(@expected_result.keys)
   end
 
   it 'has the expected number of results' do
-    result_hash = JSON.parse(@tool.scrape_carousel)
-    keyword = result_hash.keys.first
+    keyword = @result_hash.keys.first
 
-    expect(result_hash[keyword].length).to eq(@expected_result[keyword].length)
+    expect(@result_hash[keyword].length).to eq(@expected_result[keyword].length)
+  end
+
+  it 'has the expected keys' do
+    keyword = @result_hash.keys.first
+    first_result_keys = @result_hash[keyword].first.keys
+
+    expect(first_result_keys).to eq(@expected_result[keyword].first.keys)
   end
 
   # it 'returns json' do
