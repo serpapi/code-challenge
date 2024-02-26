@@ -15,40 +15,41 @@ class ScraperTool
   BASE_URL = 'https://www.google.com'
 
   def scrape_carousel
-    first_carousel = get_carousel
-    result_key = keyword(first_carousel)
+    result_key = keyword
 
     result_hash = {}
-    result_hash[result_key] = cards_data(first_carousel)
-    result_hash.to_json
+    result_hash[result_key] = cards_data
+    JSON.pretty_generate(result_hash)
   end
 
   private
 
-  def get_carousel
+  def carousel
     # Ferrum runs JavaScript to get transformed image data
-    browser = Ferrum::Browser.new
-    browser.go_to("file://#{url}")
-    html = browser.body
-    doc = Nokogiri::HTML5(html)
-    doc.at('g-scrolling-carousel')
+    @carousel ||= begin
+      browser = Ferrum::Browser.new
+      browser.go_to("file://#{url}")
+      html = browser.body
+      doc = Nokogiri::HTML5(html)
+      doc.at('g-scrolling-carousel')
+    end
   end
 
-  def keyword(carousel)
-    carousel_ancestor = find_carousel_ancestor(carousel)
+  def keyword
+    carousel_ancestor = find_carousel_ancestor
     carousel_heading = carousel_ancestor.at('[role="heading"]')
     texts = carousel_heading.xpath('.//text()')
-    texts = texts.reject{|text| text.text == " " }
+    texts = texts.reject { |text| text.text == ' ' }
     texts.last.text.downcase
   end
 
-  def find_carousel_ancestor(carousel)
+  def find_carousel_ancestor
     current_node = carousel.parent
     current_node = current_node.parent until current_node.at('[role="heading"][aria-level="2"]')
     current_node
   end
 
-  def cards_data(carousel)
+  def cards_data
     cards = carousel.xpath('.//a[@href]')
 
     cards.map do |card|
