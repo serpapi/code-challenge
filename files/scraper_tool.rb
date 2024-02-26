@@ -38,13 +38,13 @@ class ScraperTool
     carousel_ancestor = find_carousel_ancestor(carousel)
     carousel_heading = carousel_ancestor.at('[role="heading"]')
     texts = carousel_heading.xpath('.//text()')
-
+    texts = texts.reject{|text| text.text == " " }
     texts.last.text.downcase
   end
 
   def find_carousel_ancestor(carousel)
-    current_node = carousel
-    current_node = current_node.parent until current_node.at('[role="heading"]')
+    current_node = carousel.parent
+    current_node = current_node.parent until current_node.at('[role="heading"][aria-level="2"]')
     current_node
   end
 
@@ -75,7 +75,7 @@ class ScraperTool
     name = values.shift
     # handles case where word is split between elements
     name += values.shift while name.end_with?(' ')
-    [name, values]
+    [name.strip, values.map(&:strip)]
   end
 
   def image(card)
