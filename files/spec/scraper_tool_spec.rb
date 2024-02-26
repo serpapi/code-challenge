@@ -56,6 +56,13 @@ describe ScraperTool do
     expect(result_without_extensions).to_not be(nil)
   end
 
+  it 'has the expected result link value' do
+    keyword = @result_hash.keys.first
+    link = @result_hash[keyword].first['link']
+
+    expect(link).to eq(@expected_result[keyword].first['link'])
+  end
+
   # it 'returns json' do
   #   root_dir = File.expand_path('.')
   #   url = "#{root_dir}/files/van-gogh-paintings.html"

@@ -11,6 +11,8 @@ class ScraperTool
 
   attr_reader :url
 
+  BASE_URL = 'https://www.google.com'
+
   def scrape_carousel
     doc = Nokogiri::HTML(File.open(url))
     first_carousel = doc.at('g-scrolling-carousel')
@@ -52,7 +54,7 @@ class ScraperTool
     result = {}
     result['name'] = text_values.first
     result['extensions'] = extensions if extensions.any?
-    result['link'] = ''
+    result['link'] = BASE_URL + card['href']
     result['image'] = ''
 
     result
