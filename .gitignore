@@ -51,3 +51,4 @@ build-iPhoneSimulator/
 .DS_Store
 
 /result_files/
+/spec/temp/

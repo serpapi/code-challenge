@@ -50,12 +50,14 @@ class GoogleArtworkScraper
     json_results = JSON.pretty_generate(@results)
 
     filename = @filepath.split("/").last.gsub(".html","")
+    
+    directory = defined?(RSpec) ? "spec/temp" : "result_files"
 
-    unless File.directory?("result_files")
-      Dir.mkdir("result_files")
+    unless File.directory?(directory)
+      Dir.mkdir(directory)
     end
 
-    File.open("result_files/#{filename}.json", "w") do |file|
+    File.open("#{directory}/#{filename}.json", "w") do |file|
       file.write(json_results)
     end
   end
