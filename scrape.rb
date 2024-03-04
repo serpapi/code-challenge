@@ -1,5 +1,5 @@
 Bundler.require
-require_relative 'lib/scraper.rb'
+require_relative 'lib/google_artworks_scraper.rb'
 
-vangogh = Scraper.new("files/van-gogh-paintings.html")
+vangogh = GoogleArtworkScraper.new("files/van-gogh-paintings.html")
 vangogh.scrape
