@@ -21,6 +21,9 @@ build/
 build-iPhoneOS/
 build-iPhoneSimulator/
 
+# Specific to Node.js:
+node_modules/
+
 ## Specific to RubyMotion (use of CocoaPods):
 #
 # We recommend against adding the Pods directory to your .gitignore. However
