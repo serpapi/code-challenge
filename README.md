@@ -22,7 +22,7 @@ What you need to run this:
 - Once it's been installed, just navigate to the root of this repository and do
 
 ```bash
-> npm install
+npm install
 ```
 
 - Once the packages in `package.json` have been installed successfully, just do
@@ -42,7 +42,7 @@ You can find the tests implemented using `Jest` under the `tests/` directory. Th
 readable. You can run the tests by doing in the root directory of this repository
 
 ```bash
-> npm run test
+npm run test
 ```
 
 ## Next Steps
