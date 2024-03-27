@@ -45,6 +45,6 @@ end
 html_file = './files/van-gogh-paintings.html'
 images_data = scrape_images_from_html(html_file)
 
-File.open("test.json", "w") do |f|
+File.open("out-array.json", "w") do |f|
   f.write(JSON.pretty_generate(images_data))
 end
