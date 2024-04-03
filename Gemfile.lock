@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     csv (3.3.0)
+    diff-lcs (1.5.1)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -20,6 +21,19 @@ GEM
     nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     racc (1.7.3)
+    rspec (3.13.0)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.0)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.1)
 
 PLATFORMS
   aarch64-linux
@@ -33,6 +47,7 @@ DEPENDENCIES
   csv
   httparty
   nokogiri
+  rspec
 
 BUNDLED WITH
    2.5.4
