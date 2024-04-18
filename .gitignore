@@ -1,3 +1,6 @@
+# Node packages
+node_modules
+
 *.gem
 *.rbc
 /.config
@@ -11,7 +14,7 @@
 /tmp/
 
 # Used by dotenv library to load environment variables.
-# .env
+.env
 
 ## Specific to RubyMotion:
 .dat*
