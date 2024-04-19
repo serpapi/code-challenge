@@ -1,0 +1,27 @@
+{
+  "name": "serpapi-code-challenge",
+  "version": "1.0.0",
+  "description": "Goal is to extract a list of Van Gogh paintings from the attached Google search results page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "start": "nodemon --env-file=.env src/app.js",
+    "write": "node --env-file=.env src/writeFile.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "jsdom": "^24.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "supertest": "^6.3.4"
+  },
+  "jest": {
+    "transform": {}
+  },
+  "type": "module"
+}
