@@ -16,6 +16,13 @@ export function createNodeList(text) {
   // Emulate a browser DOM since Node.js is not a browser environment.
   const dom = new JSDOM(text);
 
+  // Comment out the line below to run scripts embedded in the HTML files.
+  // Note: This will cause the command line to stall due to an error noted in the src/README.
+  // const dom = new JSDOM(text, {
+  // resources: "usable",
+  // runScripts: "dangerously",
+  // });
+
   // Find the carousel element that the artworks are in.
   const carouselContainer = dom.window.document.querySelector(
     "g-scrolling-carousel"
