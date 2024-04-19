@@ -20,11 +20,12 @@ npm run write // Writes the Van Gogh Paintings into a JSON file in the src folde
 ## File Structure
 
 These are new folders/files and a summary of what each one was intended for.
-`src/tests/`: Contains test suite files. `tests/common.spec.js` contains the tests that run for each webpage.
-`src/app.js`: Sets up the server for hosting static HTML files.
-`src/array.json`: Contains the JSON output after scraping the Van Gogh Paintings file.
-`src/script.js`: Exports the main functions for scraping the webpages.
-`src writeFile.js`: Imports the scraping functions to create the `array.json` file.
+
+- `src/tests/`: Contains test suite files. `tests/common.spec.js` contains the tests that run for each webpage.
+- `src/app.js`: Sets up the server for hosting static HTML files.
+- `src/array.json`: Contains the JSON output after scraping the Van Gogh Paintings file.
+- `src/script.js`: Exports the main functions for scraping the webpages.
+- `src writeFile.js`: Imports the scraping functions to create the `array.json` file.
 
 ## Dependencies
 
