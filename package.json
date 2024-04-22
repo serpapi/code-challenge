@@ -1,0 +1,26 @@
+{
+  "name": "code-challenge",
+  "version": "1.0.0",
+  "description": "Goal is to extract a list of Van Gogh paintings from the attached Google search results page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kstefanelli/code-challenge.git"
+  },
+  "author": "kstefanelli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kstefanelli/code-challenge/issues"
+  },
+  "homepage": "https://github.com/kstefanelli/code-challenge#readme",
+  "dependencies": {
+    "playwright": "^1.43.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
