@@ -5,6 +5,7 @@
 1. Initialized Ruby skeleton for the project with boilerplate RSpec and empty parsing class. Used `bundle` for gem install. 
 2. Wrote RSpec tests. Passing on minimized example of given expected array.
 3. Formatted the target HTML and found the carousel divs and desired properties. Wrote the parser with regex extraction rules based off of the class names and HTML element structure of the carousel. Updated the tests to reflect the "extensions" object sometimes not existing and to reflect multiple base64 image types. The result is passing the tests.
+4. Compared returned and expected JSON to find that the base64 image in the HTML directly is a stub, and the expected base64 image is in a script which is injected into the div. Found that the `id` for the image div uniquely identifies it, and ties it to the expected base64 image. Updated the parser to pull in the base64 images from the script, and insert them into their respective hash. 
 
 ---
 
