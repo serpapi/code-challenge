@@ -5,10 +5,11 @@ class CarouselParser
     def initialize(src)
         path = File.expand_path("../files/#{src}", File.dirname(__FILE__))
         @text = File.read(path)
-        @parsed = []
     end
 
     def parse
+        @parsed = []
+
         # get all carousel card blobs
         carousel = @text[/<div class="klbar">.*?<g-scrolling-carousel.*?>(.*?)<\/g-scrolling-carousel>/m]
         cards = carousel.scan(/<div.*?class="MiPcId klitem-tr.*?<\/a><\/div>/m)
