@@ -13,7 +13,7 @@
 7. [`036880b`](https://github.com/melgrove/serpapi-code-challenge/commit/7902f0a479d800200c4232f98fbccc07c3d975dc) Code quality nit
 
 ## Running the tests
-`rspec src/spec/test.rb`
+`rspec src/spec/test.rb` runs the three test sets: object shape, object contents, and exact content matching between the output and the provided JSON. I didn't end up having time to download other carousel serps, but the tests on the provided HTML are fairly robust.
 
 ---
 
