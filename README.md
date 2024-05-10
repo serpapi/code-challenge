@@ -10,6 +10,7 @@
     a. Links in the provided HTML are sanitized, so ampersands are represented as `&amp;` instead of `&`. Updated the parser to remove `amp;`, which made the exact matching tests pass    
     b. Base64 encoded images in the provided HTML have a few backslashes at the very end, while in the expected JSON they do not. It's unclear to me why this is, but backslashes are not included characters in the base64 encoding spec so I can safely remove them without changing the image data. After removing the backslashes the exact matching tests pass
 6. [`b90ff4f`](https://github.com/melgrove/serpapi-code-challenge/commit/b90ff4f5a46b582d01cff2dc4206aeebb4526b56) Relative path fix
+7. [`036880b`](https://github.com/melgrove/serpapi-code-challenge/commit/7902f0a479d800200c4232f98fbccc07c3d975dc) Code quality nit
 
 ## Running the tests
 `rspec src/spec/test.rb`
