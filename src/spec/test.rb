@@ -3,7 +3,7 @@ require "../main.rb"
 
 describe CarouselParser do
     before(:all) do
-        parser = CarouselParser.new("../../files/van-gogh-paintings.html")
+        parser = CarouselParser.new("van-gogh-paintings.html")
         parser.parse
         @parsed = parser.parsed
     end
@@ -22,12 +22,12 @@ describe CarouselParser do
             expect(@parsed).to all ( include("name" => be_a(String)) )
         end
 
-        it "'extensions' => Array should exist on every hash" do
-            expect(@parsed).to all ( include("extensions" => be_an(Array)) )
+        it "If 'extensions' exists on a hash it should be an Array" do
+            expect(@parsed).to all satisfy { |hsh| ! hsh.key?("extensions") || hsh["extensions"].class == Array }
         end
 
-        it "'extensions' => Array should only have String elements on every hash" do
-            expect(@parsed).to all satisfy { |hsh| hsh["extensions"].all? { |el| el.class == String } }
+        it "If 'extensions' exists on a hash it should only have String elements" do
+            expect(@parsed).to all satisfy { |hsh| ! hsh.key?("extensions") || hsh["extensions"].all? { |el| el.class == String } }
         end
 
         it "'link' => String should exist on every hash" do
@@ -44,8 +44,8 @@ describe CarouselParser do
             expect(@parsed).to all satisfy { |hsh| /^https:\/\/www.google.com\/search/.match?(hsh["link"]) }
         end
 
-        it "'image' should be base64 encoded jpeg or nil on every hash" do
-            expect(@parsed).to all satisfy { |hsh| hsh["image"].nil? | /^data:image\/jpeg;base64/.match?(hsh["image"]) }
+        it "'image' should be base64 encoded or nil on every hash" do
+            expect(@parsed).to all satisfy { |hsh| hsh["image"].nil? | /^data:image\/.*?;base64/.match?(hsh["image"]) }
         end
     end
 end

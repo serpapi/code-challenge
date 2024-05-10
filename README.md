@@ -4,6 +4,7 @@
 
 1. Initialized Ruby skeleton for the project with boilerplate RSpec and empty parsing class. Used `bundle` for gem install. 
 2. Wrote RSpec tests. Passing on minimized example of given expected array.
+3. Formatted the target HTML and found the carousel divs and desired properties. Wrote the parser with regex extraction rules based off of the class names and HTML element structure of the carousel. Updated the tests to reflect the "extensions" object sometimes not existing and to reflect multiple base64 image types. The result is passing the tests.
 
 ---
 
