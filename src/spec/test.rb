@@ -1,5 +1,5 @@
 require "rspec"
-require "../main.rb"
+require_relative "../main.rb"
 
 describe CarouselParser do
     before(:all) do
