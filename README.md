@@ -3,6 +3,7 @@
 ## Notes  
 
 1. Initialized Ruby skeleton for the project with boilerplate RSpec and empty parsing class. Used `bundle` for gem install. 
+2. Wrote RSpec tests. Passing on minimized example of given expected array.
 
 ---
 
