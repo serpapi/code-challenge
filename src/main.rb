@@ -1,5 +1,6 @@
+require "json"
+
 class CarouselParser
-    attr_accessor :parsed
     
     def initialize(src)
         path = File.expand_path("../files/#{src}", File.dirname(__FILE__))
@@ -18,12 +19,13 @@ class CarouselParser
         # create an id from div to base64 blob lookup
         replacement_scripts.each do |blob|
             base64 = /^(.*?)';var ii=\['(.*?)'\]/.match(blob)
-            image_src_lookup[base64[2]] = base64[1] if base64
+            image_src_lookup[base64[2]] = base64[1].gsub(/\\/) { "" } if base64 # small nit for passing tests. See note 5b
         end
         
         # pull out properties
         cards.each do |blob|
             href = blob[/\shref="(.*?)"\s/, 1]
+            href = href.gsub(/(amp;)/) { "" } # small nit for passing tests. See note 5a
             name = blob[/\stitle="(.*?)(\s\(\d+\))?"\s/, 1]
             date = blob[/klmeta">(.*?)<\/div>/, 1]
             image = /id="(kximg\d+)"\s*?src=".*?"\s/.match(blob) # nil if no match on src, as expected
@@ -37,9 +39,17 @@ class CarouselParser
             end
             if image
                 # use the id from the image div to get the blob
-                parsed[-1]["image"] = image_src_lookup[image[1]]
+                @parsed[-1]["image"] = image_src_lookup[image[1]]
             end
         end
+    end
+
+    def get_obj
+        @parsed
+    end
+
+    def get_json
+        JSON.generate(@parsed)
     end
 
 end

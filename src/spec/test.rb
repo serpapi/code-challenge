@@ -3,9 +3,15 @@ require "../main.rb"
 
 describe CarouselParser do
     before(:all) do
+        # Run the parser
         parser = CarouselParser.new("van-gogh-paintings.html")
         parser.parse
-        @parsed = parser.parsed
+        @parsed = parser.get_obj
+
+        # Store both the expected JSON and output JSON
+        expected_json_path = File.expand_path("../../files/expected-array.json", File.dirname(__FILE__))
+        @expected_json = JSON.parse(File.read(expected_json_path)[12..])
+        @output_json = JSON.parse(parser.get_json) # this should be identical to @parsed if we trust the JSON module
     end
 
     # Tests
@@ -48,4 +54,37 @@ describe CarouselParser do
             expect(@parsed).to all satisfy { |hsh| hsh["image"].nil? | /^data:image\/.*?;base64/.match?(hsh["image"]) }
         end
     end
+
+    describe "Direct expected JSON comparison" do
+        it "'name' of every hash is identical between expected and output" do
+            expect(@output_json).to all satisfy { |hsh|
+                @expected_json.find { |e_hsh| e_hsh["name"] == hsh["name"] }
+            }
+        end
+
+        it "'extensions' of every hash is identical between expected and output" do
+            expect(@output_json).to all satisfy { |hsh|
+                expected_hash = @expected_json.find { |e_hsh| e_hsh["name"] == hsh["name"] }
+                return false unless expected_hash
+                hsh["extensions"] == expected_hash["extensions"] 
+            }
+        end
+
+        it "'link' of every hash is identical between expected and output" do
+            expect(@output_json).to all satisfy { |hsh|
+                expected_hash = @expected_json.find { |e_hsh| e_hsh["name"] == hsh["name"] }
+                return false unless expected_hash
+                hsh["link"] == expected_hash["link"]
+            }
+        end
+
+        it "'image' of every hash is identical between expected and output" do
+            expect(@output_json).to all satisfy { |hsh|
+                expected_hash = @expected_json.find { |e_hsh| e_hsh["name"] == hsh["name"] }
+                return false unless expected_hash
+                hsh["image"] == expected_hash["image"] 
+            }
+        end
+    end
+
 end
