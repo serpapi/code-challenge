@@ -11,4 +11,5 @@ end
 
 group :test do
   gem 'rspec', '~> 3.13'
+  gem 'hashdiff', '~> 1.1'
 end
