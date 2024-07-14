@@ -1,0 +1,9 @@
+AllCops:
+  TargetRubyVersion: 3.0
+  Exclude:
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+
+Layout/LineLength:
+  Max: 120
