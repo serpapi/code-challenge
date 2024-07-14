@@ -1,4 +1,7 @@
+require 'rspec'
 require 'shoulda/matchers'
+
+Dir[File.join(__dir__, '../lib/**/*.rb')].each { |file| require file }
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -34,4 +37,10 @@ RSpec.configure do |config|
 
   config.include Shoulda::Matchers::ActiveModel, type: :model
   config.include Shoulda::Matchers::ActiveRecord, type: :model
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+  end
 end
