@@ -1,0 +1,20 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 'latest'
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rspec
+    - name: Run RuboCop
+      run: bundle exec rubocop
