@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 gem 'nokogiri', '~> 1.16'
 gem 'selenium-webdriver', '~> 4.22'
+gem 'nokolexbor', '~> 0.5'
 
 group :development, :test do
   gem 'rubocop', '~> 1.65', require: false

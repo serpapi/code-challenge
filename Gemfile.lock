@@ -10,6 +10,7 @@ GEM
     logger (1.6.0)
     nokogiri (1.16.6-arm64-darwin)
       racc (~> 1.4)
+    nokolexbor (0.5.4-arm64-darwin)
     parallel (1.25.1)
     parser (3.3.4.0)
       ast (~> 2.4.1)
@@ -64,6 +65,7 @@ PLATFORMS
 DEPENDENCIES
   hashdiff (~> 1.1)
   nokogiri (~> 1.16)
+  nokolexbor (~> 0.5)
   rspec (~> 3.13)
   rubocop (~> 1.65)
   selenium-webdriver (~> 4.22)
