@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require 'nokolexbor'
 
 # TODO:
 # - separate the Selenium logic from the parsing logic
@@ -12,14 +13,14 @@ class PaintingsExtractor
     paintings = []
 
     with_html_loaded do
-      @driver.find_elements(css: ITEM_SELECTOR).each do |painting|
+      html_doc.css(ITEM_SELECTOR).each do |painting|
         paintings << {}.tap do |h|
           puts "Parsing #{painting.attribute('aria-label')}"
 
-          h['name'] = painting.attribute('aria-label')
+          h['name'] = painting.attribute('aria-label').to_s
           h['extensions'] = extract_extensions(painting)
           h['link'] = extract_google_href(painting)
-          h['image'] = parse_image_url(painting)
+          h['image'] = extract_image_data(painting)&.to_s
         end
       end
     end
@@ -33,27 +34,38 @@ class PaintingsExtractor
   SELENIUM_SECONDS_TIMOUT = 2
   private_constant :ITEM_SELECTOR, :SELENIUM_SECONDS_TIMOUT
 
-  def parse_image_url(painting)
-    image_element = painting.find_element(css: 'img')
-    image_url = image_element.attribute('src')
+  def html_doc
+    @html_doc ||= Nokolexbor::HTML(@driver.page_source)
+  end
 
-    return image_url unless image_url&.start_with?('data:image/gif')
+  def extract_image_data(painting)
+    image_element = painting.css('img')
+    image_id = image_element.attr('id')&.value
 
-    image_element.attribute('data-src') || image_element.attribute('data-original') || image_url
+    image_data_map[image_id] || image_element.attr('src')&.text
   end
 
   def extract_google_href(painting)
     slug = painting.attribute('href')
-    return nil if slug.nil? || slug.strip.empty?
+    return nil if slug.nil?
 
-    slug = slug.sub(%r{^file://[^/]*}, '')
     "https://www.google.com#{slug}"
   end
 
   def extract_extensions(painting)
-    [painting.find_element(css: 'div.klmeta').text]
-  rescue Selenium::WebDriver::Error::NoSuchElementError
-    []
+    [painting.css('div.klmeta').text.strip]
+  end
+
+  def image_data_map
+    @image_data_map ||= begin
+      scripts = html_doc.css('script')
+
+      scripts.each_with_object({}) do |script, map|
+        script.text.scan(/var\s*s\s*=\s*'([^']*)'.*?var\s*ii\s*=\s*\['([^']*)'\]/m) do |s, ii|
+          map[ii] = s.gsub('\\', '')
+        end
+      end
+    end
   end
 
   def with_html_loaded
