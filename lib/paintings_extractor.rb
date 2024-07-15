@@ -14,11 +14,11 @@ class PaintingsExtractor
 
     with_html_loaded do
       html_doc.css(ITEM_SELECTOR).each do |painting|
-        paintings << {}.tap do |h|
-          puts "Parsing #{painting.attribute('aria-label')}"
+        extensions = extract_extensions(painting)
 
+        paintings << {}.tap do |h|
           h['name'] = painting.attribute('aria-label').to_s
-          h['extensions'] = extract_extensions(painting)
+          h['extensions'] = [extensions] unless extensions.nil? || extensions.empty?
           h['link'] = extract_google_href(painting)
           h['image'] = extract_image_data(painting)&.to_s
         end
@@ -42,7 +42,7 @@ class PaintingsExtractor
     image_element = painting.css('img')
     image_id = image_element.attr('id')&.value
 
-    image_data_map[image_id] || image_element.attr('src')&.text
+    image_data_map[image_id]
   end
 
   def extract_google_href(painting)
@@ -53,7 +53,7 @@ class PaintingsExtractor
   end
 
   def extract_extensions(painting)
-    [painting.css('div.klmeta').text.strip]
+    painting.css('div.klmeta').text.strip
   end
 
   def image_data_map

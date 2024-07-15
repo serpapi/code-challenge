@@ -7,7 +7,7 @@ RSpec.describe PaintingsExtractor do
 
     context 'when parsing a file with a single painting' do
       let(:html_file_path) { 'spec/fixtures/van-gogh-painting.html' }
-      let(:expected_output) { JSON.parse(File.read('spec/fixtures/single-paintaing-expected-array.json'))['artworks'] }
+      let(:expected_output) { JSON.parse(File.read('spec/fixtures/single-painting-expected-array.json'))['artworks'] }
 
       it 'extracts paintings correctly' do
         expect(subject.first['name']).to eq expected_output.first['name']
