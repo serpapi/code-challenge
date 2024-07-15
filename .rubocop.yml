@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 3.0
+  NewCops: enable
   Exclude:
     - 'db/schema.rb'
     - 'node_modules/**/*'
@@ -7,3 +8,9 @@ AllCops:
 
 Layout/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Max: 15
+
+Style/Documentation:
+  Enabled: false

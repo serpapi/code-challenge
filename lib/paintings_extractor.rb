@@ -13,6 +13,15 @@ class PaintingsExtractor
   end
 
   def extract_paintings
+    paintings = collect_paintings
+
+    { 'artworks' => paintings }
+  end
+
+  private
+
+  # rubocop:disable Metrics/AbcSize
+  def collect_paintings
     paintings = []
 
     @web_page_loader.with_html_loaded do
@@ -28,10 +37,9 @@ class PaintingsExtractor
       end
     end
 
-    { 'artworks' => paintings }
+    paintings
   end
-
-  private
+  # rubocop:enable Metrics/AbcSize
 
   def html_doc
     @html_doc ||= Nokolexbor::HTML(@web_page_loader.html)
