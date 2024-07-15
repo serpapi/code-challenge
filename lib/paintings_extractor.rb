@@ -1,18 +1,21 @@
-require 'selenium-webdriver'
-require 'nokolexbor'
+# frozen_string_literal: true
 
-# TODO:
-# - separate the Selenium logic from the parsing logic
+require 'nokolexbor'
+require_relative 'web_page_loader'
+
 class PaintingsExtractor
+  ITEM_SELECTOR = 'a.klitem'
+  private_constant :ITEM_SELECTOR
+
   def initialize(file_path)
     @file_path = file_path
-    @driver = Selenium::WebDriver.for(:chrome, options: selenium_options)
+    @web_page_loader = WebPageLoader.new(file_path, ITEM_SELECTOR)
   end
 
   def extract_paintings
     paintings = []
 
-    with_html_loaded do
+    @web_page_loader.with_html_loaded do
       html_doc.css(ITEM_SELECTOR).each do |painting|
         extensions = extract_extensions(painting)
 
@@ -30,12 +33,8 @@ class PaintingsExtractor
 
   private
 
-  ITEM_SELECTOR = 'a.klitem'.freeze
-  SELENIUM_SECONDS_TIMOUT = 2
-  private_constant :ITEM_SELECTOR, :SELENIUM_SECONDS_TIMOUT
-
   def html_doc
-    @html_doc ||= Nokolexbor::HTML(@driver.page_source)
+    @html_doc ||= Nokolexbor::HTML(@web_page_loader.html)
   end
 
   def extract_image_data(painting)
@@ -66,24 +65,5 @@ class PaintingsExtractor
         end
       end
     end
-  end
-
-  def with_html_loaded
-    @driver.get("file://#{File.expand_path(@file_path)}")
-    wait = Selenium::WebDriver::Wait.new(timeout: SELENIUM_SECONDS_TIMOUT)
-    wait.until { @driver.find_elements(css: ITEM_SELECTOR).any? }
-
-    yield
-
-    @driver.quit
-  end
-
-  def selenium_options
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options
   end
 end
