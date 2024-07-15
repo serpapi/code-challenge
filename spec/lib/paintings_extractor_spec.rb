@@ -7,19 +7,19 @@ RSpec.describe PaintingsExtractor do
 
     context 'when parsing a file with a single painting' do
       let(:html_file_path) { 'spec/fixtures/van-gogh-painting.html' }
-      let(:expected_output) { JSON.parse(File.read('spec/fixtures/single-painting-expected-array.json'))['artworks'] }
+      let(:expected_output) { JSON.parse(File.read('spec/fixtures/single-painting-expected-array.json')) }
 
       it 'extracts paintings correctly' do
-        expect(subject.first['name']).to eq expected_output.first['name']
-        expect(subject.first['extensions']).to eq expected_output.first['extensions']
-        expect(subject.first['link']).to eq expected_output.first['link']
-        expect(subject.first['image']).to eq expected_output.first['image']
+        expect(subject['artworks'].first['name']).to eq expected_output['artworks'].first['name']
+        expect(subject['artworks'].first['extensions']).to eq expected_output['artworks'].first['extensions']
+        expect(subject['artworks'].first['link']).to eq expected_output['artworks'].first['link']
+        expect(subject['artworks'].first['image']).to eq expected_output['artworks'].first['image']
       end
     end
 
     context 'when parsing a file with multiple paintings' do
       let(:html_file_path) { 'spec/fixtures/van-gogh-paintings.html' }
-      let(:expected_output) { JSON.parse(File.read('spec/fixtures/expected-array.json'))['artworks'] }
+      let(:expected_output) { JSON.parse(File.read('spec/fixtures/expected-array.json')) }
 
       it 'extracts paintings correctly' do
         is_expected.to eq expected_output

@@ -25,7 +25,7 @@ class PaintingsExtractor
       end
     end
 
-    paintings
+    { 'artworks' => paintings }
   end
 
   private
