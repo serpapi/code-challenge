@@ -17,11 +17,7 @@ json_data = { "artworks" => [] }
 
 # Iterates each item in the carousel
 img_carousel.css('a').each do |ele|
-    if ele['aria-label']
-        title = ele['aria-label']
-    else
-        next
-    end
+    title = ele['aria-label'] ? ele['aria-label'] : next
 
     extensions = ele.css('.ellip.klmeta').map { |element| element.text }
     image_url = "https://www.google.com#{ele['href']}"
