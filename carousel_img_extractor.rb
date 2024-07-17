@@ -34,14 +34,14 @@ img_carousel.css('a').each do |ele|
         thumbnail = Base64.strict_encode64(Base64.decode64(match[1])) if match
     end      
 
-    result = {
+    artwork_data = {
         "name": title,
         "extensions": extensions,
         "link": image_url,
         "image": thumbnail
     }
   
-    json_data["artworks"] << result
+    json_data["artworks"] << artwork_data
 end
 
 # Writes data to JSON file
