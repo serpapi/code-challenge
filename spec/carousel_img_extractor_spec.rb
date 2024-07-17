@@ -5,10 +5,10 @@ require 'base64'
 
 RSpec.describe "Image Extractor" do
   let(:file_path) { './files/van-gogh-paintings.html' }
-  let(:html_content) { File.read(file_path) }
-  let(:parsed_html) { Nokogiri::HTML(html_content) }
   let(:json_file_path) { './img-extractor-output.json' }  
+  let(:html_content) { File.read(file_path) }
   let(:json_content) { File.read(json_file_path) }
+  let(:parsed_html) { Nokogiri::HTML(html_content) }
   let(:carousel) { parsed_html.at_css('g-scrolling-carousel') }
 
   describe "File Handling and Parsing" do
