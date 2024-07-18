@@ -13,12 +13,12 @@ parsed_html = Nokogiri::HTML(html_content)
 img_carousel = parsed_html.css('g-scrolling-carousel')
 script_tags = parsed_html.css('script')
 
-json_data = { "artworks" => [] }
+json_data = {}
+json_data["artworks"] = [] 
 
 # Iterates each item in the carousel
 img_carousel.css('a').each do |ele|
     title = ele['aria-label'] ? ele['aria-label'] : next
-
     extensions = ele.css('.ellip.klmeta').map { |element| element.text }
     image_url = "https://www.google.com#{ele['href']}"
     image = ele.at_css('img')
