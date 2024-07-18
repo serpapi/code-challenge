@@ -25,11 +25,13 @@ img_carousel.css('a').each do |ele|
     thumbnail = nil
     image_id = image['id']
 
+    # Searches the html scripts for a match of the image id and extracts the img source code
     script_tags.each do |script|
         match = /var\s+s\s*=\s*'([^']+)';\s*var\s+ii\s*=\s*\[\s*'#{image_id}'\s*\];/.match(script.content)
         thumbnail = Base64.strict_encode64(Base64.decode64(match[1])) if match
     end      
 
+    # Creates the artwork data
     artwork_data = {
         "name": title,
         "extensions": extensions,
