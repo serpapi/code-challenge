@@ -26,3 +26,22 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+##
+
+### Requirements
+
+- **Ruby Version:** 3.2.2
+### Dependencies
+
+    - nokogiri '~> 1.16', '>= 1.16.6'
+    - rspec'~> 3.13.0'
+    - rubocop '~> 1.65'
+
+### Running Tests
+
+To run the RSpec tests: `rspec`
+
+### Running the Extractor
+
+To run the Extractor: `bin/extract`
