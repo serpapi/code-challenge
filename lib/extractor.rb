@@ -25,12 +25,7 @@ class Extractor
       content = painting.css('a div:nth-child(2) div')
       extensions = content[1] ? [content[1].text] : nil
 
-      @paintings << {
-        name: content.first.text,
-        extensions:,
-        link: "https://www.google.com#{painting.css('a').first['href']}",
-        image: painting.css('g-img img').first['src']
-      }.compact
+      @paintings << build_painting(content.first.text, extensions, painting)
     end
   end
 
@@ -46,6 +41,15 @@ class Extractor
 
       painting[:image] = image if painting
     end
+  end
+
+  def build_painting(name, extensions, painting)
+    {
+      name:,
+      extensions:,
+      link: "https://www.google.com#{painting.css('a').first['href']}",
+      image: painting.css('g-img img').first['src']
+    }.compact
   end
 
   def extract_painting_name(element)
@@ -77,4 +81,3 @@ puts
 puts "The result has been successfully saved in the file: '#{result_path}'"
 puts
 puts
-

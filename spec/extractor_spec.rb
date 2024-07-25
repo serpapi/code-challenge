@@ -3,6 +3,7 @@
 require 'rspec'
 require_relative '../lib/extractor'
 
+# rubocop:disable Metrics/BlockLength
 describe Extractor do
   let(:html_path) { './files/van-gogh-paintings.html' }
   let(:json_path) { './files/van-gogh-paintings.json' }
@@ -22,8 +23,8 @@ describe Extractor do
   end
 
   after do
-    File.delete(empty_html_path) if File.exist?(empty_html_path)
-    File.delete(empty_json_path) if File.exist?(empty_json_path)
+    FileUtils.rm_f(empty_html_path)
+    FileUtils.rm_f(empty_json_path)
   end
 
   it 'returns an empty array for empty HTML and JSON files' do
@@ -43,3 +44,4 @@ describe Extractor do
     expect(subject).to eq(expected_array)
   end
 end
+# rubocop:enable Metrics/BlockLength
