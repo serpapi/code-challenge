@@ -51,17 +51,6 @@ class Extractor
       image: painting.css('g-img img').first['src']
     }.compact
   end
-
-  def extract_painting_name(element)
-    name = element.text.match(/(?:\*|)([^*]+)(?:\*|)/)&.[](1)&.strip
-    name.gsub!(/^vincent van gogh\s+/i, '')
-    name
-  end
-
-  def extract_google_link(element)
-    link = element.at_css('a')
-    link ? "https://www.google.com#{link['href']}" : nil
-  end
 end
 
 ### example ###
