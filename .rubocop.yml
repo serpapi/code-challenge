@@ -1,0 +1,12 @@
+AllCops:
+  TargetRubyVersion: 3.3.2
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - 'Gemfile'
+    - 'config.ru'
+    - 'spec/spec_helper.rb'
+    - 'bin/*'
+
+Style/Documentation:
+  Enabled: false
