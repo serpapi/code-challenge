@@ -17,12 +17,47 @@ Programming language wise, Ruby (with RSpec tests) is strongly suggested but fee
 Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
 
 [relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
+[sample json]: files/van-gogh-paintings.json
+[html file]:  files/van-gogh-paintings.html
+[expected array]: files/expected-array.json
 
 Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
 
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+## A Possible solution
+
+In this solution I looked, in the given HTML file, for where the images are located, identifying the CSS of the
+`DIV` that groups the paintings, under the Carousel. Then I extracted the paintings data via Nokogiri.
+
+I am using class method, for simplicity, as there is not a need to have several objects. The file is also share via a
+class level instance variable, even if it is not really necessary.
+
+### Running the code
+
+I also created a Ruby file to invoke the program and parse the given [HTML file](files/van-gogh-paintings.html).
+
+After running bundle, from a Terminal window:
+
+```Bash
+./demo.rb -h
+  Usage:
+
+    To dump the parsed data direcly to the Terminal
+      ./demo.rb
+
+    or to a file:
+      /.demo.rb result_file.txt
+
+./demo.rb
+  {"artworks":[{"name":"The Starry Night","extensions":["1889"],"link":"https://www.google.com/search... }
+```
+
+Prefix the call by bundle exec if needed:
+
+```Bash
+bundle exec ./demo.rb
+  {"artworks":[{"name":"The Starry Night","extensions":["1889"],"link":"https://www.google.com/search... }
+```
