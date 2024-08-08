@@ -34,11 +34,32 @@ class ExtractPaintings
         h['extensions'] = [ year ] if year
         h['link'] = 'https://www.google.com' + sub.attribute('href').value rescue nil
         # Images are only available for the visible part of the Carousel (we'll return nil in other cases):
+        image_id = sub.children[0].children[0].children[0].children[0].attribute('id').value rescue nil
         h['image'] = sub.children[0].children[0].children[0].children[0].attribute('src').value rescue nil
+        if image_id && h['image']
+          h['image'] = replace_image(image_id)
+        end
         # Not valid childrens:
         ary << h if h['name'] != 'nope'
       end
+      @original_html_text = nil
       ary
+    end
+
+    # The HTML file contains a script to replace images:
+    def replace_image(image_id)
+      @original_html_text ||= File.read(@html_file) #, encoding: 'UTF-8')
+      regex = /\(function\(\){var s=\'([^']+)\';var ii=\[\'#{image_id}\'\];_setImagesSrc\(ii,s\);}/
+      m = @original_html_text.match(regex)
+      if m
+        # Some escape characters cause encoding issues (base 64 padding, '='):
+        m.captures[0].gsub(/((\\x3d)+)$/) do |t|
+          # \x3d+ => x3d+
+          a = t.split("\\")  # ["", "x3d", "x3d", ...]
+          a.shift            # ["x3d", "x3d", ...]
+          a.join
+        end
+      end
     end
 
     # -- Output formatters:

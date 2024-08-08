@@ -35,6 +35,12 @@ In this solution I looked, in the given HTML file, for where the images are loca
 I am using class method, for simplicity, as there is not a need to have several objects. The file is also share via a
 class level instance variable, even if it is not really necessary.
 
+### Images
+
+It looks like the paintings' images (base64 inline) are loaded into the carousel's structure lazily via JavaScript, so I added some code to extract them from the scripts via a Regex, so it would match the expected result.
+
+The images that are part of the file (they don't require a network call) are only the few initially visible.
+
 ### Running the code
 
 I also created a Ruby file to invoke the program and parse the given [HTML file](files/van-gogh-paintings.html).
