@@ -39,7 +39,7 @@ class level instance variable, even if it is not really necessary.
 
 It looks like the paintings' images (base64 inline) are loaded into the carousel's structure lazily via JavaScript, so I added some code to extract them from the scripts via a Regex, so it would match the expected result.
 
-The images that are part of the file (they don't require a network call) are only the few initially visible.
+The images that are part of the file (they don't require a network call) are the few initially visible.
 
 ### Knowledge Graph tests and alternative outputs
 
@@ -49,6 +49,16 @@ for the one in this test.
 
 Here I only added the minimum fields to pass the tests, as most of the Painter's data comes from other
 sources (Wikipedia).
+
+### Additional pages
+
+It looks like since this test page was created, Google has changed the format of the page, not showing
+a Carousel. I downloaded Google pages for 2 painters:
+- [Pablo Picasso](files/pablo-picasso-paintings.html)
+- [Salvador Dalí](files/salvador-dali-paintings.html)
+
+In this case the 'knowledge graph' would need to be filled manually, from mostly Wikipedia, so instead
+I added another spec file and a different output format to test those files.
 
 ### Running the code
 
@@ -91,12 +101,12 @@ For example:
 
 ```Bash
 rspec
-  ..................
+  ..............................
 
-  Finished in 0.04792 seconds (files took 0.07743 seconds to load)
-  18 examples, 0 failures
+  Finished in 0.20289 seconds (files took 0.07818 seconds to load)
+  30 examples, 0 failures
 
-  Coverage report generated for RSpec to /Users/carloscd/Documents/My Code/Google art scrapping - Coding exercise/servapi_code-challenge/coverage. 94 / 94 LOC (100.0%) covered.
+  Coverage report generated for RSpec to /Users/carloscd/Documents/My Code/Google art scrapping - Coding exercise/servapi_code-challenge/coverage. 145 / 145 LOC (100.0%) covered.
 ```
 
 Code coverage details, in a web browser:
