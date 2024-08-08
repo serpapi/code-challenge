@@ -41,6 +41,15 @@ It looks like the paintings' images (base64 inline) are loaded into the carousel
 
 The images that are part of the file (they don't require a network call) are only the few initially visible.
 
+### Knowledge Graph tests and alternative outputs
+
+There is a mention to this test: [relevant test]. I changed the `ExtractPaintings` to be able to output
+data in several formats (keyword argument `format:` in the parse_html class method), including an option
+for the one in this test.
+
+Here I only added the minimum fields to pass the tests, as most of the Painter's data comes from other
+sources (Wikipedia).
+
 ### Running the code
 
 I also created a Ruby file to invoke the program and parse the given [HTML file](files/van-gogh-paintings.html).
@@ -82,12 +91,12 @@ For example:
 
 ```Bash
 rspec
-  ....
+  ..................
 
-  Finished in 0.03829 seconds (files took 0.07643 seconds to load)
-  4 examples, 0 failures
+  Finished in 0.04792 seconds (files took 0.07743 seconds to load)
+  18 examples, 0 failures
 
-  Coverage report generated for RSpec to /Users/carloscd/Documents/My Code/Google art scrapping - Coding exercise/servapi_code-challenge/coverage. 43 / 43 LOC (100.0%) covered.
+  Coverage report generated for RSpec to /Users/carloscd/Documents/My Code/Google art scrapping - Coding exercise/servapi_code-challenge/coverage. 94 / 94 LOC (100.0%) covered.
 ```
 
 Code coverage details, in a web browser:
