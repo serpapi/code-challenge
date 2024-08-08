@@ -67,3 +67,23 @@ Prefix the call by bundle exec if needed:
 bundle exec ./demo.rb
   {"artworks":[{"name":"The Starry Night","extensions":["1889"],"link":"https://www.google.com/search... }
 ```
+
+### Tests
+
+I am using rspec.
+
+After running bundle, run the specs with:
+
+```Bash
+rspec
+```
+
+For example:
+
+```Bash
+rspec
+  ....
+
+  Finished in 0.03602 seconds (files took 0.06206 seconds to load)
+  4 examples, 0 failures
+```

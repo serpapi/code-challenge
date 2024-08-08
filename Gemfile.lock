@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    diff-lcs (1.5.1)
     nokogiri (1.16.7-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.7-arm-linux)
@@ -14,6 +15,19 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     racc (1.8.1)
+    rspec (3.13.0)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.0)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.1)
 
 PLATFORMS
   aarch64-linux
@@ -25,6 +39,7 @@ PLATFORMS
 
 DEPENDENCIES
   nokogiri (= 1.16.7)
+  rspec (= 3.13.0)
 
 BUNDLED WITH
    2.5.3
