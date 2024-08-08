@@ -70,7 +70,7 @@ bundle exec ./demo.rb
 
 ### Tests
 
-I am using rspec.
+Using rspec, also added the `simplecov gem`, to show the specs' coverage (now at 100%).
 
 After running bundle, run the specs with:
 
@@ -84,6 +84,14 @@ For example:
 rspec
   ....
 
-  Finished in 0.03602 seconds (files took 0.06206 seconds to load)
+  Finished in 0.03829 seconds (files took 0.07643 seconds to load)
   4 examples, 0 failures
+
+  Coverage report generated for RSpec to /Users/carloscd/Documents/My Code/Google art scrapping - Coding exercise/servapi_code-challenge/coverage. 43 / 43 LOC (100.0%) covered.
+```
+
+Code coverage details, in a web browser:
+
+```Bash
+$ open coverage/index.html
 ```

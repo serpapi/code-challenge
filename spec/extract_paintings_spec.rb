@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../extract_paintings'
+require 'spec_helper'
 
 describe ExtractPaintings do
   context 'with a given Van Gogh example HTML example file' do
