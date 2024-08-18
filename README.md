@@ -1,28 +1,55 @@
 # Extract Van Gogh Paintings Code Challenge
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+This is an implementation of the aforementioned challenge using NodeJS with HTML parsing using Cheerio.
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+## Scope
 
-## Instructions
+During the research for this project, I came across multiple types of carousel-like views on various search pages; a collection of what I came across has been added to the `files` directory.
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+The carousel view originally provided in the repository through the `van-gogh-paintings.html` file are currently reproducible only for search queries involving politicians, such as "[us presidents](files/us-presidents.png)".
 
-Fork this repository and make a PR when ready.
+The query "van gogh paintings" and similar ones currently bring up a different image view that does not resemble the original file, as seen on "[rembrandt works](files/rembrandt-works.png)".
 
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
+For movie/film related queries, there are at least two different kind of carousels that are used based on the query: (a) one being a simple list of images, as seen on "[interstellar actors](files/interstellar-actors.png)" and (b) an expanding card on hover, as seen on "[star wars movies](files/star-wars-movies.mp4)".
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
+Therefore:
 
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
+* Based on the aforementioned cases, I use an expanded definition of "carousel" to additionally handle the aforementioned extra cases. However, I also exclude other combinations of images accompanying text, such as videos or reviews, as seen on "[chicken recipes](files/chicken-recipes.html)"; or other lists of persons, such as "[cricket players](files/cricket-players.html)". The  behaviour of handling additional carousels can be turned off if required as explained in the [usage](#usage) section.
+* In accordance with the statement of the original problem, it is assumed that all the information is already available in the DOM and there is no need to load lazy-loaded elements that require additional HTTP calls.
+* There are a few cases where the DOM does not contain the replacement for a placeholder image, because the image is hidden and hasn't been loaded yet, as can be seen in the [rembrandt-works.html](files/rembrandt-works.html). I emit the placeholer image itself. In a real-world implementation, this could be improved upon by trying to load the image metadata and rejecting it if it is a 1x1 pixel.
+* If there are multiple carousels on the page, only the first one is taken; an example of this is in [sci-fi-movies.html](files/sci-fi-movies.html).
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+## Usage
 
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
+Download the dependencies of the project using `npm ci`; the project was tested using node 20.x.
 
-The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+Once the dependencies are downloaded, use the following command to extract the JSON from the `files/` directory.
+
+```bash
+npm run extract -- -d files
+```
+
+If you want to prevent parsing of the additional carousel styles, use the following command:
+
+```bash
+npm run extract -- --v1 -d files
+```
+
+If you want to convert a specific file, use the following command instead:
+
+```bash
+npm run extract -- files/test.html
+```
+
+If you want to also customize the output filename/directory, use the following commands:
+
+```bash
+npm run extract -- files/test.html -o files/test.json
+mkdir output_files && npm run extract -- -d files -o output_files
+```
+
+To run the tests associated with the project, run:
+
+```bash
+npm test
+```
