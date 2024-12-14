@@ -1,28 +1,19 @@
-# Extract Van Gogh Paintings Code Challenge
+# SERP API Code Challenge
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+This document provides a solution to the SERP API Code Challenge. The original challenge description can be found [here](#).
 
-![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
+## Solution Overview
 
-## Instructions
+The core idea of the solution is to implement a scraper that employs multiple strategies for parsing the image gallery displayed at the top of the search results page. Since Google may return different results for similar queries each strategy relies on specific selectors and is encapsulated within its own class.
 
-This is already fully supported on SerpApi. ([relevant test], [html file], [sample json], and [expected array].)
-Try to come up with your own solution and your own test.
-Extract the painting `name`, `extensions` array (date), and Google `link` in an array.
+### Supported Cases
 
-Fork this repository and make a PR when ready.
+The solution currently handles the following cases:
+- **Van Gogh Paintings** (challenge case)
+- **List of Popes**
+- **Red Hot Chili Peppers Members**
+- **Van Gogh Paintings** (new request)
 
-Programming language wise, Ruby (with RSpec tests) is strongly suggested but feel free to use whatever you feel like.
+### Notes
 
-Parse directly the HTML result page ([html file]) in this repository. No extra HTTP requests should be needed for anything.
-
-[relevant test]: https://github.com/serpapi/test-knowledge-graph-desktop/blob/master/spec/knowledge_graph_claude_monet_paintings_spec.rb
-[sample json]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.json
-[html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
-[expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
-
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
-
-Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
-
-The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+*The solution may not cover all potential gallery types, as there appear to be many variations. However, it effectively handles the listed cases and is designed to be extensible for future cases.*
