@@ -16,7 +16,7 @@ class ImageMap
   private
 
   def build_map
-    [single_script_content, multiple_scripts_content].lazy.map { build_mapping(_1) }.find(&:any?)
+    [single_script_content, multiple_scripts_content].lazy.map { scrape_variables(_1) }.find(&:any?)
   end
 
   def single_script_content
@@ -27,7 +27,7 @@ class ImageMap
     doc.css('script[nonce]').select { |node| node.text.include?('_setImagesSrc(') }.map(&:text).join
   end
 
-  def build_mapping(script)
+  def scrape_variables(script)
     script
       .scan(/var s='(.*?)';var ii=\['(.*?)'\]/)
       .map { |base64, key| [key, base64.gsub('\\', '')] }
