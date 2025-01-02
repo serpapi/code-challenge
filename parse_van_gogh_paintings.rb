@@ -9,7 +9,10 @@ end
 def extract_artworks(html_doc)
   html_doc.search(".iELo6 a").map do |artwork|
     name = artwork.at_css(".pgNMRc").text.strip
+
     extensions = artwork.search(".cxzHyb").map { |extension| extension.text.strip }
+    extensions = nil if extensions.all?(&:empty?)
+
     link = "https://www.google.com" + artwork.attr("href")
 
     { "name" => name, "extensions" => extensions, "link" => link }

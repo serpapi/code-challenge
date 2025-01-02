@@ -32,17 +32,11 @@ RSpec.describe 'parse_van_gogh_paintings' do
       end
     end
 
-    # TODO: Fix this
-    # it 'matches the extensions for each artwork' do
-    #   generated_result.each_with_index do |artwork, index|
-    #     expect(artwork["extensions"]).to eq(expected_result[index]["extensions"])
-
-    #     ap artwork["extensions"]
-    #     puts "vs"
-    #     ap expected_result[index]["extensions"]
-    #     puts "-------"
-    #   end
-    # end
+    it 'matches the extensions for each artwork' do
+      generated_result.each_with_index do |artwork, index|
+        expect(artwork["extensions"]).to eq(expected_result[index]["extensions"])
+      end
+    end
 
     it 'matches the link for each artwork' do
       generated_result.each_with_index do |artwork, index|
