@@ -20,13 +20,28 @@ end
 artworks = extract_artworks(van_gogh_paintings_html)
 
 def add_thumbnails_into_array(html_doc, array)
-  # TODO: Implement logic for thumbnails with an id
-
-  # For the thumbnails that don't have an id (i.e. that aren't displayed on the SERP)
   thumbnails = html_doc.search(".taFZJe").each_with_object({}) do |thumbnail, hash|
-    data_src = thumbnail.attr("data-src")
     name = thumbnail.attr("alt")
-    hash[name] = data_src  # Pair the name and data_src like this for when we add thumbnails to the array
+    id = thumbnail.attr("id")
+    data_src = thumbnail.attr("data-src") # For the thumbnails that don't have an id (i.e. that aren't displayed on the SERP)
+
+    if id
+      html_doc.css('script').each do |script|
+        script_content = script.content
+
+        if script_content.include?("var ii=['#{id}']") # The image string exists in the script, just before the artwork's id
+          match = script_content.match(/var s='(.*?)';/) # Extract the image string from within `s=''`
+          image_string = match[1] if match
+          hash[name] = image_string # Pair with the name like this for when we add thumbnails to the array
+        end
+      end
+    else
+      hash[name] = data_src # Pair with the name like this for when we add thumbnails to the array
+    end
+
+    # TODO: Refactor the above so that `hash[name]` assignment adheres to DRY principle
+    # The challenge I think I'm facing is that `script_content` gets returned when `id` is truthy (that might be wrong though)
+    # Want to prioritize other features as this is technically working
   end
 
   array.each do |el|
