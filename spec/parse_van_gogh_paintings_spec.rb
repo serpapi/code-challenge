@@ -1,7 +1,5 @@
-require_relative '../parse_van_gogh_paintings'
 require 'json'
-
-# TODO: Test to match my file result with provided expected `.json` file result - overall match, and then also by each key as that would help with debugging?
+require_relative '../parse_van_gogh_paintings'
 
 RSpec.describe 'parse_van_gogh_paintings' do
   let(:expected_result) do

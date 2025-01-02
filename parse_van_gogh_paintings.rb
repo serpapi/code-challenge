@@ -1,5 +1,4 @@
 require 'nokogiri'
-require 'awesome_print'
 
 def parse_html_file(file_path)
   html_file = File.open(file_path)
