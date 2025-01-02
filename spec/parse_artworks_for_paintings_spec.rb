@@ -1,7 +1,7 @@
 require 'json'
-require_relative '../parse_van_gogh_paintings'
+require_relative '../parse_artworks_for_paintings'
 
-RSpec.describe 'parse_van_gogh_paintings' do
+RSpec.describe 'parse_artworks_for_paintings' do
   let(:expected_result) do
     file_path = 'files/expected-array.json'
     JSON.parse(File.read(file_path))["artworks"]
@@ -9,7 +9,7 @@ RSpec.describe 'parse_van_gogh_paintings' do
 
   let(:generated_result) do
     file_path = 'files/van-gogh-paintings.html'
-    parse_van_gogh_paintings(file_path)
+    parse_artworks_for_paintings(file_path)
   end
 
   context 'when comparing all artworks' do

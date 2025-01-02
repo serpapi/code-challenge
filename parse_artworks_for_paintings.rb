@@ -1,6 +1,6 @@
 require 'nokogiri'
 
-def parse_van_gogh_paintings(file_path)
+def parse_artworks_for_paintings(file_path)
   html_doc = parse_html_file(file_path)
   artworks = extract_artworks(html_doc)
   add_thumbnails_into_array(html_doc, artworks)
@@ -9,7 +9,7 @@ def parse_van_gogh_paintings(file_path)
 end
 
 # Example:
-# parse_van_gogh_paintings('files/van-gogh-paintings.html')
+# parse_artworks_for_paintings('files/van-gogh-paintings.html')
 
 private
 
@@ -45,11 +45,11 @@ def add_thumbnails_into_array(html_doc, array)
           match = script_content.match(/var s='(.*?)';/) # Extract the image string from within `s=''`
           unclean_image_string = match[1] if match
           image_string = unclean_image_string.gsub("\\x3d", "=") # This deals with an escaped character issue - if I had more time I'd consider using a wider encompassing approach
-          hash[name] = image_string # Pair with the name like this for when we add thumbnails to the array
+          hash[name] = image_string # Pairing with the name like this for when we add thumbnails to the array
         end
       end
     else
-      hash[name] = data_src # Pair with the name like this for when we add thumbnails to the array
+      hash[name] = data_src # Pairing with the name like this for when we add thumbnails to the array
     end
 
     # TODO: Refactor the above so that `hash[name]` assignment adheres to DRY principle
