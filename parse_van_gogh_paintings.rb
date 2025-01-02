@@ -9,11 +9,12 @@ end
 van_gogh_paintings_html = parse_html_file('files/van-gogh-paintings.html')
 
 def extract_artworks(html_doc)
-  html_doc.search(".KHK6lb").map do |artwork|
+  html_doc.search(".iELo6 a").map do |artwork|
     name = artwork.at_css(".pgNMRc").text.strip
     extensions = artwork.search(".cxzHyb").map { |extension| extension.text.strip }
+    link = "https://www.google.com" + artwork.attr("href")
 
-    { "name" => name, "extensions" => extensions }
+    { "name" => name, "extensions" => extensions, "link" => link }
   end
 end
 
