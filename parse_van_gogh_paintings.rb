@@ -6,8 +6,6 @@ def parse_html_file(file_path)
   Nokogiri::HTML(html_file)
 end
 
-van_gogh_paintings_html = parse_html_file('files/van-gogh-paintings.html')
-
 def extract_artworks(html_doc)
   html_doc.search(".iELo6 a").map do |artwork|
     name = artwork.at_css(".pgNMRc").text.strip
@@ -17,8 +15,6 @@ def extract_artworks(html_doc)
     { "name" => name, "extensions" => extensions, "link" => link }
   end
 end
-
-artworks = extract_artworks(van_gogh_paintings_html)
 
 def add_thumbnails_into_array(html_doc, array)
   thumbnails = html_doc.search(".taFZJe").each_with_object({}) do |thumbnail, hash|
@@ -51,8 +47,14 @@ def add_thumbnails_into_array(html_doc, array)
   end
 end
 
-add_thumbnails_into_array(van_gogh_paintings_html, artworks)
+def parse_van_gogh_paintings(file_path)
+  html_doc = parse_html_file(file_path)
+  artworks = extract_artworks(html_doc)
+  add_thumbnails_into_array(html_doc, artworks)
 
-result = { "artworks" => artworks }
+  artworks
+end
 
-ap result
+array_result = parse_van_gogh_paintings('files/van-gogh-paintings.html')
+
+ap array_result
