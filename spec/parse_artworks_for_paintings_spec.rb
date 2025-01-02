@@ -1,7 +1,7 @@
 require 'json'
 require_relative '../parse_artworks_for_paintings'
 
-RSpec.describe 'parse_artworks_for_paintings' do
+RSpec.describe 'parse_artworks_for_van_gogh_paintings' do
   let(:expected_result) do
     file_path = 'files/expected-array.json'
     JSON.parse(File.read(file_path))["artworks"]
@@ -44,6 +44,34 @@ RSpec.describe 'parse_artworks_for_paintings' do
     it 'matches the image for each artwork' do
       generated_result.each_with_index do |artwork, index|
         expect(artwork["image"]).to eq(expected_result[index]["image"])
+      end
+    end
+  end
+end
+
+RSpec.describe 'parse_artworks_for_claude_monet_paintings' do
+  let(:generated_result) do
+    file_path = 'files/claude-monet-paintings.html'
+    parse_artworks_for_paintings(file_path)
+  end
+
+  it 'returns valid artworks with correct data' do
+    generated_result.each do |artwork|
+      expect(artwork.keys).to include("name", "link", "image")
+      expect(artwork.keys).to include("extensions") unless artwork["extensions"].nil?
+
+      expect(artwork["name"]).to be_a(String)
+      expect(artwork["name"]).not_to be_empty
+
+      expect(artwork["link"]).to be_a(String)
+      expect(artwork["link"]).to match(%r{^https?://})
+
+      expect(artwork["image"]).to be_a(String)
+      expect(artwork["image"]).not_to be_empty
+
+      if artwork["extensions"]
+        expect(artwork["extensions"]).to be_an(Array)
+        expect(artwork["extensions"]).to all(be_a(String))
       end
     end
   end

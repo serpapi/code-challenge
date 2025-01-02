@@ -8,9 +8,6 @@ def parse_artworks_for_paintings(file_path)
   artworks
 end
 
-# Example:
-# parse_artworks_for_paintings('files/van-gogh-paintings.html')
-
 private
 
 def parse_html_file(file_path)
