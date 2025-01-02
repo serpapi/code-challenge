@@ -1,5 +1,18 @@
 require 'nokogiri'
 
+def parse_van_gogh_paintings(file_path)
+  html_doc = parse_html_file(file_path)
+  artworks = extract_artworks(html_doc)
+  add_thumbnails_into_array(html_doc, artworks)
+
+  artworks
+end
+
+# Example:
+# parse_van_gogh_paintings('files/van-gogh-paintings.html')
+
+private
+
 def parse_html_file(file_path)
   html_file = File.open(file_path)
   Nokogiri::HTML(html_file)
@@ -40,8 +53,7 @@ def add_thumbnails_into_array(html_doc, array)
     end
 
     # TODO: Refactor the above so that `hash[name]` assignment adheres to DRY principle
-    # The challenge I think I'm facing is that `script_content` gets returned when `id` is truthy (that might be wrong though)
-    # Want to prioritize other features as this is technically working
+    # I started doing this but it was becoming less readable so I decided to stick to how it already is
   end
 
   array.each do |el|
@@ -49,13 +61,3 @@ def add_thumbnails_into_array(html_doc, array)
     el["image"] = thumbnail
   end
 end
-
-def parse_van_gogh_paintings(file_path)
-  html_doc = parse_html_file(file_path)
-  artworks = extract_artworks(html_doc)
-  add_thumbnails_into_array(html_doc, artworks)
-
-  artworks
-end
-
-parse_van_gogh_paintings('files/van-gogh-paintings.html')
