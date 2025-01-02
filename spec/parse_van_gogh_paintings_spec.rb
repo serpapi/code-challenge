@@ -15,10 +15,9 @@ RSpec.describe 'parse_van_gogh_paintings' do
   end
 
   context 'when comparing all artworks' do
-    # TODO: Fix this
-    # it 'matches the all the artworks' do
-    #   expect(generated_result).to eq(expected_result)
-    # end
+    it 'matches the all the artworks' do
+      expect(generated_result).to eq(expected_result)
+    end
 
     it 'matches the total number of artworks' do
       expect(generated_result.size).to eq(expected_result.size)

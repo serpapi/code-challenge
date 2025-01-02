@@ -15,7 +15,7 @@ def extract_artworks(html_doc)
 
     link = "https://www.google.com" + artwork.attr("href")
 
-    { "name" => name, "extensions" => extensions, "link" => link }
+    { "name" => name, "extensions" => extensions, "link" => link }.compact # `.compact` omits extensions if they are nil
   end
 end
 
