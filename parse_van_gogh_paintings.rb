@@ -29,7 +29,7 @@ def add_thumbnails_into_array(html_doc, array)
         if script_content.include?("var ii=['#{id}']") # The image string exists in the script, just before the artwork's id
           match = script_content.match(/var s='(.*?)';/) # Extract the image string from within `s=''`
           unclean_image_string = match[1] if match
-          image_string = unclean_image_string.gsub("\\x3d", "=")
+          image_string = unclean_image_string.gsub("\\x3d", "=") # This deals with an escaped character issue - if I had more time I'd consider using a wider encompassing approach
           hash[name] = image_string # Pair with the name like this for when we add thumbnails to the array
         end
       end
