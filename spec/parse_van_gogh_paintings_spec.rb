@@ -50,11 +50,10 @@ RSpec.describe 'parse_van_gogh_paintings' do
       end
     end
 
-    # TODO: Fix this
-    # it 'matches the image for each artwork' do
-    #   generated_result.each_with_index do |artwork, index|
-    #     expect(artwork["image"]).to eq(expected_result[index]["image"])
-    #   end
-    # end
+    it 'matches the image for each artwork' do
+      generated_result.each_with_index do |artwork, index|
+        expect(artwork["image"]).to eq(expected_result[index]["image"])
+      end
+    end
   end
 end
