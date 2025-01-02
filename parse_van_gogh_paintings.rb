@@ -19,6 +19,24 @@ end
 
 artworks = extract_artworks(van_gogh_paintings_html)
 
+def add_thumbnails_into_array(html_doc, array)
+  # TODO: Implement logic for thumbnails with an id
+
+  # For the thumbnails that don't have an id (i.e. that aren't displayed on the SERP)
+  thumbnails = html_doc.search(".taFZJe").each_with_object({}) do |thumbnail, hash|
+    data_src = thumbnail.attr("data-src")
+    name = thumbnail.attr("alt")
+    hash[name] = data_src  # Pair the name and data_src like this for when we add thumbnails to the array
+  end
+
+  array.each do |el|
+    thumbnail = thumbnails[el["name"]]
+    el["image"] = thumbnail
+  end
+end
+
+add_thumbnails_into_array(van_gogh_paintings_html, artworks)
+
 result = { "artworks" => artworks }
 
 ap result
