@@ -10,7 +10,7 @@ class ImageMap
   end
 
   def to_h
-    build_map || raise(ElementNotFoundError)
+    build_map || {}
   end
 
   private
