@@ -1,0 +1,10 @@
+# https://docs.rubocop.org/rubocop/configuration.html
+# All configuration inherits from RuboCop’s default configuration (See "Defaults").
+
+plugins: rubocop-rspec
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 10
