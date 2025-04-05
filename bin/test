@@ -1,0 +1,9 @@
+#!/bin/ruby
+# frozen_string_literal: true
+
+require 'json'
+require_relative '../lib/serpapi'
+
+html_file = File.join(__dir__, '../spec/fixtures/richard-estes/page.html')
+search = SerpAPI::GoogleSearch.new
+puts JSON.dump(search.get_hash(html_file))
