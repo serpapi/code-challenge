@@ -8,3 +8,7 @@ Style/Documentation:
 
 RSpec/ExampleLength:
   Max: 10
+
+RSpec/MultipleExpectations:
+  Max: 3
+  

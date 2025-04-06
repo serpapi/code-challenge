@@ -3,47 +3,60 @@
 require 'json'
 require_relative File.join('..', 'lib', 'google_artworks_parser')
 
-files_dir = File.join(File.dirname(File.expand_path(__FILE__)), '..', 'files')
-expected_array = JSON.parse(File.read(File.join(files_dir, 'expected-array.json')))
-van_gogh_html = File.join(files_dir, 'van-gogh-paintings.html')
+def files_dir
+  File.join(File.dirname(File.expand_path(__FILE__)), '..', 'files')
+end
+
+def fixture_path(artist)
+  File.join(files_dir, "#{artist}-paintings.html")
+end
+
+van_gogh_html = fixture_path('van-gogh')
+fixtures = {
+  'Van Gogh' => van_gogh_html, 'Banksy' => fixture_path('banksy'), 'Warhol' => fixture_path('warhol')
+}
 
 describe GoogleArtworksParser do
   subject { described_class.parse }
 
-  it 'runs without errors' do
-    expect do
-      described_class.parse(van_gogh_html)
-    end.not_to raise_error
-  end
+  fixtures.each do |fixture_name, fixture|
+    result = described_class.parse(fixture)
+    artworks = result['artworks']
 
-  it 'matches the expected output for the Van Gogh fixture (excluding image property)' do
-    result = described_class.parse(van_gogh_html)
-
-    normalized_expected = expected_array['artworks'].map do |artwork|
-      artwork.reject { |k, _| k == 'image' }
-    end
-    normalized_result = result['artworks'].map do |artwork|
-      artwork.reject { |k, _| k == 'image' }
+    it "can parse the #{fixture_name} fixture" do
+      expect(artworks).to be_an(Array)
+      expect(artworks).not_to be_empty
     end
 
-    expect(normalized_result).to eq(normalized_expected)
-  end
-
-  it 'matches the expected image for the Van Gogh fixture output' do
-    result = described_class.parse(van_gogh_html)
-
-    expected_images = expected_array['artworks'].map do |artwork|
-      artwork['image']
-    end
-    result_images = result['artworks'].map do |artwork|
-      artwork['image']
+    it "can parse the #{fixture_name} fixture - name" do
+      artworks.each do |artwork|
+        expect(artwork['name']).to be_a(String)
+        expect(artwork['name']).not_to be_empty
+      end
     end
 
-    expect(result_images).to eq(expected_images)
+    artworks.each do |artwork|
+      artwork_name = artwork['name']
+      it "can parse the #{fixture_name} fixture for #{artwork_name} - link" do
+        expect(artwork['link']).to be_a(String)
+        expect(artwork['link']).not_to be_empty
+      end
+
+      it "can parse the #{fixture_name} fixture for #{artwork_name} - image" do
+        expect(artwork['image']).to be_a(String)
+        expect(artwork['image']).not_to be_empty
+        expect(artwork['image']).not_to start_with('data:image/gif;base64,')
+      end
+
+      it "can parse the #{fixture_name} fixture for #{artwork_name} - extensions" do
+        expect(artwork['extensions']).to(satisfy { |v| v.nil? || (v.is_a?(Array) && !v.empty?) })
+      end
+    end
   end
 
   it 'matches the expected output for the Van Gogh fixture' do
     result = described_class.parse(van_gogh_html)
+    expected_array = JSON.parse(File.read(File.join(files_dir, 'expected-array.json')))
     expect(result).to eq(expected_array)
   end
 end
