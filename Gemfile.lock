@@ -49,12 +49,6 @@ GEM
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
     ruby-progressbar (1.13.0)
-    sorbet (0.5.11984)
-      sorbet-static (= 0.5.11984)
-    sorbet-runtime (0.5.11984)
-    sorbet-static (0.5.11984-aarch64-linux)
-    sorbet-static (0.5.11984-universal-darwin)
-    sorbet-static (0.5.11984-x86_64-linux)
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
@@ -74,8 +68,6 @@ DEPENDENCIES
   rspec
   rubocop
   rubocop-rspec
-  sorbet
-  sorbet-runtime
 
 BUNDLED WITH
    2.6.7
