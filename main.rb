@@ -1,3 +1,4 @@
 require_relative 'scraper.rb'
 
-puts PaintingScraper.extract_from_file('files/van-gogh-paintings.html')
+scraper = PaintingScraper.new('files/van-gogh-paintings.html')
+scraper.parse_html
