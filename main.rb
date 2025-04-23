@@ -1,4 +1,4 @@
-require_relative 'scraper.rb'
+require_relative 'lib/scraper.rb'
 require 'json'
 
 files = ['van-gogh', 'michelangelo', 'da-vinci']

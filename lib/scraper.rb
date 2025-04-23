@@ -36,8 +36,10 @@ class PaintingScraper
 
   def parse_html()
     carousel = @html.at_css('.' + @class_names[:carousel])
-  
+    
     paintings = { artworks: [] }
+
+    return paintings unless carousel
   
     carousel.children.each do |child|
       next unless child.element?
@@ -52,11 +54,16 @@ class PaintingScraper
       image_src = painting_image&.[]('src') || "Image not found"
   
       painting_info = info.at_css('.' + @class_names[:info])
-      painting_name = painting_info&.at_css('.' + @class_names[:name])&.text.strip || "Name not found"
-      painting_age = painting_info&.at_css('.' + @class_names[:date])&.text.strip || "Date not found"
+
+      painting_name = painting_info&.at_css('.' + @class_names[:name])&.text&.strip
+      painting_name = painting_name.empty? ? "Name not found" : painting_name
+
+      painting_age = painting_info&.at_css('.' + @class_names[:date])&.text&.strip
+      painting_age = painting_age.nil? || painting_age.empty? ? "Date not found" : painting_age
+
 
       paintings[:artworks] << {
-        name: painting_name,
+        name: painting_name,        # Or could use alt from <img> not sure which ones best
         extensions: [painting_age], # Probably would be better if it was just 'age'
         link: @location_url + painting_link,
         image: image_src
