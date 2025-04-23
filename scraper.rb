@@ -54,12 +54,12 @@ class PaintingScraper
       painting_info = info.at_css('.' + @class_names[:info])
       painting_name = painting_info&.at_css('.' + @class_names[:name])&.text.strip || "Name not found"
       painting_age = painting_info&.at_css('.' + @class_names[:date])&.text.strip || "Date not found"
-  
+
       paintings[:artworks] << {
-        link: @location_url + painting_link,
-        image: image_src,
         name: painting_name,
-        extensions: [painting_age]
+        extensions: [painting_age], # Probably would be better if it was just 'age'
+        link: @location_url + painting_link,
+        image: image_src
       }
     end
 
