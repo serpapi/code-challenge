@@ -13,6 +13,8 @@ class PaintingScraper
   def initialize(html_path)
     @html = extract_html_from_file(html_path)
 
+    @location_url = "https://www.google.com"
+
     @class_names = {
       carousel: 'Cz5hV',  # parent div containing the paintings
       paintings: 'iELo6', # paintings div within carousel
@@ -43,12 +45,23 @@ class PaintingScraper
       info = child.at_css('a')
       next unless info
 
-      puts info['href']
+      painting_link = info['href']
+
+      painting_image = info.at_css('.' + @class_names[:image])
+
+      painting_info = info.at_css('.' + @class_names[:info])
+
+      painting_name = painting_info.at_css('.' + @class_names[:name]).text
+      painting_age = painting_info.at_css('.' + @class_names[:date]).text
+
       paintings[:artworks] << {
-        href: info['href']
+        link: painting_link ? @location_url + painting_link : "Link not found",
+        image: painting_image['src'],
+        name: painting_name,
+        extensions: [painting_age]
       }
-      puts paintings.to_json
-      break
+
     end
+    puts paintings
   end
 end
