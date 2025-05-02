@@ -27,7 +27,105 @@ Test against 2 other similar result pages to make sure it works against differen
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
 
-# Implementation
+
+# The result
+
+## Overview
+
+The project extracts structured data from carousels in Google's search results pages.
+
+The implementation supports multiple types of galleries, including artworks, music albums, books, and TV shows/movies.
+
+⚠️ Currently, [PageParser](lib/page_parser.rb) uses [ParserFactory](lib/factories/parser_factory.rb) to run only a single parser on the page. However, using `BaseGalleryParser.eligible?` makes it possile to run **every** eligible parser on the page, which would essentially replicate serpapi.com's core functionality. This would enable scraping of any items on the page.
+
+## Technical Architecture
+
+### Core Design Principles
+
+1. **Extensibility**: The system is designed with a factory pattern and inheritance hierarchy to easily support new gallery types
+2. **Maintainability**: Clear separation of concerns between page loading, parsing, and output generation
+3. **Robustness**: Handles JavaScript-rendered content through Ferrum, ensuring reliable data extraction
+4. **Testability**: Comprehensive test suite covering multiple gallery types
+
+### Component Architecture
+
+```
+lib/
+├── page_parser.rb           # Main entry point
+├── factories/
+│   └── parser_factory.rb  # Factory for creating appropriate parsers
+└── parsers/
+    ├── base_gallery_parser.rb     # Abstract base class
+    ├── artwork_gallery_parser.rb  # Artwork-specific implementation
+    ├── music_albums_gallery_parser.rb
+    ├── author_books_gallery_parser.rb
+    └── person_tv_shows_and_movies_gallery_parser.rb
+```
+
+### Key Technical Decisions
+
+1. **JavaScript Handling**
+   - Used Ferrum for headless browser automation
+   - Enables reliable extraction of dynamically loaded content
+   - Future-proof against Google's JavaScript-based rendering
+
+2. **Parser Architecture**
+   - Factory pattern for creating appropriate parsers
+   - Base class with common functionality
+   - Specialized subclasses for each gallery type
+   - Easy to add new gallery types without modifying existing code
+
+3. **Data Extraction Strategy**
+   - Robust CSS selectors for gallery identification
+   - Flexible image source handling (base64 vs external URLs)
+   - Clean separation of data extraction logic
+
+## Usage
+
+```shell
+# Artworks:
+ruby lib/page_parser.rb spec/fixtures/pages/van-gogh-paintings.html
+
+# Music Albums:
+ruby lib/page_parser.rb spec/fixtures/pages/taylor-swift-albums.html
+
+# Author's Books:
+ruby lib/page_parser.rb spec/fixtures/pages/agatha-christie-books.html
+
+# Persons TV shows and movies:
+ruby lib/page_parser.rb spec/fixtures/pages/agatha-christie-movies-and-tv-shows.html
+```
+
+## Testing
+
+The test suite includes:
+- Unit tests for each parser type
+- Integration tests with real HTML fixtures
+- Validation against expected JSON output
+
+```bash
+# Run tests
+bundle exec rspec
+
+# Verify output matches expected JSON
+ruby lib/page_parser.rb files/van-gogh-paintings.html | diff - files/expected-array.json
+```
+
+## Development Setup
+
+1. Install dependencies:
+   ```bash
+   bundle install
+   ```
+
+2. Run tests:
+   ```bash
+   bundle exec rspec
+   ```
+
+# Research and decision making log
+
+## Expectations
 
 We need to parse the page and output the gallery's content as JSON, matching the structure in [files/expected-array.json](files/expected-array.json):
 
@@ -48,8 +146,8 @@ Output JSON structure:
 
 ![Data](docs/screenshots/data.png)
 
-**Artwork Gallery**: Can be located using the `[data-attrid="kc:/visual_art/visual_artist:works"]` selector.
-**Gallery Items**: Each anchor (`a`) element in the gallery with an `href` attribute that begins with `/search?sca_esv`
+* **Artwork Gallery**: Can be located using the `[data-attrid="kc:/visual_art/visual_artist:works"]` selector.
+* **Gallery Items**: Each anchor (`a`) element in the gallery with an `href` attribute that begins with `/search?sca_esv`
 
 ## Output JSON - what's needed
 
@@ -91,8 +189,6 @@ The "image" attributes in the expected JSON contain two types of URLs:
 
 **Solution**: Use `img[data-src]` if present, otherwise `img[src]`
 
-⚠️ The fact that `img[src]` is being replaced by JavaScript with another value has implications for the implementation.
-
 ## Parsing the page: technology choice
 
 Since the page relies on **JavaScript** execution, we have two options:
@@ -109,22 +205,21 @@ Here's a comparison of these two approaches:
 | Long-term viability | ❌ More maintenance needed | ✅ More sustainable |
 | CAPTCHA handling | ❌ No Javascript | ✅ Better handling |
 
-**I chose to use Ferrum** as it seems to be the more sustainable approach. We can optimize this if/when performance becomes an issue.
+I chose to make parsers expect properly rendered HTML. Rendering is being performed by Ferrum, outside of parsers.
 
 Now that the `img[src]` placeholder is replaced by real value, we can use it to set the `image` attribute in the output JSON.
 
-## Code architecture
-We can start from being as simple as it gets: the whole implementation would fit in 50 LOC.
+## Additional galleries types
 
-On the long run, for multiple types of Galleries and GalleryItems, it's recommended to have an abstract class for Gallery and GalleryItem.
+> Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
-Then gallery-specific differences will be implemented in corresponding Gallery/GalleryItem subclasses.
+⚠️ It was challenging to understand what "different layouts", "same kind of carousel" and "don't necessarily have to be paintings" meant altogether.
 
-Use GalleryParserFactory that inspects the DOM and returns appropriate parser.
+I tried to search for different types of artworks.
 
-
-## Thread Safety
-
-Ferrum’s Browser and its pages are not guaranteed to be thread-safe. Sharing a single browser instance across threads can lead to race conditions or unexpected behavior.
-
-For a multi-threaded context, instantiate a new parser (and thus a new browser) per thread.
+| Search Query | Gallery Type | data-attrid | Implemented on serpapi.com | Implemented in this PR |
+|-------------|------|-------------|---------------------------|---------------------|
+| Van Gogh Paintings | Visual Artist Artworks | `kc:/visual_art/visual_artist:works` | ✅ | ✅ |
+| Taylor Swift albums | Music Artist Albums | `kc:/music/artist:albums` | ❌ | ✅ |
+| Agatha Christie books | Author Books | `kc:/book/author:books only` | ❌ | ✅ |
+| Agatha Christie movies and tv shows | Person TV Shows and Movies | `kc:/people/person:tv-shows-and-movies` | ❌ | ✅ |
