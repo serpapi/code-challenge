@@ -1,0 +1,34 @@
+class MusicAlbumsGalleryParser < BaseGalleryParser
+  def gallery_item_data(element)
+    {
+      name:       gallery_item_name(element),
+      extensions: gallery_item_extensions(element),
+      link:       gallery_item_link(element),
+      image:      gallery_item_image_src(element)
+    }
+  end
+    
+  private
+
+  def gallery_items(page)
+    page.css('div[data-attrid="kc:/music/artist:albums"] div[data-attrid="kc:/music/artist:albums"][role="presentation"]')
+  end
+
+  def gallery_item_image_src(element)
+    img = element.at_css('a[href^="/search?sca_esv"] img')
+    img.attribute('src') || img.attribute('data-src')
+  end
+
+  def gallery_item_link(element)
+    href = element.at_css('a[href^="/search?sca_esv"]')&.attribute('href')
+    "#{GOOGLE_SEARCH_BASE_URL}#{href}"
+  end
+
+  def gallery_item_name(element)
+    element.attribute('title')
+  end
+
+  def gallery_item_extensions(element)
+    element.css('wp-grid-tile div div').map{|e| e.text}[1..-1]
+  end
+end

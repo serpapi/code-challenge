@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 
 # gem "rails"
 gem 'json'
-gem 'byebug'
 gem "ferrum", "~> 0.16"
+
+gem 'rspec'
