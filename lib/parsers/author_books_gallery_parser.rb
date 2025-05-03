@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class AuthorBooksGalleryParser < BaseGalleryParser
   def gallery_item_data(element)
     {
-      name:       gallery_item_name(element),
+      name: gallery_item_name(element),
       extensions: gallery_item_extensions(element),
-      link:       gallery_item_link(element),
-      image:      gallery_item_image_src(element)
+      link: gallery_item_link(element),
+      image: gallery_item_image_src(element)
     }
   end
-    
+
   private
 
   def gallery_items(page)
@@ -29,6 +31,6 @@ class AuthorBooksGalleryParser < BaseGalleryParser
   end
 
   def gallery_item_extensions(element)
-    element.css('wp-grid-tile div div').map{|e| e.text}[1..-1]
+    element.css('wp-grid-tile div div').map(&:text)[1..]
   end
 end

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class ArtworkGalleryParser < BaseGalleryParser
   def gallery_item_data(element)
     {
-      name:       gallery_item_name(element),
+      name: gallery_item_name(element),
       extensions: gallery_item_extensions(element),
-      link:       gallery_item_link(element),
-      image:      gallery_item_image_src(element)
+      link: gallery_item_link(element),
+      image: gallery_item_image_src(element)
     }
   end
 
@@ -26,6 +28,6 @@ class ArtworkGalleryParser < BaseGalleryParser
   end
 
   def gallery_item_extensions(element)
-    element.xpath('./div/div')[1..-1].map { |e| e.text }.compact.reject(&:empty?)
+    element.xpath('./div/div')[1..].map(&:text).compact.reject(&:empty?)
   end
 end

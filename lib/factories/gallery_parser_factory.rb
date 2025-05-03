@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../parsers/base_gallery_parser'
 require_relative '../parsers/artwork_gallery_parser'
 require_relative '../parsers/music_albums_gallery_parser'
@@ -11,6 +13,7 @@ class GalleryParserFactory
 
   # Not the most elegant, but it's a quick and working solution.
   # Can be optimized later if needed.
+  # rubocop:disable Metrics/MethodLength
   def self.gallery_klass(page)
     if page.css('div[data-attrid="kc:/visual_art/visual_artist:works"]').any?
       ArtworkGalleryParser
@@ -21,7 +24,8 @@ class GalleryParserFactory
     elsif page.css('div[data-attrid="kc:/people/person:tv-shows-and-movies"]').any?
       PersonTVShowsAndMoviesGalleryParser
     else
-      raise "Unknown gallery type"
+      raise 'Unknown gallery type'
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end

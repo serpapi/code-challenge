@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'ferrum'
 require 'json'
 
 require_relative 'factories/gallery_parser_factory'
 
-if __FILE__ == $0
+if __FILE__ == $PROGRAM_NAME
   url = "file://#{File.expand_path(ARGV.first)}"
 
   browser = Ferrum::Browser.new(headless: true)
