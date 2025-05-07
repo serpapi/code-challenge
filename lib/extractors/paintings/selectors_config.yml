@@ -1,0 +1,17 @@
+# Selector configuration for PaintingsExtractor
+container_selector:
+  css: "div[data-attrid='kc:/visual_art/visual_artist:works']"
+item_selector:
+  css: "div.iELo6"
+name:
+  xpath: ".//div[contains(@class, 'pgNMRc')]"
+  css: ".pgNMRc"
+extensions:
+  xpath: ".//div[contains(@class, 'cxzHyb')]"
+  css: ".cxzHyb"
+link:
+  xpath: ".//a/@href"
+  css: "a"
+image:
+  xpath: ".//img/@src | .//img/@data-src"
+  css: "img"

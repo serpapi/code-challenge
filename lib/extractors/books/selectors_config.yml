@@ -1,0 +1,17 @@
+# Selector configuration for BooksExtractor
+container_selector:
+  css: "div[data-attrid='kc:/book/author:books only']"
+item_selector:
+  css: ".Z8r5Gb.X8kvh.PZPZlf"
+name:
+  xpath: ".//div[contains(@class, 'JjtOHd')]"
+  css: ".JjtOHd"
+extensions:
+  xpath: ".//div[contains(@class, 'ellip') and contains(@class, 'yF4Rkc') and contains(@class, 'AqEFvb')]"
+  css: ".ellip.yF4Rkc.AqEFvb"
+link:
+  xpath: ".//a/@href"
+  css: "a"
+image:
+  xpath: ".//img/@src | .//img/@data-src"
+  css: "img"
