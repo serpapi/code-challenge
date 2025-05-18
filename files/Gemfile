@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+
+gem "nokogiri"
+gem "rspec"
+gem "json"
+gem "erb"
