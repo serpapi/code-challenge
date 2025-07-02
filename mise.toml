@@ -1,0 +1,11 @@
+[tools]
+node = "24"
+
+[tasks.install]
+alias = "i"
+description = "Install dependencies"
+run = "npm install"
+
+[tasks.'ts:extract']
+description = "Extract artworks with the TypeScript implementation"
+run = "npm -s run extract"

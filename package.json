@@ -1,0 +1,19 @@
+{
+  "name": "serpapi-code-challenge",
+  "version": "1.0.0",
+  "description": "Extract artworks from google artworks knowledge panel",
+  "license": "MIT",
+  "author": "Jasir Zaeem",
+  "type": "module",
+  "main": "bin/extractor.ts",
+  "scripts": {
+    "extract": "node bin/extractor.ts"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "typescript": "^5.8.3"
+  }
+}
