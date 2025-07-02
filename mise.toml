@@ -24,11 +24,14 @@ description = "Run tests"
 run = [
     "npm run test",
     "bundle exec rspec",
-    "echo 'Comparing solution with expected output...'",
+    "echo 'Comparing solutions with expected output...'",
     """
     diff \\
       <(mise run ts:extract './files/van-gogh-paintings.html' | jq --sort-keys) \\
-      <(cat ./files/expected-array.json | jq --sort-keys)
+      <(cat ./files/expected-array.json | jq --sort-keys) \\
+    && diff \\
+        <(mise run ruby:extract './files/van-gogh-paintings.html' | jq --sort-keys) \\
+        <(cat ./files/expected-array.json | jq --sort-keys)
     """,
     "echo 'Tests completed successfully'"
 ]
