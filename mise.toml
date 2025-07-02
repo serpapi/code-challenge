@@ -1,4 +1,5 @@
 [tools]
+jq = "1"
 node = "24"
 
 [tasks.install]
@@ -9,3 +10,16 @@ run = "npm install"
 [tasks.'ts:extract']
 description = "Extract artworks with the TypeScript implementation"
 run = "npm -s run extract"
+
+[tasks.test]
+description = "Run tests"
+run = [
+    "npm run test",
+    "echo 'Comparing solution with expected output...'",
+    """
+    diff \\
+      <(mise run ts:extract './files/van-gogh-paintings.html' | jq --sort-keys) \\
+      <(cat ./files/expected-array.json | jq --sort-keys)
+    """,
+    "echo 'Tests completed successfully'"
+]
