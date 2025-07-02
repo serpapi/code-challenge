@@ -1,20 +1,29 @@
 [tools]
 jq = "1"
 node = "24"
+ruby = "3"
 
 [tasks.install]
 alias = "i"
 description = "Install dependencies"
-run = "npm install"
+run = [
+    "npm install",
+    "bundle install"
+]
 
 [tasks.'ts:extract']
 description = "Extract artworks with the TypeScript implementation"
 run = "npm -s run extract"
 
+[tasks.'ruby:extract']
+description = "Extract artworks with the Ruby implementation"
+run = "ruby ./bin/extractor.rb"
+
 [tasks.test]
 description = "Run tests"
 run = [
     "npm run test",
+    "bundle exec rspec",
     "echo 'Comparing solution with expected output...'",
     """
     diff \\
