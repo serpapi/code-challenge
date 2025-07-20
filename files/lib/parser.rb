@@ -36,15 +36,15 @@ class Parser
             # replace hex with chars
             image = script_tag.match(/(data:image[^'"]*?)('|");/)[1].gsub(/\\x\h{2}/) { |m| m[2, 2].hex.chr }
         else
-            image = @doc.xpath(".//img/@data-src").text
+            image = node.xpath(".//img/@data-src").text
         end
         return image
     end
 
     def extract_carousel
         results_arr = []
-        nodes = @doc.xpath("//a[contains(@href, '/search?')][not(@role)][descendant::img]")
-        @carousel_type = @doc.xpath("//span[@data-ti][@tabindex=0]/descendant::span/text()").to_s()
+        nodes = @doc.xpath("//a[contains(@href, '/search?')][descendant::img]")
+        @carousel_type = @doc.xpath("//span[@data-ti][@tabindex=0]/descendant::span/text()").to_s().downcase
 
         nodes.each do |node|
             name = extract_name(node)
