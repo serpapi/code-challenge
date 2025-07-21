@@ -1,0 +1,9 @@
+#! /usr/bin/env ruby
+
+require_relative "../lib/item_list_extractor.rb"
+
+def extract
+  puts ItemListExtractor.new("https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html").extract
+end
+
+extract()
