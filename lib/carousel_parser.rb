@@ -1,19 +1,22 @@
 # frozen_string_literal: true
 
+# Parses a nokogiri html object into an array of carousel items (hashes)
 class CarouselParser
   def initialize(html)
     @html = html
   end
 
   def call
-    items = get_all_carousel_items
+    items = carousel_items
     items.map { |item| process_item(item) }
   end
 
+  private
+
   attr_reader :html
 
-  def get_all_carousel_items
-    div = get_carousel_division
+  def carousel_items
+    div = carousel_division
     div.css('a')
   end
 
@@ -31,7 +34,7 @@ class CarouselParser
   end
 
   def extensions(item)
-    item.at_css('div').children[1..].map { |extension| extension.text }
+    item.at_css('div').children[1..].map(&:text)
   end
 
   def link(item)
@@ -50,7 +53,7 @@ class CarouselParser
   end
 
   def load_image_from_script(image_id)
-    script = script_tags.select { |scr| scr.text.include?(image_id)}
+    script = script_tags.select { |scr| scr.text.include?(image_id) }
     extract_image(script)
   end
 
@@ -66,7 +69,7 @@ class CarouselParser
     @script_tags ||= html.css('script')
   end
 
-  def get_carousel_division
+  def carousel_division
     html.at_css('div[data-attrid^="kc:/"]')
   end
 end
