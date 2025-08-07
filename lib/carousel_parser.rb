@@ -3,6 +3,7 @@
 # Parses a nokogiri html object into an array of carousel items (hashes)
 class CarouselParser
   GOOGLE_DOMAIN = 'https://www.google.com'
+  DEFAULT_ROOT_NAME = 'items'
 
   def initialize(html)
     @html = html
@@ -81,5 +82,7 @@ class CarouselParser
     ancestor = carousel_division.at_xpath('ancestor::div[3]')
     heading = ancestor.at_css('[role="heading"]')&.text
     heading.downcase
+  rescue
+    DEFAULT_ROOT_NAME
   end
 end
