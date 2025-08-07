@@ -2,6 +2,8 @@
 
 # Parses a nokogiri html object into an array of carousel items (hashes)
 class CarouselParser
+  GOOGLE_DOMAIN = "https://www.google.com"
+
   def initialize(html)
     @html = html
   end
@@ -25,12 +27,14 @@ class CarouselParser
   end
 
   def process_item(item)
-    {
+    result = {
       name: name(item),
       extensions: extensions(item),
       link: link(item),
       image: image(item)
     }
+    result.delete(:extensions) if result[:extensions] == [""]
+    result
   end
 
   def name(item)
@@ -42,7 +46,7 @@ class CarouselParser
   end
 
   def link(item)
-    item['href']
+    GOOGLE_DOMAIN + item['href']
   end
 
   def image(item)
@@ -62,7 +66,7 @@ class CarouselParser
   end
 
   def extract_image(script)
-    script.first.text[/s='(.*?)';/, 1]
+    script.first.text[/s='(.*?)';/, 1].gsub('\\x3d', '=')
   end
 
   def load_image_from_data_src(image_elem)
