@@ -4,6 +4,7 @@ require './lib/html_reader'
 require './lib/carousel_parser'
 require 'json'
 
+# Reads in a html file and returns structured JSON for the carousel
 class Scraper
   def initialize(path)
     @path = path
