@@ -10,7 +10,6 @@ RSpec.describe Scraper do
   let(:expected_json) { JSON.parse(File.read('./files/expected-array.json')) }
 
   it 'parses the HTML and returns the expected JSON' do
-    #require 'byebug'; byebug
     expect(subject).to eq(expected_json)
   end
 end

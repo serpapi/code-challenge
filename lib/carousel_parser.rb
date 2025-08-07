@@ -2,7 +2,7 @@
 
 # Parses a nokogiri html object into an array of carousel items (hashes)
 class CarouselParser
-  GOOGLE_DOMAIN = "https://www.google.com"
+  GOOGLE_DOMAIN = 'https://www.google.com'
 
   def initialize(html)
     @html = html
@@ -33,7 +33,7 @@ class CarouselParser
       link: link(item),
       image: image(item)
     }
-    result.delete(:extensions) if result[:extensions] == [""]
+    result.delete(:extensions) if result[:extensions] == ['']
     result
   end
 
