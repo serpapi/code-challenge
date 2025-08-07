@@ -23,4 +23,13 @@ RSpec.describe Scraper do
       expect(subject).to eq(expected_json)
     end
   end
+
+  context 'davinci paintings' do
+    let(:path) { './files/davinci-paintings.html' }
+    let(:expected_json) { JSON.parse(File.read('./files/davinci-paintings-expected-array.json')) }
+
+    it 'parses the HTML and returns the expected JSON' do
+      expect(subject).to eq(expected_json)
+    end
+  end
 end
