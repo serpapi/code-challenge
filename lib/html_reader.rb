@@ -9,7 +9,11 @@ class HtmlReader
   end
 
   def call
-    html = File.read(@path)
+    html = File.read(path)
     Nokogiri::HTML(html)
   end
+
+  private
+
+  attr_reader :path
 end
