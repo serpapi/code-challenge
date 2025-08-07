@@ -7,8 +7,9 @@ class CarouselParser
   end
 
   def call
-    items = carousel_items
-    items.map { |item| process_item(item) }
+    items = carousel_items.map { |item| process_item(item) }
+
+    { root_name => items }
   end
 
   private
@@ -16,8 +17,11 @@ class CarouselParser
   attr_reader :html
 
   def carousel_items
-    div = carousel_division
-    div.css('a')
+    carousel_division.css('a')
+  end
+
+  def carousel_division
+    @carousel_division ||= html.at_css('div[data-attrid^="kc:/"]')
   end
 
   def process_item(item)
@@ -69,7 +73,9 @@ class CarouselParser
     @script_tags ||= html.css('script')
   end
 
-  def carousel_division
-    html.at_css('div[data-attrid^="kc:/"]')
+  def root_name
+    ancestor = carousel_division.at_xpath('ancestor::div[3]')
+    heading = ancestor.at_css('div[role="heading"]').text
+    heading.downcase
   end
 end
