@@ -34,6 +34,7 @@ class CarouselParser
       link: link(item),
       image: image(item)
     }
+
     result.delete(:extensions) if result[:extensions] == ['']
     result
   end
