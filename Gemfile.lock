@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
+    byebug (12.0.0)
     diff-lcs (1.6.2)
     json (2.13.2)
     language_server-protocol (3.17.0.5)
@@ -52,6 +53,7 @@ PLATFORMS
   arm64-darwin-23
 
 DEPENDENCIES
+  byebug
   nokogiri
   rspec
   rubocop
