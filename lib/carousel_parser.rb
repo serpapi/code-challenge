@@ -82,7 +82,7 @@ class CarouselParser
     ancestor = carousel_division.at_xpath('ancestor::div[3]')
     heading = ancestor.at_css('[role="heading"]')&.text
     heading.downcase
-  rescue
+  rescue StandardError
     DEFAULT_ROOT_NAME
   end
 end
