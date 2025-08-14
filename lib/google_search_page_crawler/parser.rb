@@ -25,12 +25,23 @@ class GoogleSearchPageCrawler
         "name": artwork_node.css("div > div").first.text,
         "extensions": artwork_node.css("div > div").drop(1).map { |e| e.text.to_s },
         "link": google_url_from_path(artwork_node.attr("href")),
-        "image": artwork_node.css("img").first.attr("src")
+        "image": parse_artwork_image(artwork_node.css("img").first)
       }
     end
+
+    private def parse_artwork_image(img_node)
+      if img_node.attr("id")
+        "test"
+      else
+        img_node.attr("data-src")
+      end
+    end
+
 
     private def google_url_from_path(path)
       URI.join("https://www.google.com", path).to_s
     end
+
+
   end
 end

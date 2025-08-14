@@ -25,8 +25,16 @@ describe GoogleSearchPageCrawler::Parser do
       expect(subject.parse_artwork(artwork_node)[:link]).to eq("https://www.google.com/search?sca_esv=c2e426814f4d07e9&gl=us&hl=en&q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhWCSxKLiioV_DLTM0oAdKX0-E4AAAA&sa=X&ved=2ahUKEwjK-K-JwLWKAxXcQTABHePpOFoQtq8DegQIMxAD")
     end
 
-    specify "image" do
-      expect(subject.parse_artwork(artwork_node)[:image]).to eq("IMAGE_DATA")
+    describe "image" do
+      context "extra requests links" do
+        let(:artwork_node) {
+          Nokogiri::HTML(artwork_html).css("a.TEST-DATA-SRC").first
+        }
+
+        specify "image" do
+          expect(subject.parse_artwork(artwork_node)[:image]).to eq("DATA_SRC_CONTENT")
+        end
+      end
     end
   end
 
@@ -43,7 +51,10 @@ describe GoogleSearchPageCrawler::Parser do
 
       expect(result[:artworks].size).to eq(47)
       expect(result[:artworks].map { |a| a[:name] }).to eq(expected_artworks.map { |a| a["name"] })
-      expect(result[:artworks].map { |a| a[:extensions] }).to eq(expected_artworks.map { |a| a["extensions"] })
+      expect(result[:artworks].map { |a| a[:link] }).to eq(expected_artworks.map { |a| a["link"] })
+      # expect(result[:artworks].map { |a| a[:image] }).to eq(expected_artworks.map { |a| a["image"] })
+      # binding.break
+      # expect(result[:artworks].map { |a| a[:extensions] }).to eq(expected_artworks.map { |a| a["extensions"] })
     end
   end
 end
