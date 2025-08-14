@@ -1,49 +1,42 @@
 This PR implements a solution to parse artworks from google's search result.
 
-# Solution
+# Cases covered
+I've considered 2 cases: Artworks page (large carrousel from the example) and a default search page (small carrousel) and the
 
-## Architecture
-I've divided the solution into 2 main classes:
+![](files/van-gogh-paintings.png)
+![](files/default-page-search.png)
 
-`GoogleSearchPageCrawler`
 
-Responsible for receiving a URL (file path/url), fetch the page HTML and return the correct JSON structure
 
-`GoogleSearchPageCrawler::Parser`
-Knows how to parse the page DOM.
+# Architecture
+We have 2 main classes:
 
-Its `parse` method returns a `GoogleSearchPageCrawler::Parser::Result`: a pure ruby data/value object. The `GoogleSearchPageCrawler::Parser::Result` uses dry struct: helping with coersion, default values and also make it easy to document the expected structure
+- `GoogleSearchPageCrawler` - Responsible for receiving a file path, fetch the page HTML and format the expected result as JSON
+- `GoogleSearchPageCrawler::Parser` - Knows how to parse the page DOM. It's `parse` method returns a `GoogleSearchPageCrawler::Parser::Result`: a data/value object that uses dry struct. This makes our data structure more explicit and prevents mistyping errors that happens we just use a hash.
 
-*No need to split into more classes*
-If we need to parse more data in the future, one idea is to split the parsing logic into multiple "sub-classes" instead of methods.
+# Parsing logic
+
+I've implemented everything in a single class but - if needed in the future - one idea is to split the parsing logic into multiple "sub-classes" instead of methods.
 
 Example: `GoogleSearchPageCrawler::Parser::ListResult`, `GoogleSearchPageCrawler::Parser::Artworks`, etc.
 
-Each class parses a specific part of the result. It's not strictly necessary but may help to lower the cognitive load when reading the "parser" class if it gets too big, keep the code organized and facilitate knowing where to look for fixing a specific broken parsing rules.
+Each class could parse a specific part of the page. It's not strictly necessary but may help to lower the cognitive load if it gets too big, keeping the code more organized and cohesive by facilitate to know where to look for fixing a specific broken parsing rule.
 
-## GoogleSearchPageCrawler::Parser parsing logic
+I've tried to make the scraper more error prone by using a non obfuscated selectors such as `data-attrid="kc:/visual_art/visual_artist:works` and looking for text nodes instead of classes or dom hierarchy to search for the name/extensions.
 
-I've implemented the parsing logic to work for both cases: the default search page (small carrousel) and the Artworks page (large carrousel).
-
-### Image parsing
-The readme reinforces that we have to keep the image attribute for both cases:
+## Image parsing
+The readme highlights that we have to keep the image attribute for both cases:
 
 - the base64 encoded image
 - the image link (those that require a click on the "show more" button)
 
-When I've executed a test against the `expected-array.json` file, I've noticed that the `<img>` tag for each artwork have a src with a gif.
+When I've executed a test against the `expected-array.json` file, I've noticed that the `<img>` tag with a gif and not the correct src.
 
-- those with the base64 thumbnail have an id attribute.
+### img with id attribute
 ```html
 <img class="taFZJe" alt="The Potato Eaters" id="_L_FkZ4qlAtyDwbkP49Pj0QU_79" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-deferred="1">
 ```
 
-- those with the image link have a `data-src` attribute.
-```html
-<img class="taFZJe" alt="Self-Portrait with Bandaged Ear" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8juuefle5MyKZKBLRgPjsGSJon7vkt91SM7WTRuZOOyAyUI1v" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
-```
-
-#### Base64 encoded image
 The same ID can be found inside a script tag with their base64 encoded image.
 
 ```html
@@ -52,9 +45,12 @@ The same ID can be found inside a script tag with their base64 encoded image.
 
 So, we have to find the script tag with the same ID and extract the base64 encoded image from there.
 
-#### Image link
+### img with `data-src` attribute. Aditional request is needed
+```html
+<img class="taFZJe" alt="Self-Portrait with Bandaged Ear" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8juuefle5MyKZKBLRgPjsGSJon7vkt91SM7WTRuZOOyAyUI1v" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+```
 
-We just have to extract the `data-src` attribute from the `<img>` tag.
+We just use the `data-src` and return it.
 
 # Usage
 
@@ -67,3 +63,26 @@ Execute
 `bundle exec ruby scrape_files.rb FILENAME.HTML` to use the `GoogleSearchPageCrawler` to crawl the page and parse the artworks.
 
 It searches for the file in the `files` folder. Defaults to `van-gogh-paintings.html`
+
+# Notes
+## Interesting case - Following artwork link
+There's another case that I found: when we click on an artwork and the list appears as a horizontal top list.
+
+https://www.google.com/search?sca_esv=e77f9c08ad4d25ad&sxsrf=AE3TifPtmZe03gj5RYheiEGzNrtk6qieag:1755204957217&q=Bullfinch+and+weeping+cherry+blossoms&stick=H4sIAAAAAAAAAONgFuLQz9U3SCpPM1Hi1U_XNzRMNi5JrzKozNFSyk620i_LLC5NzIlPLCpBYmYWl1iV5xdlFy9iVXUqzclJy8xLzlBIzEtRKE9NLcjMS1dIzkgtKqpUSMrJLy7Ozy0GAHIW_uhnAAAA&sa=X&ved=2ahUKEwj_qO7_l4uPAxWrIrkGHbNdIp4QgOQBegQIMhAS
+
+I didn't cover this case because I've noticed that it happens only when we follow an artwork link: the page loads with the artwork highlighted containing an empty href="#".
+
+If we ever need to cover this case we can use the
+`div[data-attrid="kc:/visual_art/visual_artist:works"] [role="group"] a` selector and maybe change the URL logic to have a "current page" information in order to return the correct link for the selected artwork.
+
+## RAW HTML analysis
+
+### Artwork specific page (Example from README)
+The raw HTML (from 'view source code') lists all the artworks
+
+### Normal search page ('small carousell')
+The raw HTMl (from 'view source code') lists only 6 artworks. The other ones seems to be inside a javascript.
+
+Testing in the playground: https://serpapi.com/playground?q=monet&location=Austin%2C+Texas%2C+United+States&gl=us&hl=en it seems that SerpAPI does consider this case.
+
+I didn't try to parse them because I believe that this is outside of scope of this exercise. Instead of manually parsing the script (like we did with the image) we could consider using a real browser to evaluate the HTML before parsing the data. This is less performant but, depending on how possible is to manually parse this case, can be an option.

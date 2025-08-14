@@ -7,15 +7,15 @@ module Types
 end
 
 class GoogleSearchPageCrawler
-  class Artwork < Dry::Struct
-    attribute :name, Types::String.default("")
-    attribute :extensions, Types::Array.of(Types::String).default([])
-    attribute :link, Types::String.default("")
-    attribute :image, Types::String.default("")
-  end
+  class Result < Dry::Struct
+    class Artwork < Dry::Struct
+      attribute :name, Types::String.default("")
+      attribute :extensions, Types::Array.of(Types::String).default([])
+      attribute :link, Types::String.default("")
+      attribute :image, Types::String.default("")
+    end
 
-  class ArtworkList < Dry::Struct
-    attribute :artworks, Types::Array.of(Artwork).default([])
+    attribute :artworks, Types::Array.of(Result::Artwork).default([])
   end
 
   class Parser
@@ -25,7 +25,7 @@ class GoogleSearchPageCrawler
     end
 
     def parse
-      ArtworkList.new(artworks: parse_artworks)
+      Result.new(artworks: parse_artworks)
     end
 
     def parse_artworks
@@ -53,7 +53,7 @@ class GoogleSearchPageCrawler
       end
 
 
-      Artwork.new({
+      Result::Artwork.new({
         name: text_nodes.first,
         extensions: text_nodes.drop(1),
         link: google_url_from_path(artwork_node.at_css("a").attr("href")),
@@ -71,7 +71,7 @@ class GoogleSearchPageCrawler
         image_node.attr("data-src")
       end
 
-      Artwork.new({
+      Result::Artwork.new({
         name: text_nodes.first,
         extensions: text_nodes.drop(1),
         link: google_url_from_path(artwork_node.attr("href")),
