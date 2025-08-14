@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'uri'
 
 class GoogleSearchPageCrawler
   class Parser
@@ -20,8 +21,13 @@ class GoogleSearchPageCrawler
     def parse_artwork(artwork_node)
       {
         "title": artwork_node.css("div > div").first.text,
-        extensions: artwork_node.css("div > div").drop(1).map(&:text)
+        "extensions": artwork_node.css("div > div").drop(1).map(&:text),
+        "link": google_url_from_path(artwork_node.css("a").first.attr("href"))
       }
+    end
+
+    private def google_url_from_path(path)
+      URI.join("https://www.google.com", path).to_s
     end
   end
 end
