@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'google_search_page_crawler/parser'
 
 class GoogleSearchPageCrawler

@@ -4,8 +4,17 @@ def file_path(name)
   File.join(File.dirname(__FILE__), "files", "#{name}")
 end
 
+def write_to_file(name, content)
+  File.write(file_path(name), content)
+end
+
 crawler = GoogleSearchPageCrawler.new
 
-puts "Scraping van-gogh-paintings.html"
+file_name = ARGV.first || "van-gogh-paintings.html"
+puts "Scraping #{file_name}"
 
-puts crawler.crawl(file_path("van-gogh-paintings.html"))
+results = crawler.crawl(file_path(file_name))
+
+puts results.to_json
+
+write_to_file(file_name.to_s.gsub(".html", "-results.json"), results)

@@ -63,3 +63,5 @@ We just have to extract the `data-src` attribute from the `<img>` tag.
 
 Execute
 `bundle exec ruby scrape_files.rb FILENAME.HTML` to use the `GoogleSearchPageCrawler` to crawl the page and parse the artworks.
+
+It searches for the file in the `files` folder. Defaults to `van-gogh-paintings.html`
