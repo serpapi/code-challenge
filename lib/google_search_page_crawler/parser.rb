@@ -40,36 +40,49 @@ class GoogleSearchPageCrawler
     end
 
     def parse_small_carrousel_artwork(artwork_node)
-      # binding.break
       text_nodes = artwork_node.search('text()').map(&:text).reject(&:empty?)
+
+      image_node = artwork_node.css("img").first
+
+      image = if image_id = image_node.attr("id")
+        fetch_base64_data_for_image(image_node, image_id)
+      else
+        image_node.attr("src")
+      end
+
+
       Artwork.new({
         name: text_nodes.first,
         extensions: text_nodes.drop(1),
         link: google_url_from_path(artwork_node.at_css("a").attr("href")),
-        image: artwork_node.css("img").first.attr("src")
+        image:
       })
     end
 
     def parse_big_carrousel_artwork(artwork_node)
       text_nodes = artwork_node.search('text()').map(&:text).reject(&:empty?)
+
+      image_node = artwork_node.css("img").first
+      image = if image_id = image_node.attr("id")
+        fetch_base64_data_for_image(image_node, image_id)
+      else
+        image_node.attr("data-src")
+      end
+
       Artwork.new({
         name: text_nodes.first,
         extensions: text_nodes.drop(1),
         link: google_url_from_path(artwork_node.attr("href")),
-        image: parse_artwork_image(artwork_node.css("img").first)
+        image:
       })
     end
 
-    private def parse_artwork_image(img_node)
-      if image_id = img_node.attr("id")
-        thumbnail_replace_script = doc.css("script").find { |script| script.text.include?(image_id) }
-        base64_image = thumbnail_replace_script.text.match(/var s='(data:image[^']+)'/)
+    private def fetch_base64_data_for_image(img_node, image_id)
+      thumbnail_replace_script = doc.css("script").find { |script| script.text.include?(image_id) }
+      base64_image = thumbnail_replace_script.text.match(/var s='(data:image[^']+)'/)
 
-        # some chars such as '=' are encoded as hex in the script
-        base64_image[1].gsub(/\\x([0-9a-fA-F]{2})/) { [$1].pack("H2") }
-      else
-        img_node.attr("data-src")
-      end
+      # some chars such as '=' are encoded as hex in the script
+      base64_image[1].gsub(/\\x([0-9a-fA-F]{2})/) { [$1].pack("H2") }
     end
 
     private def google_url_from_path(path)
