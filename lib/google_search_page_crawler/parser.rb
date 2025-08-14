@@ -29,12 +29,17 @@ class GoogleSearchPageCrawler
     end
 
     def parse_artworks
-      doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"] a').map do |node|
-        parse_artwork(node)
+      if is_small_carrousel = doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"][role="list"]').any?
+        puts "Small carrousel"
+      else
+        doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"] a').map do |node|
+          parse_big_carrousel_artwork(node)
+        end
       end
+
     end
 
-    def parse_artwork(artwork_node)
+    def parse_big_carrousel_artwork(artwork_node)
       Artwork.new({
         name: artwork_node.css("div > div").first.text,
         extensions: artwork_node.css("div > div").drop(1).map { |e| e.text.to_s }.reject(&:empty?),
@@ -58,7 +63,5 @@ class GoogleSearchPageCrawler
     private def google_url_from_path(path)
       URI.join("https://www.google.com", path).to_s
     end
-
-
   end
 end
