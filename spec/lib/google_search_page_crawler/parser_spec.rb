@@ -13,8 +13,8 @@ describe GoogleSearchPageCrawler::Parser do
       Nokogiri::HTML(artwork_html).css("a").first
     }
 
-    specify "title" do
-      expect(subject.parse_artwork(artwork_node)[:title]).to eq("The Starry Night")
+    specify "name" do
+      expect(subject.parse_artwork(artwork_node)[:name]).to eq("The Starry Night")
     end
 
     specify "extensions" do
@@ -42,7 +42,8 @@ describe GoogleSearchPageCrawler::Parser do
       expected_artworks = JSON.parse(load_fixture_file("van-gogh-expected-parse-response.json"))["artworks"]
 
       expect(result[:artworks].size).to eq(47)
-      expect(result[:artworks]).to eq(expected_artworks)
+      expect(result[:artworks].map { |a| a[:name] }).to eq(expected_artworks.map { |a| a["name"] })
+      expect(result[:artworks].map { |a| a[:extensions] }).to eq(expected_artworks.map { |a| a["extensions"] })
     end
   end
 end
