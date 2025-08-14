@@ -29,7 +29,7 @@ describe "Search Page Parsing" do
       parser = GoogleSearchPageCrawler.new
       result = parser.crawl(fixture_file_path("monet-artworks.html"))
 
-      expect(result[:artworks].size).to eq(50)
+      expect(result.artworks.size).to eq(50)
       expect(result[:artworks][0][:name]).to eq("Impression, Sunrise")
       expect(result[:artworks][0][:extensions]).to eq(["1872"])
       expect(result[:artworks][0][:link]).to eq("https://www.google.com/search?sa=X&sca_esv=952fdb03796c5895&biw=1279&bih=882&sxsrf=AE3TifM_5ohXuFfUgED1fT58PY9Djs6sjA:1755194880310&q=Impression,+Sunrise&stick=H4sIAAAAAAAAAONgFuLQz9U3MKzIy1LiBLPiK4yMtZSyk630yzKLSxNz4hOLSpCYmcUlVuX5RdnFi1iFPXMLilKLizPz83QUgkvzijKLUwGEYmULUQAAAA&ved=2ahUKEwiD2ui68oqPAxW3pZUCHdE4DEAQtq8DegQIMRAD")

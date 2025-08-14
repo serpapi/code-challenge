@@ -14,15 +14,15 @@ describe GoogleSearchPageCrawler::Parser do
     }
 
     specify "name" do
-      expect(subject.parse_artwork(artwork_node)[:name]).to eq("The Starry Night")
+      expect(subject.parse_artwork(artwork_node).name).to eq("The Starry Night")
     end
 
     specify "extensions" do
-      expect(subject.parse_artwork(artwork_node)[:extensions]).to eq(["1889"])
+      expect(subject.parse_artwork(artwork_node).extensions).to eq(["1889"])
     end
 
     specify "artwork link" do
-      expect(subject.parse_artwork(artwork_node)[:link]).to eq("https://www.google.com/search?sca_esv=c2e426814f4d07e9&gl=us&hl=en&q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhWCSxKLiioV_DLTM0oAdKX0-E4AAAA&sa=X&ved=2ahUKEwjK-K-JwLWKAxXcQTABHePpOFoQtq8DegQIMxAD")
+      expect(subject.parse_artwork(artwork_node).link).to eq("https://www.google.com/search?sca_esv=c2e426814f4d07e9&gl=us&hl=en&q=The+Starry+Night&stick=H4sIAAAAAAAAAONgFuLQz9U3MI_PNVLiBLFMzC3jC7WUspOt9Msyi0sTc-ITi0qQmJnFJVbl-UXZxYtYBUIyUhWCSxKLiioV_DLTM0oAdKX0-E4AAAA&sa=X&ved=2ahUKEwjK-K-JwLWKAxXcQTABHePpOFoQtq8DegQIMxAD")
     end
 
     describe "image" do
@@ -32,7 +32,7 @@ describe GoogleSearchPageCrawler::Parser do
         }
 
         specify "image" do
-          expect(subject.parse_artwork(artwork_node)[:image]).to eq("DATA_SRC_CONTENT")
+          expect(subject.parse_artwork(artwork_node).image).to eq("DATA_SRC_CONTENT")
         end
       end
 
@@ -41,7 +41,7 @@ describe GoogleSearchPageCrawler::Parser do
           Nokogiri::HTML(artwork_html).css("a.TEST-BASE64-IMAGE").first
         }
         specify "image" do
-          expect(subject.parse_artwork(artwork_node)[:image]).to eq("data:image/png;base64,IMAGE_BASE64_ENCODED")
+          expect(subject.parse_artwork(artwork_node).image).to eq("data:image/png;base64,IMAGE_BASE64_ENCODED")
         end
       end
     end

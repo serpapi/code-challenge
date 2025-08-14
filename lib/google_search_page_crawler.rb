@@ -6,6 +6,10 @@ class GoogleSearchPageCrawler
   def crawl(file_path)
     html = open(file_path).read
     parser = GoogleSearchPageCrawler::Parser.new(html)
+
     parser.parse
   end
+
+  private
+
 end

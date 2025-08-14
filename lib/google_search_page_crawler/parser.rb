@@ -1,7 +1,23 @@
 require 'nokogiri'
-require 'uri'
+require 'dry-types'
+require 'dry-struct'
+
+module Types
+  include Dry.Types()
+end
 
 class GoogleSearchPageCrawler
+  class Artwork < Dry::Struct
+    attribute :name, Types::String.default("")
+    attribute :extensions, Types::Array.of(Types::String).default([])
+    attribute :link, Types::String.default("")
+    attribute :image, Types::String.default("")
+  end
+
+  class ArtworkList < Dry::Struct
+    attribute :artworks, Types::Array.of(Artwork).default([])
+  end
+
   class Parser
     attr_reader :doc
     def initialize(html)
@@ -9,9 +25,7 @@ class GoogleSearchPageCrawler
     end
 
     def parse
-      {
-        "artworks": parse_artworks
-      }
+      ArtworkList.new(artworks: parse_artworks)
     end
 
     def parse_artworks
@@ -21,12 +35,12 @@ class GoogleSearchPageCrawler
     end
 
     def parse_artwork(artwork_node)
-      {
-        "name": artwork_node.css("div > div").first.text,
-        "extensions": artwork_node.css("div > div").drop(1).map { |e| e.text.to_s },
-        "link": google_url_from_path(artwork_node.attr("href")),
-        "image": parse_artwork_image(artwork_node.css("img").first)
-      }
+      Artwork.new({
+        name: artwork_node.css("div > div").first.text,
+        extensions: artwork_node.css("div > div").drop(1).map { |e| e.text.to_s },
+        link: google_url_from_path(artwork_node.attr("href")),
+        image: parse_artwork_image(artwork_node.css("img").first)
+      })
     end
 
     private def parse_artwork_image(img_node)

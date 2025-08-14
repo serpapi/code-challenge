@@ -4,7 +4,8 @@ source "https://rubygems.org"
 
 # gem "rails"
 gem 'nokogiri'
-gem 'mechanize'
+gem 'dry-types'
+gem 'dry-struct'
 
 group :development do
   gem 'debug'
