@@ -37,7 +37,7 @@ class GoogleSearchPageCrawler
     def parse_artwork(artwork_node)
       Artwork.new({
         name: artwork_node.css("div > div").first.text,
-        extensions: artwork_node.css("div > div").drop(1).map { |e| e.text.to_s },
+        extensions: artwork_node.css("div > div").drop(1).map { |e| e.text.to_s }.reject(&:empty?),
         link: google_url_from_path(artwork_node.attr("href")),
         image: parse_artwork_image(artwork_node.css("img").first)
       })
