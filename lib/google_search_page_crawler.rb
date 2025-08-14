@@ -1,15 +1,11 @@
 require_relative 'google_search_page_crawler/parser'
 
 class GoogleSearchPageCrawler
-  def initialize(url)
+  attr_reader :agent
 
-  end
-
-  def crawl
-    {
-      "Artworks": [
-
-      ]
-    }
+  def crawl(file_path)
+    html = open(file_path).read
+    parser = GoogleSearchPageCrawler::Parser.new(html)
+    parser.parse
   end
 end

@@ -53,3 +53,13 @@ So, we have to find the script tag with the same ID and extract the base64 encod
 #### Image link
 
 We just have to extract the `data-src` attribute from the `<img>` tag.
+
+# Usage
+
+## Running tests
+`bundle exec rspec` to run feature specs (uses fixtures) or more unit tests from the `lib` folder.
+
+## Scraping a search page
+
+Execute
+`bundle exec ruby scrape_files.rb FILENAME.HTML` to use the `GoogleSearchPageCrawler` to crawl the page and parse the artworks.

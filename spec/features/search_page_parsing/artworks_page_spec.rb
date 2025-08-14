@@ -3,9 +3,8 @@ require 'spec_helper'
 describe "Search Page Parsing" do
   describe "Artworks page" do
     specify "Van Gogh paintings" do
-      html = load_fixture_file("van-gogh-paintings.html")
-      parser = GoogleSearchPageCrawler::Parser.new(html)
-      result = parser.parse
+      parser = GoogleSearchPageCrawler.new
+      result = parser.crawl(fixture_file_path("van-gogh-paintings.html"))
       expected_artworks = JSON.parse(load_fixture_file("van-gogh-expected-parse-response.json"))["artworks"]
 
       expect(result[:artworks].size).to eq(47)
@@ -16,9 +15,8 @@ describe "Search Page Parsing" do
     end
 
     specify "Leonardo da Vinci paintings" do
-      html = load_fixture_file("leonardo-da-vinci-artworks.html")
-      parser = GoogleSearchPageCrawler::Parser.new(html)
-      result = parser.parse
+      parser = GoogleSearchPageCrawler.new
+      result = parser.crawl(fixture_file_path("leonardo-da-vinci-artworks.html"))
 
       expect(result[:artworks].size).to eq(47)
       expect(result[:artworks][0][:name]).to eq("Salvator Mundi")
@@ -28,9 +26,8 @@ describe "Search Page Parsing" do
     end
 
     specify "Leonardo da Vinci paintings" do
-      html = load_fixture_file("monet-artworks.html")
-      parser = GoogleSearchPageCrawler::Parser.new(html)
-      result = parser.parse
+      parser = GoogleSearchPageCrawler.new
+      result = parser.crawl(fixture_file_path("monet-artworks.html"))
 
       expect(result[:artworks].size).to eq(50)
       expect(result[:artworks][0][:name]).to eq("Impression, Sunrise")

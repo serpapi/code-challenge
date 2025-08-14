@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 # gem "rails"
 gem 'nokogiri'
+gem 'mechanize'
 
 group :development do
   gem 'debug'

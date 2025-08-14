@@ -21,7 +21,11 @@ require_relative '../lib/google_search_page_crawler'
 #
 
 def load_fixture_file(name)
-  File.read(File.join(File.dirname(__FILE__), "fixtures", "#{name}"))
+  File.read(fixture_file_path(name))
+end
+
+def fixture_file_path(name)
+  File.join(File.dirname(__FILE__), "fixtures", "#{name}")
 end
 
 RSpec.configure do |config|
