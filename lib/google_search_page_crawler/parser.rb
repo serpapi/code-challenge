@@ -30,13 +30,14 @@ class GoogleSearchPageCrawler
     end
 
     private def parse_artwork_image(img_node)
-      if img_node.attr("id")
-        "test"
+      if image_id = img_node.attr("id")
+        thumbnail_replace_script = doc.css("script").find { |script| script.text.include?(image_id) }
+        base64_image = thumbnail_replace_script.text.match(/var s='(data:image[^']+)'/)
+        base64_image[1]
       else
         img_node.attr("data-src")
       end
     end
-
 
     private def google_url_from_path(path)
       URI.join("https://www.google.com", path).to_s

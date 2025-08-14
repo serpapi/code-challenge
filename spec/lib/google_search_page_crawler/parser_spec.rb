@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe GoogleSearchPageCrawler::Parser do
-
   describe ".parse_artwork" do
-    subject { GoogleSearchPageCrawler::Parser.new("") }
 
     let(:artwork_html) {
       load_fixture_file("starry_night_artwork_node.html")
     }
+
+    subject { GoogleSearchPageCrawler::Parser.new(artwork_html) }
 
     let(:artwork_node) {
       Nokogiri::HTML(artwork_html).css("a").first
@@ -35,6 +35,15 @@ describe GoogleSearchPageCrawler::Parser do
           expect(subject.parse_artwork(artwork_node)[:image]).to eq("DATA_SRC_CONTENT")
         end
       end
+
+      context "base64 image thumbnail" do
+        let(:artwork_node) {
+          Nokogiri::HTML(artwork_html).css("a.TEST-BASE64-IMAGE").first
+        }
+        specify "image" do
+          expect(subject.parse_artwork(artwork_node)[:image]).to eq("data:image/png;base64,IMAGE_BASE64_ENCODED")
+        end
+      end
     end
   end
 
@@ -52,7 +61,8 @@ describe GoogleSearchPageCrawler::Parser do
       expect(result[:artworks].size).to eq(47)
       expect(result[:artworks].map { |a| a[:name] }).to eq(expected_artworks.map { |a| a["name"] })
       expect(result[:artworks].map { |a| a[:link] }).to eq(expected_artworks.map { |a| a["link"] })
-      # expect(result[:artworks].map { |a| a[:image] }).to eq(expected_artworks.map { |a| a["image"] })
+      # binding.break
+      # expect(result[:artworks].map { |a| a[:image].to_s }).to eq(expected_artworks.map { |a| a["image"].to_s })
       # binding.break
       # expect(result[:artworks].map { |a| a[:extensions] }).to eq(expected_artworks.map { |a| a["extensions"] })
     end
