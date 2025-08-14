@@ -15,14 +15,16 @@ class GoogleSearchPageCrawler
     end
 
     def parse_artworks
-      doc.css('kc:/visual_art/visual_artist:works"] a').map(&:parse_artwork)
+      doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"] a').map do |node|
+        parse_artwork(node)
+      end
     end
 
     def parse_artwork(artwork_node)
       {
         "title": artwork_node.css("div > div").first.text,
         "extensions": artwork_node.css("div > div").drop(1).map(&:text),
-        "link": google_url_from_path(artwork_node.css("a").first.attr("href")),
+        "link": google_url_from_path(artwork_node.attr("href")),
         "image": artwork_node.css("img").first.attr("src")
       }
     end

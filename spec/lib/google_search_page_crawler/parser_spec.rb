@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe GoogleSearchPageCrawler::Parser do
 
-  subject { GoogleSearchPageCrawler::Parser.new("") }
-
   describe ".parse_artwork" do
+    subject { GoogleSearchPageCrawler::Parser.new("") }
+
     let(:artwork_html) {
       load_fixture_file("starry_night_artwork_node.html")
     }
 
     let(:artwork_node) {
-      Nokogiri::HTML(artwork_html)
+      Nokogiri::HTML(artwork_html).css("a").first
     }
 
     specify "title" do
@@ -27,6 +27,22 @@ describe GoogleSearchPageCrawler::Parser do
 
     specify "image" do
       expect(subject.parse_artwork(artwork_node)[:image]).to eq("IMAGE_DATA")
+    end
+  end
+
+  describe "parse" do
+    let(:html) {
+      load_fixture_file("van-gogh-paintings.html")
+    }
+
+    subject { GoogleSearchPageCrawler::Parser.new(html) }
+
+    specify "artworks" do
+      result = subject.parse
+      expected_artworks = JSON.parse(load_fixture_file("van-gogh-expected-parse-response.json"))["artworks"]
+
+      expect(result[:artworks].size).to eq(47)
+      expect(result[:artworks]).to eq(expected_artworks)
     end
   end
 end
