@@ -4,7 +4,7 @@ describe GoogleSearchPageCrawler::Parser do
   describe ".parse_big_carrousel_artwork" do
 
     let(:artwork_html) {
-      load_fixture_file("starry_night_artwork_node.html")
+      load_fixture_file("starry_night_big_carrousel_node.html")
     }
 
     subject { GoogleSearchPageCrawler::Parser.new(artwork_html) }

@@ -5,7 +5,7 @@ describe "Search Page Parsing" do
   describe "Artworks page" do
     specify "Van Gogh paintings" do
       parser = GoogleSearchPageCrawler.new
-      result = JSON.parse(parser.crawl(fixture_file_path("van-gogh-paintings.html")))
+      result = JSON.parse(parser.crawl(fixture_file_path("van-gogh-artworks.html")))
       expected_artworks = JSON.parse(load_fixture_file("van-gogh-expected-parse-response.json"))["artworks"]
 
       expect(result["artworks"].size).to eq(47)
