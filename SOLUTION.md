@@ -23,7 +23,9 @@ Each class parses a specific part of the result. It's not strictly necessary but
 
 ## GoogleSearchPageCrawler::Parser parsing logic
 
-### Image
+I've implemented the parsing logic to work for both cases: the default search page (small carrousel) and the Artworks page (large carrousel).
+
+### Image parsing
 The readme reinforces that we have to keep the image attribute for both cases:
 
 - the base64 encoded image

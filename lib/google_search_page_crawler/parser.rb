@@ -29,8 +29,10 @@ class GoogleSearchPageCrawler
     end
 
     def parse_artworks
-      if is_small_carrousel = doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"][role="list"]').any?
-        puts "Small carrousel"
+      if is_small_carrousel = doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"] [role="list"]').any?
+        doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"] [role="list"] a').map do |node|
+          parse_small_carrousel_artwork(node.parent)
+        end
       else
         doc.css('div[data-attrid="kc:/visual_art/visual_artist:works"] a').map do |node|
           parse_big_carrousel_artwork(node)
