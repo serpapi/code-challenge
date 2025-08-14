@@ -39,10 +39,22 @@ class GoogleSearchPageCrawler
 
     end
 
-    def parse_big_carrousel_artwork(artwork_node)
+    def parse_small_carrousel_artwork(artwork_node)
+      # binding.break
+      text_nodes = artwork_node.search('text()').map(&:text).reject(&:empty?)
       Artwork.new({
-        name: artwork_node.css("div > div").first.text,
-        extensions: artwork_node.css("div > div").drop(1).map { |e| e.text.to_s }.reject(&:empty?),
+        name: text_nodes.first,
+        extensions: text_nodes.drop(1),
+        link: google_url_from_path(artwork_node.at_css("a").attr("href")),
+        image: artwork_node.css("img").first.attr("src")
+      })
+    end
+
+    def parse_big_carrousel_artwork(artwork_node)
+      text_nodes = artwork_node.search('text()').map(&:text).reject(&:empty?)
+      Artwork.new({
+        name: text_nodes.first,
+        extensions: text_nodes.drop(1),
         link: google_url_from_path(artwork_node.attr("href")),
         image: parse_artwork_image(artwork_node.css("img").first)
       })

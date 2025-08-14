@@ -42,7 +42,7 @@ When I've executed a test against the `expected-array.json` file, I've noticed t
 ```
 
 #### Base64 encoded image
-The same ID reappears inside a script tag with their base64 encoded image.
+The same ID can be found inside a script tag with their base64 encoded image.
 
 ```html
 <script nonce="xmO6un4J9murPFDygFfaMA">(function(){var s='data:image/webp;base64,UklGRjQMAABXRUJQVlA4ICgMAAAQRACdASrhAJsAPxGAt1QsKCU1KDV7MqAiCWcHDtAkSjkn/r/Xf+ydgBeraVdn/9Px1UGv5GYPyffrugwzIfw/Rc/+vnb/kP/hwO2JbSYKG1VQIN78tct7QVKKyA/XDj2TQ174tLSeF8ejv+SZJ2zx....';var ii=['_L_FkZ4qlAtyDwbkP49Pj0QU_79'];var r='';_setImagesSrc(ii,s,r);})();</script>
