@@ -9,13 +9,13 @@ end
 class GoogleSearchPageCrawler
   class Result < Dry::Struct
     class Artwork < Dry::Struct
-      attribute :name, Types::String.default("")
-      attribute :extensions, Types::Array.of(Types::String).default([])
-      attribute :link, Types::String.default("")
-      attribute :image, Types::String.default("")
+      attribute :name, Types::String.default("".freeze)
+      attribute :extensions, Types::Array.of(Types::String).default([].freeze)
+      attribute :link, Types::String.default("".freeze)
+      attribute :image, Types::String.default("".freeze)
     end
 
-    attribute :artworks, Types::Array.of(Result::Artwork).default([])
+    attribute :artworks, Types::Array.of(Result::Artwork).default([].freeze)
   end
 
   class Parser
@@ -51,7 +51,6 @@ class GoogleSearchPageCrawler
       else
         image_node.attr("src")
       end
-
 
       Result::Artwork.new({
         name: text_nodes.first,

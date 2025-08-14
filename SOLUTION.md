@@ -1,7 +1,7 @@
 This PR implements a solution to parse artworks from google's search result.
 
 # Cases covered
-I've considered 2 cases: Artworks page (large carrousel from the example) and a default search page (small carrousel) and the
+I've considered 2 cases: Artworks page (large carrousel from the example) and a default search page (small carrousel).
 
 ![](files/van-gogh-paintings.png)
 ![](files/default-page-search.png)
@@ -20,9 +20,12 @@ I've implemented everything in a single class but - if needed in the future - on
 
 Example: `GoogleSearchPageCrawler::Parser::ListResult`, `GoogleSearchPageCrawler::Parser::Artworks`, etc.
 
-Each class could parse a specific part of the page. It's not strictly necessary but may help to lower the cognitive load if it gets too big, keeping the code more organized and cohesive by facilitate to know where to look for fixing a specific broken parsing rule.
+Each class could parse a specific part of the page. While not strictly necessary, this approach can reduce cognitive load as the number of desired data grows.
+It keeps the code more organized, cohesive and makes it easier to locate and fix a broken parsing rule.
 
 I've tried to make the scraper more error prone by using a non obfuscated selectors such as `data-attrid="kc:/visual_art/visual_artist:works` and looking for text nodes instead of classes or dom hierarchy to search for the name/extensions.
+
+The `parse_small_carrousel_artwork` and `parse_big_carrousel_artwork` methods are intentionally kept separate, even though their logic is similar. Both parse the same concept (Result::Artwork), but from different DOM structures. Keeping them distinct ensures that each case retains its own logic and execution strategy.
 
 ## Image parsing
 The readme highlights that we have to keep the image attribute for both cases:
@@ -30,7 +33,7 @@ The readme highlights that we have to keep the image attribute for both cases:
 - the base64 encoded image
 - the image link (those that require a click on the "show more" button)
 
-When I've executed a test against the `expected-array.json` file, I've noticed that the `<img>` tag with a gif and not the correct src.
+When I've executed a test against the `expected-array.json` file, I've noticed that the `<img>` tag has a gif as SRC. And we have 2 cases:
 
 ### img with id attribute
 ```html
@@ -55,12 +58,12 @@ We just use the `data-src` and return it.
 # Usage
 
 ## Running tests
-`bundle exec rspec` to run feature specs (uses fixtures) or more unit tests from the `lib` folder.
+`bundle exec rspec` to run the specs
 
 ## Scraping a search page
 
 Execute
-`bundle exec ruby scrape_files.rb FILENAME.HTML` to use the `GoogleSearchPageCrawler` to crawl the page and parse the artworks.
+`bundle exec ruby scrape_files.rb FILENAME.HTML` to use the `GoogleSearchPageCrawler` to crawl the page, parse the artworks and save the result inside the `files` folder.
 
 It searches for the file in the `files` folder. Defaults to `van-gogh-paintings.html`
 
@@ -81,8 +84,11 @@ If we ever need to cover this case we can use the
 The raw HTML (from 'view source code') lists all the artworks
 
 ### Normal search page ('small carousell')
-The raw HTMl (from 'view source code') lists only 6 artworks. The other ones seems to be inside a javascript.
+The raw HTML (from 'view source code') lists only 6 artworks. The other ones seems to be inside a javascript.
 
 Testing in the playground: https://serpapi.com/playground?q=monet&location=Austin%2C+Texas%2C+United+States&gl=us&hl=en it seems that SerpAPI does consider this case.
 
-I didn't try to parse them because I believe that this is outside of scope of this exercise. Instead of manually parsing the script (like we did with the image) we could consider using a real browser to evaluate the HTML before parsing the data. This is less performant but, depending on how possible is to manually parse this case, can be an option.
+I didn't try to parse them because I believe that this is outside of scope of this exercise but I see other (and probably better) options:
+
+- Instead of manually parsing scripts, we could consider using a real browser to evaluate the HTML before parsing the data. This is less performant but - if other parts of the page also requires this method - can be an alternative.
+- We can follow the "Artworks" link and scrape everything from there using the "Artwork specific page" implementation (I believe that this is the way to go...)

@@ -15,6 +15,6 @@ puts "Scraping #{file_name}"
 
 results = crawler.crawl(file_path(file_name))
 
-puts results.to_json
+# puts results.to_json
 
 write_to_file(file_name.to_s.gsub(".html", "-results.json"), results)
