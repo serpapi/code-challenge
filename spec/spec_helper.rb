@@ -16,6 +16,13 @@ require_relative '../lib/google_search_page_crawler'
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+#
+#
+
+def load_fixture_file(name)
+  File.read(File.join(File.dirname(__FILE__), "fixtures", "#{name}"))
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
