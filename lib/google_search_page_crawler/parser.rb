@@ -33,7 +33,9 @@ class GoogleSearchPageCrawler
       if image_id = img_node.attr("id")
         thumbnail_replace_script = doc.css("script").find { |script| script.text.include?(image_id) }
         base64_image = thumbnail_replace_script.text.match(/var s='(data:image[^']+)'/)
-        base64_image[1]
+
+        # some chars such as '=' are encoded as hex in the script
+        base64_image[1].gsub(/\\x([0-9a-fA-F]{2})/) { [$1].pack("H2") }
       else
         img_node.attr("data-src")
       end
