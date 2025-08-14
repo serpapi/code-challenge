@@ -19,7 +19,8 @@ class GoogleSearchPageCrawler
 
     def parse_artwork(artwork_node)
       {
-        "title": artwork_node.css("div > div").first.text
+        "title": artwork_node.css("div > div").first.text,
+        extensions: artwork_node.css("div > div").drop(1).map(&:text)
       }
     end
   end

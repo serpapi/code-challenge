@@ -18,5 +18,9 @@ describe GoogleSearchPageCrawler::Parser do
     it "fetches the title" do
       expect(subject.parse_artwork(artwork_node)[:title]).to eq("The Starry Night")
     end
+
+    it "fetches the extensions" do
+      expect(subject.parse_artwork(artwork_node)[:extensions]).to eq(["1889"])
+    end
   end
 end
