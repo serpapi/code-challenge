@@ -1,0 +1,22 @@
+this._s=this._s||{};(function(_){var window=this;
+try{
+_.LIs=_.x("FzTajd",[_.dr]);
+}catch(e){_._DumpException(e)}
+try{
+_.t("FzTajd");
+var MIs;MIs=function(a){if(a.size()<2)a.remove();else{let b;(b=a.first())==null||b.remove();let c;(c=a.last())==null||c.remove()}};
+_.NIs=class extends _.Xr{static Sa(){return{service:{Df:_.fw}}}constructor(a){super(a.Oa);this.Df=a.service.Df;this.Aa();(0,_.re)(()=>{this.Ba()})}Aa(){const a=document.getElementById(this.getRoot().Rc("aria-owns")||"");a&&(this.oa=new _.lo(a))}Ba(){this.oa!==void 0&&!this.oa.isEmpty()&&this.oa&&!this.oa.closest(".TQc1id").isEmpty()&&_.KRb(this.Df,this.oa,this.getRoot())}Ca(){if(this.oa!==void 0&&!this.oa.isEmpty()&&(!this.oa||this.oa.closest(".TQc1id").isEmpty())){var a;(a=this.getRoot().next(".focusSentinel").first())==
+null||a.remove();var b;(b=this.getRoot().next(".focusSentinel").first())==null||b.remove();MIs(this.oa.children().filter(".focusSentinel"));MIs(this.oa.children().filter(".focusSentinel"))}}};_.NIs.prototype.$wa$jEKfHe=function(){return this.Ca};_.NIs.prototype.$wa$NYVLBc=function(){return this.Ba};_.NIs.prototype.$wa$F0OlHe=function(){return this.Aa};_.Zr(_.LIs,_.NIs);
+_.u();
+}catch(e){_._DumpException(e)}
+try{
+_.GbC=_.x("SC7lYd",[]);
+}catch(e){_._DumpException(e)}
+try{
+_.t("SC7lYd");
+var u5J=function(a,b){let c=!1;b.addEventListener("mousedown",()=>{c=!0});b.addEventListener("mouseup",()=>{(0,_.Sn)(()=>{c&&a.Ja("UWckNb").click();c=!1},500)});b.addEventListener("dblclick",()=>{c=!1});document.addEventListener("selectionchange",()=>{c&&window.getSelection()&&window.getSelection().toString().length>0&&(c=!1)})},v5J=class extends _.Xr{constructor(a){super(a.Oa);this.iM=null;this.N1();a=this.Ya("VNxLed");a!=null&&this.getData("eflcs").Lb()&&u5J(this,a.kb())}oa(){this.notify("W4ub6d")}Ba(){this.notify("rId5bd")}Aa(){this.notify("Tf6OIc")}N1(){}};
+v5J.prototype.$wa$npAYtf=function(){return this.N1};v5J.prototype.$wa$A6j43c=function(){return this.Aa};v5J.prototype.$wa$qsYrDe=function(){return this.Ba};v5J.prototype.$wa$OMITjf=function(){return this.oa};_.Zr(_.GbC,v5J);
+_.u();
+}catch(e){_._DumpException(e)}
+})(this._s);
+// Google Inc.
