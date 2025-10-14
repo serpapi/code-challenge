@@ -1,3 +1,7 @@
+# bin/parse
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "json"
 require "serpapi_challenge/parser"
@@ -7,7 +11,7 @@ if ARGV.length < 1
   exit 1
 end
 
-input = ARGV[0]
+input  = ARGV[0]
 output = ARGV[1] || "out/van-gogh-paintings.json"
 
 parser = SerpapiChallenge::Parser.new
@@ -15,6 +19,6 @@ result = parser.parse_file(input)
 
 out_dir = File.dirname(output)
 Dir.mkdir(out_dir) unless Dir.exist?(out_dir)
-File.write(output, JSON.pretty_generate(result), mode: "w")
 
+File.write(output, JSON.pretty_generate(result), mode: "w")
 puts "Wrote #{result.fetch('artworks', []).size} artworks to #{output}"
