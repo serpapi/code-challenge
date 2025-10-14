@@ -6,7 +6,10 @@ module SerpapiChallenge
   # Output: { "artworks" => [ { "name", "extensions"[], "link", "image" } ] }
   class Parser
     GOOGLE_ORIGIN = "https://www.google.com".freeze
-    YEAR_RE = /\b(1[5-9]\d{2}|20\d{2})\b/
+    # before:
+    # YEAR_RE = /\b(1[5-9]\d{2}|20\d{2})\b/
+    # after:
+    YEAR_RE = /(?<!\d)(1[5-9]\d{2}|20\d{2})(?!\d)/
 
     def parse_file(path)
       html = File.read(path, encoding: "UTF-8")
@@ -63,16 +66,40 @@ module SerpapiChallenge
 
     # Pull a year-like token (for extensions) from nearby text.
     def find_extensions_near(node)
-      texts = []
-      texts << node["aria-label"] if node["aria-label"]
-      if (img = node.at_css("img"))
-        texts << img["alt"] if img["alt"]
-      end
-      texts << node.parent&.text.to_s
+      # Collect text from: the node itself, its image alt, aria-label,
+      # up to 2 preceding/following siblings, and 2 ancestor levels + their near siblings.
+      buckets = []
 
-      years = texts.flat_map { |t| t.to_s.scan(YEAR_RE) }.flatten.uniq
-      years.empty? ? [] : [years.first] # expected: array with one year-like string
+      # self
+      buckets << node["aria-label"]
+      if (img = node.at_css("img"))
+        buckets << img["alt"]
+      end
+      buckets << node.text
+
+      # siblings near the anchor
+      buckets += node.xpath("./following-sibling::*[position()<=2] | ./preceding-sibling::*[position()<=2]")
+                    .map { |n| [n["aria-label"], n.at_css("img")&.[]("alt"), n.text] }
+                    .flatten
+
+      # parents (up to 2 levels) and their close siblings
+      parent = node.parent
+      2.times do
+        break unless parent
+        buckets << parent["aria-label"]
+        buckets << parent.text
+        buckets += parent.xpath("./following-sibling::*[position()<=2] | ./preceding-sibling::*[position()<=2]")
+                        .map { |n| [n["aria-label"], n.at_css("img")&.[]("alt"), n.text] }
+                        .flatten
+        parent = parent.parent
+      end
+
+      text = buckets.compact.join(" ")
+      puts "text: #{text}"
+      years = text.scan(YEAR_RE).flatten.uniq
+      years.empty? ? [] : [years.first]
     end
+
 
     def extract_from_artist_to_artworks(doc)
       items = []
