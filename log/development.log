@@ -1,0 +1,73 @@
+Started GET "/" for ::1 at 2025-10-23 18:34:10 -0500
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='CodeChallenge'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='CodeChallenge'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodeChallenge'*/[0m
+Processing by ScraperController#index as HTML
+  Rendering text template
+  Rendered text template (Duration: 0.1ms | GC: 0.0ms)
+Completed 404 Not Found in 95ms (Views: 14.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 4.6ms)
+
+
+Started GET "/" for ::1 at 2025-10-23 18:34:11 -0500
+Processing by ScraperController#index as HTML
+  Rendering text template
+  Rendered text template (Duration: 0.1ms | GC: 0.0ms)
+Completed 404 Not Found in 45ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/?file=van-gogh-paintings" for ::1 at 2025-10-23 18:35:10 -0500
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"van-gogh-paintings"}
+Completed 200 OK in 104ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/?file=brad-pit-movies" for ::1 at 2025-10-23 18:44:43 -0500
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"brad-pit-movies"}
+Completed 200 OK in 76ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/?file=picasso-paintings" for ::1 at 2025-10-23 18:57:34 -0500
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"picasso-paintings"}
+Completed 200 OK in 140ms (Views: 3.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 54.0ms)
+
+
+Started GET "/?file=picasso-paintings" for ::1 at 2025-10-23 18:59:03 -0500
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"picasso-paintings"}
+Completed 200 OK in 86ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/?file=da-vinci-paintings" for ::1 at 2025-10-23 19:02:35 -0500
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"da-vinci-paintings"}
+Completed 200 OK in 91ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/?file=da-vinci-paintings" for ::1 at 2025-10-23 19:27:21 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodeChallenge'*/[0m
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"da-vinci-paintings"}
+Completed 200 OK in 121ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 9.8ms)
+
+
+Started GET "/?file=van-gogh-paintings" for ::1 at 2025-10-23 19:27:40 -0500
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"van-gogh-paintings"}
+Completed 200 OK in 87ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/?file=van-gogh-paintings" for ::1 at 2025-10-23 19:32:00 -0500
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"van-gogh-paintings"}
+Completed 200 OK in 113ms (Views: 3.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 30.1ms)
+
+
+Started GET "/?file=picasso-paintings" for ::1 at 2025-10-23 19:39:08 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodeChallenge'*/[0m
+Processing by ScraperController#index as HTML
+  Parameters: {"file"=>"picasso-paintings"}
+Completed 200 OK in 111ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.6ms)
+
+
