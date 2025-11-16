@@ -1,19 +1,20 @@
 # PryWrench
 
-This pulls data out of an HTML file.
-
-
-## Installation
-
-To install this from source, just run
-
-    $ rake install
+This unpublished gem pulls data out of an HTML file.
 
 
 ## Usage
 
-As a cli, run `pry_wrench`
+Probably just run the tests, but in theory...
 
+```
+require 'pry_wrench'
+
+thumbnails = PryWrench.process_html(raw_html)
+
+thumb = thumbnain.first
+puts "Name: #{thumb[0]}"
+```
 
 ## Development
 
@@ -24,4 +25,3 @@ Install dependencies with...
 Run the entire unit test suite with...
 
     $ rake
-
