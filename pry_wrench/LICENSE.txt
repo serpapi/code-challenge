@@ -1,3 +1,0 @@
-TODO: Decide license and include here.
-
-If this message is visible, please open a GH issue and assume Copyright and closed source is the intent of this repo.
