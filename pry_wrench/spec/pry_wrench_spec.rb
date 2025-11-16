@@ -8,9 +8,9 @@ module PryWrench
       expect(PryWrench::VERSION).not_to be nil
     end
 
-    it 'extracts name, extensions array (date), and Google link in an array', current: true do
-      json_string = File.read('spec/data/sample_data.json')
-
+    it 'extracts name, extensions array (date), and Google link in an array' do
+      # FIXME: This needs to start at the HTML file
+      json_string = File.read('../files/van-gogh-paintings.json')
       result = PryWrench.extract_data(json_string)
 
       name = result[0]
@@ -21,6 +21,18 @@ module PryWrench
       expect(extensions).to eq("TODO")
       expect(link).to eq("TODO")
     end
+
+    it 'can extract data from the html' do
+      html_string = File.read('../files/van-gogh-paintings.html')
+
+      result = PryWrench.process_html(html_string)
+
+
+      expect(false)
+    end
+
+
+
   end
 
 end

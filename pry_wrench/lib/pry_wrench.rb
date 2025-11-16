@@ -2,9 +2,26 @@ require "pry_wrench/version"
 require "pry_wrench/constants"
 require "pry_wrench/config"
 
+require 'json'
 
 module PryWrench
-  # Your code goes here...
+
+  def self.extract_data(json_string)
+
+    json_obj = JSON.parse(json_string)
+
+    binding.pry
+
+    output = [
+      json_obj['data']
+    ]
+  end
+
+
+  # def self.process_html(html_string)
+  #   doc = Nokogiri
+  # end
+
   def self.main
     "test"
   end
@@ -19,4 +36,5 @@ Commands:
   status       - Show status
 EOF
   end
+
 end
