@@ -23,10 +23,9 @@ module PryWrench
     end
 
     it 'can extract data from the html' do
-      html_string = File.read('../files/van-gogh-paintings.html')
+      raw_html = File.read('../files/van-gogh-paintings.html')
 
-      result = PryWrench.process_html(html_string)
-
+      result = PryWrench.process_html(raw_html)
 
       expect(false)
     end
