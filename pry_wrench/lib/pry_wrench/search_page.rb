@@ -13,15 +13,11 @@ module PryWrench
       @scraped_items = all_thumbs.map do |thumb|
         [
           thumb.children.last.children.first.text, # name
-          thumb.children.last.children.last.text.split(" "), # extensions, TODO: Test what this looks like with more blurbs
+          thumb.children.last.children.last.text.split(" "), # extensions
           "https://google.com#{thumb.attr('href')}" # link
         ]
       end
 
-    end
-
-    def results
-      @works
     end
 
   end
