@@ -2,6 +2,5 @@
 
 source "https://rubygems.org"
 
-gem "nokogiri"
+gem 'nokolexbor'
 gem 'rspec'
-gem 'pry'

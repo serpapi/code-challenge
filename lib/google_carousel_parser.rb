@@ -1,4 +1,4 @@
-require 'nokogiri'
+require 'nokolexbor'
 
 class GoogleCarouselParser
   attr_reader :html, :attr_id
@@ -7,7 +7,7 @@ class GoogleCarouselParser
 
   def initialize(html)
     @attr_id = html.match(ATTR_ID_REGEX).to_a.first
-    @html = Nokogiri::HTML(html)
+    @html = Nokolexbor::HTML(html)
   end
 
   def call
@@ -23,8 +23,7 @@ class GoogleCarouselParser
   def parse_element(el)
     img_attrs = el.at_css('img')&.attributes
     return unless img_attrs
-
-    name, *extensions = el.search('text()').map(&:text)
+    name, *extensions = el.css('::text').map(&:text)
     img_src = img_attrs.key?('id') ? image_sources[img_attrs['id'].value] : img_attrs['data-src'].value
 
     attrs = { 'link' => construct_link(el), 'name' => name, 'image' => img_src }
@@ -39,7 +38,7 @@ class GoogleCarouselParser
 
   def extract_heading(carousel)
     heading = carousel.parent.at_css("div[role='heading']")
-    return heading.search('text()').last.text.downcase if heading
+    return heading.css('::text').last.text.downcase if heading
 
     extract_heading(carousel.parent)
   end
