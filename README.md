@@ -52,18 +52,18 @@ Install dependencies:
 bundle install
 ```
 
-Run with the default Van Gogh paintings HTML:
+Run with the default Van Gogh paintings HTML (outputs to `files/van-gogh-paintings-expected-array.json`):
 
 ```
 ruby main.rb
 ```
 
-Run with a specific HTML file:
+Run with a specific HTML file (outputs JSON to the same directory):
 
 ```
-ruby main.rb files/david-bowie-albums.html
-ruby main.rb files/george-orwell-books.html
-ruby main.rb files/lord-of-the-rings-cast.html
+ruby main.rb files/david-bowie-albums.html   # files/david-bowie-albums-expected-array.json
+ruby main.rb files/george-orwell-books.html  # files/george-orwell-books-expected-array.json
+ruby main.rb files/lord-of-the-rings-cast.html  # files/lord-of-the-rings-cast-expected-array.json
 ```
 
 Run the tests:

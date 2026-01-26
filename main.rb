@@ -7,4 +7,7 @@ html = File.read(file)
 scraper = CarouselScraper.new(html)
 result = scraper.extract
 
-puts JSON.pretty_generate(result)
+output_file = file.sub('.html', '-expected-array.json')
+File.write(output_file, JSON.pretty_generate(result))
+
+puts "Expected array available in #{output_file}"
