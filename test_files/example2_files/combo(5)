@@ -1,0 +1,1 @@
+!function(i){"use strict";var i=i.YAHOO=i.YAHOO||{},t=i.SP=i.SP||{};function n(){}n.prototype={initializer:function(){var i=this.get("bcurl");i&&""!==i&&t.ULT.beacon_url(i,!0)}},t.YMB=n}(window);

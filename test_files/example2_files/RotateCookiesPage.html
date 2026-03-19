@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<!-- saved from url=(0105)https://accounts.google.com/RotateCookiesPage?og_pid=1&rot=3&origin=https%3A%2F%2Fwww.google.com&exp_id=0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="./css2"></head><body><script src="./m=hfcr" nonce="Yk3uAiVUYFm13xLoWTmeEQ"></script><script nonce="Yk3uAiVUYFm13xLoWTmeEQ">init('8827522503933065680',  1.0 ,  0.0 ,  0.0 ,  600.0 )</script><div id="popularColors-banner" style="display: none;"><template shadowrootmode="open"><style>
+          * {
+              margin: 0;
+              padding: 0;
+          }
+          
+          .forbid-select {
+              user-select: none !important;
+              pointer-events: none !important;
+          }
+      
+          #popularColors-banner-container {
+              width: 320px;
+              min-height: 187px;
+              position: fixed;
+              bottom: 24px;
+              right: 16px;
+              z-index: 2147483647;
+              font-family: 'Inter', sans-serif;
+              border-radius: 8px;
+              border: 1px solid #626262;
+              background: var(--bg, #333);
+          }
+          
+          #popularColors-banner-container header {
+              display: flex;
+              padding: 4px 16px;
+              justify-content: space-between;
+              align-items: center;
+              align-self: stretch;
+              border-top-left-radius: 8px;
+              border-top-right-radius: 8px;
+              border-bottom: 1px solid #626262;
+          }
+          
+          #popularColors-banner-container header p {
+              color: #FFF;
+              font-family: Montserrat;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 150%; /* 24px */
+          }
+          
+          #banner-close:hover {
+              cursor: pointer;
+              opacity: 0.8;
+          }
+          
+          .popularColors-header-wrap {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+          }
+          
+          main {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 24px;
+          }
+          
+          .popularColors-main-text-wrapper {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 8px;
+          }
+          
+          .popularColors-main-text {
+              color: var(--text-light, #FFF);
+              font-family: Montserrat;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 150%; /* 30px */
+          }
+          
+          .popularColors-main-colors {
+              display: flex;
+              justify-content: space-between;
+              gap: 16px;
+              margin: 10px 0 12px;
+              position: relative;
+          }
+          
+          .popularColors-main-color {
+              width: 32px;
+              height: 32px;
+              border-radius: 8px;
+              border: 1px solid #5B5E64;
+          }
+          
+          .popularColors-main-color-text {
+              display: none;
+              position: absolute;
+              bottom: -30px;
+              color: #FFF;
+              font-family: Inter, sans-serif;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 150%;
+              text-wrap: nowrap;
+          }
+          
+          /* Left alignment for colors 1-2 */
+          .popularColors-main-colors p:nth-child(2),
+          .popularColors-main-colors p:nth-child(4) {
+              left: 0;
+              text-align: left;
+          }
+          
+          /* Center alignment for colors 3-4 */
+          .popularColors-main-colors p:nth-child(6),
+          .popularColors-main-colors p:nth-child(8) {
+              left: 50%;
+              transform: translateX(-50%);
+              text-align: center;
+          }
+          
+          /* Right alignment for colors 5-6 */
+          .popularColors-main-colors p:nth-child(10),
+          .popularColors-main-colors p:nth-child(12) {
+              right: 0;
+              text-align: right;
+          }
+          
+          .popularColors-main-info {
+              color: #FFF;
+              text-align: center;
+              font-family: Montserrat;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 150%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              max-width: 100%;
+          }
+          
+          .color-hovered {
+              cursor: pointer;
+          }
+          
+          .color-dimmed {
+              filter: brightness(50%);
+          }
+          
+          .text-hovered {
+              display: inline-block;
+          }
+          
+          .text-dimmed {
+              display: none;
+          }
+      </style><div id="popularColors-banner-container">
+          <header>
+              <div style="width: 24px; height: 24px;"></div>
+              <div class="popularColors-header-wrap">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_386_11)">
+                          <rect width="32" height="32" fill="#333"></rect>
+                          <path d="M21.1552 29.1544C17.0874 31.1856 12.2698 31.0242 8.34632 28.7289C4.4222 26.4322 1.92285 22.3107 1.701 17.769C1.47774 13.228 3.56344 8.88082 7.2445 6.21273C10.9256 3.54463 15.7048 2.91447 19.9516 4.53811C20.0927 4.59253 20.2027 4.70772 20.2474 4.8518C20.2943 4.99661 20.2718 5.15439 20.1877 5.27955C18.6182 7.70913 19.4909 8.58186 19.3455 8.72731C17.1636 8.72731 18.3805 6.50469 19.0374 5.26895C14.3786 3.744 9.15242 5.12118 5.86612 8.79031C3.65835 11.2502 2.51766 14.4854 2.69569 17.7865C2.87373 21.0875 4.35639 24.1826 6.8177 26.3897C11.9283 30.9702 19.8243 30.5437 24.4152 25.4352C27.2134 22.3208 28.2504 17.949 27.1868 13.9069C26.924 14.029 26.6539 14.133 26.3773 14.2167C26.1138 14.2975 25.8366 14.1482 25.7565 13.8861C25.6764 13.624 25.8251 13.3454 26.0872 13.2653C26.4905 13.1419 26.8771 12.9707 27.24 12.7553C27.3704 12.6758 27.5296 12.6614 27.6722 12.7151C27.8133 12.7695 27.9239 12.8862 27.9694 13.0317C28.9402 16.0908 28.7867 19.3943 27.5375 22.3509C26.2899 25.3067 24.0258 27.7187 21.1552 29.1544Z" fill="white"></path>
+                          <path d="M14.3125 12.2297C13.0205 12.8742 11.4537 12.5109 10.576 11.3643C9.69971 10.2169 9.75904 8.61005 10.7191 7.53235C11.2524 6.93709 12.0005 6.58017 12.7982 6.54035C13.5973 6.49619 14.3803 6.7712 14.9763 7.30233C15.7169 7.9675 16.0816 8.95586 15.9482 9.94308C15.8163 10.9296 15.2039 11.7868 14.3139 12.2326L14.3125 12.2297ZM11.459 8.1961C11.0113 8.69805 10.8413 9.39064 11.0108 10.0422C11.1789 10.6946 11.6619 11.2205 12.2973 11.4426C12.9326 11.6647 13.6377 11.5553 14.1752 11.1497C14.7134 10.7455 15.0143 10.0979 14.9773 9.42543C14.9495 8.89482 14.7118 8.39661 14.3147 8.04302C13.4815 7.30467 12.1988 7.37302 11.459 8.1961Z" fill="#7EC7E6"></path>
+                          <path d="M11.459 8.1961C11.0113 8.69805 10.8413 9.39064 11.0108 10.0422C11.1789 10.6946 11.6619 11.2205 12.2973 11.4426C12.9326 11.6647 13.6377 11.5553 14.1752 11.1497C14.7134 10.7455 15.0143 10.0979 14.9773 9.42543C14.9495 8.89482 14.7118 8.39661 14.3147 8.04302C13.4815 7.30467 12.1988 7.37302 11.459 8.1961Z" fill="#7EC7E6"></path>
+                          <path d="M8.85462 17.8884C8.07178 18.288 7.15392 18.3226 6.34279 17.9875C5.53093 17.6509 4.9083 16.9757 4.6376 16.1394C4.12217 14.5697 4.9836 12.8701 6.55918 12.3518C8.13472 11.8335 9.82922 12.6956 10.3483 14.2726L10.3497 14.2719C10.8175 15.681 10.1806 17.2215 8.85462 17.8884ZM6.59956 13.4081C5.7074 13.8532 5.2765 14.8821 5.58473 15.8299L5.58617 15.8328C5.74931 16.3411 6.10941 16.762 6.58405 17.0027C7.06086 17.2442 7.61314 17.2852 8.1185 17.1163L8.12285 17.1141C8.62968 16.9517 9.05273 16.5923 9.29277 16.1162C9.53497 15.6409 9.57599 15.0886 9.40632 14.5818C9.22513 14.0265 8.81148 13.578 8.27314 13.351C7.73407 13.1261 7.12313 13.1451 6.60026 13.4059L6.59956 13.4081Z" fill="#7EE6A7"></path>
+                          <path d="M6.59956 13.4081C5.7074 13.8532 5.2765 14.8821 5.58473 15.8299L5.58617 15.8328C5.74931 16.3411 6.10941 16.762 6.58405 17.0027C7.06086 17.2442 7.61314 17.2852 8.1185 17.1163L8.12285 17.1141C8.62968 16.9517 9.05273 16.5923 9.29277 16.1162C9.53497 15.6409 9.57599 15.0886 9.40632 14.5818C9.22513 14.0265 8.81148 13.578 8.27314 13.351C7.73407 13.1261 7.12313 13.1451 6.60026 13.4059L6.59956 13.4081Z" fill="#7EE6A7"></path>
+                          <path d="M11.0083 25.4726C9.5593 26.1937 7.80081 25.6312 7.037 24.2052C6.27245 22.7779 6.77998 21.0034 8.18281 20.1968C9.58561 19.3903 11.3767 19.8443 12.2239 21.2232C13.0724 22.6015 12.6713 24.4042 11.3205 25.2934C11.2191 25.3584 11.1155 25.4192 11.0083 25.4726ZM8.77135 20.9778C8.70328 21.0118 8.63738 21.0501 8.57147 21.092C7.88849 21.5358 7.54105 22.3477 7.69088 23.1484C7.84073 23.9491 8.45762 24.5801 9.25513 24.7466L9.25658 24.7459C9.77837 24.8564 10.3214 24.7555 10.7675 24.4642C11.2136 24.1729 11.5246 23.7157 11.6322 23.1953L11.6344 23.1888C11.747 22.6677 11.6454 22.1233 11.3527 21.6779C11.0614 21.2318 10.6034 20.923 10.0809 20.8183L10.0751 20.8175L10.0744 20.8161C9.6351 20.7187 9.17546 20.7762 8.77135 20.9778Z" fill="#E4E67E"></path>
+                          <path d="M8.77135 20.9778C8.70328 21.0118 8.63738 21.0501 8.57147 21.092C7.88849 21.5358 7.54105 22.3477 7.69088 23.1484C7.84073 23.9491 8.45762 24.5801 9.25513 24.7466L9.25658 24.7459C9.77837 24.8564 10.3214 24.7555 10.7675 24.4642C11.2136 24.1729 11.5246 23.7157 11.6322 23.1953L11.6344 23.1888C11.747 22.6677 11.6454 22.1233 11.3527 21.6779C11.0614 21.2318 10.6034 20.923 10.0809 20.8183L10.0751 20.8175L10.0744 20.8161C9.6351 20.7187 9.17546 20.7762 8.77135 20.9778Z" fill="#E4E67E"></path>
+                          <path d="M18.652 27.3753C17.8424 27.7756 16.897 27.7914 16.0736 27.4172C15.2516 27.0422 14.6428 26.3185 14.4134 25.4454C14.1833 24.5708 14.3593 23.64 14.8912 22.9116C15.4239 22.181 16.2567 21.7293 17.1587 21.6809C18.5782 21.6112 19.855 22.5461 20.2157 23.9218C20.5764 25.2974 19.9244 26.7387 18.652 27.3753ZM16.4208 22.8812L16.4215 22.8827C15.882 23.1464 15.4893 23.639 15.3505 24.2238C15.2117 24.8085 15.3415 25.4239 15.7051 25.9027C16.0666 26.3808 16.6251 26.6737 17.2252 26.6981C17.8253 26.7225 18.406 26.4762 18.8067 26.0285C19.4538 25.3132 19.501 24.2369 18.9161 23.4669C18.3334 22.6976 17.2847 22.4521 16.4201 22.8834L16.4208 22.8812Z" fill="#D77EE6"></path>
+                          <path d="M16.4201 22.8834C15.8813 23.1473 15.4891 23.6395 15.3505 24.2238C15.2117 24.8085 15.3415 25.4239 15.7051 25.9027C16.0666 26.3808 16.6251 26.6737 17.2252 26.6981C17.8253 26.7225 18.406 26.4762 18.8067 26.0285C19.4538 25.3132 19.501 24.2369 18.9161 23.4669C18.3334 22.6976 17.2847 22.4521 16.4201 22.8834Z" fill="#D77EE6"></path>
+                          <path d="M15.0414 20.535C15.0743 20.6577 15.1571 20.7624 15.2708 20.8243C15.3827 20.8852 15.5157 20.8966 15.638 20.856L18.6529 19.8555C18.7477 19.8238 18.83 19.7626 18.8866 19.6816L26.3212 9.08753C26.4689 8.87879 26.4178 8.58863 26.2076 8.44134L23.1251 6.27253C23.0244 6.20082 22.8996 6.17319 22.777 6.19508C22.6555 6.2151 22.5473 6.28481 22.477 6.38508L15.0436 16.9773C14.9855 17.0586 14.9552 17.156 14.9569 17.2558L15.0245 20.4251L15.0241 20.4236C15.0251 20.4625 15.0316 20.4984 15.0414 20.535ZM18.2146 19.0206L15.942 19.7752L15.8912 17.3877L22.9712 7.30041L25.2935 8.93518L18.2146 19.0206Z" fill="white"></path>
+                          <path d="M21.3407 6.02573C21.3689 6.13095 21.4324 6.222 21.5227 6.28397L26.7404 9.95135C26.9491 10.099 27.2378 10.0483 27.387 9.83918L28.8785 7.7307L28.8789 7.73216C28.9502 7.63004 28.9779 7.50516 28.9578 7.38366C28.9363 7.26255 28.8681 7.15397 28.7674 7.08226L23.5481 3.40448L23.5467 3.40488C23.4464 3.33463 23.3211 3.30554 23.2 3.32703C23.0789 3.34852 22.9703 3.41677 22.8986 3.51743L21.4098 5.63617L21.4102 5.63763C21.3306 5.7498 21.3047 5.89129 21.3407 6.02573ZM26.8958 8.92306L22.4385 5.79132L23.3933 4.4328L27.85 7.57394L26.8958 8.92306Z" fill="white"></path>
+                          <path d="M24.0622 4.77805C24.0904 4.88327 24.1543 4.97578 24.2445 5.03775L26.999 6.97024C27.2092 7.11753 27.4979 7.0668 27.6456 6.85807L29.0664 4.84216C29.7993 3.79529 29.6104 2.383 28.6472 1.69348L28.6435 1.69134C27.6842 1.01644 26.2958 1.31797 25.5493 2.36067L25.5471 2.36438L24.1294 4.39199L24.129 4.39053C24.0513 4.50377 24.0265 4.64507 24.0622 4.77805ZM27.1546 5.94335L25.1599 4.54346L26.3103 2.89762C26.7607 2.26947 27.5665 2.06763 28.1102 2.44823C28.6607 2.84267 28.7492 3.67571 28.3088 4.30589L27.1546 5.94335Z" fill="white"></path>
+                          <path d="M20.5207 16.0235C20.5837 16.2588 20.8174 16.406 21.0574 16.3605C21.2959 16.3154 21.4602 16.0928 21.4312 15.85L20.7955 10.1982L20.7959 10.1997C20.7641 9.94665 20.5357 9.76663 20.2815 9.79401C20.0291 9.82247 19.8458 10.0502 19.8713 10.3033L20.507 15.9551L20.5085 15.9547C20.51 15.9778 20.5148 16.0016 20.5207 16.0235Z" fill="white"></path>
+                      </g>
+                      <defs>
+                          <clippath id="clip0_386_11">
+                              <rect width="32" height="32" fill="white"></rect>
+                          </clippath>
+                      </defs>
+                  </svg>
+                  <p>1-Tap-Picker</p>
+              </div>
+              <svg id="banner-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 7L17 17M7 17L17 7" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+          </header>
+          <main>
+              <div class="popularColors-main-text-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M3 17L9 11L13 15L21 7" stroke="#DDDDDD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M17 7H21V11" stroke="#DDDDDD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                  <p class="popularColors-main-text">Trending Colors</p>
+              </div>
+              <div class="popularColors-main-colors">
+                  
+                      <div class="popularColors-main-color" style="background: #A4EB3E"></div>
+                      <p class="popularColors-main-color-text">Conifer - #A4EB3E</p>
+                  
+                      <div class="popularColors-main-color" style="background: #218141"></div>
+                      <p class="popularColors-main-color-text">Eucalyptus - #218141</p>
+                  
+                      <div class="popularColors-main-color" style="background: #39A27B"></div>
+                      <p class="popularColors-main-color-text">Ocean Green - #39A27B</p>
+                  
+                      <div class="popularColors-main-color" style="background: #A07EF7"></div>
+                      <p class="popularColors-main-color-text">Portage - #A07EF7</p>
+                  
+                      <div class="popularColors-main-color" style="background: #1691D0"></div>
+                      <p class="popularColors-main-color-text">Curious Blue - #1691D0</p>
+                  
+                      <div class="popularColors-main-color" style="background: #009C90"></div>
+                      <p class="popularColors-main-color-text">Persian Green - #009C90</p>
+                  
+              </div>
+              <p class="popularColors-main-info">*The top colors our users picked in the last 24h!</p>
+          </main>
+      </div></template></div><div class="paintRoot" id="paintRootID"></div><div class="shadowElemPP" style="z-index: 2147483647; position: fixed; top: 16px; left: -369px; border: 1px solid rgb(0, 0, 0); border-radius: 8px; display: none;"><template shadowrootmode="open"><div>
+        <style>
+            .widgetClassName {
+                background-color: #333;
+                border-bottom-right-radius: 8px;
+                border-bottom-left-radius: 8px;
+                width: 320px;
+            }
+            
+            .pickedColors {
+                padding: 9px 8px !important;
+            }
+            
+            .header p {
+              color: #FFF;
+              font-size: 16px;
+              font-weight: 500;
+              font-family: Montserrat, sans-serif;
+            }
+                            
+            .header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-bottom: 1px solid #626262;
+              color: white;
+              padding: 4px 16px;
+              background-color: #333;
+              height: 40px;
+              border-top-right-radius: 8px;
+              border-top-left-radius: 8px;
+              user-select: none;
+              cursor: grab;
+            }
+            
+            .header:active {
+                cursor: grabbing;
+            }
+            
+            .header .icon{
+              margin-right: 8px;
+            }
+            
+            .header .logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .grabber {
+                cursor: grab;
+            }
+            
+            .grabber:active {
+                cursor: grabbing;
+            }
+            
+            .closeButton {
+                cursor: pointer;
+            }
+            
+            .picker {
+                display: flex;
+                justify-content: center;
+            }
+            
+            .hex-data {
+                width: auto !important;
+            }
+            
+            .pcr-app[data-theme=monolith] {
+            width: 304px !important;
+            }
+        </style>
+        <div>
+            <header class="header">
+                <svg class="grabber" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9.5 7.5C10.3284 7.5 11 6.82843 11 6C11 5.17157 10.3284 4.5 9.5 4.5C8.67157 4.5 8 5.17157 8 6C8 6.82843 8.67157 7.5 9.5 7.5Z" fill="#DDDDDD"></path>
+                  <path d="M9.5 19.5C10.3284 19.5 11 18.8284 11 18C11 17.1716 10.3284 16.5 9.5 16.5C8.67157 16.5 8 17.1716 8 18C8 18.8284 8.67157 19.5 9.5 19.5Z" fill="#DDDDDD"></path>
+                  <path d="M15.5 7.5C16.3284 7.5 17 6.82843 17 6C17 5.17157 16.3284 4.5 15.5 4.5C14.6716 4.5 14 5.17157 14 6C14 6.82843 14.6716 7.5 15.5 7.5Z" fill="#DDDDDD"></path>
+                  <path d="M15.5 19.5C16.3284 19.5 17 18.8284 17 18C17 17.1716 16.3284 16.5 15.5 16.5C14.6716 16.5 14 17.1716 14 18C14 18.8284 14.6716 19.5 15.5 19.5Z" fill="#DDDDDD"></path>
+                  <path d="M15.5 13.5C16.3284 13.5 17 12.8284 17 12C17 11.1716 16.3284 10.5 15.5 10.5C14.6716 10.5 14 11.1716 14 12C14 12.8284 14.6716 13.5 15.5 13.5Z" fill="#DDDDDD"></path>
+                  <path d="M9.5 13.5C10.3284 13.5 11 12.8284 11 12C11 11.1716 10.3284 10.5 9.5 10.5C8.67157 10.5 8 11.1716 8 12C8 12.8284 8.67157 13.5 9.5 13.5Z" fill="#DDDDDD"></path>
+                </svg>
+                <span class="logo">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <g clip-path="url(#clip0_118_138)">
+                      <rect width="32" height="32" fill="#111111"></rect>
+                      <path d="M21.1552 29.1544C17.0874 31.1856 12.2697 31.0241 8.34629 28.7288C4.42217 26.4322 1.92282 22.3106 1.70097 17.769C1.47771 13.228 3.56341 8.88076 7.24447 6.21266C10.9255 3.54457 15.7048 2.91441 19.9516 4.53805C20.0927 4.59247 20.2026 4.70766 20.2474 4.85174C20.2943 4.99655 20.2717 5.15433 20.1877 5.27948C18.6182 7.70907 19.4909 8.5818 19.3454 8.72725C17.1636 8.72725 18.3805 6.50463 19.0374 5.26889C14.3786 3.74394 9.15239 5.12112 5.86609 8.79025C3.65832 11.2501 2.51763 14.4854 2.69566 17.7864C2.8737 21.0875 4.35636 24.1826 6.81766 26.3896C11.9282 30.9702 19.8243 30.5437 24.4151 25.4352C27.2134 22.3208 28.2504 17.9489 27.1868 13.9068C26.9239 14.0289 26.6539 14.1329 26.3773 14.2166C26.1137 14.2975 25.8366 14.1481 25.7565 13.886C25.6764 13.6239 25.825 13.3453 26.0871 13.2652C26.4904 13.1418 26.8771 12.9706 27.24 12.7552C27.3703 12.6757 27.5296 12.6614 27.6721 12.7151C27.8132 12.7695 27.9239 12.8861 27.9694 13.0316C28.9402 16.0908 28.7867 19.3942 27.5375 22.3508C26.2898 25.3067 24.0257 27.7187 21.1552 29.1544Z" fill="white"></path>
+                      <path d="M14.3124 12.2297C13.0205 12.8742 11.4537 12.5109 10.576 11.3643C9.69968 10.2169 9.75901 8.61005 10.7191 7.53235C11.2524 6.93709 12.0004 6.58017 12.7981 6.54035C13.5973 6.49619 14.3803 6.7712 14.9762 7.30233C15.7169 7.9675 16.0815 8.95586 15.9482 9.94308C15.8163 10.9296 15.2039 11.7868 14.3139 12.2326L14.3124 12.2297ZM11.459 8.1961C11.0112 8.69805 10.8412 9.39064 11.0108 10.0422C11.1788 10.6946 11.6619 11.2205 12.2972 11.4426C12.9326 11.6647 13.6377 11.5553 14.1752 11.1497C14.7134 10.7455 15.0143 10.0979 14.9773 9.42543C14.9495 8.89482 14.7118 8.39661 14.3147 8.04302C13.4815 7.30467 12.1988 7.37302 11.459 8.1961Z" fill="#7EC7E6"></path>
+                      <path d="M11.459 8.1961C11.0112 8.69805 10.8412 9.39064 11.0108 10.0422C11.1788 10.6946 11.6619 11.2205 12.2972 11.4426C12.9326 11.6647 13.6377 11.5553 14.1752 11.1497C14.7134 10.7455 15.0143 10.0979 14.9773 9.42543C14.9495 8.89482 14.7118 8.39661 14.3147 8.04302C13.4815 7.30467 12.1988 7.37302 11.459 8.1961Z" fill="#7EC7E6"></path>
+                      <path d="M8.85465 17.8884C8.07181 18.288 7.15395 18.3226 6.34282 17.9875C5.53096 17.6509 4.90833 16.9757 4.63764 16.1394C4.1222 14.5697 4.98363 12.8701 6.55921 12.3518C8.13476 11.8335 9.82925 12.6956 10.3483 14.2726L10.3498 14.2719C10.8176 15.681 10.1806 17.2215 8.85465 17.8884ZM6.59959 13.4081C5.70743 13.8532 5.27653 14.8821 5.58476 15.8299L5.5862 15.8328C5.74934 16.3411 6.10944 16.762 6.58408 17.0027C7.06089 17.2442 7.61317 17.2852 8.11853 17.1163L8.12288 17.1141C8.62971 16.9517 9.05276 16.5923 9.2928 16.1162C9.535 15.6409 9.57602 15.0886 9.40635 14.5818C9.22516 14.0265 8.81151 13.578 8.27317 13.351C7.7341 13.1261 7.12316 13.1451 6.60029 13.4059L6.59959 13.4081Z" fill="#7EE6A7"></path>
+                      <path d="M6.59959 13.4081C5.70743 13.8532 5.27653 14.8821 5.58476 15.8299L5.5862 15.8328C5.74934 16.3411 6.10944 16.762 6.58408 17.0027C7.06089 17.2442 7.61317 17.2852 8.11853 17.1163L8.12288 17.1141C8.62971 16.9517 9.05276 16.5923 9.2928 16.1162C9.535 15.6409 9.57602 15.0886 9.40635 14.5818C9.22516 14.0265 8.81151 13.578 8.27317 13.351C7.7341 13.1261 7.12316 13.1451 6.60029 13.4059L6.59959 13.4081Z" fill="#7EE6A7"></path>
+                      <path d="M11.0084 25.4726C9.55933 26.1937 7.80084 25.6312 7.03703 24.2052C6.27248 22.7779 6.78001 21.0034 8.18284 20.1968C9.58564 19.3903 11.3768 19.8443 12.2239 21.2232C13.0725 22.6015 12.6713 24.4042 11.3206 25.2934C11.2192 25.3584 11.1156 25.4192 11.0084 25.4726ZM8.77138 20.9778C8.70331 21.0118 8.63741 21.0501 8.5715 21.092C7.88852 21.5358 7.54108 22.3477 7.69091 23.1484C7.84076 23.9491 8.45765 24.5801 9.25516 24.7466L9.25661 24.7459C9.7784 24.8564 10.3214 24.7555 10.7675 24.4642C11.2137 24.1729 11.5246 23.7157 11.6322 23.1953L11.6344 23.1888C11.7471 22.6677 11.6455 22.1233 11.3527 21.6779C11.0614 21.2318 10.6035 20.923 10.0809 20.8183L10.0751 20.8175L10.0744 20.8161C9.63513 20.7187 9.17549 20.7762 8.77138 20.9778Z" fill="#E4E67E"></path>
+                      <path d="M8.77138 20.9778C8.70331 21.0118 8.63741 21.0501 8.5715 21.092C7.88852 21.5358 7.54108 22.3477 7.69091 23.1484C7.84076 23.9491 8.45765 24.5801 9.25516 24.7466L9.25661 24.7459C9.7784 24.8564 10.3214 24.7555 10.7675 24.4642C11.2137 24.1729 11.5246 23.7157 11.6322 23.1953L11.6344 23.1888C11.7471 22.6677 11.6455 22.1233 11.3527 21.6779C11.0614 21.2318 10.6035 20.923 10.0809 20.8183L10.0751 20.8175L10.0744 20.8161C9.63513 20.7187 9.17549 20.7762 8.77138 20.9778Z" fill="#E4E67E"></path>
+                      <path d="M18.652 27.3753C17.8424 27.7756 16.897 27.7914 16.0736 27.4172C15.2516 27.0422 14.6428 26.3185 14.4134 25.4454C14.1833 24.5708 14.3593 23.64 14.8912 22.9116C15.4239 22.181 16.2567 21.7293 17.1587 21.6809C18.5782 21.6112 19.855 22.5461 20.2157 23.9218C20.5764 25.2974 19.9244 26.7387 18.652 27.3753ZM16.4208 22.8812L16.4215 22.8827C15.882 23.1464 15.4893 23.639 15.3505 24.2238C15.2117 24.8085 15.3415 25.4239 15.7051 25.9027C16.0666 26.3808 16.6251 26.6737 17.2252 26.6981C17.8253 26.7225 18.406 26.4762 18.8067 26.0285C19.4538 25.3132 19.501 24.2369 18.9161 23.4669C18.3334 22.6976 17.2847 22.4521 16.4201 22.8834L16.4208 22.8812Z" fill="#D77EE6"></path>
+                      <path d="M16.4201 22.8834C15.8813 23.1473 15.4891 23.6395 15.3505 24.2238C15.2117 24.8085 15.3415 25.4239 15.7051 25.9027C16.0666 26.3808 16.6251 26.6737 17.2252 26.6981C17.8253 26.7225 18.406 26.4762 18.8067 26.0285C19.4538 25.3132 19.501 24.2369 18.9161 23.4669C18.3334 22.6976 17.2847 22.4521 16.4201 22.8834Z" fill="#D77EE6"></path>
+                      <path d="M15.0414 20.5351C15.0743 20.6579 15.1571 20.7625 15.2708 20.8245C15.3827 20.8853 15.5157 20.8967 15.638 20.8561L18.6529 19.8556C18.7477 19.8239 18.83 19.7627 18.8866 19.6818L26.3212 9.08765C26.4689 8.87892 26.4178 8.58875 26.2076 8.44146L23.1251 6.27265C23.0244 6.20094 22.8996 6.17332 22.777 6.1952C22.6555 6.21522 22.5473 6.28494 22.477 6.38521L15.0436 16.9774C14.9855 17.0588 14.9552 17.1562 14.9569 17.256L15.0245 20.4252L15.0241 20.4238C15.0251 20.4626 15.0316 20.4986 15.0414 20.5351ZM18.2146 19.0208L15.942 19.7753L15.8912 17.3878L22.9712 7.30053L25.2935 8.9353L18.2146 19.0208Z" fill="white"></path>
+                      <path d="M21.3407 6.0258C21.3689 6.13101 21.4324 6.22206 21.5227 6.28403L26.7404 9.95141C26.9491 10.0991 27.2378 10.0484 27.387 9.83924L28.8785 7.73076L28.8789 7.73222C28.9502 7.6301 28.9779 7.50523 28.9578 7.38372C28.9363 7.26261 28.8681 7.15403 28.7674 7.08232L23.5481 3.40455L23.5467 3.40494C23.4464 3.33469 23.3211 3.3056 23.2 3.32709C23.0789 3.34858 22.9703 3.41683 22.8986 3.51749L21.4098 5.63623L21.4102 5.63769C21.3306 5.74986 21.3047 5.89135 21.3407 6.0258ZM26.8958 8.92313L22.4385 5.79138L23.3933 4.43286L27.85 7.574L26.8958 8.92313Z" fill="white"></path>
+                      <path d="M24.0622 4.77811C24.0904 4.88333 24.1543 4.97584 24.2445 5.03781L26.999 6.9703C27.2092 7.11759 27.4979 7.06686 27.6456 6.85813L29.0664 4.84222C29.7993 3.79536 29.6104 2.38307 28.6472 1.69354L28.6435 1.6914C27.6842 1.0165 26.2958 1.31804 25.5493 2.36073L25.5471 2.36444L24.1294 4.39205L24.129 4.39059C24.0513 4.50383 24.0265 4.64513 24.0622 4.77811ZM27.1546 5.94341L25.1599 4.54352L26.3103 2.89768C26.7607 2.26953 27.5665 2.06769 28.1102 2.4483C28.6607 2.84273 28.7492 3.67577 28.3088 4.30595L27.1546 5.94341Z" fill="white"></path>
+                      <path d="M20.5207 16.0235C20.5837 16.2588 20.8174 16.4061 21.0574 16.3606C21.2959 16.3155 21.4602 16.0929 21.4312 15.8501L20.7955 10.1983L20.7959 10.1998C20.7641 9.94671 20.5357 9.76669 20.2815 9.79407C20.0291 9.82254 19.8458 10.0502 19.8713 10.3034L20.507 15.9551L20.5085 15.9547C20.51 15.9778 20.5148 16.0016 20.5207 16.0235Z" fill="white"></path>
+                    </g>
+                    <defs>
+                      <clippath id="clip0_118_138">
+                        <rect width="32" height="32" fill="white"></rect>
+                      </clippath>
+                    </defs>
+                    </svg>
+                    <p>1-Tap-Picker</p>
+                </span>
+                <svg class="closeButton" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 7L17 17M7 17L17 7" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </header>
+        </div>
+        <div class="widgetClassName">
+        <div class="picker">
+            <button id="colorPicker" style="display: block;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <path d="M15.6186 6.20798C17.9259 5.59934 18.3873 3.56131 20.2332 1.59707C22.079 -0.367181 25.2723 2.98956 23.4633 4.8247C21.6544 6.65984 19.4487 7.17627 18.9411 9.34339M17.0953 11.1878L5.46657 22.8995C5.13126 23.1603 4.73477 23.3311 4.31478 23.3957C3.89479 23.4602 3.46526 23.4164 3.06699 23.2683C3.06699 23.2683 1.91335 24.5409 1.22117 23.7294C0.528987 22.9179 1.68263 22.0695 1.68263 22.0695C1.55396 21.663 1.52877 21.2309 1.60935 20.8122C1.68992 20.3936 1.87371 20.0016 2.14408 19.6718L13.7728 8.05234M12.8499 15.4298H6.38948M18.2027 12.1099L19.9563 10.3578L14.5111 5.28579L12.7576 7.03794L18.2027 12.1099Z" stroke="#333333" stroke-width="1.76923" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Pick Color
+            </button>
+        </div>
+        
+        <div class="pickr">
+
+        <button type="button" class="pcr-button" role="button" aria-label="toggle color picker dialog"></button>
+
+        
+      </div><div class="pcr-app palette" data-theme="monolith" style="position: unset" aria-label="color picker dialog" role="window">
+          <div class="pcr-selection">
+            <div class="pcr-color-preview" style="display:none" hidden="">
+              <button type="button" class="pcr-last-color" aria-label="use previous color"></button>
+              <div class="pcr-current-color"></div>
+            </div>
+
+            <div class="pcr-color-palette">
+              <div class="pcr-picker"></div>
+              <div class="pcr-palette" tabindex="0" aria-label="color selection area" role="listbox"></div>
+            <div class="copyToast" style="display: none;"><div class="copiedColorSquare"></div><p class="copiedColor"></p><p> copied to clipboard!</p></div></div>
+
+            <div class="pcr-color-chooser">
+              <div class="pcr-picker"></div>
+              <div class="pcr-hue pcr-slider" tabindex="0" aria-label="hue selection slider" role="slider"></div>
+            </div>
+
+            <div class="pcr-color-opacity" style="display:none" hidden="">
+              <div class="pcr-picker"></div>
+              <div class="pcr-opacity pcr-slider" tabindex="0" aria-label="selection slider" role="slider"></div>
+            </div>
+          </div>
+
+          <div class="pcr-swatches "></div>
+
+          <div class="pcr-interaction">
+            <input class="pcr-result" type="text" spellcheck="false" style="display:none" hidden="" aria-label="color input field">
+
+            <input class="pcr-type" data-type="HEXA" value="HEXA" type="button" style="display:none" hidden="">
+            <input class="pcr-type" data-type="RGBA" value="RGBA" type="button" style="display:none" hidden="">
+            <input class="pcr-type" data-type="HSLA" value="HSLA" type="button" style="display:none" hidden="">
+            <input class="pcr-type" data-type="HSVA" value="HSVA" type="button" style="display:none" hidden="">
+            <input class="pcr-type" data-type="CMYK" value="CMYK" type="button" style="display:none" hidden="">
+
+            <input class="pcr-save" value="Save" type="button" style="display:none" hidden="" aria-label="save and close">
+            <input class="pcr-cancel" value="Cancel" type="button" style="display:none" hidden="" aria-label="cancel and close">
+            <input class="pcr-clear" value="Clear" type="button" style="display:none" hidden="" aria-label="clear and close">
+          </div>
+        </div>
+        
+        <div id="data">
+            <div class="data-preview" id="preview-color"></div>
+            <div class="hexWrapper">
+                <div class="selectedFormat">
+                    <span class="current">HEX</span>
+                    <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M0.709821 1.16395C0.909048 0.965243 1.22081 0.947179 1.44049 1.10976L1.50343 1.16395L6.00003 5.64894L10.4966 1.16395C10.6959 0.965244 11.0076 0.947179 11.2273 1.10976L11.2902 1.16395C11.4895 1.36265 11.5076 1.6736 11.3446 1.89271L11.2902 1.95548L6.39684 6.83605C6.19761 7.03476 5.88585 7.05282 5.66616 6.89025L5.60322 6.83605L0.709821 1.95548C0.49067 1.73691 0.49067 1.38252 0.709821 1.16395Z" fill="#DDDDDD"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8944 1.50908L10.8928 1.50772L6.00003 6.38785L1.11539 1.51581L1.10642 1.50809C1.09851 1.51867 1.09091 1.53598 1.09091 1.55972C1.09091 1.58848 1.10207 1.60781 1.11143 1.61714L5.99127 6.48419L6.00067 6.49228L10.8752 1.6305L10.8988 1.60324C10.9054 1.59103 10.9104 1.57346 10.9089 1.55255C10.9075 1.53284 10.9011 1.51847 10.8944 1.50908ZM11.6918 0.825608C12.068 1.20078 12.0965 1.76936 11.7952 2.17441L11.7841 2.18933L11.7052 2.28047L6.79844 7.17439C6.40541 7.56639 5.76807 7.60826 5.32353 7.27928L5.30762 7.26751L5.21517 7.18792L0.308215 2.29382C-0.102737 1.88395 -0.102737 1.23548 0.308215 0.825608C0.701243 0.43361 1.33859 0.391742 1.78313 0.720717L1.79904 0.732488L1.89149 0.812088L6.00003 4.91003L10.095 0.825616C10.488 0.433618 11.1254 0.391742 11.5699 0.720717L11.5858 0.732489L11.6783 0.812085L11.6918 0.825608Z" fill="#DDDDDD"></path>
+                    </svg>
+                    <div class="formats" style="display: none">
+                        <p class="format">HEX</p>
+                        <p class="format">RGB</p>
+                        <p class="format">HSL</p>
+                        <p class="format">HSV</p>
+                    </div>
+                </div>
+            </div>
+            <label class="color-copy-block">
+                <input readonly="" type="text" class="hex-data" id="color">
+                <svg id="copy" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19.4 20H9.6C9.44087 20 9.28826 19.9368 9.17574 19.8243C9.06321 19.7117 9 19.5591 9 19.4V9.6C9 9.44087 9.06321 9.28826 9.17574 9.17574C9.28826 9.06321 9.44087 9 9.6 9H19.4C19.5591 9 19.7117 9.06321 19.8243 9.17574C19.9368 9.28826 20 9.44087 20 9.6V19.4C20 19.5591 19.9368 19.7117 19.8243 19.8243C19.7117 19.9368 19.5591 20 19.4 20Z" stroke="#DDDDDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M15 9V4.6C15 4.44087 14.9368 4.28826 14.8243 4.17574C14.7117 4.06321 14.5591 4 14.4 4H4.6C4.44087 4 4.28826 4.06321 4.17574 4.17574C4.06321 4.28826 4 4.44087 4 4.6V14.4C4 14.5591 4.06321 14.7117 4.17574 14.8243C4.28826 14.9368 4.44087 15 4.6 15H9" stroke="#DDDDDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <svg class="success" fill="#48d552" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#48d552">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path fill-rule="evenodd" d="M12,2 C17.5228475,2 22,6.4771525 22,12 C22,17.5228475 17.5228475,22 12,22 C6.4771525,22 2,17.5228475 2,12 C2,6.4771525 6.4771525,2 12,2 Z M12,4 C7.581722,4 4,7.581722 4,12 C4,16.418278 7.581722,20 12,20 C16.418278,20 20,16.418278 20,12 C20,7.581722 16.418278,4 12,4 Z M15.2928932,8.29289322 L10,13.5857864 L8.70710678,12.2928932 C8.31658249,11.9023689 7.68341751,11.9023689 7.29289322,12.2928932 C6.90236893,12.6834175 6.90236893,13.3165825 7.29289322,13.7071068 L9.29289322,15.7071068 C9.68341751,16.0976311 10.3165825,16.0976311 10.7071068,15.7071068 L16.7071068,9.70710678 C17.0976311,9.31658249 17.0976311,8.68341751 16.7071068,8.29289322 C16.3165825,7.90236893 15.6834175,7.90236893 15.2928932,8.29289322 Z"></path>
+                    </g>
+                </svg>
+            </label>
+        </div>
+        
+        <div class="showColors">
+            <span class="showTitle">Show my colors</span>
+            <span class="hideTitle">Hide my colors</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M17 10L12 15L7 10" stroke="#DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg> 
+        </div>
+        
+        <div class="pickedColors hide" style="display: flex">
+            <div class="allColors">
+                <div class="recentColor" style="background-color: #ffffff;"></div>
+                <div class="recentColor" style="background-color: #ffffff;"></div>
+                <div class="recentColor" style="background-color: #ffffff;"></div>
+                <div class="recentColor" style="background-color: #ffffff;"></div>
+                <div class="recentColor" style="background-color: #ffffff;"></div>
+                <div class="recentColor" style="background-color: #ffffff;"></div>
+                <div class="recentColor" style="background-color: #ffffff;"></div>
+            </div>
+        </div>
+    <style>
+        .pickr {
+            position: relative;
+            overflow: visible;
+            transform: translateY(0)
+        }
+        
+        .pickr * {
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            -webkit-appearance: none
+        }
+        
+        .pickr .pcr-button {
+            position: relative;
+            height: 2em;
+            width: 2em;
+            padding: .5em;
+            cursor: pointer;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+            border-radius: .15em;
+            background: url("data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\" stroke=\"%2342445A\" stroke-width=\"5px\" stroke-linecap=\"round\"><path d=\"M45,45L5,5\"></path><path d=\"M45,5L5,45\"></path></svg>") no-repeat center;
+            background-size: 0;
+            transition: all .3s
+        }
+        
+        .pickr .pcr-button::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><path fill=\"white\" d=\"M1,0H2V1H1V0ZM0,1H1V2H0V1Z\"/><path fill=\"gray\" d=\"M0,0H1V1H0V0ZM1,1H2V2H1V1Z\"/></svg>");
+            background-size: .5em;
+            border-radius: .15em;
+            z-index: -1
+        }
+        
+        .pickr .pcr-button::before {
+            z-index: initial
+        }
+        
+        .pickr .pcr-button::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transition: background .3s;
+            background: var(--pcr-color);
+            border-radius: .15em
+        }
+        
+        .pickr .pcr-button.clear {
+            background-size: 70%
+        }
+        
+        .pickr .pcr-button.clear::before {
+            opacity: 0
+        }
+        
+        .pickr .pcr-button.clear:focus {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .85), 0 0 0 3px var(--pcr-color)
+        }
+        
+        .pickr .pcr-button.disabled {
+            cursor: not-allowed
+        }
+        
+        .pickr *,
+        .pcr-app * {
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            -webkit-appearance: none
+        }
+        
+        .pickr input:focus,
+        .pickr input.pcr-active,
+        .pickr button:focus,
+        .pickr button.pcr-active,
+        .pcr-app input:focus,
+        .pcr-app input.pcr-active,
+        .pcr-app button:focus,
+        .pcr-app button.pcr-active {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .85), 0 0 0 3px var(--pcr-color)
+        }
+        
+        .pickr .pcr-palette,
+        .pickr .pcr-slider,
+        .pcr-app .pcr-palette,
+        .pcr-app .pcr-slider {
+            transition: box-shadow .3s
+        }
+        
+        .pickr .pcr-palette:focus,
+        .pickr .pcr-slider:focus,
+        .pcr-app .pcr-palette:focus,
+        .pcr-app .pcr-slider:focus {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .85), 0 0 0 3px rgba(0, 0, 0, .25)
+        }
+        
+        .pcr-app {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            z-index: 10000;
+            border-radius: .1em;
+            background: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s, visibility 0s .3s;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+            box-shadow: 0 .15em 1.5em 0 rgba(0, 0, 0, .1), 0 0 1em 0 rgba(0, 0, 0, .03);
+            left: 0;
+            top: 0
+        }
+        
+        .pcr-app.visible {
+            transition: opacity .3s;
+            visibility: visible;
+            opacity: 1
+        }
+        
+        .pcr-app .pcr-swatches {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: .75em
+        }
+        
+        .pcr-app .pcr-swatches.pcr-last {
+            margin: 0
+        }
+        
+        @supports(display: grid) {
+            .pcr-app .pcr-swatches {
+                display: grid;
+                align-items: center;
+                grid-template-columns: repeat(auto-fit, 1.75em)
+            }
+        }
+        
+        .pcr-app .pcr-swatches>button {
+            font-size: 1em;
+            position: relative;
+            width: calc(1.75em - 5px);
+            height: calc(1.75em - 5px);
+            border-radius: .15em;
+            cursor: pointer;
+            margin: 2.5px;
+            flex-shrink: 0;
+            justify-self: center;
+            transition: all .15s;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0);
+            z-index: 1
+        }
+        
+        .pcr-app .pcr-swatches>button::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><path fill=\"white\" d=\"M1,0H2V1H1V0ZM0,1H1V2H0V1Z\"/><path fill=\"gray\" d=\"M0,0H1V1H0V0ZM1,1H2V2H1V1Z\"/></svg>");
+            background-size: 6px;
+            border-radius: .15em;
+            z-index: -1
+        }
+        
+        .pcr-app .pcr-swatches>button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--pcr-color);
+            border: 1px solid rgba(0, 0, 0, .05);
+            border-radius: .15em;
+            box-sizing: border-box
+        }
+        
+        .pcr-app .pcr-swatches>button:hover {
+            filter: brightness(1.05)
+        }
+        
+        .pcr-app .pcr-swatches>button:not(.pcr-active) {
+            box-shadow: none
+        }
+        
+        .pcr-app .pcr-interaction {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 0 -0.2em 0 -0.2em
+        }
+        
+        .pcr-app .pcr-interaction>* {
+            margin: 0 .2em
+        }
+        
+        .pcr-app .pcr-interaction input {
+            letter-spacing: .07em;
+            font-size: .75em;
+            text-align: center;
+            cursor: pointer;
+            color: #75797e;
+            background: #f1f3f4;
+            border-radius: .15em;
+            transition: all .15s;
+            padding: .45em .5em;
+            margin-top: .75em
+        }
+        
+        .pcr-app .pcr-interaction input:hover {
+            filter: brightness(0.975)
+        }
+        
+        .pcr-app .pcr-interaction input:focus {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .85), 0 0 0 3px rgba(66, 133, 244, .75)
+        }
+        
+        .pcr-app .pcr-interaction .pcr-result {
+            color: #75797e;
+            text-align: left;
+            flex: 1 1 8em;
+            min-width: 8em;
+            transition: all .2s;
+            border-radius: .15em;
+            background: #f1f3f4;
+            cursor: text
+        }
+        
+        .pcr-app .pcr-interaction .pcr-result::-moz-selection {
+            background: #4285f4;
+            color: #fff
+        }
+        
+        .pcr-app .pcr-interaction .pcr-result::selection {
+            background: #4285f4;
+            color: #fff
+        }
+        
+        .pcr-app .pcr-interaction .pcr-type.active {
+            color: #fff;
+            background: #4285f4
+        }
+        
+        .pcr-app .pcr-interaction .pcr-save,
+        .pcr-app .pcr-interaction .pcr-cancel,
+        .pcr-app .pcr-interaction .pcr-clear {
+            color: #fff;
+            width: auto
+        }
+        
+        .pcr-app .pcr-interaction .pcr-save,
+        .pcr-app .pcr-interaction .pcr-cancel,
+        .pcr-app .pcr-interaction .pcr-clear {
+            color: #fff
+        }
+        
+        .pcr-app .pcr-interaction .pcr-save:hover,
+        .pcr-app .pcr-interaction .pcr-cancel:hover,
+        .pcr-app .pcr-interaction .pcr-clear:hover {
+            filter: brightness(0.925)
+        }
+        
+        .pcr-app .pcr-interaction .pcr-save {
+            background: #4285f4
+        }
+        
+        .pcr-app .pcr-interaction .pcr-clear,
+        .pcr-app .pcr-interaction .pcr-cancel {
+            background: #f44250
+        }
+        
+        .pcr-app .pcr-interaction .pcr-clear:focus,
+        .pcr-app .pcr-interaction .pcr-cancel:focus {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .85), 0 0 0 3px rgba(244, 66, 80, .75)
+        }
+        
+        .pcr-app .pcr-selection .pcr-picker {
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            border: 2px solid #fff;
+            border-radius: 100%;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none
+        }
+        
+        .pcr-app .pcr-selection .pcr-color-palette,
+        .pcr-app .pcr-selection .pcr-color-chooser,
+        .pcr-app .pcr-selection .pcr-color-opacity {
+            position: relative;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            cursor: grab;
+            cursor: -webkit-grab
+        }
+        
+        .pcr-app .pcr-selection .pcr-color-palette:active,
+        .pcr-app .pcr-selection .pcr-color-chooser:active,
+        .pcr-app .pcr-selection .pcr-color-opacity:active {
+            cursor: grabbing;
+            cursor: -webkit-grabbing
+        }
+        
+        .pcr-app[data-theme=monolith] {
+            width: 318px;
+            max-width: 95vw;
+            padding: 8px;
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 1em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: .5em
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><path fill=\"white\" d=\"M1,0H2V1H1V0ZM0,1H1V2H0V1Z\"/><path fill=\"gray\" d=\"M0,0H1V1H0V0ZM1,1H2V2H1V1Z\"/></svg>");
+            background-size: .5em;
+            border-radius: .15em;
+            z-index: -1
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-last-color {
+            cursor: pointer;
+            transition: background-color .3s, box-shadow .3s;
+            border-radius: .15em 0 0 .15em;
+            z-index: 2
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-current-color {
+            border-radius: 0 .15em .15em 0
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-last-color,
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-current-color {
+            background: var(--pcr-color);
+            width: 50%;
+            height: 100%
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-palette {
+            width: 100%;
+            height: 8em;
+            z-index: 1
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-palette .pcr-palette {
+            border-radius: .15em;
+            width: 100%;
+            height: 100%
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-palette .pcr-palette::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><path fill=\"white\" d=\"M1,0H2V1H1V0ZM0,1H1V2H0V1Z\"/><path fill=\"gray\" d=\"M0,0H1V1H0V0ZM1,1H2V2H1V1Z\"/></svg>");
+            background-size: .5em;
+            border-radius: .15em;
+            z-index: -1
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser,
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity {
+            height: .5em;
+            margin-top: .75em
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser .pcr-picker,
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity .pcr-picker {
+            top: 50%;
+            transform: translateY(-50%)
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser .pcr-slider,
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity .pcr-slider {
+            flex-grow: 1;
+            border-radius: 50em
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser .pcr-slider {
+            background: linear-gradient(to right, hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(0, 100%, 50%))
+        }
+        
+        .pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity .pcr-slider {
+            background: linear-gradient(to right, transparent, black), url("data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><path fill=\"white\" d=\"M1,0H2V1H1V0ZM0,1H1V2H0V1Z\"/><path fill=\"gray\" d=\"M0,0H1V1H0V0ZM1,1H2V2H1V1Z\"/></svg>");
+            background-size: 100%, .25em
+        }
+    </style><style>
+        .popup {
+          width: 320px;
+          border: 1px solid #5B5E64;
+          padding-bottom: 16px;
+        }
+        
+        .popup :where(.picker, header, .allColors) {
+          display: flex;
+        }
+        
+        .pcr-app {
+            background-color: #333 !important;
+        }
+        
+        .alert {
+          color: #166FD7;
+          text-align: center;
+          font-family: Helvetica, sans-serif;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 150%;
+          margin: 0 16px;
+        }
+        
+        .copyToast {
+            position: absolute;
+            width: 288px !important;
+            padding: 10px 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.50);
+            top: 48px;
+            left: 8px;
+            color: #FFF;
+            font-size: 12px;
+        }
+        
+        .copyToast p {
+            font-family: Montserrat;
+            margin: 0;
+        }
+        
+        .copiedColor {
+            font-weight: 700;
+            margin-right: 6px !important;
+        }
+        
+        .copiedColorSquare {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        
+        .pcr-color-palette {
+            height: 140px !important;
+            position: relative;
+        }
+        
+        .pcr-picker {
+            height: 12px !important;
+            width: 12px !important;
+        }
+        
+        .picker svg {
+            height: 23px;
+            width: 23px;
+            margin-bottom: -4px;
+        }
+        
+        .picker button {
+          border-radius: 8px;
+          background: #1EAEEC;
+          color: #222;
+          font-family: Montserrat, sans-serif;
+          font-size: 19px;
+          font-style: normal;
+          font-weight: 700;
+          text-transform: uppercase;
+          cursor: pointer;
+          margin-top: 16px;
+          padding: 5px 16px;
+          border: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .picker button:hover {
+          background: #74C4E7;
+        }
+        
+        .picker button:active {
+          background: #1EAEEC;
+          border: 2px solid #FFF;
+          margin-top: 15px;
+          padding: 5px 16px 2px;
+        }
+        
+        .popup .picker {
+          justify-content: center;
+          padding-bottom: 16px;
+        }
+        
+        .pickedColors .allColors {
+          flex-wrap: nowrap;
+          list-style: none;
+        }
+        
+        .allColors {
+          display: flex;
+          align-items: center;
+          gap: 11px;
+        }
+        
+        .recentColor {
+          height: 32px;
+          width: 32px;
+          background-color: #fff;
+          border-radius: 8px;
+          border: 1px solid #5B5E64;
+        }
+        
+        .recentColor:hover {
+          cursor: pointer;
+        }
+        
+        .allColors .color {
+          display: flex;
+          cursor: pointer;
+          margin-bottom: 10px;
+          margin-right: 10px;
+          width: 100%;
+        }
+        
+        .allColors .rect {
+          height: 21px;
+          width: 21px;
+          display: block;
+          margin-right: 8px;
+          border-radius: 5px;
+        }
+        
+        .allColors .color span {
+          font-size: 0.9rem;
+          text-transform: uppercase;
+        }
+        
+        .note {
+          font-size: 0.7rem;
+        }
+        
+        .pickedColors {
+          padding: 9px 10px 0;
+          justify-content: center;
+          gap: 12px;
+        }
+        
+        .pickedColors header {
+          justify-content: space-between;
+        }
+        
+        header {
+          font-size: 1rem;
+          font-weight: 400;
+        }
+        
+        header .clearAll {
+          cursor: pointer;
+          font-size: 0.9rem;
+          font-weight: 400;
+          color: #232931;
+        }
+        
+        header .clearAll:hover {
+          transition: 0.3s ease;
+          color: #393e46;
+        }
+        
+        /*                             */
+        .pickr {
+          display: none !important;
+        }
+        
+        .palette {
+          box-shadow: none !important;
+          max-width: unset !important;
+        }
+        
+        .color-copy-block {
+          position: relative;
+        }
+        
+        .pickedColors.hide {
+            display: none !important;
+        }
+        
+        .showColors.hide svg {
+            transform: rotate(180deg);
+        }
+        
+        .showColors.hide .hideTitle {
+            display: block !important;
+        }
+        
+        .showColors.hide .showTitle {
+            display: none !important;
+        }
+        
+        .showColors .showTitle {
+            display: block !important;
+        }
+        
+        .showColors .hideTitle {
+            display: none !important;
+        }
+
+        .color-copy-block .hex-data {
+          width: 100%;
+          height: 32px;
+          border-radius: 8px;
+          border: 1px solid #96989C;
+          text-align: center;
+          outline: none;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          padding-left: 8px;
+          padding-right: 16px;
+          color: #fff;
+          background-color: transparent;
+          text-transform: uppercase;
+        }
+        
+        .color-copy-block #copy, .color-copy-block .success {
+          position: absolute;
+          top: 50%;
+          right: 8px;
+          transform: translateY(-50%);
+          display: block;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+        
+        .color-copy-block .success {
+            display: none
+        }
+        
+        .color-copy-block #copy.copied {
+            display: none;
+        }
+         
+        .color-copy-block .success.copied {
+            display: block !important;
+        }
+        
+        .color-copy-block input {
+            font-family: 'Montserrat';
+        }
+
+        .showColors {
+            color: #FFF;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 21px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            padding-bottom: 10px;
+        }
+        
+        .showColors span {
+            font-family: Montserrat;
+        }
+        
+        .data-preview {
+          border-radius: 8px;
+          border: 1px solid #96989C;
+          width: 32px;
+          height: 32px;
+        }
+        
+        .header h2 {
+          font-size: 20px;
+          font-family: "Montaga", sans-serif;
+          font-weight: 400;
+          color: #000;
+          margin: 0 8px;
+        }
+        
+        #data {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 8px;
+        }
+        
+        .recent-header {
+          font-family: Karla, sans-serif;
+          padding-top: 10px;
+          width: 320px;
+          height: 40px;
+        }
+        
+        .header img {
+          margin-left: 5px;
+        }
+        
+        .chevron {
+            margin: 5px 8px 0;
+        }
+        
+        .hexWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+        
+        .toggle.hexWrapper svg {
+            transform: rotate(180deg);
+            margin-top: -2px;
+        }
+        
+        .selectedFormat {
+            position: relative;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .current {
+                font-family: 'Montserrat';
+            }
+        }
+        
+        .formats {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            gap: 2px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #96989C;
+            height: auto;
+            width: 50px;
+            background: #333;
+            padding: 5px;
+            border-radius: 5px;
+            
+            p {
+                margin: 0;
+                font-family: 'Montserrat';
+            }    
+        }
+                
+        .format:hover {
+            background-color: #1EAEEC;
+            cursor: pointer;
+        }
+        
+        .widget-settings {
+          padding: 0 15px;
+          margin-top: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          cursor: pointer;
+          width: max-content;
+          font-family: Inter, sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 150%;
+        }
+        .widget-settings input {
+          display: none;
+        }
+        .widget-settings input:checked + span .empty {
+          display: none;
+        }
+        .widget-settings input:checked + span .checked {
+          display: block;
+        }
+        .widget-settings input + span .empty {
+          display: block;
+        }
+        .widget-settings input + span .checked {
+          display: none;
+        }
+        .widget-settings span {
+          margin-right: 8px;
+        }
+        .widget-settings span i {
+          height: 20px;
+          width: 20px;
+        }
+    </style></div></div></template></div></body></html>

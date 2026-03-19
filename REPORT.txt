@@ -1,0 +1,54 @@
+Van Gogh Paintings Extraction Report
+====================================
+TESTCASES 
+    1. initial_test.py
+        This testcase tests my scraper using the given van-gogh-ptaintings.html and compares it to the given expected-array.json, 
+        and it outputs all comparisons in the comparison.txt file. 
+        I made this as an initial testcase and also so I can see specifically what is different between my output and the expected output,
+        so that debugging is sped up for the initial stage. 
+        This is run by first running "python3 artwork_scraper.py" which is the scraper itself, then running my test, initial_test.py,
+         which uses the van-gogh-paintings_output.json that my scraper created. 
+
+    2. I created this testcase so I can test multiple other html pages. I created a folder called test_files to contain more html examples,
+        then I created the run_tests.py test to go through each file in that folder and print the json output so I can look at it and tell
+        that my scraper is either working or not on the other examples. By visually comparing, I saw that layout changes were not initially
+        working, as expected, however, by editing the scraper to detect carousel sections as a fallback, it can now work for other examples
+        as well, and I see my shakepeare plays output matches what I see visually from google.
+
+SUMMARY - initial working code for given input
+    I parsed the provided HTML file directly using BeautifulSoup and extracted:
+    - painting name
+    - extensions array (year)
+    - Google link
+    - thumbnail image when the thumbnail is actually present in the HTML file
+
+    The main difficulty in this challenge was thumbnail extraction.
+    Some paintings in the provided HTML contain only:
+    - a placeholder gif in the img src
+    - data-deferred="1"
+
+    This indicates lazy/deferred image loading. In those cases, the real thumbnail
+    is not actually present in the saved HTML file.
+
+    My solution only includes thumbnails that are directly available in the HTML. 
+    The expected array appears to contain real image data for some items whose
+    provided HTML only contains deferred placeholder gifs. This suggests that the
+    expected array may have been generated from a more fully rendered browser state
+    than the raw saved HTML file.
+
+SUMMARY - working code for extra examples 
+    Examples Used: 
+        -I used a similar Monet Paintings html from Google for example 1 
+        -I used Shakespeare Plays for example 2 to show differing layout
+    I initially implemented a scraper using fixed class selectors (e.g., iELo6, pgNMRc, cxzHyb), 
+    which worked for the Van Gogh paintings page but failed on other layouts.
+    To generalize the solution, I added fallback, so that the scraper can find the relevant carousel section 
+    based on headings like “Artworks” or “Plays,” and then extract individual cards within that section.
+    Instead of relying solely on class names, I used links, images, and short text patterns to identify titles and years.
+    I also added filtering to avoid large container elements, which caused incorrect outputs initially when testing this. 
+
+    Now the scraper works across multiple Google Knowledge Graph carousel layouts.
+
+
+
+
