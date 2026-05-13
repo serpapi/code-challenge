@@ -42,6 +42,17 @@ def url_validator(link):
         return False, "Invalid domain..."
     return True, "Valid URL"
 
+#check that date is 4 digits and not a strange value
+def date_validator(value):
+    if not isinstance(value, list):
+        return False, "Not a list..."
+    if not value:
+        return True, "Empty list, skipped..."
+    for i, y in enumerate(value):
+        if not isinstance(y, str) or not re.match(r"\d{4}$", y):
+            return False, f"Invalid year: {y}"
+    return True, "Valid year"
+
 def validator():
     #loop through all .json files
     paths = sorted(glob.glob(f"{directory}/{pattern}"))
@@ -116,6 +127,11 @@ def validator():
                         #validate url
                         if field == "link" and value:
                             valid, msg = url_validator(value)
+                            if not valid:
+                                errors.append(f"Item {i} '{field}' {msg}")
+                        #validate year
+                        if field == "extensions" and value is not None:
+                            valid, msg = date_validator(value)
                             if not valid:
                                 errors.append(f"Item {i} '{field}' {msg}")
                         
