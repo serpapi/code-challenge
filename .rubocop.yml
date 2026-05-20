@@ -1,0 +1,8 @@
+AllCops:
+  TargetRubyVersion: 4.0.0
+  NewCops: disable
+
+Lint/UselessAssignment:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
