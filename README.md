@@ -13,6 +13,22 @@ lefthook install
 bundle exec rspec
 ```
 
+## Scripts
+
+### `bin/clean_html`
+
+Parses a Google search result HTML file with Nokolexbor and strips `<script>`, `<style>`,
+and `<noscript>` tags, producing a smaller snapshot suitable for DOM inspection in a browser.
+
+```bash
+bin/clean_html                                      # van-gogh-paintings.html → van-gogh-paintings-clean.html
+bin/clean_html files/other.html                     # other.html → other-clean.html
+bin/clean_html files/other.html files/out.html      # explicit output path
+```
+
+Run this first when adding a new fixture file — it lets you inspect the carousel DOM
+structure without wading through thousands of lines of inline JS.
+
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")

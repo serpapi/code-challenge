@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Strips <script> and <style> tags from a Google search result HTML file,
+# producing a readable snapshot for DOM inspection.
+#
+# Usage:
+#   bin/clean_html [input] [output]
+#
+# Defaults:
+#   input  — files/van-gogh-paintings.html
+#   output — files/van-gogh-paintings-clean.html
+
+require "bundler/setup"
+require "nokolexbor"
+
+input  = ARGV[0] || File.expand_path("../files/van-gogh-paintings.html", __dir__)
+output = ARGV[1] || input.sub(/\.html$/, "-clean.html")
+
+abort "File not found: #{input}" unless File.exist?(input)
+
+doc = Nokolexbor::HTML(File.read(input))
+doc.css("script, style, noscript").each(&:remove)
+
+File.write(output, doc.to_html)
+puts "Written to #{output} (#{File.size(output)} bytes)"
