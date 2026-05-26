@@ -1,7 +1,10 @@
 require "spec_helper"
 require "carousel_item"
+require "layouts/i_elo6"
 
 RSpec.describe CarouselItem do
+  let(:layout) { Layouts::IELo6.new }
+
   let(:html) do
     <<~HTML
       <div class="iELo6">
@@ -16,7 +19,7 @@ RSpec.describe CarouselItem do
 
   describe "#image" do
     context "when img has an id (jpeg via script tag)" do
-      subject(:item) { described_class.new(node, { "_img1" => "data:image/jpeg;base64,FAKEBASE64==" }) }
+      subject(:item) { described_class.new(node, { "_img1" => "data:image/jpeg;base64,FAKEBASE64==" }, layout) }
 
       it "returns the base64 jpeg from ImageExtractor" do
         expect(item.to_h[:image]).to eq("data:image/jpeg;base64,FAKEBASE64==")
@@ -34,7 +37,7 @@ RSpec.describe CarouselItem do
         HTML
       end
 
-      subject(:item) { described_class.new(node, {}) }
+      subject(:item) { described_class.new(node, {}, layout) }
 
       it "returns the data-src url" do
         expect(item.to_h[:image]).to eq("https://encrypted-tbn0.gstatic.com/images?q=fake")
@@ -42,7 +45,7 @@ RSpec.describe CarouselItem do
     end
 
     context "when img has no id (gif placeholder)" do
-      subject(:item) { described_class.new(node, {}) }
+      subject(:item) { described_class.new(node, {}, layout) }
 
       it "returns nil" do
         expect(item.to_h[:image]).to be_nil

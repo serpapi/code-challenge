@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.join(__dir__, "../lib")
+
+require "json"
+require "carousel_extractor"
+
+basename = ARGV[0]
+save     = ARGV.include?("--save")
+
+unless basename
+  warn "Usage: bin/generate-fixture <basename> [--save]"
+  exit 1
+end
+
+html_file = File.join(__dir__, "../spec/fixtures/source-html/#{basename}.html")
+json_file = File.join(__dir__, "../spec/fixtures/json-result/#{basename}.json")
+
+unless File.exist?(html_file)
+  warn "HTML fixture not found: #{html_file}"
+  exit 1
+end
+
+results = CarouselExtractor.new(File.read(html_file)).extract
+
+results.each_with_index do |item, i|
+  puts "\n[#{i + 1}] #{item[:name]}"
+  puts "  extensions: #{item[:extensions].inspect}" if item.key?(:extensions)
+  puts "  link:  #{item[:link]}"
+  puts "  image: #{item[:image]&.slice(0, 60)}..."
+end
+
+puts "\n#{results.length} items extracted."
+
+if save
+  payload = JSON.pretty_generate({ "artworks" => results.map { |r| r.transform_keys(&:to_s) } })
+  File.write(json_file, payload)
+  puts "Saved → #{json_file}"
+end

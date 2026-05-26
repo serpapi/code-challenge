@@ -1,5 +1,6 @@
 require "spec_helper"
 require "carousel_item"
+require "layouts/i_elo6"
 
 RSpec.describe CarouselItem do
   let(:html) do
@@ -11,7 +12,7 @@ RSpec.describe CarouselItem do
   end
 
   let(:node) { Nokolexbor::HTML(html).css(".iELo6").first }
-  subject(:item) { described_class.new(node, {}) }
+  subject(:item) { described_class.new(node, {}, Layouts::IELo6.new) }
 
   describe "link" do
     it "converts relative links to absolute" do

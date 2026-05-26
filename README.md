@@ -63,6 +63,30 @@ the live DOM with Playwright:
 
 3. **No image** — `<img>` has neither `id` nor `data-src`. Returns `nil`.
 
+## Adding a new fixture
+
+1. Search Google **in an incognito window** for a carousel page (actors, albums, movies, etc.)
+   Incognito prevents your Google account email and session tokens from being embedded in the saved HTML.
+2. `File → Save Page As → Web Page, Complete` — save the `.html` to `spec/fixtures/source-html/<name>.html`.
+   Delete the companion `<name>_files/` directory — it contains browser assets not needed for parsing.
+3. Preview what the extractor finds:
+   ```bash
+   bin/generate-fixture <name>
+   ```
+4. If the output looks correct, write the JSON fixture:
+   ```bash
+   bin/generate-fixture <name> --save
+   ```
+5. Run the integration tests to confirm:
+   ```bash
+   bin/rspec spec/integration/
+   ```
+
+If `bin/generate-fixture` raises `CarouselExtractor::UnknownLayoutError`, the page uses a CSS class
+layout not yet recognised. Use `bin/serve-html` + Playwright to inspect the live DOM, identify the
+item/name/extension/image selectors, and add a new adapter in `lib/layouts/`
+(see [roadmap](../docs/roadmap.md)).
+
 ## Scripts
 
 ### `bin/clean-html`
@@ -81,16 +105,25 @@ structure without wading through thousands of lines of inline JS.
 
 ### `bin/serve-html`
 
-Serves the `files/` directory over HTTP so the HTML fixtures can be opened in a browser
-or inspected with Playwright CLI (which blocks the `file://` protocol).
+Serves the `spec/fixtures/source-html/` directory over HTTP so HTML fixtures can be opened
+in a browser or inspected with Playwright CLI (which blocks the `file://` protocol).
 
 ```bash
 bin/serve-html          # → http://localhost:8765
 bin/serve-html 9000     # custom port
 ```
 
-Open http://localhost:8765/van-gogh-paintings-clean.html for a stripped-down view
-suitable for DOM inspection.
+Open http://localhost:8765/van-gogh-paintings.html to inspect the live DOM with Playwright.
+
+### `bin/generate-fixture`
+
+Runs the extractor against an HTML fixture and prints the results for review. Pass `--save`
+to write the output as a JSON fixture, which the integration test will then pick up.
+
+```bash
+bin/generate-fixture her-movie-cast-Google-Search          # preview
+bin/generate-fixture her-movie-cast-Google-Search --save   # write fixture
+```
 
 ### `bin/debug-compare`
 

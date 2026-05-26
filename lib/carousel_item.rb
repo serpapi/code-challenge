@@ -1,10 +1,9 @@
-require "nokolexbor"
-
 # Extracts name, extensions, link, and image from a single carousel node.
 class CarouselItem
-  def initialize(node, images)
-    @node = node
+  def initialize(node, images, layout)
+    @node   = node
     @images = images
+    @layout = layout
   end
 
   def to_h
@@ -19,11 +18,11 @@ class CarouselItem
   private
 
   def name
-    @node.css(".pgNMRc").first&.text
+    @layout.name(@node)
   end
 
   def extensions
-    ext = @node.css(".cxzHyb").first&.text
+    ext = @layout.extension(@node)
     ext.to_s.empty? ? [] : [ext]
   end
 
@@ -33,7 +32,7 @@ class CarouselItem
   end
 
   def image
-    img = @node.css("img.taFZJe").first
+    img = @node.css(@layout.image_selector).first
     return unless img
 
     @images[img.attr("id")] || img.attr("data-src")

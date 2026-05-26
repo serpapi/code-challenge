@@ -1,0 +1,27 @@
+require "spec_helper"
+require "layouts/i_elo6"
+
+RSpec.describe Layouts::IELo6 do
+  subject(:layout) { described_class.new }
+
+  it { expect(layout.item_selector).to eq(".iELo6") }
+  it { expect(layout.image_selector).to eq("img.taFZJe") }
+
+  describe "#name" do
+    let(:node) { Nokolexbor::HTML('<div class="iELo6"><div class="pgNMRc">The Starry Night</div></div>').css(".iELo6").first }
+
+    it { expect(layout.name(node)).to eq("The Starry Night") }
+  end
+
+  describe "#extension" do
+    let(:node) { Nokolexbor::HTML('<div class="iELo6"><div class="cxzHyb">1889</div></div>').css(".iELo6").first }
+
+    it { expect(layout.extension(node)).to eq("1889") }
+  end
+
+  describe "#extension when absent" do
+    let(:node) { Nokolexbor::HTML('<div class="iELo6"></div>').css(".iELo6").first }
+
+    it { expect(layout.extension(node)).to be_nil }
+  end
+end
