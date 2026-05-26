@@ -5,7 +5,7 @@ RSpec.describe Layouts::KlitemTr do
   subject(:layout) { described_class.new }
 
   it { expect(layout.item_selector).to eq("a.klitem-tr") }
-  it { expect(layout.image_selector).to eq("img.VeBrne") }
+  it { expect(layout.image_selector).to eq("img[id], img[data-src]") }
 
   let(:html) do
     <<~HTML
@@ -43,7 +43,7 @@ RSpec.describe Layouts::KlitemTr do
       HTML
     end
 
-    it "returns the last FozYP as extension" do
+    it "returns the year, not a title fragment" do
       expect(layout.extension(node)).to eq("1975")
     end
 
