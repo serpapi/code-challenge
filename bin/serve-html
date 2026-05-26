@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# Description: Serve the files/ directory over HTTP for browser-based DOM inspection
+# Usage: bin/serve_html [port]
+#   port  Port to listen on (default: 8765)
+
+require "webrick"
+
+port = (ARGV[0] || 8765).to_i
+root = File.expand_path("../files", __dir__)
+
+puts "Serving #{root} at http://localhost:#{port}"
+puts "Van Gogh page: http://localhost:#{port}/van-gogh-paintings-clean.html"
+puts "Press Ctrl+C to stop."
+
+server = WEBrick::HTTPServer.new(Port: port, DocumentRoot: root, AccessLog: [])
+trap("INT") { server.shutdown }
+server.start

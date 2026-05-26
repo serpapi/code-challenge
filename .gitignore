@@ -50,3 +50,7 @@ build-iPhoneSimulator/
 .rvmrc
 .DS_Store
 .playwright/
+.playwright-cli/
+.claude/settings.local.json
+asks/
+files/*-clean.html

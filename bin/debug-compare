@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.join(__dir__, "../lib")
+
+require "json"
+require "debug_comparator"
+
+basename = ARGV[0] || "van-gogh-paintings"
+HTML_FILE = File.join(__dir__, "../spec/fixtures/source-html/#{basename}.html")
+JSON_FILE = File.join(__dir__, "../spec/fixtures/json-result/#{basename}.json")
+
+expected = JSON.parse(File.read(JSON_FILE))["artworks"]
+comparator = DebugComparator.new(File.read(HTML_FILE), expected)
+comparator.report
+exit(comparator.mismatches > 0 ? 1 : 0)

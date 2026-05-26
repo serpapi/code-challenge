@@ -10,3 +10,12 @@ Style/StringLiterals:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"

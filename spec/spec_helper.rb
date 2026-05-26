@@ -1,4 +1,19 @@
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
+
+require "nokolexbor"
+
 RSpec.configure do |config|
+  unless config.files_to_run.one?
+    require "simplecov"
+
+    SimpleCov.start do
+      track_files "lib/**/*.rb"
+      enable_coverage :branch
+      add_group "Lib", "lib"
+      add_filter "/spec/"
+    end
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end

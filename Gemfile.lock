@@ -6,6 +6,7 @@ GEM
       bundler (>= 1.2.0)
       thor (~> 1.0)
     diff-lcs (1.6.2)
+    docile (1.4.1)
     json (2.19.5)
     language_server-protocol (3.17.0.5)
     lefthook (2.1.8)
@@ -51,10 +52,17 @@ GEM
       parser (>= 3.3.7.2)
       prism (~> 1.7)
     ruby-progressbar (1.13.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.2)
+    simplecov_json_formatter (0.1.4)
     thor (1.5.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
+    webrick (1.9.2)
 
 PLATFORMS
   aarch64-linux
@@ -69,6 +77,8 @@ DEPENDENCIES
   nokolexbor
   rspec
   rubocop
+  simplecov
+  webrick
 
 RUBY VERSION
    ruby 3.4.9p82
