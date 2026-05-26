@@ -26,6 +26,20 @@ RSpec.describe ImageExtractor do
     expect(images["_unknown"]).to be_nil
   end
 
+  context "when the script uses double-quoted strings" do
+    let(:html) do
+      <<~HTML
+        <html>
+          <script>(function(){var s="data:image/jpeg;base64,DQBASE64==";var ii=["_dq123"];var r="";_setImagesSrc(ii,s,r);})();</script>
+        </html>
+      HTML
+    end
+
+    it "extracts the image" do
+      expect(images["_dq123"]).to eq("data:image/jpeg;base64,DQBASE64==")
+    end
+  end
+
   context "when the base64 string contains JavaScript hex escapes" do
     let(:html) do
       <<~HTML
