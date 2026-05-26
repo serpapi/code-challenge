@@ -5,5 +5,6 @@ module Layouts
     def image_selector  = "img.d7ENZc"
     def name(node)      = node.css(".JjtOHd").first&.text
     def extension(node) = node.css(".cHaqb").first&.text
+    def link(node)      = node.css("a").first&.attr("href")
   end
 end

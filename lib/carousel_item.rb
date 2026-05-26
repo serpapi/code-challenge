@@ -27,8 +27,7 @@ class CarouselItem
   end
 
   def link
-    href = @node.css("a").first&.attr("href")
-    href&.start_with?("/") ? "https://www.google.com#{href}" : href
+    @layout.link(@node)
   end
 
   def image

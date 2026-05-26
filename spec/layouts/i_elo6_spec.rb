@@ -24,4 +24,12 @@ RSpec.describe Layouts::IELo6 do
 
     it { expect(layout.extension(node)).to be_nil }
   end
+
+  describe "#link" do
+    let(:node) { Nokolexbor::HTML('<div class="iELo6"><a href="/search?q=Starry+Night"></a></div>').css(".iELo6").first }
+
+    it "converts relative href to absolute" do
+      expect(layout.link(node)).to eq("https://www.google.com/search?q=Starry+Night")
+    end
+  end
 end
