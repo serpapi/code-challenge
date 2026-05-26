@@ -27,23 +27,12 @@ markup, inline scripts, base64 images, and lazy-loading machinery. Feeding it di
 an LLM as context is impractical: it exceeds context limits and makes it nearly impossible
 to reason about structure.
 
-**First attempt — strip the noise.** `bin/clean-html` uses Nokolexbor to parse the page
-and remove all `<script>`, `<style>`, and `<noscript>` tags, producing a lean HTML snapshot
-focused on visible content. Useful, but the stripped file still doesn't tell you what the
-JavaScript was doing — and it turns out the carousel thumbnails are injected by script at
-runtime.
-
-**Better approach — serve and inspect live.** Rather than reading raw HTML, we run a local
-HTTP server (`bin/serve-html`) and connect Playwright CLI to it. This lets Claude drive a
-real browser against the page, query the live DOM, and understand exactly how elements are
-structured — class names, image injection patterns, lazy-loading ids — without ever having
-to read the raw file. Playwright's `eval` can extract structured data from any selector
-in a single round-trip.
-
-This combination — clean HTML for orientation, Playwright for precision — dramatically
-reduces the time needed to identify correct selectors and understand Google's deferred image
-loading pattern (base64 jpegs stored in inline `<script>` tags, injected into `<img>`
-elements by id at runtime).
+**Serve and inspect live.** Rather than reading raw HTML, we run a local HTTP server
+(`bin/serve-html`) and connect Playwright CLI to it. This lets Claude drive a real browser
+against the page, query the live DOM, and understand exactly how elements are structured —
+class names, image injection patterns, lazy-loading ids — without ever having to read the
+raw file. Playwright's `eval` can extract structured data from any selector in a single
+round-trip.
 
 ### Image extraction — three cases
 
@@ -88,20 +77,6 @@ item/name/extension/image selectors, and add a new adapter in `lib/layouts/`
 (see [roadmap](../docs/roadmap.md)).
 
 ## Scripts
-
-### `bin/clean-html`
-
-Parses a Google search result HTML file with Nokolexbor and strips `<script>`, `<style>`,
-and `<noscript>` tags, producing a smaller snapshot suitable for DOM inspection in a browser.
-
-```bash
-bin/clean-html                                      # van-gogh-paintings.html → van-gogh-paintings-clean.html
-bin/clean-html files/other.html                     # other.html → other-clean.html
-bin/clean-html files/other.html files/out.html      # explicit output path
-```
-
-Run this first when adding a new fixture file — it lets you inspect the carousel DOM
-structure without wading through thousands of lines of inline JS.
 
 ### `bin/serve-html`
 
