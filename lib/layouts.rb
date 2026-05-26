@@ -1,3 +1,4 @@
+require_relative "layouts/text_nodes"
 Dir[File.join(__dir__, "layouts", "*.rb")].each { |f| require f }
 
 # Registry of known Google carousel layout adapters.
