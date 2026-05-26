@@ -3,8 +3,8 @@ module Layouts
   # Subclasses override item_selector only — Google rotates the wrapper class independently.
   class GridTile
     def image_selector  = "img.d7ENZc"
-    def name(node)      = node.css(".JjtOHd").first&.text
-    def extension(node) = node.css(".cHaqb").first&.text
-    def link(node)      = node.css("a").first&.attr("href")
+    def name(node)      = node.at_css(".JjtOHd")&.text
+    def extension(node) = node.at_css(".cHaqb")&.text
+    def link(node)      = node.at_css("a")&.attr("href")
   end
 end

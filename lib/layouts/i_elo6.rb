@@ -3,11 +3,11 @@ module Layouts
   class IELo6
     def item_selector   = ".iELo6"
     def image_selector  = "img.taFZJe"
-    def name(node)      = node.css(".pgNMRc").first&.text
-    def extension(node) = node.css(".cxzHyb").first&.text
+    def name(node)      = node.at_css(".pgNMRc")&.text
+    def extension(node) = node.at_css(".cxzHyb")&.text
 
     def link(node)
-      href = node.css("a").first&.attr("href")
+      href = node.at_css("a")&.attr("href")
       href&.start_with?("/") ? "https://www.google.com#{href}" : href
     end
   end

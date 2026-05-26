@@ -31,7 +31,7 @@ class CarouselItem
   end
 
   def image
-    img = @node.css(@layout.image_selector).first
+    img = @node.at_css(@layout.image_selector)
     return unless img
 
     @images[img.attr("id")] || img.attr("data-src")
