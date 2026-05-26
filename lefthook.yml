@@ -1,0 +1,10 @@
+pre-commit:
+  commands:
+    rubocop:
+      tags: style
+      glob: "*.rb"
+      exclude: "^vendor/"
+      run: bin/rubocop --force-exclusion {staged_files}
+    audit:
+      tags: security
+      run: bin/bundler-audit check --update

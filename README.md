@@ -1,5 +1,18 @@
 # Extract Van Gogh Paintings Code Challenge
 
+[![CI](https://github.com/brentgreeff/serpapi-code-challenge/actions/workflows/ci.yml/badge.svg)](https://github.com/brentgreeff/serpapi-code-challenge/actions/workflows/ci.yml)
+
+## Dev Setup
+
+```bash
+bundle install
+lefthook install
+```
+
+```bash
+bundle exec rspec
+```
+
 Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")

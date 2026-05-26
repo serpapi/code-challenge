@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# Poll CI status for latest run until complete
+set -euo pipefail
+
+POLL_INTERVAL=30
+MAX_POLLS=10
+
+echo "=== CI Status ==="
+echo ""
+
+local_sha=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+local_time=$(git log -1 --format='%ar' 2>/dev/null || echo "unknown")
+remote_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null || echo "none")
+if [[ "$remote_branch" != "none" ]]; then
+  remote_sha=$(git rev-parse --short "$remote_branch" 2>/dev/null || echo "unknown")
+  if [[ "$local_sha" == "$remote_sha" ]]; then
+    echo "HEAD: $local_sha ($local_time, pushed)"
+  else
+    echo "HEAD: $local_sha ($local_time) — remote: $remote_sha (NOT PUSHED)"
+  fi
+else
+  echo "HEAD: $local_sha ($local_time) — no upstream set (NOT PUSHED)"
+fi
+echo ""
+
+poll=0
+while true; do
+  poll=$((poll + 1))
+
+  runs=$(gh run list --limit 5 --json name,status,conclusion,databaseId,headSha,createdAt --jq '[.[] | select(.name == "CI")]' 2>/dev/null || echo "[]")
+  count=$(echo "$runs" | jq 'length')
+
+  if [[ "$count" == "0" ]]; then
+    echo "No CI runs found"
+    echo ""
+    echo "STATUS: no_runs"
+    exit 0
+  fi
+
+  latest=$(echo "$runs" | jq '.[0]')
+  sha=$(echo "$latest" | jq -r '.headSha[:7]')
+  status=$(echo "$latest" | jq -r '.status')
+  conclusion=$(echo "$latest" | jq -r '.conclusion')
+  run_id=$(echo "$latest" | jq -r '.databaseId')
+
+  if [[ "$status" != "completed" ]]; then
+    echo "Poll $poll — commit $sha — $status"
+    gh run view "$run_id" --json jobs --jq '.jobs[] | "  \(.name): \(.status) \(.conclusion)"' 2>/dev/null || true
+    echo ""
+
+    if [[ $poll -ge $MAX_POLLS ]]; then
+      echo "Gave up after $((poll * POLL_INTERVAL))s"
+      echo ""
+      echo "STATUS: timeout"
+      exit 1
+    fi
+
+    echo "Sleeping ${POLL_INTERVAL}s..."
+    sleep $POLL_INTERVAL
+    continue
+  fi
+
+  echo "Commit: $sha"
+  echo ""
+  gh run view "$run_id" --json jobs --jq '.jobs[] | "  \(.name): \(.conclusion)"' 2>/dev/null || true
+  echo ""
+
+  if [[ "$conclusion" == "success" ]]; then
+    echo "STATUS: success"
+    exit 0
+  fi
+
+  echo "=== Failed Logs ==="
+  echo ""
+  gh run view "$run_id" --log-failed 2>/dev/null || echo "(could not fetch logs)"
+  echo ""
+
+  echo "STATUS: failure"
+  exit 1
+done
