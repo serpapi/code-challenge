@@ -7,7 +7,7 @@ module Layouts
     def item_selector   = "a.klitem-tr"
     def image_selector  = "img[id], img[data-src]"
     def name(node)      = node.attr("aria-label")
-    def extension(node) = text_nodes(node).last
+    def extension(node) = text_nodes(node).last&.match?(/\A\d{4}\z/) ? text_nodes(node).last : nil
     def link(node)      = normalize_link(node.attr("href"))
   end
 end

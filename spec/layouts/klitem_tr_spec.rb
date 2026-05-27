@@ -65,6 +65,39 @@ RSpec.describe Layouts::KlitemTr do
     it { expect(layout.extension(node)).to be_nil }
   end
 
+  describe "#extension when item has no year (title-only text node)" do
+    let(:html) do
+      <<~HTML
+        <a class="klitem-tr" href="/search?q=Brazil" aria-label="Brazil">
+          <div class="klitem">
+            <div class="FozYP">Brazil</div>
+          </div>
+        </a>
+      HTML
+    end
+
+    it "returns nil, not the title" do
+      expect(layout.extension(node)).to be_nil
+    end
+  end
+
+  describe "#extension when title is split across multiple text nodes with no year" do
+    let(:html) do
+      <<~HTML
+        <a class="klitem-tr" href="/search?q=Secret+Tournament" aria-label="Secret Tournament">
+          <div class="klitem">
+            <div class="FozYP">Secret</div>
+            <div class="FozYP">Tournament</div>
+          </div>
+        </a>
+      HTML
+    end
+
+    it "returns nil, not a title fragment" do
+      expect(layout.extension(node)).to be_nil
+    end
+  end
+
   describe "#link" do
     it { expect(layout.link(node)).to eq("https://www.google.com/search?q=Brazil") }
   end
