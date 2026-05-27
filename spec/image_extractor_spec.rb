@@ -84,6 +84,20 @@ RSpec.describe ImageExtractor do
     end
   end
 
+  context "when a variable is inserted between s and ii" do
+    let(:html) do
+      <<~HTML
+        <html>
+          <script>(function(){var s='data:image/jpeg;base64,FAKEBASE64==';var _x=1;var ii=['_abc123'];var r='';_setImagesSrc(ii,s,r);})();</script>
+        </html>
+      HTML
+    end
+
+    it "still extracts the image" do
+      expect(images["_abc123"]).to eq("data:image/jpeg;base64,FAKEBASE64==")
+    end
+  end
+
   context "when no script tags contain image data" do
     let(:html) do
       <<~HTML

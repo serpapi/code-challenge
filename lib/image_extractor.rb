@@ -4,7 +4,6 @@ require "nokolexbor"
 class ImageExtractor
   S_PART  = /var s=(?<q>['"])(?<src>data:image[^'"]+)\k<q>/
   II_PART = /var ii=(?<ids>\[[^\]]+\])/
-  PATTERN = /#{S_PART};#{II_PART}/
 
   def initialize(doc)
     @map = build(doc)
@@ -18,11 +17,13 @@ class ImageExtractor
 
   def build(doc)
     doc.css("script").each_with_object({}) do |script, map|
-      match = script.text.match(PATTERN)
-      next unless match
+      text     = script.text
+      s_match  = text.match(S_PART)
+      ii_match = text.match(II_PART)
+      next unless s_match && ii_match
 
-      src = match[:src].gsub('\x3d', "=")
-      ids = match[:ids].scan(/['"]([^'"]+)['"]/).flatten
+      src = s_match[:src].gsub('\x3d', "=")
+      ids = ii_match[:ids].scan(/['"]([^'"]+)['"]/).flatten
 
       ids.each { |id| map[id] = src }
     end
