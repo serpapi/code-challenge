@@ -26,3 +26,42 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+## Solution (Python)
+
+Two implementations are provided:
+- `hardcoded_solution.py` — uses CSS class names to find carousel cards
+- `generalized_solution.py` — uses `&stick=` in the href + leaf nodes
+
+### Setup
+
+```bash
+# create virtual environment inside the repo
+python3 -m venv venv
+
+# activate it (do this once per terminal session)
+source venv/bin/activate
+
+# install dependencies
+pip install -r requirements.txt
+```
+
+### Run a solution
+
+```bash
+python hardcoded_solution.py
+python generalized_solution.py
+```
+
+### Run tests
+
+```bash
+# run all tests
+pytest test_solutions.py -v
+
+# run without activating venv
+venv/bin/pytest test_solutions.py -v
+
+# run a single specific test
+pytest test_solutions.py::test_generalized_beatles -v
+```
