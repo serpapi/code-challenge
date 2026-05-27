@@ -9,6 +9,8 @@ bundle install
 lefthook install
 ```
 
+### Run tests
+
 ```bash
 bundle exec rspec
 ```
@@ -18,45 +20,30 @@ bundle exec rspec
 The challenge HTML file has been moved from `files/van-gogh-paintings.html` to
 `spec/fixtures/source-html/van-gogh-paintings.html`, and the expected output from
 `files/expected-array.json` to `spec/fixtures/json-result/van-gogh-paintings.json`,
-to co-locate them with the integration tests.
+to co-locate them for the integration tests. Adding new files to this directory automatically adds them to the integration test.
 
 ## Approach
 
-The HTML file (`van-gogh-paintings.html`) is a full Google search result page — 12MB of
-markup, inline scripts, base64 images, and lazy-loading machinery. Feeding it directly to
-an LLM as context is impractical: it exceeds context limits and makes it nearly impossible
-to reason about structure.
+Feeding (`van-gogh-paintings.html`) — 12MB of markup directly to an LLM as context is impractical: it exceeds context limits and makes it nearly impossible to reason about structure.
 
-**Serve and inspect live.** Rather than reading raw HTML, we run a local HTTP server
-(`bin/serve-html`) and connect Playwright CLI to it. This lets Claude drive a real browser
-against the page, query the live DOM, and understand exactly how elements are structured —
-class names, image injection patterns, lazy-loading ids — without ever having to read the
-raw file. Playwright's `eval` can extract structured data from any selector in a single
+Run local HTTP server (`bin/serve-html`) - Serves the `spec/fixtures/source-html/` directory over HTTP so HTML fixtures can be opened.
+
+Ask claude to call the Playwright CLI.
+
+This allows Claude to drive a real browser against the page, - queries are more manageable.
+
+Playwright's `eval` can extract structured data from any selector in a single
 round-trip.
 
-### Image extraction — three cases
+## `UnknownLayoutError` raised in production
 
-Google uses two different thumbnail strategies in the same carousel, confirmed by inspecting
-the live DOM with Playwright:
-
-1. **Visible items (first ~8)** — the `<img>` has an `id` attribute (e.g. `_L_FkZ4q...`).
-   The actual jpeg is stored in an inline `<script>` tag as
-   `var s='data:image/jpeg;base64,...'; var ii=['_L_FkZ4q...'];`
-   `ImageExtractor` parses all script tags once and builds an `id → base64` map.
-   `CarouselItem` looks up `img.id` in that map.
-
-2. **Lazy-loaded items (the rest)** — the `<img>` has no `id` and its `src` is a 1×1 gif
-   placeholder. The real thumbnail URL is stored in a `data-src` attribute
-   (e.g. `https://encrypted-tbn0.gstatic.com/images?...`). No HTTP request needed —
-   the URL is already in the HTML.
-
-3. **No image** — `<img>` has neither `id` nor `data-src`. Returns `nil`.
+If the layout is not recognised we should get a error in Sentry.
 
 ## Adding a new fixture
 
 1. Search Google **in an incognito window** for a carousel page (actors, albums, movies, etc.)
    Incognito prevents your Google account email and session tokens from being embedded in the saved HTML.
-2. `File → Save Page As → Web Page, Complete` — save the `.html` to `spec/fixtures/source-html/<name>.html`.
+2. `File → Save Page As` — save the `.html` to `spec/fixtures/source-html/<name>.html`.
    Delete the companion `<name>_files/` directory — it contains browser assets not needed for parsing.
 3. Preview what the extractor finds:
    ```bash
@@ -71,10 +58,33 @@ the live DOM with Playwright:
    bin/rspec spec/integration/
    ```
 
-If `bin/generate-fixture` raises `CarouselExtractor::UnknownLayoutError`, the page uses a CSS class
-layout not yet recognised. Use `bin/serve-html` + Playwright to inspect the live DOM, identify the
-item/name/extension/image selectors, and add a new adapter in `lib/layouts/`
-(see [roadmap](../docs/roadmap.md)).
+If `bin/generate-fixture` raises `CarouselExtractor::UnknownLayoutError`, the page uses a CSS class layout not yet recognised.
+
+Use `bin/serve-html` + Playwright to inspect the live DOM, identify the item/name/extension/image selectors, and add a new adapter in `lib/layouts/`
+
+`bin/generate-fixture her-movie-cast-Google-Search --save` - Runs the extractor against an HTML fixture and writes the output as a JSON fixture.
+
+### Debug JSON
+RSpec doesnt always give you a clear understanding of the issue when the test fails.
+
+`bin/debug-compare monet-paintings` - compares each field to the expected fixture JSON.
+
+### Image extraction — three cases
+
+Google uses three different thumbnail strategies in the same carousel:
+
+1. **Visible items (first ~8)** — the `<img>` has an `id` attribute (e.g. `_L_FkZ4q...`).
+   The actual jpeg is stored in an inline `<script>` tag as
+   `var s='data:image/jpeg;base64,...'; var ii=['_L_FkZ4q...'];`
+   `ImageExtractor` parses all script tags once and builds an `id → base64` map.
+   `CarouselItem` looks up `img.id` in that map.
+
+2. **Lazy-loaded items (the rest)** — the `<img>` has no `id` and its `src` is a 1×1 gif
+   placeholder. The real thumbnail URL is stored in a `data-src` attribute
+   (e.g. `https://encrypted-tbn0.gstatic.com/images?...`). No HTTP request needed —
+   the URL is already in the HTML.
+
+3. **No image** — `<img>` has neither `id` nor `data-src`. Returns `nil`.
 
 ## Scripts
 
@@ -113,7 +123,7 @@ Useful when the integration spec fails but RSpec truncates the long base64 image
 
 ---
 
-Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
+# Goal is to extract a list of Van Gogh paintings from the attached Google search results page.
 
 ![Van Gogh paintings](https://github.com/serpapi/code-challenge/blob/master/files/van-gogh-paintings.png?raw=true "Van Gogh paintings")
 
@@ -134,7 +144,7 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed).
 
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
