@@ -8,9 +8,6 @@ module Layouts
     def name(node)      = text_nodes(node).first
     def extension(node) = text_nodes(node)[1]
 
-    def link(node)
-      href = node.at_css("a")&.attr("href")
-      href&.start_with?("/") ? "https://www.google.com#{href}" : href
-    end
+    def link(node)      = normalize_link(node.at_css("a")&.attr("href"))
   end
 end

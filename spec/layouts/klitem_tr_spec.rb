@@ -1,4 +1,5 @@
 require "spec_helper"
+require "layouts/text_nodes"
 require "layouts/klitem_tr"
 
 RSpec.describe Layouts::KlitemTr do
@@ -66,5 +67,19 @@ RSpec.describe Layouts::KlitemTr do
 
   describe "#link" do
     it { expect(layout.link(node)).to eq("https://www.google.com/search?q=Brazil") }
+  end
+
+  describe "#link with relative href" do
+    let(:html) do
+      <<~HTML
+        <a class="klitem-tr" href="/search?q=Brazil" aria-label="Brazil">
+          <div class="klitem"></div>
+        </a>
+      HTML
+    end
+
+    it "returns an absolute URL" do
+      expect(layout.link(node)).to eq("https://www.google.com/search?q=Brazil")
+    end
   end
 end

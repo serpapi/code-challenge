@@ -8,6 +8,6 @@ module Layouts
     def image_selector  = "img[id], img[data-src]"
     def name(node)      = node.attr("aria-label")
     def extension(node) = text_nodes(node).last
-    def link(node)      = node.attr("href")
+    def link(node)      = normalize_link(node.attr("href"))
   end
 end

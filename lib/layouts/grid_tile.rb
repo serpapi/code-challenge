@@ -7,6 +7,6 @@ module Layouts
     def image_selector  = "img[id], img[data-src]"
     def name(node)      = text_nodes(node).first
     def extension(node) = text_nodes(node)[1]
-    def link(node)      = node.at_css("a")&.attr("href")
+    def link(node)      = normalize_link(node.at_css("a")&.attr("href"))
   end
 end
