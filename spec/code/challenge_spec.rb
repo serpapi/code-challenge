@@ -52,7 +52,7 @@ RSpec.describe Code::Challenge do
   end
 
   describe ".parse_webpage structural mismatches" do
-    it "raises when a candidate entry has no text labels" do
+    it "skips false-positive candidates with no text labels" do
       malformed_html = <<~HTML
         <!doctype html>
         <html>
@@ -60,12 +60,23 @@ RSpec.describe Code::Challenge do
             <a href="/search?q=NoLabel">
               <img src="https://example.com/thumb.jpg">
             </a>
+            <a href="/search?q=ValidLabel">
+              <img data-src="https://example.com/valid.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
+              <div><div>Valid Label</div></div>
+            </a>
           </body>
         </html>
       HTML
 
-      expect { described_class.parse_webpage(malformed_html) }
-        .to raise_error(Code::Challenge::StructuralMismatchException, /text label/)
+      expect(described_class.parse_webpage(malformed_html)).to eq(
+        [
+          {
+            "name" => "Valid Label",
+            "link" => "https://www.google.com/search?q=ValidLabel",
+            "image" => "https://example.com/valid.jpg"
+          }
+        ]
+      )
     end
 
     it "raises when deferred image ids cannot resolve to a data uri" do

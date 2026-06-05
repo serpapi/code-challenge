@@ -53,9 +53,7 @@ module Code
         return nil unless carousel_candidate?(anchor)
 
         labels = text_labels(anchor)
-        if labels.empty?
-          raise StructuralMismatchException, "Expected at least one text label for candidate carousel entry"
-        end
+        return nil if labels.empty?
 
         name = labels.first
         return nil if name.nil? || name.empty?
@@ -81,8 +79,7 @@ module Code
       # search link that wraps a thumbnail image and at least one text label.
       def carousel_candidate?(anchor)
         search_link?(anchor["href"]) &&
-          !anchor.at_css("img").nil? &&
-          true
+          !anchor.at_css("img").nil?
       end
 
       def search_link?(href)
