@@ -50,4 +50,47 @@ RSpec.describe Code::Challenge do
       end
     end
   end
+
+  describe ".parse_webpage structural mismatches" do
+    it "raises when a candidate entry has no text labels" do
+      malformed_html = <<~HTML
+        <!doctype html>
+        <html>
+          <body>
+            <a href="/search?q=NoLabel">
+              <img src="https://example.com/thumb.jpg">
+            </a>
+          </body>
+        </html>
+      HTML
+
+      expect { described_class.parse_webpage(malformed_html) }
+        .to raise_error(Code::Challenge::StructuralMismatchException, /text label/)
+    end
+
+    it "raises when deferred image ids cannot resolve to a data uri" do
+      malformed_html = <<~HTML
+        <!doctype html>
+        <html>
+          <body>
+            <script>
+              (function(){
+                var ids=['img_1'];
+                var blank='';
+                var payload='data:image/jpeg;base64,ABC123\\x3d';
+                _setImagesSrc(ids, blank, blank);
+              })();
+            </script>
+            <a href="/search?q=BrokenDeferredImage">
+              <img id="img_1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
+              <div><div>Broken Deferred Image</div></div>
+            </a>
+          </body>
+        </html>
+      HTML
+
+      expect { described_class.parse_webpage(malformed_html) }
+        .to raise_error(Code::Challenge::StructuralMismatchException, /deferred data URI/)
+    end
+  end
 end

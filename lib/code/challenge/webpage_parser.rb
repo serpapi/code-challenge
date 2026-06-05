@@ -3,6 +3,8 @@ require "set"
 
 module Code
   module Challenge
+    class StructuralMismatchException < StandardError; end
+
     # Extracts knowledge-graph carousel entries (artworks, movies, etc.) from a
     # Google search results page.
     #
@@ -37,15 +39,24 @@ module Code
       end
 
       def parse
-        @document.css("a").filter_map { |anchor| build_entry(anchor) }
+        entries = @document.css("a").filter_map { |anchor| build_entry(anchor) }
+        if entries.empty?
+          raise StructuralMismatchException, "No entries matched the expected carousel structure"
+        end
+
+        entries
       end
 
       private
 
       def build_entry(anchor)
-        return nil unless carousel_entry?(anchor)
+        return nil unless carousel_candidate?(anchor)
 
         labels = text_labels(anchor)
+        if labels.empty?
+          raise StructuralMismatchException, "Expected at least one text label for candidate carousel entry"
+        end
+
         name = labels.first
         return nil if name.nil? || name.empty?
 
@@ -58,17 +69,20 @@ module Code
         entry["extensions"] = [extension] if extension && !extension.empty?
 
         image = image_source(anchor.at_css("img"))
-        entry["image"] = image if image
+        if image.nil? || image.empty?
+          raise StructuralMismatchException, "Missing image source for entry '#{name}'"
+        end
+        entry["image"] = image
 
         entry
       end
 
       # An anchor matches the expected carousel structure when it is a Google
       # search link that wraps a thumbnail image and at least one text label.
-      def carousel_entry?(anchor)
+      def carousel_candidate?(anchor)
         search_link?(anchor["href"]) &&
           !anchor.at_css("img").nil? &&
-          text_labels(anchor).any?
+          true
       end
 
       def search_link?(href)
@@ -128,10 +142,14 @@ module Code
 
         script.scan(/_setImagesSrc\s*\(([^)]*)\)/).flat_map do |match|
           args = match[0].split(",").map(&:strip)
-          data_uri = data_uri_from_args(args, uri_by_var)
-          next [] unless data_uri
-
           ids = ids_from_args(args, ids_by_var)
+          next [] if ids.empty?
+
+          data_uri = data_uri_from_args(args, uri_by_var)
+          if data_uri.nil? || data_uri.empty?
+            raise StructuralMismatchException, "Unable to resolve deferred data URI for ids: #{ids.join(', ')}"
+          end
+
           ids.map { |id| [id, data_uri] }
         end
       end
