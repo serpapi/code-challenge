@@ -1,0 +1,14 @@
+module Code
+  module Challenge
+    VERSION: String
+
+    type carousel_item = {
+      "name" => String,
+      "link" => String,
+      "image" => String,
+      ?"extensions" => Array[String]
+    }
+
+    def self.parse_carousel: (String html) -> Array[carousel_item]
+  end
+end
