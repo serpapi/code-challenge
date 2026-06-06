@@ -130,68 +130,118 @@ module Code
         images
       end
 
-      # Parse a script by behavior rather than variable names:
-      # for each _setImagesSrc(...) call, resolve which argument is the data URI
-      # and which argument is the id list from local assignments/literals.
+      # Parse each _setImagesSrc(...) call independently by behavior rather than
+      # fixed variable names or argument order. For each call, resolve IDs and
+      # data URI from direct literals first, then from variable assignments
+      # found in the enclosing scope before the call site.
       def deferred_pairs(script)
-        uri_by_var = data_uri_assignments(script)
-        ids_by_var = id_array_assignments(script)
+        results = []
+        pattern = /_setImagesSrc\s*\(([^)]*)\)/
+        cursor = 0
 
-        script.scan(/_setImagesSrc\s*\(([^)]*)\)/).flat_map do |match|
-          args = match[0].split(",").map(&:strip)
-          ids = ids_from_args(args, ids_by_var)
-          next [] if ids.empty?
+        while (m = pattern.match(script, cursor))
+          call_pos = m.begin(0)
+          args = m[1].split(",").map(&:strip)
+          ids = ids_from_args(script, call_pos, args)
 
-          data_uri = data_uri_from_args(args, uri_by_var)
-          if data_uri.nil? || data_uri.empty?
-            raise StructuralMismatchException, "Unable to resolve deferred data URI for ids: #{ids.join(', ')}"
+          if ids.any?
+            data_uri = data_uri_from_args(script, call_pos, args)
+            if data_uri.nil? || data_uri.empty?
+              raise StructuralMismatchException, "Unable to resolve deferred data URI for ids: #{ids.join(', ')}"
+            end
+
+            results.concat(ids.map { |id| [id, data_uri] })
           end
 
-          ids.map { |id| [id, data_uri] }
+          cursor = m.end(0)
         end
+
+        results
       end
 
-      def data_uri_assignments(script)
+      def data_uri_from_args(script, call_pos, args)
+        args.each do |arg|
+          # Simple case when the argument is a data URI.
+          return arg[DATA_URI_PATTERN, 1] if arg.match?(DATA_URI_PATTERN)
+
+          # Otherwise, the argument may be a variable name; do a reverse scan
+          # of the script from call_pos to find the variable assignment.
+          scope_start = find_enclosing_scope_start(script, call_pos)
+          window = script[scope_start...call_pos]
+          uri_by_var = data_uri_assignments(window)
+          return uri_by_var[arg] if uri_by_var.key?(arg)
+        end
+        nil
+      end
+
+      def data_uri_assignments(window)
         mappings = {}
-        script.scan(/(?:(?:var|let|const)\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*['"](data:image[^'"]+)['"]/) do |var_name, data_uri|
+        window.scan(/(?:(?:var|let|const)\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*['"](data:image[^'"]+)['"]/) do |var_name, data_uri|
           mappings[var_name] = data_uri
         end
         mappings
       end
 
-      def id_array_assignments(script)
+      def ids_from_args(script, call_pos, args)
+        args.each do |arg|
+          # The argument may be an array literal; scan it for known image IDs
+          ids = known_ids_in(arg)
+          return ids unless ids.empty?
+
+          # Otherwise, the argument may be a variable name; do a reverse scan
+          # of the script from call_pos to find the variable assignment.
+          scope_start = find_enclosing_scope_start(script, call_pos)
+          window = script[scope_start...call_pos]
+          ids_by_var = id_array_assignments(window)
+          return ids_by_var[arg] if ids_by_var.key?(arg)
+        end
+        []
+      end
+
+      def id_array_assignments(window)
         mappings = {}
-        script.scan(/(?:(?:var|let|const)\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*(\[[^\]]*\])/) do |var_name, array_literal|
+        window.scan(/(?:(?:var|let|const)\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*(\[[^\]]*\])/) do |var_name, array_literal|
           ids = known_ids_in(array_literal)
           mappings[var_name] = ids unless ids.empty?
         end
         mappings
       end
 
-      def data_uri_from_args(args, uri_by_var)
-        args.each do |arg|
-          # Simple case when the argument is a data URI.
-          return arg[DATA_URI_PATTERN, 1] if arg.match?(DATA_URI_PATTERN)
+      def find_enclosing_scope_start(script, call_pos)
+        pos = [[call_pos.to_i - 1, 0].max, script.length - 1].min
+        depth = 0
+        quote = nil
 
-          # Otherwise, the argument may be a variable name; return the data URI
-          # assigned to it.
-          return uri_by_var[arg] if uri_by_var.key?(arg)
+        escaped = lambda do |index|
+          slashes = 0
+          j = index - 1
+          while j >= 0 && script[j] == "\\"
+            slashes += 1
+            j -= 1
+          end
+          slashes.odd?
         end
-        nil
-      end
 
-      def ids_from_args(args, ids_by_var)
-        args.each do |arg|
-          # Already scanned this variable name as a variable assignment to 
-          # an array of image IDs, so return the image IDs assigned to it.
-          return ids_by_var[arg] if ids_by_var.key?(arg)
+        while pos >= 0
+          ch = script[pos]
 
-          # Otherwise, the argument may be an array literal; scan it for known
-          # image IDs.
-          ids = known_ids_in(arg)
-          return ids unless ids.empty?
+          if quote
+            quote = nil if ch == quote && !escaped.call(pos)
+          else
+            if (ch == "'" || ch == "\"" || ch == "`") && !escaped.call(pos)
+              quote = ch
+            elsif ch == "}"
+              depth += 1
+            elsif ch == "{"
+              return pos if depth.zero?
+              depth -= 1
+            end
+          end
+
+          pos -= 1
         end
-        []
+
+        0
       end
 
       def known_ids_in(text)
