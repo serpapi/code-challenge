@@ -153,7 +153,7 @@ module Code
 
       def data_uri_assignments(script)
         mappings = {}
-        script.scan(/(?:var\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*['"](data:image[^'"]+)['"]/) do |var_name, data_uri|
+        script.scan(/(?:(?:var|let|const)\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*['"](data:image[^'"]+)['"]/) do |var_name, data_uri|
           mappings[var_name] = data_uri
         end
         mappings
@@ -161,7 +161,7 @@ module Code
 
       def id_array_assignments(script)
         mappings = {}
-        script.scan(/(?:var\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*(\[[^\]]*\])/) do |var_name, array_literal|
+        script.scan(/(?:(?:var|let|const)\s+)?(#{IDENTIFIER_PATTERN})\s*=\s*(\[[^\]]*\])/) do |var_name, array_literal|
           ids = known_ids_in(array_literal)
           mappings[var_name] = ids unless ids.empty?
         end
