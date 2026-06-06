@@ -170,7 +170,11 @@ module Code
 
       def data_uri_from_args(args, uri_by_var)
         args.each do |arg|
+          # Simple case when the argument is a data URI.
           return arg[DATA_URI_PATTERN, 1] if arg.match?(DATA_URI_PATTERN)
+
+          # Otherwise, the argument may be a variable name; return the data URI
+          # assigned to it.
           return uri_by_var[arg] if uri_by_var.key?(arg)
         end
         nil
@@ -178,8 +182,12 @@ module Code
 
       def ids_from_args(args, ids_by_var)
         args.each do |arg|
+          # Already scanned this variable name as a variable assignment to 
+          # an array of image IDs, so return the image IDs assigned to it.
           return ids_by_var[arg] if ids_by_var.key?(arg)
 
+          # Otherwise, the argument may be an array literal; scan it for known
+          # image IDs.
           ids = known_ids_in(arg)
           return ids unless ids.empty?
         end
