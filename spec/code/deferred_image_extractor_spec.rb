@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "nokogiri"
+require "nokolexbor"
 require "json"
 
 RSpec.describe Code::Challenge::DeferredImageExtractor do
@@ -8,7 +8,7 @@ RSpec.describe Code::Challenge::DeferredImageExtractor do
     it "extracts deferred base64 image mappings from script-backed fixture" do
       html = File.read(File.expand_path("../fixtures/carousel_script_base64.html", __dir__))
       expected = JSON.load_file(File.expand_path("../fixtures/carousel_script_base64.json", __dir__))
-      document = Nokogiri::HTML(html)
+      document = Nokolexbor::HTML(html)
 
       mappings = described_class.extract(document)
       image_id = document.at_css("img[id]")["id"]
@@ -18,7 +18,7 @@ RSpec.describe Code::Challenge::DeferredImageExtractor do
 
     it "extracts multiple mappings from multiple _setImagesSrc calls in one script" do
       html = File.read(File.expand_path("../fixtures/carousel_multi_mapping_script.html", __dir__))
-      document = Nokogiri::HTML(html)
+      document = Nokolexbor::HTML(html)
 
       expect(described_class.extract(document)).to eq(
         {
@@ -46,7 +46,7 @@ RSpec.describe Code::Challenge::DeferredImageExtractor do
         </html>
       HTML
 
-      document = Nokogiri::HTML(malformed_html)
+      document = Nokolexbor::HTML(malformed_html)
 
       expect { described_class.extract(document) }
         .to raise_error(Code::Challenge::StructuralMismatchException, /deferred data URI/)
