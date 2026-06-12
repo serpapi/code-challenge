@@ -1,4 +1,4 @@
-require "nokogiri"
+require "nokolexbor"
 require_relative "deferred_image_extractor"
 
 module Code
@@ -31,7 +31,7 @@ module Code
 
       def initialize(html)
         @html = html
-        @document = Nokogiri::HTML(html)
+        @document = Nokolexbor::HTML(html)
         @deferred_images = DeferredImageExtractor.extract(@document)
       end
 

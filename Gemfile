@@ -7,6 +7,6 @@ gemspec
 
 gem "irb"
 gem "rake", "~> 13.0"
-gem "nokogiri", "~> 1.19"
+gem "nokolexbor", "~> 0.7"
 
 gem "rspec", "~> 3.0"
