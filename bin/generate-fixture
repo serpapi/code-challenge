@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "json"
+require "code/challenge"
+
+basename = ARGV[0]
+
+unless basename
+  warn "Usage: bin/generate-fixture <basename>"
+  exit 1
+end
+
+html_file = File.join(__dir__, "../spec/fixtures/#{basename}.html")
+json_file = File.join(__dir__, "../spec/fixtures/#{basename}.json")
+
+unless File.exist?(html_file)
+  warn "HTML fixture not found: #{File.realpath(html_file)}"
+  exit 1
+end
+
+results = Code::Challenge.parse_webpage(File.read(html_file))
+
+puts "\n#{results.length} items parsed"
+
+results_json = JSON.pretty_generate(results)
+File.write(json_file, results_json)
+puts "Results JSON saved to #{File.realpath(json_file)}"
