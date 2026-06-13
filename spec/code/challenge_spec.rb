@@ -51,6 +51,18 @@ RSpec.describe Code::Challenge do
     end
   end
 
+  describe "non-carousel layouts" do
+    Dir[File.expand_path("../fixtures/no_carousel_*.html", __dir__)].sort.each do |fixture_path|
+      fixture_name = File.basename(fixture_path, ".html")
+
+      it "should throw StructuralMismatchException while parsing #{fixture_name}" do
+        html = File.read(fixture_path)
+        
+        expect { described_class.parse_webpage(html) }.to raise_error(described_class::StructuralMismatchException)
+      end
+    end
+  end
+
   describe ".parse_webpage structural mismatches" do
     it "skips false-positive candidates with no text labels" do
       malformed_html = <<~HTML
