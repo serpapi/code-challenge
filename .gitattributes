@@ -1,0 +1,4 @@
+# Saved Google result pages are fixtures, preserve their
+# exact bytes/EOLs so the byte-for-byte expected-array match
+files/*.html -text
+spec/fixtures/*.html -text
