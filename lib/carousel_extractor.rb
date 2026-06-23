@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "nokogiri"
+require "uri"
 
 # Extracts a Google Knowledge Graph entity carousel into a uniform array.
 # Located by stable `data-attrid` schema, never by minified classes or
@@ -9,6 +10,8 @@ class CarouselExtractor
   CAROUSEL_ATTRIDS = [
     "kc:/visual_art/visual_artist:works" # paintings
   ].freeze
+  GOOGLE = "https://www.google.com"
+  private_constant(*constants(false))
 
   def self.call(html) = new(html).entries
 
@@ -37,7 +40,10 @@ class CarouselExtractor
     return unless image && anchor["href"]
 
     leaves = text_leaves(anchor)
-    { "name" => leaves.first || image["alt"] }
+    {
+      "name" => leaves.first || image["alt"],
+      "link" => URI.join(GOOGLE, anchor["href"]).to_s
+    }
   end
 
   def text_leaves(anchor)

@@ -17,7 +17,8 @@ RSpec.describe CarouselExtractor do
 
       let(:starry_night) { expected.first }
 
-      it("has a name") { expect(first["name"]).to eql(starry_night["name"]) }
+      it("has a name") { expect(first["name"]).to eql(starry_night.fetch("name")) }
+      it("has a link") { expect(first["link"]).to eql(starry_night.fetch("link")) }
     end
   end
 end
