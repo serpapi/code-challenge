@@ -13,6 +13,7 @@ class CarouselExtractor
   CAROUSEL_ATTRIDS = [
     "kc:/architecture/architect:designed", # buildings
     "kc:/music/artist:albums",             # albums
+    "kc:/tv/tv_program:cast",              # cast
     "kc:/visual_art/visual_artist:works"   # paintings
   ].freeze
   GOOGLE           = "https://www.google.com"

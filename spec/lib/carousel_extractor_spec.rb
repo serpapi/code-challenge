@@ -6,6 +6,12 @@ RSpec.describe CarouselExtractor do
   let(:fixture_expected) { File.read("#{FILES}/expected-array.json") }
   let(:expected) { JSON.parse(fixture_expected).fetch("artworks") }
 
+  def entry_looks_valid?(entry)
+    entry["name"].to_s != "" &&
+      entry["link"].to_s.start_with?("https://www.google.com/search") &&
+      entry["image"].to_s.start_with?("data:image")
+  end
+
   describe "van-gogh-paintings.html (challenge fixture)" do
     it "reproduces the expected artworks array exactly" do
       expect(artworks).to eql(expected)
@@ -98,11 +104,25 @@ RSpec.describe CarouselExtractor do
     end
 
     it "still fills name + link + base64 image for every building" do
-      expect(buildings).to all(satisfy { |a|
-        a["name"].to_s != "" &&
-          a["link"].to_s.start_with?("https://www.google.com/search") &&
-          a["image"].to_s.start_with?("data:image")
-      })
+      expect(buildings).to all(satisfy(&method(:entry_looks_valid?)))
+    end
+  end
+
+  describe "alternate carousel type: Breaking Bad cast" do
+    let(:cast) { described_class.call(cast_fixture) }
+    let(:cast_fixture) { File.read("#{FIXTURES}/breaking_bad_cast.html") }
+
+    it "extracts the cast carousel via the tv_program attrid" do
+      expect(cast.size).to eq(8)
+    end
+
+    it "puts the actor in name and the character in extensions" do
+      cranston = cast.find { |a| a["name"] == "Bryan Cranston" }
+      expect(cranston["extensions"]).to eql(["Walter White"])
+    end
+
+    it "fills name + link + base64 image for every cast member" do
+      expect(cast).to all(satisfy(&method(:entry_looks_valid?)))
     end
   end
 
