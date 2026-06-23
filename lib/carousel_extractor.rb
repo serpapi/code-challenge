@@ -11,7 +11,8 @@ require "uri"
 # `jsname`, or per-request ids, because they are not stable.
 class CarouselExtractor
   CAROUSEL_ATTRIDS = [
-    "kc:/visual_art/visual_artist:works" # paintings
+    "kc:/music/artist:albums",             # albums
+    "kc:/visual_art/visual_artist:works"   # paintings
   ].freeze
   GOOGLE           = "https://www.google.com"
   HEX_ESCAPE       = /\\x([0-9a-fA-F]{2})/ # e.g. \x3d -> "="

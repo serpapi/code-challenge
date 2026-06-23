@@ -59,4 +59,74 @@ RSpec.describe CarouselExtractor do
       expect(first["image"]).to_not be_empty
     end
   end
+
+  describe "alternate carousel type: Grateful Dead albums" do
+    let(:albums) do
+      described_class.call(File.read("#{FIXTURES}/grateful_dead_albums.html"))
+    end
+
+    it "extracts the albums carousel via the music attrid" do
+      expect(albums.size).to equal(12)
+    end
+
+    it "fills name (from the text div) + link + image for every album" do
+      expect(albums).to all(satisfy do |a|
+        a["name"].to_s != "" &&
+          a["link"].to_s.start_with?("https://www.google.com/search") &&
+          a["image"].to_s.start_with?("data:image")
+      end)
+    end
+
+    it "captures release years as extensions" do
+      blues = albums.find { |a| a["name"] == "Blues for Allah" }
+      expect(blues["extensions"]).to eql(["1975"])
+    end
+  end
+
+  describe "per-tile guards" do
+    it "drops anchors that lack an image or an href, keeping only real tiles" do
+      html = <<~HTML
+        <div data-attrid="kc:/music/artist:albums">
+          <a href="/search?q=Real+Album">
+            <img alt="Real Album" src="data:image/jpeg;base64,AAAA"><div>Real Album</div>
+          </a>
+          <a href="/search?q=More+results">More results</a>
+          <a><img alt="No href" src="data:image/jpeg;base64,BBBB"></a>
+        </div>
+      HTML
+
+      expect(described_class.call(html).map { |e| e["name"] })
+        .to eql(["Real Album"])
+    end
+
+    it "skips the data:image/gif placeholder in favor of the in-page data-src url" do
+      html = <<~HTML
+        <div data-attrid="kc:/music/artist:albums">
+          <a href="/search?q=Lazy+Tile">
+            <img alt="Lazy Tile"
+                 src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+                 data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:lazy">
+            <div>Lazy Tile</div>
+          </a>
+        </div>
+      HTML
+
+      entry = described_class.call(html).first
+      expect(entry["image"]).to eql("https://encrypted-tbn0.gstatic.com/images?q=tbn:lazy")
+    end
+
+    it "handles an img with no src attribute, falling back to data-src" do
+      html = <<~HTML
+        <div data-attrid="kc:/music/artist:albums">
+          <a href="/search?q=Srcless+Tile">
+            <img alt="Srcless Tile" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:srcless">
+            <div>Srcless Tile</div>
+          </a>
+        </div>
+      HTML
+
+      entry = described_class.call(html).first
+      expect(entry["image"]).to eql("https://encrypted-tbn0.gstatic.com/images?q=tbn:srcless")
+    end
+  end
 end
