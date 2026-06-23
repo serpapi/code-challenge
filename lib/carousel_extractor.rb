@@ -6,7 +6,7 @@ require "uri"
 # Extracts a Google Knowledge Graph entity carousel (paintings, albums,
 # buildings, cast, ...) into a uniform array of:
 # `{ name, extensions, link, image }`.
-# Resilience: the carousel if located by stable Knowledge Graph schema
+# Resilience: the carousel is located by stable Knowledge Graph schema
 # (`data-attrid`) and tile structure. We don't use minified classes,
 # `jsname`, or per-request ids, because they are not stable.
 class CarouselExtractor
@@ -56,10 +56,10 @@ class CarouselExtractor
     extensions = leaves.drop(1)
 
     {
-      "name" => leaves.first || image["alt"],
-      **(extensions.any? ? { "extensions" => extensions } : {}),
-      "link" => URI.join(GOOGLE, anchor["href"]).to_s,
-      "image" => image_for(image)
+      name: leaves.first || image["alt"],
+      **(extensions.any? ? { extensions: extensions } : {}),
+      link: URI.join(GOOGLE, anchor["href"]).to_s,
+      image: image_for(image)
     }
   end
 

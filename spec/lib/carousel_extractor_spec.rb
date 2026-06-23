@@ -7,14 +7,14 @@ RSpec.describe CarouselExtractor do
   let(:expected) { JSON.parse(fixture_expected).fetch("artworks") }
 
   def entry_looks_valid?(entry)
-    entry["name"].to_s != "" &&
-      entry["link"].to_s.start_with?("https://www.google.com/search") &&
-      entry["image"].to_s.start_with?("data:image")
+    entry[:name].to_s != "" &&
+      entry[:link].to_s.start_with?("https://www.google.com/search") &&
+      entry[:image].to_s.start_with?("data:image")
   end
 
   describe "van-gogh-paintings.html (challenge fixture)" do
     it "reproduces the expected artworks array exactly" do
-      expect(artworks).to eql(expected)
+      expect(artworks.to_json).to eql(expected.to_json)
     end
 
     describe "first artwork" do
@@ -22,25 +22,25 @@ RSpec.describe CarouselExtractor do
 
       let(:starry_night) { expected.first }
 
-      it("has a name") { expect(first["name"]).to eql(starry_night["name"]) }
-      it("has a link") { expect(first["link"]).to eql(starry_night["link"]) }
+      it("has a name") { expect(first[:name]).to eql(starry_night["name"]) }
+      it("has a link") { expect(first[:link]).to eql(starry_night["link"]) }
       it("has extensions") do
-        expect(first["extensions"]).to eql(starry_night["extensions"])
+        expect(first[:extensions]).to eql(starry_night["extensions"])
       end
       it("has an inline base64 image") do
-        expect(first["image"]).to eql(starry_night["image"])
+        expect(first[:image]).to eql(starry_night["image"])
       end
     end
 
     it "omits extensions for yearless paintings rather than emitting []" do
-      yearless = artworks.reject { |a| a.key?("extensions") }
-      expect(yearless.map { |a| a["name"] }).to include("Sunflowers")
-      expect(yearless).to all(satisfy { |a| !a.key?("extensions") })
+      yearless = artworks.reject { |a| a.key?(:extensions) }
+      expect(yearless.map { |a| a[:name] }).to include("Sunflowers")
+      expect(yearless).to all(satisfy { |a| !a.key?(:extensions) })
     end
 
     it "needs no extra HTTP requests (every image is inline data: or an in-page URL)" do
       expect(artworks).to all(satisfy { |a|
-        a["image"].start_with?("data:image", "https://")
+        a[:image].start_with?("data:image", "https://")
       })
     end
   end
@@ -55,14 +55,14 @@ RSpec.describe CarouselExtractor do
 
     it "first artwork has name/extensions/link/image of the expected types" do
       first = artworks.first
-      expect(first["name"]).to be_a(String)
-      expect(first["name"]).to_not be_empty
-      expect(first["extensions"]).to be_a(Array)
-      expect(first["extensions"]).to_not be_empty
-      expect(first["link"]).to be_a(String)
-      expect(first["link"]).to_not be_empty
-      expect(first["image"]).to be_a(String)
-      expect(first["image"]).to_not be_empty
+      expect(first[:name]).to be_a(String)
+      expect(first[:name]).to_not be_empty
+      expect(first[:extensions]).to be_a(Array)
+      expect(first[:extensions]).to_not be_empty
+      expect(first[:link]).to be_a(String)
+      expect(first[:link]).to_not be_empty
+      expect(first[:image]).to be_a(String)
+      expect(first[:image]).to_not be_empty
     end
   end
 
@@ -72,20 +72,16 @@ RSpec.describe CarouselExtractor do
     end
 
     it "extracts the albums carousel via the music attrid" do
-      expect(albums.size).to equal(12)
+      expect(albums.size).to eql(12)
     end
 
     it "fills name (from the text div) + link + image for every album" do
-      expect(albums).to all(satisfy do |a|
-        a["name"].to_s != "" &&
-          a["link"].to_s.start_with?("https://www.google.com/search") &&
-          a["image"].to_s.start_with?("data:image")
-      end)
+      expect(albums).to all(satisfy(&method(:entry_looks_valid?)))
     end
 
     it "captures release years as extensions" do
-      blues = albums.find { |a| a["name"] == "Blues for Allah" }
-      expect(blues["extensions"]).to eql(["1975"])
+      blues = albums.find { |a| a[:name] == "Blues for Allah" }
+      expect(blues[:extensions]).to eql(["1975"])
     end
   end
 
@@ -96,11 +92,11 @@ RSpec.describe CarouselExtractor do
     end
 
     it "extracts the buildings carousel via the architect attrid" do
-      expect(buildings.size).to equal(12)
+      expect(buildings.size).to eql(12)
     end
 
     it "omits extensions across the entire carousel" do
-      expect(buildings).to all(satisfy { |a| !a.key?("extensions") })
+      expect(buildings).to all(satisfy { |a| !a.key?(:extensions) })
     end
 
     it "still fills name + link + base64 image for every building" do
@@ -113,12 +109,12 @@ RSpec.describe CarouselExtractor do
     let(:cast_fixture) { File.read("#{FIXTURES}/breaking_bad_cast.html") }
 
     it "extracts the cast carousel via the tv_program attrid" do
-      expect(cast.size).to eq(8)
+      expect(cast.size).to eql(8)
     end
 
     it "puts the actor in name and the character in extensions" do
-      cranston = cast.find { |a| a["name"] == "Bryan Cranston" }
-      expect(cranston["extensions"]).to eql(["Walter White"])
+      cranston = cast.find { |a| a[:name] == "Bryan Cranston" }
+      expect(cranston[:extensions]).to eql(["Walter White"])
     end
 
     it "fills name + link + base64 image for every cast member" do
@@ -151,7 +147,7 @@ RSpec.describe CarouselExtractor do
         </div>
       HTML
 
-      expect(described_class.call(html).map { |e| e["name"] })
+      expect(described_class.call(html).map { |e| e[:name] })
         .to eql(["Real Album"])
     end
 
@@ -168,7 +164,8 @@ RSpec.describe CarouselExtractor do
       HTML
 
       entry = described_class.call(html).first
-      expect(entry["image"]).to eql("https://encrypted-tbn0.gstatic.com/images?q=tbn:lazy")
+      expect(entry[:image])
+        .to eql("https://encrypted-tbn0.gstatic.com/images?q=tbn:lazy")
     end
 
     it "handles an img with no src attribute, falling back to data-src" do
@@ -182,7 +179,8 @@ RSpec.describe CarouselExtractor do
       HTML
 
       entry = described_class.call(html).first
-      expect(entry["image"]).to eql("https://encrypted-tbn0.gstatic.com/images?q=tbn:srcless")
+      expect(entry[:image])
+        .to eql("https://encrypted-tbn0.gstatic.com/images?q=tbn:srcless")
     end
   end
 end
