@@ -83,6 +83,18 @@ RSpec.describe CarouselExtractor do
     end
   end
 
+  describe "non-carousel / wrong-module pages (negatives: locator must not false-positive)" do
+    it "returns [] for an organic/ads SERP (Mark Gonzales)" do
+      html = File.read("#{FIXTURES}/mark_gonzales_skateboard_art.html")
+      expect(described_class.call(html)).to eq([])
+    end
+
+    # Unilever's only carousel-shaped module ("social media presence") isn't an entity collection.
+    it "returns [] when the only carousel-shaped module is not an entity collection (Unilever)" do
+      html = File.read("#{FIXTURES}/unilever_brands.html")
+      expect(described_class.call(html)).to eq([])
+    end
+  end
   describe "per-tile guards" do
     it "drops anchors that lack an image or an href, keeping only real tiles" do
       html = <<~HTML
