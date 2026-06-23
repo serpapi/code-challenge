@@ -1,0 +1,16 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "files/**/*"
+    - "spec/fixtures/**/*"
+
+# Match the existing code (double quotes throughout).
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Long describe/context blocks are idiomatic in RSpec.
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
