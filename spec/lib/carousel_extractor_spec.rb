@@ -17,8 +17,21 @@ RSpec.describe CarouselExtractor do
 
       let(:starry_night) { expected.first }
 
-      it("has a name") { expect(first["name"]).to eql(starry_night.fetch("name")) }
-      it("has a link") { expect(first["link"]).to eql(starry_night.fetch("link")) }
+      it("has a name") do
+        expect(first["name"]).to eql(starry_night.fetch("name"))
+      end
+      it("has a link") do
+        expect(first["link"]).to eql(starry_night.fetch("link"))
+      end
+      it("has extensions") do
+        expect(first["extensions"]).to eql(starry_night.fetch("extensions"))
+      end
+    end
+
+    it "omits extensions for yearless paintings rather than emitting []" do
+      yearless = artworks.reject { |a| a.key?("extensions") }
+      expect(yearless.map { |a| a["name"] }).to include("Sunflowers")
+      expect(yearless).to all(satisfy { |a| !a.key?("extensions") })
     end
   end
 end

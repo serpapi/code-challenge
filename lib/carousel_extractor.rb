@@ -35,13 +35,19 @@ class CarouselExtractor
     end.first
   end
 
+  # name and extensions come from the leaf text divs ([name, *extensions]);
+  # name falls back to img@alt. extensions is omitted entirely when a tile has
+  # no secondary line.
   def entry_for(anchor)
     image = anchor.at_css("img")
     return unless image && anchor["href"]
 
     leaves = text_leaves(anchor)
+    extensions = leaves.drop(1)
+
     {
       "name" => leaves.first || image["alt"],
+      **(extensions.any? ? { "extensions" => extensions } : {}),
       "link" => URI.join(GOOGLE, anchor["href"]).to_s
     }
   end
