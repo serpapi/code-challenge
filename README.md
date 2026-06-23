@@ -73,11 +73,13 @@ carousel).
 - **Locate by stable schema, not styling.** Tiles are found via the Knowledge
   Graph `data-attrid` (e.g. `kc:/visual_art/visual_artist:works`), never by
   minified classes, `jsname`, or per-request ids, those are not stable.
-- **Allowlist of carousel tags, not "any tile container."** Some carousel-shaped
-  modules (e.g. `kc:/common/topic:social media presence` on the Unilever page)
-  are not entity collections. Matching known tags avoids false positives. To
-  support a new type, add its tag to `CAROUSEL_ATTRIDS` plus a fixture and a
-  spec.
+- **Allowlist of carousel tags, not "any tile container."** Some modules on a
+  page are carousel-shaped but off-target: a non-entity strip
+  (`kc:/common/topic:social media presence` on the Unilever page) or an *entity*
+  carousel of a type we haven't validated (`kc:/business/business_operation:founder`,
+  the company's founders). Allowlisting known tags skips both; a shape matcher
+  keying only on "image+text tiles" would scrape the social strip. To support a
+  new type, add its tag to `CAROUSEL_ATTRIDS` plus a fixture and a spec.
 - **Per-tile extraction depends on structure.** `name` and `extensions` come from
   the leaf text `<div>`s under each anchor (name from the div, falling back to
   `img@alt`); `link` from the anchor.
