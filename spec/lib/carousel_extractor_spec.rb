@@ -83,18 +83,42 @@ RSpec.describe CarouselExtractor do
     end
   end
 
+  describe "alternate carousel type: Frank Lloyd Wright buildings (no dates)" do
+    let(:buildings) { described_class.call(building_fixture) }
+    let(:building_fixture) do
+      File.read("#{FIXTURES}/frank_lloyd_wright_buildings.html")
+    end
+
+    it "extracts the buildings carousel via the architect attrid" do
+      expect(buildings.size).to equal(12)
+    end
+
+    it "omits extensions across the entire carousel" do
+      expect(buildings).to all(satisfy { |a| !a.key?("extensions") })
+    end
+
+    it "still fills name + link + base64 image for every building" do
+      expect(buildings).to all(satisfy { |a|
+        a["name"].to_s != "" &&
+          a["link"].to_s.start_with?("https://www.google.com/search") &&
+          a["image"].to_s.start_with?("data:image")
+      })
+    end
+  end
+
   describe "non-carousel / wrong-module pages (negatives: locator must not false-positive)" do
     it "returns [] for an organic/ads SERP (Mark Gonzales)" do
       html = File.read("#{FIXTURES}/mark_gonzales_skateboard_art.html")
-      expect(described_class.call(html)).to eq([])
+      expect(described_class.call(html)).to eql([])
     end
 
     # Unilever's only carousel-shaped module ("social media presence") isn't an entity collection.
     it "returns [] when the only carousel-shaped module is not an entity collection (Unilever)" do
       html = File.read("#{FIXTURES}/unilever_brands.html")
-      expect(described_class.call(html)).to eq([])
+      expect(described_class.call(html)).to eql([])
     end
   end
+
   describe "per-tile guards" do
     it "drops anchors that lack an image or an href, keeping only real tiles" do
       html = <<~HTML

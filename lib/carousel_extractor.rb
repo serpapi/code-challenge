@@ -11,6 +11,7 @@ require "uri"
 # `jsname`, or per-request ids, because they are not stable.
 class CarouselExtractor
   CAROUSEL_ATTRIDS = [
+    "kc:/architecture/architect:designed", # buildings
     "kc:/music/artist:albums",             # albums
     "kc:/visual_art/visual_artist:works"   # paintings
   ].freeze
