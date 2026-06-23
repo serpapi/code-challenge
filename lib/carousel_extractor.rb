@@ -4,7 +4,7 @@ require "nokogiri"
 
 # Extracts a Google Knowledge Graph entity carousel into a uniform array.
 # Located by stable `data-attrid` schema, never by minified classes or
-# per-request ids, are not stable.
+# per-request ids, which are not stable.
 class CarouselExtractor
   CAROUSEL_ATTRIDS = [
     "kc:/visual_art/visual_artist:works" # paintings
@@ -36,6 +36,14 @@ class CarouselExtractor
     image = anchor.at_css("img")
     return unless image && anchor["href"]
 
-    {}
+    leaves = text_leaves(anchor)
+    { "name" => leaves.first || image["alt"] }
+  end
+
+  def text_leaves(anchor)
+    anchor.css("div")
+          .reject { |d| d.at_css("div") }
+          .map { |d| d.text.strip }
+          .reject(&:empty?)
   end
 end
