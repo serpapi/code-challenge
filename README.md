@@ -21,8 +21,110 @@ Parse directly the HTML result page ([html file]) in this repository. No extra H
 [html file]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/van-gogh-paintings.html
 [expected array]: https://raw.githubusercontent.com/serpapi/code-challenge/master/files/expected-array.json
 
-Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed). 
+Add also to your array the painting thumbnails present in the result page file (not the ones where extra requests are needed).
 
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+---
+
+## Solution
+
+Parses the Knowledge Graph carousel out of a saved Google results page into an
+array of `{ name, extensions, link, image }` objects.
+
+The Van Gogh paintings case is the required deliverable and is covered. The same code handles other entity types (albums, buildings, cast) because only the *locator* changes per type.
+
+### Running it
+
+```sh
+bundle install
+bundle exec rspec     # specs
+bundle exec rubocop   # lint
+```
+
+Run it against any saved results page (prints JSON to stdout):
+
+```sh
+ruby -Ilib -rcarousel_extractor -rjson \
+  -e 'puts JSON.pretty_generate(CarouselExtractor.call(File.read(ARGV[0])))' \
+  files/van-gogh-paintings.html
+```
+
+### Output
+
+An array of symbol-keyed hashes, in the key order of `files/expected-array.json`.
+Serialized with `to_json`, the Van Gogh case is byte-for-byte identical to the
+expected output:
+
+```json
+{ "name": "The Starry Night", "extensions": ["1889"], "link": "https://www.google.com/search?...", "image": "data:image/jpeg;base64,..." }
+```
+
+`extensions` is omitted entirely when a tile has no secondary line (e.g.
+yearless paintings). The only field we *know* the meaning of is the paintings
+date (from the expected fixture); for other types `extensions` carries
+whatever the tile's second line is (year, or a character name for a cast
+carousel).
+
+### Approach / design notes
+
+- **Locate by stable schema, not styling.** Tiles are found via the Knowledge
+  Graph `data-attrid` (e.g. `kc:/visual_art/visual_artist:works`), never by
+  minified classes, `jsname`, or per-request ids, those are not stable.
+- **Allowlist of carousel tags, not "any tile container."** Some carousel-shaped
+  modules (e.g. `kc:/common/topic:social media presence` on the Unilever page)
+  are not entity collections. Matching known tags avoids false positives. To
+  support a new type, add its tag to `CAROUSEL_ATTRIDS` plus a fixture and a
+  spec.
+- **Per-tile extraction depends on structure.** `name` and `extensions` come from
+  the leaf text `<div>`s under each anchor (name from the div, falling back to
+  `img@alt`); `link` from the anchor.
+- **Thumbnails without extra requests.** The first tiles render a placeholder
+  `<img>` whose real bytes arrive later in the page: searching the HTML for the
+  base64 string from `expected-array.json` led to `_setImagesSrc(...)` `<script>`
+  blocks that map an image id to a `data:` URI (with `\xNN` escapes to unescape).
+  Tiles past the inlined batch carry the thumbnail URL directly in `data-src`.
+  Either way the value is already in the file, so extraction makes no network
+  calls. This mixed result (inline base64 for the first tiles, in-page URLs for
+  the rest) is exactly what `expected-array.json` contains.
+
+### Verified against (spec/fixtures/)
+
+| query | carousel tag | result |
+| --- | --- | --- |
+| Van Gogh paintings | `visual_art/visual_artist:works` | exact `expected-array.json` match |
+| Grateful Dead albums | `music/artist:albums` | name from text div |
+| Frank Lloyd Wright buildings | `architecture/architect:designed` | no dates (extensions omitted) |
+| Breaking Bad cast | `tv/tv_program:cast` | extensions = character |
+| Mark Gonzales skateboard art / Unilever brands | — | `[]` (organic SERP / wrong-module) |
+
+### Layout
+
+```
+lib/carousel_extractor.rb  # the extractor
+spec/                      # RSpec: exact match + per-type + negatives
+spec/fixtures/             # alternate-layout result-page captures
+files/                     # challenge-provided fixtures (html + expected-array)
+```
+
+### Notes / tradeoffs
+
+- **`extensions` is kept generic on purpose.** The expected fixture only tells
+  us what the *paintings* second line means (the date). Rather than infer
+  per-type semantics, I opted for simplicity and am passing through each tile's
+  secondary as-is: a year for albums, a character name for cast, and nothing
+  for buildings.
+- **Allowlist over pattern/shape matching.** I'm detecting carousels by an
+  explicit set of `data-attrid` tags instead of "any container with N image+text
+  anchors."
+  Matching the shape would generalize to unseen types for free, but it also
+  risks false-positives on carousel-shaped modules that aren't entity collections
+  I chose to limit support to KG tags we have proven we can handle.
+  Adding a new type requires adding the tag to a list, capturing an HTML
+  fixture, and adding a spec.
+- **Where I stopped.** Fixtures are all `en`/`us` desktop captures; I didn't probe
+  other locales or mobile layouts, handle "View more" expansions/pagination, or
+  dedupe repeated tiles. The locator and per-tile extraction are independent, so
+  those would slot in without reworking the core.
