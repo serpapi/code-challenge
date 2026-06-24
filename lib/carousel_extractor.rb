@@ -39,10 +39,13 @@ class CarouselExtractor
 
   attr_reader :doc, :thumbnails
 
+  # A page may expose several allowlisted carousels at once (e.g. da Vinci is
+  # both architect and visual artist). Pick the one that actually holds image
+  # tiles rather than the first by CAROUSEL_ATTRIDS order.
   def carousel
-    @carousel ||= CAROUSEL_ATTRIDS.filter_map do |id|
-      doc.at_css(%([data-attrid="#{id}"]))
-    end.first
+    @carousel ||= CAROUSEL_ATTRIDS
+                  .filter_map { |id| doc.at_css(%([data-attrid="#{id}"])) }
+                  .max_by { |el| el.css("a").count { |a| a.at_css("img") } }
   end
 
   # name and extensions come from the leaf text divs ([name, *extensions]);

@@ -183,4 +183,31 @@ RSpec.describe CarouselExtractor do
         .to eql("https://encrypted-tbn0.gstatic.com/images?q=tbn:srcless")
     end
   end
+
+  describe "page with more than one allowlisted carousel" do
+    # A polymath like Leonardo da Vinci matches several allowlisted attrids at
+    # once (architect + visual artist). The paintings live under :works; the
+    # architecture block here carries no image tiles. We must pick the carousel
+    # that actually holds tiles, not the first one by CAROUSEL_ATTRIDS order.
+    let(:html) do
+      <<~HTML
+        <div data-attrid="kc:/architecture/architect:designed">
+          <a href="/search?q=A+building">A building</a>
+        </div>
+        <div data-attrid="kc:/visual_art/visual_artist:works">
+          <a href="/search?q=Mona+Lisa">
+            <img alt="Mona Lisa" src="data:image/jpeg;base64,AAAA"><div>Mona Lisa</div>
+          </a>
+          <a href="/search?q=The+Last+Supper">
+            <img alt="The Last Supper" src="data:image/jpeg;base64,BBBB"><div>The Last Supper</div>
+          </a>
+        </div>
+      HTML
+    end
+
+    it "selects the carousel with real image tiles, not the first by attrid order" do
+      expect(described_class.call(html).map { |e| e[:name] })
+        .to eql(["Mona Lisa", "The Last Supper"])
+    end
+  end
 end
