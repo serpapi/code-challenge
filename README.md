@@ -55,8 +55,9 @@ ruby -Ilib -rcarousel_extractor -rjson \
 ### Output
 
 An array of symbol-keyed hashes, in the key order of `files/expected-array.json`.
-Serialized with `to_json`, the Van Gogh case is byte-for-byte identical to the
-expected output:
+The run command above pretty-prints for readability; the byte-for-byte claim is
+about compact `to_json` — serialized that way, the Van Gogh case is identical to
+the expected output:
 
 ```json
 { "name": "The Starry Night", "extensions": ["1889"], "link": "https://www.google.com/search?...", "image": "data:image/jpeg;base64,..." }
@@ -73,16 +74,23 @@ carousel).
 - **Locate by stable schema, not styling.** Tiles are found via the Knowledge
   Graph `data-attrid` (e.g. `kc:/visual_art/visual_artist:works`), never by
   minified classes, `jsname`, or per-request ids, those are not stable.
-- **Allowlist of carousel tags, not "any tile container."** Some modules on a
-  page are carousel-shaped but off-target: a non-entity strip
-  (`kc:/common/topic:social media presence` on the Unilever page) or an *entity*
-  carousel of a type we haven't validated (`kc:/business/business_operation:founder`,
-  the company's founders). Allowlisting known tags skips both; a shape matcher
-  keying only on "image+text tiles" would scrape the social strip. To support a
+- **Allowlist of carousel tags, not "any tile container."** Scoping extraction to
+  a known carousel container keeps off-target tiles out. The Grateful Dead albums
+  page is the clearest case: alongside the 12 album tiles it carries eBay/Target
+  shopping thumbnails that *also* wrap an `<img>` in a `/search?q=…` anchor. A
+  matcher keying only on "image+text tiles linking to /search" scrapes those two
+  in as extra entries (14 instead of 12); scoping to the
+  `kc:/music/artist:albums` container ignores them. Other off-target shapes the
+  allowlist skips: a non-entity strip (`kc:/common/topic:social media presence`
+  on the Unilever page) or an *entity* carousel of a type we haven't validated
+  (`kc:/business/business_operation:founder`, a company's founders). To support a
   new type, add its tag to `CAROUSEL_ATTRIDS` plus a fixture and a spec.
 - **Per-tile extraction depends on structure.** `name` and `extensions` come from
-  the leaf text `<div>`s under each anchor (name from the div, falling back to
-  `img@alt`); `link` from the anchor.
+  the leaf text `<div>`s under each anchor (name from the first div, falling back to
+  `img@alt`); `link` from the anchor. The split is positional — the first leaf is
+  the name and any leaf after it becomes an extension — so a tile with extra
+  decorative text would leak into `extensions`. Across the current fixtures each
+  tile has at most one secondary line, so this stays clean.
 - **Thumbnails without extra requests.** The first tiles render a placeholder
   `<img>` whose real bytes arrive later in the page: searching the HTML for the
   base64 string from `expected-array.json` led to `_setImagesSrc(...)` `<script>`
@@ -97,7 +105,7 @@ carousel).
 | query | carousel tag | result |
 | --- | --- | --- |
 | Van Gogh paintings | `visual_art/visual_artist:works` | exact `expected-array.json` match |
-| Grateful Dead albums | `music/artist:albums` | name from text div |
+| Grateful Dead albums | `music/artist:albums` | 12 tiles; sibling eBay/Target shopping thumbnails excluded |
 | Frank Lloyd Wright buildings | `architecture/architect:designed` | no dates (extensions omitted) |
 | Breaking Bad cast | `tv/tv_program:cast` | extensions = character |
 | Mark Gonzales skateboard art / Unilever brands | — | `[]` (organic SERP / wrong-module) |
@@ -126,6 +134,11 @@ files/                     # challenge-provided fixtures (html + expected-array)
   I chose to limit support to KG tags we have proven we can handle.
   Adding a new type requires adding the tag to a list, capturing an HTML
   fixture, and adding a spec.
+- **Single carousel by design.** When a page exposes more than one allowlisted
+  carousel, the locator returns just the one with the most image tiles. That's
+  what makes the da Vinci case work (his architect block has no image tiles), but
+  a page with two genuinely populated carousels would silently drop one. Returning
+  all matched carousels would be a small change to the locator if needed.
 - **Where I stopped.** Fixtures are all `en`/`us` desktop captures; I didn't probe
   other locales or mobile layouts, handle "View more" expansions/pagination, or
   dedupe repeated tiles. The locator and per-tile extraction are independent, so
