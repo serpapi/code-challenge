@@ -186,11 +186,34 @@ RSpec.describe CarouselExtractor do
 
   describe "page with more than one allowlisted carousel" do
     # A polymath like Leonardo da Vinci matches several allowlisted attrids at
-    # once (architect + visual artist). The paintings live under :works; the
-    # architecture block here carries no image tiles. We must pick the carousel
-    # that actually holds tiles, not the first one by CAROUSEL_ATTRIDS order.
-    let(:html) do
-      <<~HTML
+    # once (architect + visual artist). When more than one is genuinely
+    # populated we return every carousel's tiles concatenated, in
+    # CAROUSEL_ATTRIDS order, rather than guessing which single one was wanted.
+    it "returns every populated carousel's tiles, in CAROUSEL_ATTRIDS order" do
+      html = <<~HTML
+        <div data-attrid="kc:/architecture/architect:designed">
+          <a href="/search?q=A+building">
+            <img alt="A building" src="data:image/jpeg;base64,AAAA"><div>A building</div>
+          </a>
+        </div>
+        <div data-attrid="kc:/visual_art/visual_artist:works">
+          <a href="/search?q=Mona+Lisa">
+            <img alt="Mona Lisa" src="data:image/jpeg;base64,BBBB"><div>Mona Lisa</div>
+          </a>
+          <a href="/search?q=The+Last+Supper">
+            <img alt="The Last Supper" src="data:image/jpeg;base64,CCCC"><div>The Last Supper</div>
+          </a>
+        </div>
+      HTML
+
+      expect(described_class.call(html).map { |e| e[:name] })
+        .to eql(["A building", "Mona Lisa", "The Last Supper"])
+    end
+
+    # The architecture block here holds no image tiles (da Vinci's real shape),
+    # so it contributes nothing and only the paintings come back.
+    it "ignores a matched carousel that holds no image tiles" do
+      html = <<~HTML
         <div data-attrid="kc:/architecture/architect:designed">
           <a href="/search?q=A+building">A building</a>
         </div>
@@ -198,16 +221,10 @@ RSpec.describe CarouselExtractor do
           <a href="/search?q=Mona+Lisa">
             <img alt="Mona Lisa" src="data:image/jpeg;base64,AAAA"><div>Mona Lisa</div>
           </a>
-          <a href="/search?q=The+Last+Supper">
-            <img alt="The Last Supper" src="data:image/jpeg;base64,BBBB"><div>The Last Supper</div>
-          </a>
         </div>
       HTML
-    end
 
-    it "selects the carousel with real image tiles, not the first by attrid order" do
-      expect(described_class.call(html).map { |e| e[:name] })
-        .to eql(["Mona Lisa", "The Last Supper"])
+      expect(described_class.call(html).map { |e| e[:name] }).to eql(["Mona Lisa"])
     end
   end
 end

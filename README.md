@@ -134,11 +134,14 @@ files/                     # challenge-provided fixtures (html + expected-array)
   I chose to limit support to KG tags we have proven we can handle.
   Adding a new type requires adding the tag to a list, capturing an HTML
   fixture, and adding a spec.
-- **Single carousel by design.** When a page exposes more than one allowlisted
-  carousel, the locator returns just the one with the most image tiles. That's
-  what makes the da Vinci case work (his architect block has no image tiles), but
-  a page with two genuinely populated carousels would silently drop one. Returning
-  all matched carousels would be a small change to the locator if needed.
+- **Multiple carousels are all returned.** When a page exposes more than one
+  allowlisted carousel (e.g. a polymath who is both architect and visual artist),
+  every populated carousel's tiles are concatenated in `CAROUSEL_ATTRIDS` order.
+  A matched block with no image tiles contributes nothing, so degenerate strips
+  (like da Vinci's empty architect block) drop out for free. The result is a
+  flat, untyped array — I don't try to guess which single carousel the caller
+  wanted. In every observed real page only one allowlisted carousel is actually
+  populated, so this never changes a single-carousel result.
 - **Where I stopped.** Fixtures are all `en`/`us` desktop captures; I didn't probe
   other locales or mobile layouts, handle "View more" expansions/pagination, or
   dedupe repeated tiles. The locator and per-tile extraction are independent, so

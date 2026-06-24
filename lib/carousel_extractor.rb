@@ -30,9 +30,7 @@ class CarouselExtractor
   end
 
   def entries
-    return [] unless carousel
-
-    carousel.css("a").filter_map { |anchor| entry_for(anchor) }
+    carousels.flat_map { |c| c.css("a").to_a }.filter_map { |anchor| entry_for(anchor) }
   end
 
   private
@@ -40,12 +38,15 @@ class CarouselExtractor
   attr_reader :doc, :thumbnails
 
   # A page may expose several allowlisted carousels at once (e.g. da Vinci is
-  # both architect and visual artist). Pick the one that actually holds image
-  # tiles rather than the first by CAROUSEL_ATTRIDS order.
-  def carousel
-    @carousel ||= CAROUSEL_ATTRIDS
-                  .filter_map { |id| doc.at_css(%([data-attrid="#{id}"])) }
-                  .max_by { |el| el.css("a").count { |a| a.at_css("img") } }
+  # both architect and visual artist). Return one container per attrid type, in
+  # CAROUSEL_ATTRIDS order, rather than guessing which single one the caller
+  # wanted. A matched block with no image tiles contributes no entries, so
+  # degenerate carousels drop out on their own without special handling.
+  # at_css (not css) per id on purpose: Google stamps the same data-attrid on
+  # the outer module wrapper and its descendants, so css would return the same
+  # tiles many times over. The first match is the outermost wrapper.
+  def carousels
+    @carousels ||= CAROUSEL_ATTRIDS.filter_map { |id| doc.at_css(%([data-attrid="#{id}"])) }
   end
 
   # name and extensions come from the leaf text divs ([name, *extensions]);
