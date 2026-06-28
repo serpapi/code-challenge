@@ -1,0 +1,70 @@
+# human should be able to read 200 chars per line
+Layout/LineLength:
+  Max: 200
+
+# relax branch condition size, code can be too verbose
+Metrics/AbcSize:
+  Max: 40
+
+# short clear method name 
+Metrics/MethodLength:
+  Max: 25
+
+# no performance implication
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+# %i(array) is not common in Ruby
+Style/SymbolArray:
+  Enabled: false
+
+# too restrictive
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# default complexity is low at 8
+Metrics/PerceivedComplexity:
+  Max: 12
+
+# method length is not a problem
+MethodLength:
+  Max: 30
+
+# if works as well as safe navigation (&.)
+Style/SafeNavigation:
+  Enabled: false
+
+# disable this cop, dont agree with it
+Style/FetchEnvVar:
+  Enabled: false
+
+# buggus check in Rubocop.
+# SerpApiClient constructor is rated to 9
+#  def initialize(params = {}) 
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+# There is a tradeoff between line length and line count.
+Metrics/ClassLength:
+  Max: 140
+
+# Keyword args are readable.
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+# this rule doesn't always work well with Ruby
+Layout/FirstHashElementIndentation:
+  Enabled: false
+
+AllCops:
+  # hide message
+  SuggestExtensions: false
+  # show new cops
+  NewCops: enable
+  # exclude rspec files from linting
+  Exclude:
+    - 'serpapi.gemspec'
+    - 'spec/**/*_spec.rb'
+    - 'spec/spec_helper.rb'
+    - 'Gemfile'
+    - 'Rakefile'
