@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+
+require "google_ai_overview_parser"
+require "pp"
+
+fixture = ARGV[0] || File.expand_path("../fixtures/google_ai_overview_top_stories_iran_war_status.html", __dir__)
+html = File.read(fixture)
+
+pp GoogleAiOverviewParser.new(html).parse
