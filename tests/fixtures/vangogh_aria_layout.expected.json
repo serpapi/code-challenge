@@ -1,0 +1,30 @@
+{
+  "artworks": [
+    {
+      "name": "The Starry Night",
+      "extensions": [
+        "1889"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=The+Starry+Night&stick=AB1",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:vg-starry"
+    },
+    {
+      "name": "Irises",
+      "extensions": [
+        "1889"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=Irises&stick=AB2",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:vg-irises"
+    },
+    {
+      "name": "Sunflowers",
+      "link": "https://www.google.com/search?gl=us&hl=en&q=Sunflowers&stick=AB3",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:vg-sunflowers"
+    },
+    {
+      "name": "The Potato Eaters",
+      "link": "https://www.google.com/search?gl=us&hl=en&q=The+Potato+Eaters&stick=AB4",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+    }
+  ]
+}

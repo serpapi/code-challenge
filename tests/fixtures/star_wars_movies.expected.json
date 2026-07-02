@@ -1,0 +1,36 @@
+{
+  "artworks": [
+    {
+      "name": "The Phantom Menace",
+      "extensions": [
+        "1999"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=The+Phantom+Menace&stick=H4sIAAAAsw01&sa=X&ved=sw01",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+    },
+    {
+      "name": "Attack of the Clones",
+      "extensions": [
+        "2002"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=Attack+of+the+Clones&stick=H4sIAAAAsw02&sa=X&ved=sw02",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:sw-aotc"
+    },
+    {
+      "name": "Revenge of the Sith",
+      "extensions": [
+        "2005"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=Revenge+of+the+Sith&stick=H4sIAAAAsw03&sa=X&ved=sw03",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:sw-rots"
+    },
+    {
+      "name": "A New Hope",
+      "extensions": [
+        "1977"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=A+New+Hope&stick=H4sIAAAAsw04&sa=X&ved=sw04",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:sw-anewhope"
+    }
+  ]
+}

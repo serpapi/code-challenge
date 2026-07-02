@@ -1,0 +1,45 @@
+<!doctype html>
+<!--
+  Hand-written test page, not a real capture. This is Google's other name layout,
+  where img alt is empty, the visible name is split over two lines ("The Starry"
+  + "Night"), and the full name is in aria-label (item 1) or data-entityname
+  (item 2). Item 3 still uses alt to check that fallback, and item 4 has a base64
+  image and no year.
+-->
+<html><head><title>van gogh paintings - Google Search</title></head>
+<body>
+<g-scrolling-carousel>
+  <div class="Cz5hV">
+    <div class="kQABcf">
+      <a href="/search?gl=us&amp;hl=en&amp;q=The+Starry+Night&amp;stick=AB1" aria-label="The Starry Night">
+        <img class="taFZJe" alt="" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:vg-starry"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+        <div class="KHK6lb"><div class="pgNMRc"><span>The Starry</span><span>Night</span></div><div class="cxzHyb">1889</div></div>
+      </a>
+    </div>
+    <div class="kQABcf">
+      <a href="/search?gl=us&amp;hl=en&amp;q=Irises&amp;stick=AB2" data-entityname="Irises">
+        <img class="taFZJe" alt="" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:vg-irises"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+        <div class="KHK6lb"><div class="pgNMRc">Irises</div><div class="cxzHyb">1889</div></div>
+      </a>
+    </div>
+    <div class="kQABcf">
+      <a href="/search?gl=us&amp;hl=en&amp;q=Sunflowers&amp;stick=AB3">
+        <img class="taFZJe" alt="Sunflowers" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:vg-sunflowers"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+        <div class="KHK6lb"><div class="pgNMRc">Sunflowers</div></div>
+      </a>
+    </div>
+    <div class="kQABcf">
+      <a href="/search?gl=us&amp;hl=en&amp;q=The+Potato+Eaters&amp;stick=AB4" aria-label="The Potato Eaters">
+        <img class="taFZJe" alt="" id="dimg_ab_1"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-deferred="1">
+        <div class="KHK6lb"><div class="pgNMRc"><span>The Potato</span><span>Eaters</span></div></div>
+      </a>
+    </div>
+  </div>
+</g-scrolling-carousel>
+
+<script nonce="ab">(function(){var s='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg\x3d\x3d';var ii=['dimg_ab_1'];var r='';_setImagesSrc(ii,s,r);})();</script>
+</body></html>
