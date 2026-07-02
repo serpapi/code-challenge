@@ -1,0 +1,41 @@
+{
+  "artworks": [
+    {
+      "name": "The Water Lily Pond",
+      "extensions": [
+        "1899"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=The+Water+Lily+Pond&stick=H4sIAAAAmonet01&sa=X&ved=abc01",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+    },
+    {
+      "name": "Impression, Sunrise",
+      "extensions": [
+        "1872"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=Impression,+Sunrise&stick=H4sIAAAAmonet02&sa=X&ved=abc02",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:monet-impression-sunrise"
+    },
+    {
+      "name": "Water Lilies",
+      "link": "https://www.google.com/search?gl=us&hl=en&q=Water+Lilies&stick=H4sIAAAAmonet03&sa=X&ved=abc03",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:monet-water-lilies"
+    },
+    {
+      "name": "Woman with a Parasol",
+      "extensions": [
+        "1875"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=Woman+with+a+Parasol&stick=H4sIAAAAmonet04&sa=X&ved=abc04",
+      "image": null
+    },
+    {
+      "name": "San Giorgio Maggiore at Dusk",
+      "extensions": [
+        "1908"
+      ],
+      "link": "https://www.google.com/search?gl=us&hl=en&q=San+Giorgio+Maggiore+at+Dusk&stick=H4sIAAAAmonet05&sa=X&ved=abc05",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:monet-san-giorgio"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  Hand-written test page, not a real Google capture. Monet paintings carousel,
+  made to cover a few things my real pages don't: a g-scrolling-carousel wrapper,
+  an image that ends up null, an item with no year, and two decoy links that
+  should be ignored (a "More" link and a "People also search for" one, the second
+  only excluded because it sits outside the wrapper). Class names are made up.
+-->
+<html><head><title>claude monet paintings - Google Search</title></head>
+<body>
+<div class="hdtb-mitem">
+  <g-scrolling-carousel>
+    <div class="rXtIZb">
+      <div class="kWxHnc" style="left:8px">
+        <a href="/search?gl=us&amp;hl=en&amp;q=The+Water+Lily+Pond&amp;stick=H4sIAAAAmonet01&amp;sa=X&amp;ved=abc01">
+          <img class="Lqp2Ff" alt="The Water Lily Pond" id="dimg_monet_1"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-deferred="1">
+          <div class="RQ8vg"><div class="pgxKcc">The Water Lily Pond</div><div class="i0Rdmd">1899</div></div>
+        </a>
+      </div>
+      <div class="kWxHnc" style="left:169px">
+        <a href="/search?gl=us&amp;hl=en&amp;q=Impression,+Sunrise&amp;stick=H4sIAAAAmonet02&amp;sa=X&amp;ved=abc02">
+          <img class="Lqp2Ff" alt="Impression, Sunrise" id="dimg_monet_2"
+               data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:monet-impression-sunrise"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          <div class="RQ8vg"><div class="pgxKcc">Impression, Sunrise</div><div class="i0Rdmd">1872</div></div>
+        </a>
+      </div>
+      <div class="kWxHnc" style="left:330px">
+        <a href="/search?gl=us&amp;hl=en&amp;q=Water+Lilies&amp;stick=H4sIAAAAmonet03&amp;sa=X&amp;ved=abc03">
+          <img class="Lqp2Ff" alt="Water Lilies" id="dimg_monet_3"
+               data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:monet-water-lilies"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          <div class="RQ8vg"><div class="pgxKcc">Water Lilies</div></div>
+        </a>
+      </div>
+      <div class="kWxHnc" style="left:491px">
+        <a href="/search?gl=us&amp;hl=en&amp;q=Woman+with+a+Parasol&amp;stick=H4sIAAAAmonet04&amp;sa=X&amp;ved=abc04">
+          <img class="Lqp2Ff" alt="Woman with a Parasol" id="dimg_monet_4"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-deferred="1">
+          <div class="RQ8vg"><div class="pgxKcc">Woman with a Parasol</div><div class="i0Rdmd">1875</div></div>
+        </a>
+      </div>
+      <div class="kWxHnc" style="left:652px">
+        <a href="/search?gl=us&amp;hl=en&amp;q=San+Giorgio+Maggiore+at+Dusk&amp;stick=H4sIAAAAmonet05&amp;sa=X&amp;ved=abc05">
+          <img class="Lqp2Ff" alt="San Giorgio Maggiore at Dusk" id="dimg_monet_5"
+               data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:monet-san-giorgio"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          <div class="RQ8vg"><div class="pgxKcc">San Giorgio Maggiore at Dusk</div><div class="i0Rdmd">1908</div></div>
+        </a>
+      </div>
+    </div>
+  </g-scrolling-carousel>
+</div>
+
+<!-- base64 for the first item, set the way Google does it (with \x3d for the =
+     padding). dimg_monet_4 is left out on purpose so its image comes out null. -->
+<script nonce="abc">(function(){var s='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg\x3d\x3d';var ii=['dimg_monet_1'];var r='';_setImagesSrc(ii,s,r);})();</script>
+
+<!-- decoy 1: a "More" link, has stick= but no image, should be skipped -->
+<a href="/search?gl=us&amp;hl=en&amp;q=Claude+Monet&amp;stick=H4sIAAAAmoreLink&amp;sa=X&amp;ved=more">More</a>
+
+<!-- decoy 2: a "People also search for" link with an image, but it's outside the
+     g-scrolling-carousel so scoping should drop it -->
+<div class="related">
+  <a href="/search?gl=us&amp;hl=en&amp;q=Edouard+Manet&amp;stick=H4sIAAAApasf01&amp;sa=X&amp;ved=pasf">
+    <img alt="Édouard Manet" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:manet">
+    <div>Édouard Manet</div>
+  </a>
+</div>
+</body></html>

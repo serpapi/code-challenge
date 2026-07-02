@@ -1,0 +1,47 @@
+<!doctype html>
+<!--
+  Hand-written test page, not a real capture. A non-painting carousel (movies)
+  with no g-scrolling-carousel wrapper, so it goes through the whole-page path.
+  One image is on the plain src instead of data-src, which my real pages don't
+  have. The "See more" link has no image so it gets dropped. Class names made up.
+-->
+<html><head><title>star wars movies - Google Search</title></head>
+<body>
+<div class="MjjYud">
+  <div class="zNRfMc" style="left:8px">
+    <a href="/search?gl=us&amp;hl=en&amp;q=The+Phantom+Menace&amp;stick=H4sIAAAAsw01&amp;sa=X&amp;ved=sw01">
+      <img class="h0Kwzc" alt="The Phantom Menace" id="dimg_sw_1"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-deferred="1">
+      <div class="cLwYtd"><div class="ellip">The Phantom Menace</div><div class="ZE0LJd">1999</div></div>
+    </a>
+  </div>
+  <div class="zNRfMc" style="left:169px">
+    <a href="/search?gl=us&amp;hl=en&amp;q=Attack+of+the+Clones&amp;stick=H4sIAAAAsw02&amp;sa=X&amp;ved=sw02">
+      <img class="h0Kwzc" alt="Attack of the Clones" id="dimg_sw_2"
+           data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:sw-aotc"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <div class="cLwYtd"><div class="ellip">Attack of the Clones</div><div class="ZE0LJd">2002</div></div>
+    </a>
+  </div>
+  <div class="zNRfMc" style="left:330px">
+    <a href="/search?gl=us&amp;hl=en&amp;q=Revenge+of+the+Sith&amp;stick=H4sIAAAAsw03&amp;sa=X&amp;ved=sw03">
+      <img class="h0Kwzc" alt="Revenge of the Sith" id="dimg_sw_3"
+           data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:sw-rots"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <div class="cLwYtd"><div class="ellip">Revenge of the Sith</div><div class="ZE0LJd">2005</div></div>
+    </a>
+  </div>
+  <div class="zNRfMc" style="left:491px">
+    <a href="/search?gl=us&amp;hl=en&amp;q=A+New+Hope&amp;stick=H4sIAAAAsw04&amp;sa=X&amp;ved=sw04">
+      <img class="h0Kwzc" alt="A New Hope" id="dimg_sw_4"
+           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:sw-anewhope">
+      <div class="cLwYtd"><div class="ellip">A New Hope</div><div class="ZE0LJd">1977</div></div>
+    </a>
+  </div>
+</div>
+
+<script nonce="sw">(function(){var s='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg\x3d\x3d';var ii=['dimg_sw_1'];var r='';_setImagesSrc(ii,s,r);})();</script>
+
+<!-- decoy: a "See more" link, stick= but no image, should be skipped -->
+<a href="/search?gl=us&amp;hl=en&amp;q=Star+Wars&amp;stick=H4sIAAAAswmore&amp;sa=X&amp;ved=more">See more</a>
+</body></html>
