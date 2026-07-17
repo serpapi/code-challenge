@@ -1,0 +1,28 @@
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
+AllCops:
+  inherit_mode:
+    merge:
+      - Include
+    override:
+      - Exclude
+  Include:
+    - "bin/**/*"
+  Exclude:
+    - ".git/**/*"
+    - "data/**/*"
+    - "files/**/*"
+    - "node_modules/**/*"
+    - "spec/fixtures/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+
+Style/StringLiterals:
+  inherit_mode:
+    merge:
+      - Include
+  Include:
+    - "**/Rakefile"
+    - "bin/**/*"
+    - "spec/**/*.rb"

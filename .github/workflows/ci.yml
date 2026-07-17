@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ".ruby-version"
+          rubygems: "4.0.16"
+          bundler-cache: true
+      - name: Run specs
+        run: bundle exec rspec
+      - name: Run RuboCop
+        run: bundle exec rubocop

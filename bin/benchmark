@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
+
+require "bundler/setup"
+require "optparse"
+
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require "google_search"
+require "google_search/artwork_extraction_benchmark"
+require "google_search/artwork_extraction_benchmark_report"
+
+default_input = File.expand_path("../files/van-gogh-paintings.html", __dir__)
+usage_error = 64
+data_error = 65
+input_error = 66
+options = {
+  warmup: GoogleSearch::ArtworkExtractionBenchmark::DEFAULT_WARMUP,
+  time: GoogleSearch::ArtworkExtractionBenchmark::DEFAULT_TIME
+}
+
+parser = OptionParser.new do |arguments|
+  arguments.banner = "Usage: bin/benchmark [options] [HTML_FILE ...]"
+  arguments.on("--warmup SECONDS", Float, "Warmup duration per supported measurement (default: 2)") do |seconds|
+    options[:warmup] = seconds
+  end
+  arguments.on("--time SECONDS", Float, "Timing duration per supported measurement (default: 2)") do |seconds|
+    options[:time] = seconds
+  end
+  arguments.on("-h", "--help", "Show this help") do
+    puts arguments
+    exit 0
+  end
+end
+
+begin
+  parser.parse!(ARGV)
+  raise OptionParser::InvalidArgument, "--warmup must be finite" unless options[:warmup].finite?
+  raise OptionParser::InvalidArgument, "--warmup must be zero or greater" if options[:warmup].negative?
+  raise OptionParser::InvalidArgument, "--time must be finite" unless options[:time].finite?
+  raise OptionParser::InvalidArgument, "--time must be greater than zero" unless options[:time].positive?
+rescue OptionParser::ParseError => error
+  warn error.message
+  warn parser
+  exit usage_error
+end
+
+paths = ARGV.empty? ? [ default_input ] : ARGV
+inputs = paths.map do |path|
+  expanded_path = File.expand_path(path)
+
+  begin
+    [ expanded_path, File.binread(expanded_path) ]
+  rescue SystemCallError
+    warn "Could not read input file: #{path}"
+    exit input_error
+  end
+end
+
+reports = inputs.each_with_index.map do |(path, html), index|
+  begin
+    result = GoogleSearch::ArtworkExtractionBenchmark.new(
+      html,
+      warmup: options.fetch(:warmup),
+      time: options.fetch(:time)
+    ).call
+
+    GoogleSearch::ArtworkExtractionBenchmarkReport.new(
+      path: path,
+      byte_size: html.bytesize,
+      warmup: options.fetch(:warmup),
+      time: options.fetch(:time),
+      result: result,
+      include_environment: index.zero?
+    ).to_s
+  rescue GoogleSearch::Error => error
+    warn "Benchmark failed for #{path}: #{error.message}"
+    exit data_error
+  end
+end
+
+puts reports.join("\n\n#{"=" * 72}\n\n")
