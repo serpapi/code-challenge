@@ -39,12 +39,13 @@ class GenericGoogleParser
 
   private
 
-  # scrapes encoded jpegs with id and builds a hash
+  # scrapes encoded images with id and builds a hash
   def encoded_images
     @doc.css('script').each_with_object({}) do |script, images|
       text = script.text
 
-      content_match = text.match(%r{var s='(data:image/jpeg;base64,/[0-9a-zA-Z].+?)';})
+      # NOTE: adjusted to handle any image type
+      content_match = text.match(%r{var s='(data:image/[^;]+;base64,[^']+)';})
       next unless content_match
 
       id_match = text.match(/var ii=\['([a-zA-Z0-9_].+?)'\]/)
