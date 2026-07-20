@@ -89,7 +89,7 @@ class GenericGoogleParser
     text = appbar.at_css('[role="heading"]')&.text
     return 'items' unless text
 
-    text.downcase.gsub(/[^a-z0-9\s]/, '').gsub(/\s+/, '-')
+    text.downcase.gsub(/[^a-z0-9\s]/, '').gsub(/\s+/, '_')
   end
 
   # NOTE: moved KP-specific code to a method
