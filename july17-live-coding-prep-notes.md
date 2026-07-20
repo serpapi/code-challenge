@@ -1,3 +1,5 @@
+# july 17/18
+
 examining the popes example, we find that the list is inside .appbar, and each list item has role=tab
 during our call on friday, i determined that the image js remains the same - base64 jpeg, var ii/s
 

@@ -7,6 +7,7 @@ require 'uri'
 BASE_URL = 'https://www.google.com'
 
 # we're further generalizing beyond the KP parser, by allowing it to act upon more google variations
+# rubocop:disable Metrics/ClassLength
 class GenericGoogleParser
   class ParseError < StandardError; end
 
@@ -94,7 +95,7 @@ class GenericGoogleParser
 
   # NOTE: moved KP-specific code to a method
   def nodes_from_kpanel
-    raise ParseError, 'Knowledge Panel overview has no carousel' if @node_key == 'overview'
+    # raise ParseError, 'Knowledge Panel overview has no carousel' if @node_key == 'overview'
 
     kpanel = @doc.at_css('.kp-wholepage')
 
@@ -104,21 +105,47 @@ class GenericGoogleParser
     # carousel is kc: block with the most items
     # link-rows need 2+ items. if we don't have that use grid tiles
     blocks = kpanel.css('[data-attrid^="kc:"]')
+
     blocks = [kpanel] if blocks.empty?
 
-    nodes = blocks.map do |block|
-      rows = link_row_items(block)
-      rows.size >= 2 ? rows : grid_tile_items(block)
-    end.max_by(&:size)
+    # pick the best item strategy per kc: block, then the largest block overall
+    scored = blocks.map do |candidate|
+      rows = link_row_items(candidate)
+      items = if rows.size >= 2
+                rows
+              else
+                tiles = grid_tile_items(candidate)
+                tiles.empty? ? listitem_cards(candidate) : tiles
+              end
+      [candidate, items]
+    end
+    block, nodes = scored.max_by { |_, items| items.size }
 
-    raise ParseError, 'No carousel found in Knowledge Panel' if nodes.empty?
+    raise ParseError, 'No carousel found in Knowledge Panel' if nodes.nil? || nodes.empty?
+
+    # on overview, the tab name is useless — use the section attrid instead
+    # (kc:/music/artist:albums -> albums). keep the selected tab key otherwise.
+    @node_key = key_from_attrid(block) || @node_key if @node_key == 'overview'
 
     nodes
   end
 
-  # all link-row items
+  # kc:/music/artist:albums -> albums; kc:/tv/tv_program:cast -> cast
+  def key_from_attrid(block)
+    attrid = block['data-attrid']
+    return unless attrid&.start_with?('kc:')
+
+    attrid.split(':').last.downcase
+  end
+
+  # all link-row items (require a non-empty title line to avoid overview false positives)
   def link_row_items(kpanel)
-    kpanel.css('a').select { |anchor| anchor.at_css('img') && anchor.css('> div > div').any? }
+    kpanel.css('a').select do |anchor|
+      next false unless anchor.at_css('img')
+
+      title = anchor.css('> div > div').first
+      title && !normalize_text(title.text).to_s.empty?
+    end
   end
 
   # all wp-grid-tile items
@@ -129,6 +156,13 @@ class GenericGoogleParser
       else
         tile.at_css('a')
       end
+    end
+  end
+
+  # overview strips (e.g. albums): cards are role=listitem with overlay <a> + heading
+  def listitem_cards(block)
+    block.css('[role="listitem"]').select do |item|
+      item.at_css('a[href]') && item.at_css('[role="heading"]')
     end
   end
 
@@ -145,7 +179,9 @@ class GenericGoogleParser
   # names are in different places depending on carousel variant
   def name(node)
     # NOTE: re-ordered to prioritize aria-label, with title as a last resort
+    # overview listitems use role=heading (before > div > div, which would glue in the year)
     normalize_text(node['aria-label']) ||
+      normalize_text(node.at_css('[role="heading"]')&.text) ||
       normalize_text(node.css('> div > div').first&.text) ||
       normalize_text(node.at_css('wp-grid-tile > div:nth-child(2) > div:first-child')&.text) ||
       normalize_text(node['title'])
@@ -173,8 +209,9 @@ class GenericGoogleParser
   end
 
   # NOTE: using the more idiomatic approach from https://serpapi.com/blog/web-scraping-with-ruby/
+  # listitem cards put href on a nested overlay <a>, not on the card itself
   def link(node)
-    href = node&.[]('href')
+    href = node['href'] || node.at_css('a')&.[]('href')
     return unless href
 
     URI.join(BASE_URL, href).to_s
@@ -183,8 +220,13 @@ class GenericGoogleParser
   # it turns out extensions are an array for a reason, and may have multiple values
   # https://github.com/serpapi/public-roadmap/issues/1892
   def extensions(node)
-    lines = node.css('> div > div').map { |d| normalize_text(d.text) }
-    lines = node.css('wp-grid-tile > div:nth-child(2) > div').map { |d| normalize_text(d.text) } if lines.empty?
+    heading = node.at_css('[role="heading"]')
+    if heading
+      lines = heading.parent.css('> div').map { |d| normalize_text(d.text) }
+    else
+      lines = node.css('> div > div').map { |d| normalize_text(d.text) }
+      lines = node.css('wp-grid-tile > div:nth-child(2) > div').map { |d| normalize_text(d.text) } if lines.empty?
+    end
 
     ext = lines.drop(1).reject(&:empty?)
     ext.empty? ? nil : ext
@@ -194,6 +236,7 @@ class GenericGoogleParser
   def normalize_text(text)
     return if text.nil?
 
-    text.gsub("\u00A0", ' ').strip
+    text.gsub("\u00A0", ' ').gsub(/\s+/, ' ').strip
   end
 end
+# rubocop:enable Metrics/ClassLength

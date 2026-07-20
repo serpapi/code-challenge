@@ -69,14 +69,53 @@ RSpec.describe GenericGoogleParser do
           expect(actor['extensions']).to eq(["William T. Riker"])
         end
       end
+
+      # overview album strip uses role=listitem cards; serpapi playground names append " (year)"
+      # and include extra "show more" albums not in the initial html
+      context 'with album collection on overview (taylor swift)' do
+        let(:html) { File.read('spec/fixtures/live-coding/taylor.html') }
+        let(:expected) { JSON.parse(File.read('spec/fixtures/live-coding/taylor-albums-playground-result.json')) }
+        let(:albums) { JSON.parse(parser.parse(html)) }
+
+        def playground_name(name)
+          name.sub(/ \(\d{4}\)\z/, '')
+        end
+
+        it 'returns the expected key with an array of albums' do
+          expect(albums).to have_key('albums')
+          expect(albums['albums']).to be_an(Array)
+          expect(albums['albums']).not_to be_empty
+        end
+
+        it 'returns the expected first album' do
+          album = albums['albums'].first
+          expected_album = expected['albums'].first
+
+          expect(album['name']).to eq(playground_name(expected_album['name']))
+          expect(album['extensions']).to eq(expected_album['extensions'])
+          expect(q_and_stick(album['link'])).to eq(q_and_stick(expected_album['link']))
+          expect(album['image']).to start_with('data:image/jpeg;base64,')
+        end
+
+        it 'returns the expected last visible album' do
+          album = albums['albums'].last
+          expected_album = expected['albums'][albums['albums'].size - 1]
+
+          expect(album['name']).to eq(playground_name(expected_album['name']))
+          expect(album['extensions']).to eq(expected_album['extensions'])
+          expect(q_and_stick(album['link'])).to eq(q_and_stick(expected_album['link']))
+          expect(album['image']).to start_with('data:image/jpeg;base64,')
+        end
+      end
     end
 
     context 'when carousel is not present' do
-      # this was an odd false-positive situation i encountered before explicitly calling out overview as a special case
+      # overview may contain strips (albums) or junk false-positives (muppets songs);
+      # after tightening link-rows, muppets has no usable carousel
       context 'when selected knowledge panel tab is overview (muppets)' do
         let(:html) { File.read('spec/fixtures/2026/no-carousel-overview-muppets.html') }
-        it 'raises a parse error (overview has no carousel)' do
-          expect { parser.parse(html) }.to raise_error(GenericGoogleParser::ParseError, 'Knowledge Panel overview has no carousel')
+        it 'raises a parse error (no carousel found)' do
+          expect { parser.parse(html) }.to raise_error(GenericGoogleParser::ParseError, 'No carousel found in Knowledge Panel')
         end
       end
 
@@ -124,6 +163,27 @@ RSpec.describe GenericGoogleParser do
           expect(pope['image']).to eq(expected_pope['image'])
         end
       end
+    end
+  end
+
+  describe '#key_from_attrid' do
+    def attrid_node(attrid)
+      html = attrid ? %(<div data-attrid="#{attrid}"></div>) : '<div></div>'
+      Nokogiri::HTML.fragment(html).at_css('div')
+    end
+
+    it 'returns the last segment of a kc: attrid' do
+      expect(parser.send(:key_from_attrid, attrid_node('kc:/music/artist:albums'))).to eq('albums')
+      expect(parser.send(:key_from_attrid, attrid_node('kc:/tv/tv_program:cast'))).to eq('cast')
+    end
+
+    it 'downcases the key' do
+      expect(parser.send(:key_from_attrid, attrid_node('kc:/music/artist:Albums'))).to eq('albums')
+    end
+
+    it 'returns nil when data-attrid is missing or not a kc: value' do
+      expect(parser.send(:key_from_attrid, attrid_node(nil))).to be_nil
+      expect(parser.send(:key_from_attrid, attrid_node('hw:/collection:albums'))).to be_nil
     end
   end
 end

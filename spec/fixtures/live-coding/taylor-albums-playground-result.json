@@ -1,0 +1,67 @@
+{
+  "albums": [
+    {
+      "name": "The Life of a Showgirl (2025)",
+      "extensions": ["2025"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+The+Life+of+a+Showgirl&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0rMwoTrLMNsrWEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsSqHJJYmZNfpBBcnplWohCSkargk5mWqpCfppCoEJyRX56eWZQDANnkUZRbAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAG",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+The+Life+of+a+Showgirl&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0rMwoTrLMNsrWEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsSqHJJYmZNfpBBcnplWohCSkargk5mWqpCfppCoEJyRX56eWZQDANnkUZRbAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnT8bT18OZA8QHpV7bX_p5_IwaiTBakHOkcaIfJyU&s=0"
+    },
+    {
+      "name": "Lover (2019)",
+      "extensions": ["2019"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+Lover&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0TMspLjI3y8nSEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqFJJYmZNfpBBcnplWouCTX5ZaBAAEtqTTSgAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAM",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+Lover&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0TMspLjI3y8nSEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqFJJYmZNfpBBcnplWouCTX5ZaBAAEtqTTSgAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtlwTDIz-hSzVqcJHgO4gAcxDjBl6s7nKR7-3n1CM&s=0"
+    },
+    {
+      "name": "1989 (2014)",
+      "extensions": ["2014"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+1989&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4gYxDQ1zcrMN8rTEs5Ot9HNLizOT9ROLSjKLS6wSc5JKc4sXsQqGJFbm5BcpBJdnppUoGFpaWAIAvFC_3EcAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAS",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+1989&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4gYxDQ1zcrMN8rTEs5Ot9HNLizOT9ROLSjKLS6wSc5JKc4sXsQqGJFbm5BcpBJdnppUoGFpaWAIAvFC_3EcAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDaM0mRd8mJL4OGDwxGarKeU-7g0Fn9Wp8IsWV9g&s=0"
+    },
+    {
+      "name": "Red (2012)",
+      "extensions": ["2012"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+Red&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4gIxcyxyM8wrtcSzk630c0uLM5P1E4tKMotLrBJzkkpzixexCoQkVubkFykEl2emlSgEpaYAAJe856FFAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAY",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+Red&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4gIxcyxyM8wrtcSzk630c0uLM5P1E4tKMotLrBJzkkpzixexCoQkVubkFykEl2emlSgEpaYAAJe856FFAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQQS50x_vspT6hQg4cc-OmImLCaiHXTI8wpoWD2ew&s=0"
+    },
+    {
+      "name": "reputation (2017)",
+      "extensions": ["2017"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+reputation&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0TDMwy07PNTfTEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqHpJYmZNfpBBcnplWolCUWlBakliSmZ8HAG6csxdPAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAe",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+reputation&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0TDMwy07PNTfTEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqHpJYmZNfpBBcnplWolCUWlBakliSmZ8HAG6csxdPAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRJ4BCFCLx4mqF_bkzhWLt7GH34qO_IxT2EeSFWyQ&s=0"
+    },
+    {
+      "name": "The Tortured Poets Department (2024)",
+      "extensions": ["2024"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+The+Tortured+Poets+Department&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0zEmxNM2yzKjUEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsSqFZJYmZNfpBBcnplWohCSkaoQkl9UUlqUmqIQkJ9aUqzgkloA1JKbmlcCAOaU815iAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAk",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+The+Tortured+Poets+Department&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0zEmxNM2yzKjUEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsSqFZJYmZNfpBBcnplWohCSkaoQkl9UUlqUmqIQkJ9aUqzgkloA1JKbmlcCAOaU815iAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBug68i0LKSauZ3-9c8YpRWOMsBeEw3JH6gaiWYEE&s=0"
+    },
+    {
+      "name": "Midnights (2022)",
+      "extensions": ["2022"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+Midnights&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0LDa3SLI0zTLREs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqFpJYmZNfpBBcnplWouCbmZKXmZ5RUgwAMbtWt04AAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAq",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+Midnights&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0LDa3SLI0zTLREs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqFpJYmZNfpBBcnplWouCbmZKXmZ5RUgwAMbtWt04AAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR4IYIMvsJr9u_C1Xy1Lx3S4J5s5jNpXxX8bem5l8&s=0"
+    },
+    {
+      "name": "folklore (2020)",
+      "extensions": ["2020"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+folklore&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0zDbNqsgqNzTSEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqGpJYmZNfpBBcnplWopCWn5MN5KUCAOK10xlNAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBAw",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+folklore&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4tVP1zc0zDbNqsgqNzTSEs9OttLPLS3OTNZPLCrJLC6xSsxJKs0tXsQqGpJYmZNfpBBcnplWopCWn5MN5KUCAOK10xlNAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSP9bk8bMd2_cYMwxe0hWNr12qHoFathJftLLZEBc&s=0"
+    },
+    {
+      "name": "Speak Now (2010)",
+      "extensions": ["2010"],
+      "link": "https://www.google.com/search?sca_esv=e7a2753d0e604010&hl=en&gl=us&q=Taylor+Swift+Speak+Now&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4gIxk3NTyiwqtcSzk630c0uLM5P1E4tKMotLrBJzkkpzixexioUkVubkFykEl2emlSgEF6QmZiv45ZcDAG3-ht1LAAAA&sa=X&ved=2ahUKEwip5NvcsuCVAxVk18kDHWJQKE4QgOQBegQIWBA2",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en&q=Taylor+Swift+Speak+Now&stick=H4sIAAAAAAAAAONgFuLUz9U3SMkxNTNX4gIxk3NTyiwqtcSzk630c0uLM5P1E4tKMotLrBJzkkpzixexioUkVubkFykEl2emlSgEF6QmZiv45ZcDAG3-ht1LAAAA",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU3QHUUj5FUEYmfjbnXGjqbad1giSo1daX9MSWaPc&s=0"
+    }
+  ]
+}
