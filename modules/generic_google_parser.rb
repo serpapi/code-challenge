@@ -44,14 +44,14 @@ class GenericGoogleParser
     @doc.css('script').each_with_object({}) do |script, images|
       text = script.text
 
-      # NOTE: adjusted to handle any image type
-      content_match = text.match(%r{var s='(data:image/[^;]+;base64,[^']+)';})
+      # NOTE: adjusted to handle any image type + gstatic urls
+      content_match = text.match(%r{var s='((?:data:image/[^;]+;base64,|https://encrypted-tbn0\.gstatic\.com/)[^']+)';})
       next unless content_match
 
       id_match = text.match(/var ii=\['([a-zA-Z0-9_].+?)'\]/)
       next unless id_match
 
-      # decode js hex escapes for base64 padding
+      # decode js hex escapes
       content = content_match[1].gsub(/\\x([0-9a-fA-F]{2})/) { [Regexp.last_match(1)].pack('H*') }
 
       images[id_match[1]] = content
