@@ -74,6 +74,17 @@ RSpec.describe GoogleSearch::Extract do
       end
     end
 
+    it 'prefers anchor labels over captions with wrapped names' do
+      wrapped = <<~HTML
+        <a href="/search?q=one" aria-label="The Devil All the Time"><img data-src="https://thumbs.test/1"><div><div>The Devil All the</div><div>Time</div></div></a>
+        <a href="/search?q=two" title="Other Movie"><img data-src="https://thumbs.test/2"><div><div>Other</div><div>Movie</div></div></a>
+      HTML
+      results = extract_html(carousel_html(anchors: wrapped)).results
+
+      expect(results.map(&:name)).to eq(['The Devil All the Time', 'Other Movie'])
+      expect(results.map(&:extensions)).to eq([nil, nil])
+    end
+
     it 'ignores groups with a single item' do
       single = '<a href="/search?q=one"><img data-src="https://thumbs.test/1"><div><div>Only</div></div></a>'
 

@@ -3,12 +3,12 @@
 require 'json'
 require 'nokolexbor'
 require_relative 'extracted_result'
+require_relative 'inline_images'
 
 module GoogleSearch
   # Extracts knowledge-graph carousel items from a saved Google search
   # results page.
   class Extract
-    INLINE_IMAGE_PATTERN = %r{var s='(data:image/[^']+)';var ii=\[([^\]]+)\]}
     SEARCH_LINK = %r{\A(?:/|https://www\.google\.[a-z.]+/)search\?}
     BASE_URL = 'https://www.google.com'
     MIN_CAROUSEL_ITEMS = 2
@@ -33,7 +33,7 @@ module GoogleSearch
 
     def parse
       document = Nokolexbor::HTML(@html)
-      inline_images = inline_image_map(document)
+      inline_images = InlineImages.new(document)
       carousel_items(document).map { |item| build_result(item, inline_images) }
     end
 
@@ -96,11 +96,27 @@ module GoogleSearch
 
     def caption_for(item, image_node)
       texts = caption_texts(item)
-      heading = item.at_css('div[role="heading"]')
-      candidates = [heading && clean_text(heading.text), texts.first, image_node['alt']]
-      name = candidates.find { |value| value && !value.empty? }
-      extensions = texts - [name]
+      name = name_for(item, texts, image_node)
+      extensions = texts.reject { |text| name&.include?(text) }
       [name, extensions.empty? ? nil : extensions]
+    end
+
+    # Name sources, most reliable first. The anchor's own label carries the
+    # full text even when a long name wraps across several caption divs.
+    def name_for(item, texts, image_node)
+      candidates = [heading_text(item), labeled_name(item), texts.first, image_node['alt']]
+      candidates.find { |value| value && !value.empty? }
+    end
+
+    def heading_text(item)
+      heading = item.at_css('div[role="heading"]')
+      clean_text(heading.text) if heading
+    end
+
+    def labeled_name(item)
+      anchor = item.name == 'a' ? item : search_anchors(item).first
+      label = anchor['aria-label'] || anchor['title']
+      clean_text(label) if label
     end
 
     def caption_texts(item)
@@ -123,19 +139,6 @@ module GoogleSearch
     # script map or in `data-src`.
     def image_for(image_node, inline_images)
       inline_images[image_node['id']] || image_node['data-src']
-    end
-
-    def inline_image_map(document)
-      document.css('script').each_with_object({}) do |script, map|
-        script.text.scan(INLINE_IMAGE_PATTERN) do |data_uri, ids|
-          unescaped = unescape_js(data_uri)
-          ids.scan(/'([^']+)'/) { |(id)| map[id] = unescaped }
-        end
-      end
-    end
-
-    def unescape_js(string)
-      string.gsub(/\\x([0-9a-f]{2})/i) { Regexp.last_match(1).hex.chr }
     end
   end
 end
