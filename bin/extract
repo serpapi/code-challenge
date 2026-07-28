@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'json'
+require_relative '../lib/google_search/extract'
+
+DEFAULT_PAGE = File.expand_path('../files/van-gogh-paintings.html', __dir__)
+
+path = ARGV.first || DEFAULT_PAGE
+abort("No such file: #{path}") unless File.exist?(path)
+
+puts JSON.pretty_generate(JSON.parse(GoogleSearch::Extract.new(path).to_json))
