@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-# gem "rails"
+gem 'nokolexbor'
 
 group :development, :test do
   gem 'rspec'
