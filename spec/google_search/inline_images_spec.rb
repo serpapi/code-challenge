@@ -27,6 +27,12 @@ RSpec.describe GoogleSearch::InlineImages do
     expect(images['dimg_2']).to eq('data:image/png;base64,xyz')
   end
 
+  it 'maps ids to thumbnail URLs from the google.ldi JSON' do
+    images = images_for('(function(){google.ldi={"dimg_1":"https://encrypted-tbn0.gstatic.com/images?q=tbn:abc"};})();')
+
+    expect(images['dimg_1']).to eq('https://encrypted-tbn0.gstatic.com/images?q=tbn:abc')
+  end
+
   it 'returns nil for unknown ids' do
     expect(images_for('var unrelated = 1;')['dimg_1']).to be_nil
   end
