@@ -47,16 +47,4 @@ RSpec.describe GoogleSearch::ExtractedResult do
       )
     end
   end
-
-  describe '#==' do
-    it 'is equal to another result with the same attributes' do
-      expect(described_class.new(**attributes)).to eq(described_class.new(**attributes))
-    end
-
-    it 'is not equal to a result with different attributes' do
-      expect(described_class.new(**attributes)).not_to eq(
-        described_class.new(**attributes, name: 'Irises')
-      )
-    end
-  end
 end

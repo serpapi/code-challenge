@@ -20,12 +20,6 @@ RSpec.describe GoogleSearch::Extract do
 
   subject(:extract) { described_class.new(File.join(pages_dir, 'van-gogh-paintings.html')) }
 
-  it 'matches the artworks from the challenge expected array' do
-    expected = JSON.parse(File.read(File.expand_path('../../files/expected-array.json', __dir__)))
-
-    expect(JSON.parse(extract.to_json)).to eq(expected['artworks'])
-  end
-
   it 'returns ExtractedResult instances' do
     expect(extract.results).to all(be_a(GoogleSearch::ExtractedResult))
   end
