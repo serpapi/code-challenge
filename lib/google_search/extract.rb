@@ -5,12 +5,13 @@ require 'nokolexbor'
 require_relative 'extracted_result'
 
 module GoogleSearch
-  # Extracts knowledge-graph artwork carousel items from a saved Google
-  # search results page.
+  # Extracts knowledge-graph carousel items from a saved Google search
+  # results page.
   class Extract
-    CAROUSEL_SELECTOR = 'div[data-attrid="kc:/visual_art/visual_artist:works"]'
-    INLINE_IMAGE_PATTERN = %r{var s='(data:image/[^']+)';var ii=\['([^']+)'\]}
+    INLINE_IMAGE_PATTERN = %r{var s='(data:image/[^']+)';var ii=\[([^\]]+)\]}
+    SEARCH_LINK = %r{\A(?:/|https://www\.google\.[a-z.]+/)search\?}
     BASE_URL = 'https://www.google.com'
+    MIN_CAROUSEL_ITEMS = 2
 
     def initialize(file)
       @html = file.respond_to?(:read) ? file.read : File.read(file)
@@ -20,46 +21,101 @@ module GoogleSearch
       @results ||= parse
     end
 
-    def to_h
-      { artworks: results.map(&:to_h) }
+    def to_a
+      results.map(&:to_h)
     end
 
     def to_json(*)
-      to_h.to_json(*)
+      to_a.to_json(*)
     end
 
     private
 
     def parse
       document = Nokolexbor::HTML(@html)
-      carousel = document.at_css(CAROUSEL_SELECTOR)
-      return [] unless carousel
-
       inline_images = inline_image_map(document)
-      carousel.css('a[href]').filter_map do |anchor|
-        image_node = anchor.at_css('img')
-        build_result(anchor, image_node, inline_images) if image_node
+      carousel_items(document).map { |item| build_result(item, inline_images) }
+    end
+
+    # The carousel is the largest group of items linking into a Google
+    # search, across the two known layouts: anchors-with-thumbnails grouped
+    # under a knowledge-graph div[data-attrid], or div[role=listitem] rows
+    # inside a div[role=list].
+    def carousel_items(document)
+      (anchor_groups(document) + list_groups(document))
+        .select { |group| group.length >= MIN_CAROUSEL_ITEMS }
+        .max_by(&:length) || []
+    end
+
+    def anchor_groups(document)
+      document.css('div[data-attrid]').filter_map do |container|
+        next if refinement?(container)
+
+        items = search_anchors(container).select { |anchor| anchor.at_css('img') }
+        items unless items.empty?
       end
     end
 
-    def build_result(anchor, image_node, inline_images)
-      name, *extensions = caption_texts(anchor)
+    def list_groups(document)
+      document.css('div[role="list"]').filter_map do |container|
+        next if refinement?(container)
+
+        items = container.css('div[role="listitem"]').select do |item|
+          search_anchors(item).any? && item.at_css('img') && item.at_css('div[role="heading"]')
+        end
+        items unless items.empty?
+      end
+    end
+
+    # Search-refinement sections ("people also search for" / drill-downs,
+    # data-attrid *sideways*/*downwards*) look like carousels but list
+    # related entities, not the page's subject.
+    def refinement?(node)
+      while node&.element?
+        return true if node['data-attrid']&.match?(/sideways|downwards/)
+
+        node = node.parent
+      end
+      false
+    end
+
+    def search_anchors(node)
+      node.css('a[href]').select { |anchor| SEARCH_LINK.match?(anchor['href']) }
+    end
+
+    def build_result(item, inline_images)
+      image_node = item.at_css('img')
+      name, extensions = caption_for(item, image_node)
       ExtractedResult.new(
-        name: name || image_node['alt'],
-        extensions: extensions.empty? ? nil : extensions,
-        link: absolute_link(anchor['href']),
+        name: name,
+        extensions: extensions,
+        link: link_for(item),
         image: image_for(image_node, inline_images)
       )
     end
 
-    def caption_texts(anchor)
-      anchor.css('div')
-            .reject { |div| div.at_css('div') }
-            .map { |div| div.text.strip }
-            .reject(&:empty?)
+    def caption_for(item, image_node)
+      texts = caption_texts(item)
+      heading = item.at_css('div[role="heading"]')
+      candidates = [heading && clean_text(heading.text), texts.first, image_node['alt']]
+      name = candidates.find { |value| value && !value.empty? }
+      extensions = texts - [name]
+      [name, extensions.empty? ? nil : extensions]
     end
 
-    def absolute_link(href)
+    def caption_texts(item)
+      item.css('div')
+          .reject { |div| div.at_css('div') }
+          .map { |div| clean_text(div.text) }
+          .reject(&:empty?)
+    end
+
+    def clean_text(text)
+      text.gsub(/\s+/, ' ').strip
+    end
+
+    def link_for(item)
+      href = item.name == 'a' ? item['href'] : search_anchors(item).first['href']
       href.start_with?('/') ? "#{BASE_URL}#{href}" : href
     end
 
@@ -71,8 +127,9 @@ module GoogleSearch
 
     def inline_image_map(document)
       document.css('script').each_with_object({}) do |script, map|
-        script.text.scan(INLINE_IMAGE_PATTERN) do |data_uri, id|
-          map[id] = unescape_js(data_uri)
+        script.text.scan(INLINE_IMAGE_PATTERN) do |data_uri, ids|
+          unescaped = unescape_js(data_uri)
+          ids.scan(/'([^']+)'/) { |(id)| map[id] = unescaped }
         end
       end
     end
